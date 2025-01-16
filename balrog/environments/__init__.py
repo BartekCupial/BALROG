@@ -44,8 +44,8 @@ def make_env(env_name, task, config, render_mode=None):
         from balrog.environments.babaisai.babaisai_env import make_babaisai_env
 
         base_env = make_babaisai_env(env_name, task, config, render_mode=render_mode)
-    elif env_name == "hierarchical_minihack":
-        from balrog.environments.hierarchical_minihack.minihack_env import make_minihack_env
+    elif env_name == "code_minihack":
+        from balrog.environments.code_minihack.minihack_env import make_minihack_env
 
         base_env = make_minihack_env(env_name, task, config, render_mode=render_mode)
     else:

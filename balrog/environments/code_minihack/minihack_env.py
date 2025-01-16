@@ -7,7 +7,7 @@ from nle.env.base import FULL_ACTIONS
 from nle_code_wrapper.utils.utils import get_function_by_name
 from nle_code_wrapper.wrappers.nle_code_wrapper import NLECodeWrapper
 
-from balrog.environments.hierarchical_minihack.language_wrapper import LanguageWrapper
+from balrog.environments.code_minihack.language_wrapper import LanguageWrapper
 from balrog.environments.wrappers import GymV21CompatibilityV0, NLETimeLimit
 
 MINIHACK_ENVS = []
@@ -25,7 +25,7 @@ for env_spec in gym.envs.registry.all():
 
 
 def make_minihack_env(env_name, task, config, render_mode: Optional[str] = None):
-    minihack_kwargs = config.envs.hierarchical_minihack_kwargs
+    minihack_kwargs = config.envs.code_minihack_kwargs
     vlm = True if config.agent.max_image_history > 0 else False
 
     observation_keys = (
