@@ -30,6 +30,8 @@ class EnvWrapper(gym.Wrapper):
     def _process_observation(self, obs):
         if self.env_name in ["nle", "minihack"]:
             obs = obs
+        elif self.env_name in ["hierarchical_minihack", "hierarchical_nle"]:
+            obs = obs
         elif self.env_name == "babyai":
             obs = obs
         elif self.env_name == "textworld":
@@ -76,6 +78,10 @@ class EnvWrapper(gym.Wrapper):
             from balrog.environments.crafter import get_instruction_prompt
 
             return get_instruction_prompt(self.task_name)
+        elif self.env_name == "hierarchical_minihack":
+            from balrog.environments.hierarchical_minihack import get_instruction_prompt
+
+            return get_instruction_prompt(self.env, self.task_name)
         else:
             raise ValueError(f"Unknown environment: {self.env_namee}")
 
