@@ -9,15 +9,15 @@ with open(os.path.join(os.path.dirname(__file__), "achievements.json"), "r") as 
 
 def get_progress_system(env):
     if "NetHackChallenge" in env.spec.id:
-        return Progress()
+        return NLEProgress()
     elif "MiniHack" in env.spec.id:
-        return BaseProgress()
+        return MiniHackProgress()
     else:
         raise ValueError(f"Unsupported environment type: {type(env)}")
 
 
 @dataclass
-class Progress:
+class NLEProgress:
     episode_return: float = 0.0
     score: int = 0
     depth: int = 1
@@ -143,6 +143,27 @@ class Progress:
         """
         xp = f"Xp:{stats['experience_level']}"
         return xp
+
+
+class MiniHackProgress:
+    episode_return: float = 0.0
+    progression: float = 0.0
+    end_reason: Optional[str] = None
+
+    def update(self, nle_obsv, reward, done, info):
+        """
+        Update the progress of the player given a message and stats.
+
+        Args:
+            message (str): The message to check for achievements.
+            stats (str): The stats to check for achievements.
+
+        Returns:
+            float: The progression of the player.
+        """
+        self.episode_return += reward
+        self.progression = 1.0 if info["end_status"].name == "TASK_SUCCESSFUL" else 0.0
+        self.end_reason = info["end_status"]
 
 
 class BaseProgress:
