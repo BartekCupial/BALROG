@@ -2,6 +2,8 @@ from balrog.client import create_llm_client
 
 from ..prompt_builder import create_prompt_builder
 from .chain_of_thought import ChainOfThoughtAgent
+from .code_cot import CodeCotAgent
+from .code_naive import CodeNaiveAgent
 from .custom import CustomAgent
 from .dummy import DummyAgent
 from .few_shot import FewShotAgent
@@ -53,6 +55,10 @@ class AgentFactory:
             return FewShotAgent(client_factory, prompt_builder, self.config.agent.max_icl_history)
         elif self.config.agent.type == "robust_naive":
             return RobustNaiveAgent(client_factory, prompt_builder)
+        elif self.config.agent.type == "code_naive":
+            return CodeNaiveAgent(client_factory, prompt_builder)
+        elif self.config.agent.type == "code_cot":
+            return CodeCotAgent(client_factory, prompt_builder)
 
         else:
             raise ValueError(f"Unknown agent type: {self.config.agent}")
