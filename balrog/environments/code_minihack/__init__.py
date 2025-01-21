@@ -9,14 +9,24 @@ def get_available_actions(env):
 
 
 def get_instruction_prompt(env, task="MiniHack-ExploreMaze-Hard-Mapped-v0"):
-    if "corridor" in task.lower():
-        goal = "Your goal is to explore the level and reach the stairs down"
+    if "corridorbattle" in task.lower():
+        goal = "Your goal is to make best use of the dungeon features to effectively defeat a horde of hostile monsters and reach the downstairs located on the end of the second room."
+    elif "corridor" in task.lower():
+        goal = "Your goal is explore the rooms and reach the downstairs located in one of the randomly generated rooms"
     elif "quest" in task.lower():
-        goal = "Your goal is to explore the level, fight monsters, and navigate rooms and mazes to ultimately reach the stairs down."
-    elif "boxoban" in task.lower():
-        goal = "You are playing Boxoban, a box-pushing game inspired by Sokoban. Your goal is to push the boulders onto the fountains on the map. You can push the boulders by walking into them, as long as there are no obstacles behind them."
+        goal = "Your goal is make use of an object laying around for crossing a lava river (this can be any object allowing levitation or freezing), while fighting monsters and navigating rooms or mazes, finally reach downstairs located at the end of the map"
+    elif "wod" in task.lower():
+        goal = "Your goal is to zap a wand of death to kill a monster and reach downstairs located behind the monster"
+    elif "multiroom" in task.lower():
+        goal = "Tour goal is to defeat all monster, open all doors and reach downstairs located in the last room"
+    elif "lavacross" in task.lower() or "freeze-lava":
+        goal = "Tour goal is to make use of an object laying around for crossing a lava river (this can be any object allowing levitation or freezing) and reach downstairs located on the other side of the lava river"
+    elif "hidenseek" in task.lower():
+        goal = "The goals is to make use of the environment features, avoid being seen by the monster and quickly run towards the downstairs located in one of the corners of the room. The trees and clouds block the line of sight of the player and a random monster (chosen to be more powerful than the agent). The agent, monsters and spells can pass through clouds unobstructed. The agent and monster cannot pass through trees."
+    elif "river" in task.lower():
+        goal = "Tour goal is to cross a river using boulders and reach the downstairs located on the other side. Boulders, when pushed into water, create a dry land to walk on allowing the agent to cross it"
     else:
-        goal = "Your goal is to get as far as possible in the game."
+        assert False
 
     available_actions = get_available_actions(env)
     action_strings = ",\n".join(f"{action}: {description}" for action, description in available_actions.items())
