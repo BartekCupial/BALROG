@@ -21,11 +21,36 @@ We advise using conda for the installation
 conda create -n balrog python=3.10 -y
 conda activate balrog
 
-git clone https://github.com/balrog-ai/BALROG.git
+git clone https://github.com/BartekCupial/BALROG.git
 cd BALROG
+git checkout nle-code-wrapper
 pip install -e .
 balrog-post-install
 ```
+
+## Running nle-code-wrapper
+
+- install code wrapper
+```bash
+git clone https://github.com/BartekCupial/nle-code-wrapper.git
+cd nle-code-wrapper
+git submodule update --init --recursive
+
+MINOR=$(python3 -c 'import sys; print(f"cp{sys.version_info.major}{sys.version_info.minor}")')
+pip install "https://github.com/BartekCupial/nle/releases/download/fair/nle-0.9.0-${MINOR}-${MINOR}-manylinux_2_17_$(uname -m).manylinux2014_$(uname -m).whl"
+pip install -e external/nle_utils
+pip install -e .[dev]
+cd ..
+```
+
+- host vllm, example: 
+```bash
+vllm serve meta-llama/Llama-3.1-8B-Instruct --port 8080 --max-num-seqs 32 --tensor-parallel-size 4 --max-model-len 65536 --gpu-memory-utilization 0.95 --enforce-eager --enable-prefix-caching`
+```
+
+- run evaluation: `python run_code_minihack.py`
+
+
 
 ## Docker
 We have provided some docker images. Please see the [relevant README](docker/README.md).
