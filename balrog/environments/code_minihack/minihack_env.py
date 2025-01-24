@@ -5,7 +5,7 @@ import minihack  # NOQA: F401
 import nle_code_wrapper.envs.minihack.envs  # noqa: E402
 from nle.env.base import FULL_ACTIONS
 from nle_code_wrapper.utils.utils import get_function_by_name
-from nle_code_wrapper.wrappers.nle_code_wrapper import NLECodeWrapper
+from nle_code_wrapper.wrappers import NLECodeWrapper, NoProgressFeedback
 
 from balrog.environments.code_minihack.language_wrapper import LanguageWrapper
 from balrog.environments.nle.auto_more import AutoMore
@@ -91,6 +91,7 @@ def make_minihack_env(env_name, task, config, render_mode: Optional[str] = None)
         add_direction_strategies=minihack_kwargs.add_direction_strategies,
         add_more_strategy=minihack_kwargs.add_more_strategy,
     )
+    env = NoProgressFeedback(env)
 
     env = LanguageWrapper(env, vlm=vlm)
 
