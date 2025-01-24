@@ -31,8 +31,7 @@ class LanguageWrapper(gym.Wrapper):
 
     @property
     def default_action(self):
-        # return "goto_room"
-        return self.language_action_space.sample()
+        return "noop"
 
     def reset(self, **kwargs):
         self.progress = get_progress_system(self.env.unwrapped)
