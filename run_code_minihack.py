@@ -44,6 +44,7 @@ cmd = [
     "python",
     "-m",
     "eval",
+    "agent.type=code_naive",
     "client.client_name=vllm",
     "client.model_id=meta-llama/Llama-3.1-8B-Instruct",
     f"envs.code_minihack_kwargs.strategies=[{','.join(strategies_easy)}]",
