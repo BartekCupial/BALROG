@@ -104,10 +104,17 @@ class LanguageWrapper(gym.Wrapper):
         tty_cursor = nle_obsv["tty_cursor"]
         inv_strs = nle_obsv["inv_strs"]
         inv_letters = nle_obsv["inv_letters"]
+        text_message = (
+            (
+                nle_obsv["text_message"]
+                if "text_message" in nle_obsv
+                else self.nle_language.text_message(nle_obsv["tty_chars"]).decode("latin-1")
+            ),
+        )
 
         return {
             "text_glyphs": self.nle_language.text_glyphs(glyphs, blstats).decode("latin-1"),
-            "text_message": self.nle_language.text_message(nle_obsv["tty_chars"]).decode("latin-1"),
+            "text_message": text_message,
             "text_blstats": self.nle_language.text_blstats(blstats).decode("latin-1"),
             "text_inventory": self.nle_language.text_inventory(inv_strs, inv_letters).decode("latin-1"),
             "text_cursor": self.nle_language.text_cursor(glyphs, blstats, tty_cursor).decode("latin-1"),
