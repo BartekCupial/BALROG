@@ -9,7 +9,7 @@ from nle_code_wrapper.wrappers.nle_code_wrapper import NLECodeWrapper
 
 from balrog.environments.code_minihack.language_wrapper import LanguageWrapper
 from balrog.environments.nle.auto_more import AutoMore
-from balrog.environments.wrappers import GymV21CompatibilityV0, NLETimeLimit
+from balrog.environments.wrappers import GymV21CompatibilityV0, NLETimeLimit, NoProgressAbort
 
 MINIHACK_ENVS = []
 for env_spec in gym.envs.registry.all():
@@ -65,6 +65,7 @@ def make_minihack_env(env_name, task, config, render_mode: Optional[str] = None)
             kwargs[param_name] = param_value
 
     env = gym.make(task, **kwargs)
+    env = NoProgressAbort(env)
     env = AutoMore(env)
     # wrap NLE with timeout
     env = NLETimeLimit(env)
