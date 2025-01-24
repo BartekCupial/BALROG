@@ -6,6 +6,7 @@ from collections import namedtuple
 from io import BytesIO
 
 import google.generativeai as genai
+import replicate
 from anthropic import Anthropic
 from google.generativeai import caching
 from openai import OpenAI
@@ -429,17 +430,55 @@ class ClaudeWrapper(LLMClientWrapper):
         )
 
 
+class ReplicateWrapper(LLMClientWrapper):
+    """Wrapper for interacting with the Replicate API."""
+
+    def convert_messages(self, messages):
+        """Convert messages to a single prompt for Replicate.
+
+        Args:
+            messages (list): A list of message objects.
+
+        Returns:
+            str: A string concatenating the roles and messages.
+        """
+        prompt = []
+        for msg in messages:
+            prompt.append(f"{msg.role.upper()}: {msg.content}")
+        return "\n".join(prompt)
+
+    def generate(self, messages):
+        """Generate a response from the Replicate model given a list of messages.
+
+        Args:
+            messages (list): A list of message objects.
+
+        Returns:
+            LLMResponse: The response from the Replicate model.
+        """
+        prompt = self.convert_messages(messages)
+
+        def api_call():
+            # Replace self.model_id with something like "owner/model:version" or the appropriate replicate model reference.
+            output = replicate.run(self.model_id, input={"prompt": prompt, **self.client_kwargs})
+            return output
+
+        response = self.execute_with_retries(api_call)
+
+        # Assuming the response is either a string or list with the final text in the last element.
+        completion = "".join(response)
+
+        return LLMResponse(
+            model_id=self.model_id,
+            completion=completion.strip(),
+            stop_reason=None,  # Replicate may not give a specific finishing reason
+            input_tokens=0,  # Usage tokens may not be directly available from Replicate
+            output_tokens=0,
+            reasoning=None,
+        )
+
+
 def create_llm_client(client_config):
-    """
-    Factory function to create the appropriate LLM client based on the client name.
-
-    Args:
-        client_config: Configuration object containing client-specific settings.
-
-    Returns:
-        callable: A factory function that returns an instance of the appropriate LLM client.
-    """
-
     def client_factory():
         client_name_lower = client_config.client_name.lower()
         if "openai" in client_name_lower or "vllm" in client_name_lower:
@@ -448,6 +487,8 @@ def create_llm_client(client_config):
             return GoogleGenerativeAIWrapper(client_config)
         elif "claude" in client_name_lower:
             return ClaudeWrapper(client_config)
+        elif "replicate" in client_name_lower:
+            return ReplicateWrapper(client_config)
         else:
             raise ValueError(f"Unsupported client name: {client_config.client_name}")
 
