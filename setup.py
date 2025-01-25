@@ -21,6 +21,7 @@ setup(
     install_requires=[
         "openai",
         "anthropic",
+        "replicate",
         "google-generativeai",
         "hydra-core",
         "opencv-python-headless",
