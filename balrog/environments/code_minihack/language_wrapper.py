@@ -22,10 +22,10 @@ class LanguageWrapper(gym.Wrapper):
             self.prompt_mode = "language"
 
         self.progress = get_progress_system(self.env.unwrapped)
-        self.max_steps = self.env.bot.max_strategy_steps
+        self.max_steps = self.env.get_wrapper_attr("bot").max_strategy_steps
 
     def create_action_space(self):
-        all_actions = [strat.__name__ for strat in self.env.bot.strategies]
+        all_actions = [strat.__name__ for strat in self.env.get_wrapper_attr("bot").strategies]
 
         return Strings(all_actions)
 
@@ -105,11 +105,9 @@ class LanguageWrapper(gym.Wrapper):
         inv_strs = nle_obsv["inv_strs"]
         inv_letters = nle_obsv["inv_letters"]
         text_message = (
-            (
-                nle_obsv["text_message"]
-                if "text_message" in nle_obsv
-                else self.nle_language.text_message(nle_obsv["tty_chars"]).decode("latin-1")
-            ),
+            nle_obsv["text_message"]
+            if "text_message" in nle_obsv
+            else self.nle_language.text_message(nle_obsv["tty_chars"]).decode("latin-1")
         )
 
         return {
