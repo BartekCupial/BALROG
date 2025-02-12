@@ -8,7 +8,7 @@ with open(os.path.join(os.path.dirname(__file__), "achievements.json"), "r") as 
 
 
 def get_progress_system(env):
-    if "NetHackChallenge" in env.spec.id:
+    if env.spec.id.startswith("NetHack"):
         return NLEProgress()
     elif "MiniHack" in env.spec.id:
         return MiniHackProgress()

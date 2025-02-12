@@ -30,7 +30,7 @@ class EnvWrapper(gym.Wrapper):
     def _process_observation(self, obs):
         if self.env_name in ["nle", "minihack"]:
             obs = obs
-        elif self.env_name in ["code_minihack", "code_nle"]:
+        elif self.env_name in ["code_minihack", "code_nethack"]:
             obs = obs
         elif self.env_name == "babyai":
             obs = obs
@@ -80,6 +80,10 @@ class EnvWrapper(gym.Wrapper):
             return get_instruction_prompt(self.task_name)
         elif self.env_name == "code_minihack":
             from balrog.environments.code_minihack import get_instruction_prompt
+
+            return get_instruction_prompt(self.env, self.task_name)
+        elif self.env_name == "code_nethack":
+            from balrog.environments.code_nethack import get_instruction_prompt
 
             return get_instruction_prompt(self.env, self.task_name)
         else:

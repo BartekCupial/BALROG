@@ -48,6 +48,10 @@ def make_env(env_name, task, config, render_mode=None):
         from balrog.environments.code_minihack.minihack_env import make_minihack_env
 
         base_env = make_minihack_env(env_name, task, config, render_mode=render_mode)
+    elif env_name == "code_nethack":
+        from balrog.environments.code_nethack.nethack_env import make_nethack_env
+
+        base_env = make_nethack_env(env_name, task, config, render_mode=render_mode)
     else:
         raise ValueError(f"Unknown environment: {env_name}")
     return EnvWrapper(base_env, env_name, task)

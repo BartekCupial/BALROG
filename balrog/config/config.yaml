@@ -15,6 +15,7 @@ eval:
     nle: 5               # Number of episodes for the 'nle' environment
     minihack: 5          # Number of episodes for each 'minihack' task
     code_minihack: 10          # Number of episodes for each 'minihack' task
+    code_nethack: 10          # Number of episodes for each 'minihack' task
     babyai: 10           # Number of episodes for each 'babyai' task
     crafter: 10          # Number of episodes for the 'crafter' environment
     babaisai: 3          # Number of episodes for each 'babaisai' task
@@ -38,7 +39,7 @@ client:
   alternate_roles: False        # Whether the client requires alternating between the agent and the environment
 
 envs:
-  names: code_minihack   # Environments to evaluate, separated by hyphens
+  names: code_nethack   # Environments to evaluate, separated by hyphens
   render_mode: null
   env_kwargs:
     seed: null                # Random seed; null means a random seed is used
@@ -72,34 +73,51 @@ envs:
     allow_all_yn_questions: null
     allow_all_modes: null
     max_strategy_steps: 100
-    add_letter_strategies: False
+    add_letter_strategies: True
     add_direction_strategies: False
     add_more_strategy: False
     strategies_loc: "nle_code_wrapper.bot.strategies"
     panics_loc: "nle_code_wrapper.bot.panics"
     strategies: 
       - "goto_corridor"
-      - "goto_corridor_east"
-      - "goto_corridor_north"
-      - "goto_corridor_south"
-      - "goto_corridor_west"
       - "goto_room"
-      - "goto_room_east"
-      - "goto_room_north"
-      - "goto_room_south"
-      - "goto_room_west"
-      - "goto_stairs_down"
-      - "goto_stairs_up"
+      - "descend_stairs"
+      - "ascend_stairs"
       - "explore_corridor"
-      - "explore_corridor_east"
-      - "explore_corridor_north"
-      - "explore_corridor_south"
-      - "explore_corridor_west"
       - "explore_room"
-      - "explore_room_east"
-      - "explore_room_north"
-      - "explore_room_south"
-      - "explore_room_west"
+      - "open_doors"
+      - "open_doors_key"
+      - "open_doors_kick"
+      - "search_corridor_for_hidden_doors"
+      - "search_room_for_hidden_doors"
+    panics: 
+      - "enemy_appeared"
+      - "lost_hp"
+  code_nethack_kwargs: 
+    character: null
+    max_episode_steps: null
+    penalty_step: 0.0
+    penalty_time: 0.0
+    penalty_mode: constant
+    savedir: null
+    save_ttyrec_every: 0
+    autopickup: null
+    skip_more: True
+    allow_all_yn_questions: null
+    allow_all_modes: null
+    max_strategy_steps: 100
+    add_letter_strategies: True
+    add_direction_strategies: False
+    add_more_strategy: False
+    strategies_loc: "nle_code_wrapper.bot.strategies"
+    panics_loc: "nle_code_wrapper.bot.panics"
+    strategies: 
+      - "goto_corridor"
+      - "goto_room"
+      - "descend_stairs"
+      - "ascend_stairs"
+      - "explore_corridor"
+      - "explore_room"
       - "open_doors"
       - "open_doors_key"
       - "open_doors_kick"
@@ -173,6 +191,9 @@ tasks:
     # - "MiniHack-HideNSeek-v0"
     # - "MiniHack-HideNSeek-Lava-v0"
     # - "MiniHack-HideNSeek-Big-v0"
+
+  code_nethack_tasks:
+    - "NetHackScore-v0"
 
   crafter_tasks:
     - "default"                 # Tasks for Crafter
