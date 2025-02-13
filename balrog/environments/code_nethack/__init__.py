@@ -3,6 +3,8 @@ def get_available_actions(env):
     for strategy in env.get_wrapper_attr("bot").strategies:
         action = strategy.__name__
         description = strategy.__doc__
+        if not description:
+            continue
         available_actions[action] = description
 
     return available_actions
@@ -16,7 +18,7 @@ def get_instruction_prompt(env, task="MiniHack-ExploreMaze-Hard-Mapped-v0"):
 You are an agent playing MiniHack. The following are the possible actions you can take in the game, followed by a short description of each action:
 
 {action_strings}.
-
+You can also type letter if prompted by the game message. "Are you sure you want to pray? [ynq] (n)".
 In a moment I will present a history of actions and observations from the game.
 
 Tip: there is no point in outputting the same action over and over if nothing changes.
