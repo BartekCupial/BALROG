@@ -5,7 +5,7 @@ import minihack  # NOQA: F401
 import nle_code_wrapper.envs.minihack.envs  # noqa: E402
 from nle.env.base import FULL_ACTIONS
 from nle_code_wrapper.utils.utils import get_function_by_name
-from nle_code_wrapper.wrappers import NLECodeWrapper, NoProgressFeedback
+from nle_code_wrapper.wrappers import NLECodeWrapper, NoProgressFeedback, SaveOnException
 
 from balrog.environments.code_minihack.language_wrapper import LanguageWrapper
 from balrog.environments.nle.auto_more import AutoMore
@@ -92,6 +92,10 @@ def make_minihack_env(env_name, task, config, render_mode: Optional[str] = None)
         add_more_strategy=minihack_kwargs.add_more_strategy,
     )
     env = NoProgressFeedback(env)
+
+    # would be best to save in run dir, but we don't have access to it from here
+    failed_game_path = f"{config.eval.output_dir}/failed_games"
+    env = SaveOnException(env, failed_game_path=failed_game_path)
 
     env = LanguageWrapper(env, vlm=vlm)
 

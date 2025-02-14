@@ -4,7 +4,7 @@ import gym
 import minihack  # NOQA: F401
 from nle import nethack
 from nle_code_wrapper.utils.utils import get_function_by_name
-from nle_code_wrapper.wrappers import NLECodeWrapper, NoProgressFeedback
+from nle_code_wrapper.wrappers import NLECodeWrapper, NoProgressFeedback, SaveOnException
 from nle_progress import NLEProgressWrapper
 from nle_utils.wrappers import FinalStatsWrapper, TaskRewardsInfoWrapper
 
@@ -97,6 +97,9 @@ def make_nethack_env(env_name, task, config, render_mode: Optional[str] = None):
         add_more_strategy=nethack_kwargs.add_more_strategy,
     )
     env = NoProgressFeedback(env)
+
+    failed_game_path = f"{config.eval.output_dir}/failed_games"
+    env = SaveOnException(env, failed_game_path=failed_game_path)
 
     env = LanguageWrapper(env, vlm=vlm)
 
