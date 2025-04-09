@@ -38,6 +38,8 @@ class EnvWrapper(gym.Wrapper):
             obs = obs
         elif self.env_name == "crafter":
             obs = obs
+        elif self.env_name == "pogs":
+            obs = obs
         else:
             raise ValueError(f"Unknown environment: {self.env_name}")
 
@@ -76,8 +78,12 @@ class EnvWrapper(gym.Wrapper):
             from balrog.environments.crafter import get_instruction_prompt
 
             return get_instruction_prompt(self.task_name)
+        elif self.env_name == "pogs":
+            from balrog.environments.pogs import get_instruction_prompt
+
+            return get_instruction_prompt(self.env, self.task_name)
         else:
-            raise ValueError(f"Unknown environment: {self.env_namee}")
+            raise ValueError(f"Unknown environment: {self.env_name}")
 
     def check_action_validity(self, candidate_action):
         valid_action = None

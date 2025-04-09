@@ -53,7 +53,7 @@ You always have to output one of the above actions at a time and no other text. 
         """
 
         def filter_letters(input_string):
-            return re.sub(r"[^a-zA-Z\s:]", "", input_string)
+            return re.sub(r"[^a-zA-Z0-9\s:]", "", input_string)
 
         final_answer = copy.deepcopy(answer)
         final_answer = final_answer._replace(completion=filter_letters(final_answer.completion))

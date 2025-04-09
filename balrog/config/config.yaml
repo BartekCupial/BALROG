@@ -12,6 +12,7 @@ eval:
   resume_from: null      # Path to to the incomplete results file to resume an incomplete run
   num_workers: 16        # Number of parallel workers. Increase for faster evaluation if you have enough resources
   num_episodes:          # Minimum number of episodes to run for each environment. You can optionally increase this to get more reliable results
+    pogs: 10
     nle: 5               # Number of episodes for the 'nle' environment
     minihack: 5          # Number of episodes for each 'minihack' task
     babyai: 10           # Number of episodes for each 'babyai' task
@@ -41,6 +42,11 @@ envs:
   names: babyai-babaisai-textworld-crafter-nle-minihack   # Environments to evaluate, separated by hyphens
   env_kwargs:
     seed: null                # Random seed; null means a random seed is used
+  pogs_kwargs:
+    num_nodes: 15
+    episode_horizon: 30
+    k_nearest: 3
+    min_distance: 4
   nle_kwargs:
     character: "@"            # Character representing the agent in NLE
     max_episode_steps: 100_000  # Max steps per episode in NLE
@@ -79,6 +85,9 @@ envs:
     add_ruleset: True
 
 tasks:
+  pogs_tasks:
+    - "POGS-v0"
+
   nle_tasks:
     - NetHackChallenge-v0       # Tasks for the NLE environment
 
