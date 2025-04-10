@@ -12,7 +12,7 @@ In a moment I will present you with an observation containing:
 - Your current node position
 - The target node you need to reach
 
-The graph has {env.num_nodes} nodes and is partially observable, meaning you can only see connections within a k-nearest neighbor radius of your current position. In this episode k={env.k_nearest}.
+The graph has {env.num_nodes} nodes and is partially observable, meaning you can only see connections within a k-nearest neighbor radius of your current position. In this episode k={env.k_nearest}, graph={env.undirected}.
 
 Your action should be a single integer representing the label of the node you want to travel to. This node must be directly connected to your current node.
 
