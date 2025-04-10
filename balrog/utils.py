@@ -192,6 +192,7 @@ def setup_environment(
     openai_tag: str = "OPENAI_API_KEY",
     gemini_tag: str = "GEMINI_API_KEY",
     anthropic_tag: str = "ANTHROPIC_API_KEY",
+    replicate_tag: str = "REPLICATE_API_TOKEN",
     organization: str = None,
     original_cwd: str = "",
 ):
@@ -205,11 +206,9 @@ def setup_environment(
         original_cwd (str, optional): Original working directory. Defaults to "".
     """
     secrets = load_secrets(os.path.join(original_cwd, "SECRETS"))
-    if secrets[gemini_tag]:
-        genai.configure(api_key=secrets[gemini_tag])
-    if secrets[anthropic_tag]:
-        os.environ["ANTHROPIC_API_KEY"] = secrets[anthropic_tag]
-    if secrets[openai_tag]:
-        os.environ["OPENAI_API_KEY"] = secrets[openai_tag]
+    genai.configure(api_key=secrets[gemini_tag])
+    os.environ["ANTHROPIC_API_KEY"] = secrets[anthropic_tag]
+    os.environ["OPENAI_API_KEY"] = secrets[openai_tag]
+    os.environ["REPLICATE_API_TOKEN"] = secrets[replicate_tag]
     if organization is not None:
         openai.organization = secrets[organization]
