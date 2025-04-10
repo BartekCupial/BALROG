@@ -8,7 +8,7 @@ def get_instruction_prompt(env, task):
 You are an AI agent designed to navigate the Partially Observable Graph Search (POGS) environment. Your goal is to find and reach a target node in a partially observable graph by exploring the graph structure.
 
 In a moment I will present you with an observation containing:
-- A list of visible edges (connections between nodes)
+- Adjacency list of each visible
 - Your current node position
 - The target node you need to reach
 

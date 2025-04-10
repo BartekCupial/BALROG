@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 import gym
+import numpy as np
 
 
 class POGSWrapper(gym.Wrapper):
@@ -75,9 +76,15 @@ class POGSWrapper(gym.Wrapper):
         return {"progression": self.progression}
 
     def get_text_observation(self, obs):
-        obsv = (
-            f"list of edges: {obs['edge_list']}, current node: {obs['current_node']}, target node: {obs['target_node']}"
-        )
+        num_nodes = int(np.sqrt(len(obs["vector"]) - 2))
+        adj_matrix = obs["vector"][:-2].reshape(num_nodes, num_nodes)
+        description = ""
+        for i, row in enumerate(adj_matrix):
+            if any(row):
+                neigbhors = list(row.nonzero()[0])
+                description += f"node: {i}, neighbors: {neigbhors}\n"
+
+        obsv = f"{description}\ncurrent node: {obs['current_node']}, target node: {obs['target_node']}"
 
         return obsv
 
