@@ -7,6 +7,9 @@ def get_instruction_prompt(env, task):
     instruction_prompt = f"""
 You are an AI agent designed to navigate the Partially Observable Graph Search (POGS) environment. Your goal is to find and reach a target node in a partially observable graph by exploring the graph structure.
 
+The following are the only valid actions you can take in the game:
+{list(range(env.num_nodes))}
+
 In a moment I will present you with an observation containing:
 - Adjacency list of each visible
 - Your current node position
