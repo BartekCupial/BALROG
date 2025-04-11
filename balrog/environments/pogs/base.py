@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-import gym
+import gymnasium as gym
 import numpy as np
 
 
@@ -11,7 +11,7 @@ class POGSWrapper(gym.Wrapper):
 
     @property
     def max_steps(self):
-        return self.env.episode_horizon
+        return self.env._max_episode_steps
 
     @property
     def default_action(self):
@@ -53,24 +53,24 @@ class POGSWrapper(gym.Wrapper):
         return obs
 
     def reset(self, **kwargs):
-        obs = self.env.reset(**kwargs)
+        obs, info = self.env.reset(**kwargs)
 
         self.last_obs = obs
         self.total_reward = 0
         self.distance_to_target = None
 
-        return self.pogs_process_obs(obs, None)
+        return self.pogs_process_obs(obs, None), info
 
     def step(self, action):
         action_int = self.language_action_space.index(action)
-        obs, reward, done, info = self.env.step(action_int)
+        obs, reward, term, trun, info = self.env.step(action_int)
 
         self.total_reward += reward
 
-        if done:
-            self.progression = self.total_reward / 100
+        if term or trun:
+            self.progression = max(0, self.total_reward / 100)
 
-        return self.pogs_process_obs(obs, reward), reward, done, info
+        return self.pogs_process_obs(obs, reward), reward, term, trun, info
 
     def get_stats(self):
         return {"progression": self.progression}
