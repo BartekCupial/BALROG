@@ -2,6 +2,7 @@ from collections import defaultdict
 
 import gymnasium as gym
 import numpy as np
+from PIL import Image
 
 
 class POGSWrapper(gym.Wrapper):
@@ -28,12 +29,6 @@ class POGSWrapper(gym.Wrapper):
             return "You have reached the target!"
         elif reward == -1.0:
             return "Invalid Move!"
-
-        # elif distance_to_target is not None:
-        #     if distance_to_target <= 3:
-        #         return f"You're very close!"
-        #     elif distance_to_target <= 7:
-        #         return f"Getting closer!"
 
         return ""
 
@@ -89,5 +84,4 @@ class POGSWrapper(gym.Wrapper):
         return obsv
 
     def get_image_observation(self, obs):
-        # return self.env.render()
-        return None
+        return Image.fromarray(self.env.unwrapped.get_frame()).convert("RGB")
