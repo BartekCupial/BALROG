@@ -12,7 +12,7 @@ class POGSWrapper(gym.Wrapper):
 
     @property
     def max_steps(self):
-        return self.env._max_episode_steps
+        return self.env.unwrapped.max_steps
 
     @property
     def default_action(self):
