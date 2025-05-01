@@ -76,7 +76,7 @@ class POGSWrapper(gym.Wrapper):
         description = ""
         for i, row in enumerate(adj_matrix):
             if any(row):
-                neigbhors = list(row.nonzero()[0])
+                neigbhors = row.nonzero()[0].tolist()
                 description += f"node: {i}, neighbors: {neigbhors}\n"
 
         obsv = f"{description}\ncurrent node: {obs['current_node']}, target node: {obs['target_node']}"
