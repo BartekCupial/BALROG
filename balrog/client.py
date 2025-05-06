@@ -540,6 +540,82 @@ class ReplicateWrapper(LLMClientWrapper):
         )
 
 
+class OpenRouterWrapper(OpenAIWrapper):
+    """Wrapper for interacting with the OpenRouter API."""
+
+    def __init__(self, client_config):
+        """Initialize the OpenRouterWrapper with the given configuration.
+
+        Args:
+            client_config: Configuration object containing client-specific settings.
+        """
+        super().__init__(client_config)
+        self._initialized = False
+
+    def _initialize_client(self):
+        """Initialize the OpenRouter client if not already initialized."""
+        if not self._initialized:
+            self.client = OpenAI(
+                api_key=os.environ.get("OPENROUTER_API_KEY"),
+                base_url="https://openrouter.ai/api/v1"
+            )
+            self._initialized = True
+
+    def generate(self, messages):
+        """Generate a response from the OpenRouter API given a list of messages.
+
+        Args:
+            messages (list): A list of message objects.
+
+        Returns:
+            LLMResponse: The response from the OpenRouter API.
+        """
+        self._initialize_client()
+        converted_messages = self.convert_messages(messages)
+
+        def api_call():
+            # Create kwargs for the API call
+            api_kwargs = {
+                "messages": converted_messages,
+                "model": self.model_id,
+                "max_tokens": self.client_kwargs.get("max_tokens", 1024),
+                "extra_headers": {
+                    "HTTP-Referer": self.client_kwargs.get("site_url", ""),  # Optional, for including your app on openrouter.ai rankings
+                    "X-Title": self.client_kwargs.get("site_name", ""),  # Optional. Shows in rankings on openrouter.ai
+                },
+            }
+
+            # Only include temperature if it's not None
+            temperature = self.client_kwargs.get("temperature")
+            if temperature is not None:
+                api_kwargs["temperature"] = temperature
+
+            return self.client.chat.completions.create(**api_kwargs)
+
+        response = self.execute_with_retries(api_call)
+        
+        # Handle cases where the response is None
+        if response is None:
+            logger.warning(f"OpenRouter returned None for model {self.model_id}. Returning default empty response.")
+            return LLMResponse(
+                model_id=self.model_id,
+                completion="",
+                stop_reason="none_response",
+                input_tokens=0,
+                output_tokens=0,
+                reasoning=None,
+            )
+
+        return LLMResponse(
+            model_id=self.model_id,
+            completion=response.choices[0].message.content.strip(),
+            stop_reason=response.choices[0].finish_reason,
+            input_tokens=response.usage.prompt_tokens,
+            output_tokens=response.usage.completion_tokens,
+            reasoning=None,
+        )
+
+
 def create_llm_client(client_config):
     """
     Factory function to create the appropriate LLM client based on the client name.
@@ -553,7 +629,9 @@ def create_llm_client(client_config):
 
     def client_factory():
         client_name_lower = client_config.client_name.lower()
-        if "openai" in client_name_lower or "vllm" in client_name_lower or "nvidia" in client_name_lower:
+        if "openrouter" in client_name_lower:
+            return OpenRouterWrapper(client_config)
+        elif "openai" in client_name_lower or "vllm" in client_name_lower or "nvidia" in client_name_lower:
             # NVIDIA uses OpenAI-compatible API, so we use the OpenAI wrapper
             return OpenAIWrapper(client_config)
         elif "gemini" in client_name_lower:
