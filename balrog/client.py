@@ -82,15 +82,20 @@ class LLMClientWrapper:
             Exception: If the function fails after the maximum number of retries.
         """
         retries = 0
-        while retries < self.max_retries:
+        response = None
+        while retries < self.max_retries and response is None:
             try:
-                return func(*args, **kwargs)
+                response = func(*args, **kwargs)
             except Exception as e:
                 retries += 1
                 logger.error(f"Retryable error during {func.__name__}: {e}. Retry {retries}/{self.max_retries}")
                 sleep_time = self.delay * (2 ** (retries - 1))  # Exponential backoff
                 time.sleep(sleep_time)
-        raise Exception(f"Failed to execute {func.__name__} after {self.max_retries} retries.")
+        
+        if response is not None:
+            return response
+        else:    
+            raise Exception(f"Failed to execute {func.__name__} after {self.max_retries} retries")
 
 
 def process_image_openai(image):
