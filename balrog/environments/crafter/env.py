@@ -219,10 +219,10 @@ class CrafterLanguageWrapper(gym.Wrapper):
         return obs, reward, done, aug_info
 
     def reset(self):
+        self.current_timestep = 0
         self.env.reset()
         obs, reward, done, info = self._step_impl(0)
         self.score_tracker = 0
-        self.current_timestep = 0
         self.achievements = info["achievements"]
         self.unlock_timesteps = {k: -1 for k in info["achievements"].keys()}
         return self.process_obs(obs, info)
