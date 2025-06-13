@@ -1,10 +1,10 @@
 import itertools
 
-import crafter
 import gym
 import numpy as np
 from PIL import Image
 
+import crafter
 from balrog.environments import Strings
 
 ACTIONS = [
@@ -204,6 +204,7 @@ class CrafterLanguageWrapper(gym.Wrapper):
 
     def _step_impl(self, action):
         obs, reward, done, info = super().step(action)
+        self.current_timestep += 1
         # extra stuff for language wrapper
         aug_info = info.copy()
         aug_info["sleeping"] = self.env._player.sleeping
@@ -218,10 +219,12 @@ class CrafterLanguageWrapper(gym.Wrapper):
         return obs, reward, done, aug_info
 
     def reset(self):
+        self.current_timestep = 0
         self.env.reset()
         obs, reward, done, info = self._step_impl(0)
         self.score_tracker = 0
-        self.achievements = None
+        self.achievements = info["achievements"]
+        self.unlock_timesteps = {k: -1 for k in info["achievements"].keys()}
         return self.process_obs(obs, info)
 
     def step(self, action):
@@ -244,7 +247,12 @@ class CrafterLanguageWrapper(gym.Wrapper):
         }
 
     def update_progress(self, info):
-        self.score_tracker = 0 + sum([1.0 for k, v in info["achievements"].items() if v > 0])
+        self.current_timestep += 1
+        # Update unlock_timesteps for newly unlocked achievements
+        for k, v in info["achievements"].items():
+            if v > 0 and (k not in self.unlock_timesteps or self.unlock_timesteps[k] == -1):
+                self.unlock_timesteps[k] = self.current_timestep
+        self.score_tracker = sum([1.0 for k, v in info["achievements"].items() if v > 0])
         self.achievements = info["achievements"]
         return self.score_tracker
 
@@ -253,4 +261,18 @@ class CrafterLanguageWrapper(gym.Wrapper):
             "score": self.score_tracker,
             "progression": float(self.score_tracker) / 22.0,
             "achievements": self.achievements,
+            "unlock_timesteps": self.unlock_timesteps,
         }
+
+    def compare_achievements(self, old_achievements, new_achievements):
+        # Initialize unlock_timesteps with -1 for all achievements
+        unlock_timesteps = {k: -1 for k in set(old_achievements) | set(new_achievements)}
+        # Update unlock_timesteps based on old achievements
+        for k, v in old_achievements.items():
+            if v > 0:
+                unlock_timesteps[k] = 0  # Assume unlocked at timestep 0 for old achievements
+        # Update unlock_timesteps based on new achievements
+        for k, v in new_achievements.items():
+            if v > 0 and unlock_timesteps[k] == -1:
+                unlock_timesteps[k] = 1  # Assume unlocked at timestep 1 for new achievements
+        return unlock_timesteps
