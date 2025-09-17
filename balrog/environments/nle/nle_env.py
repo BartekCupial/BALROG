@@ -1,16 +1,13 @@
 from typing import Optional
 
-import gym
+import gymnasium as gym
 import nle  # NOQA: F401
+import nle_progress  # NOQA: F401
+from gymnasium import registry
 
 from balrog.environments.nle import AutoMore, NLELanguageWrapper
-from balrog.environments.wrappers import GymV21CompatibilityV0, NLETimeLimit
 
-NETHACK_ENVS = []
-for env_spec in gym.envs.registry.all():
-    id = env_spec.id
-    if "NetHack" in id:
-        NETHACK_ENVS.append(id)
+NETHACK_ENVS = [env_spec.id for env_spec in registry.values() if "NetHack" in env_spec.id]
 
 
 def make_nle_env(env_name, task, config, render_mode: Optional[str] = None):
@@ -20,11 +17,7 @@ def make_nle_env(env_name, task, config, render_mode: Optional[str] = None):
     env = gym.make(task, **nle_kwargs)
     if skip_more:
         env = AutoMore(env)
+
     env = NLELanguageWrapper(env, vlm=vlm)
-
-    # wrap NLE with timeout
-    env = NLETimeLimit(env)
-
-    env = GymV21CompatibilityV0(env=env, render_mode=render_mode)
 
     return env
