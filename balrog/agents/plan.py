@@ -163,12 +163,16 @@ class AlwaysPlan(BasePlanningAgent):
             print(f"Error updating action and observation in prompt builder: {e}")
 
         messages = self.prompt_builder.get_prompt()
-        output, action_token_ids, prompt_token_ids, logprob = self._generate_output(messages, ALWAYS_PLAN_INSTRUCTION)
-        plan, action, _ = self._extract_plan(output)
+        plan_instruction = ALWAYS_PLAN_INSTRUCTION
+        llm_response = self._generate_output(messages, plan_instruction)
+        plan, action, _ = self._extract_plan(llm_response.completion)
         self.prompt_builder.update_plan(plan)
 
-        action = action.strip()
-        return action, action_token_ids, prompt_token_ids, logprob
+        action = action.strip()        
+        llm_response = llm_response._replace(completion=action)
+        llm_response = llm_response._replace(reasoning=plan)
+
+        return llm_response
     
     
     
@@ -193,10 +197,9 @@ class NeverPlan(BasePlanningAgent):
 
         messages = self.prompt_builder.get_prompt()
         instruction = NEW_ACT_INSTRUCTION
-        output, action_token_ids, prompt_token_ids, logprob = self._generate_output(messages, instruction)
+        llm_response = self._generate_output(messages, instruction)
 
-        action = output
+        action = llm_response.completion.strip()
+        llm_response = llm_response._replace(completion=action)
 
-        action = action.strip()
-
-        return action, action_token_ids, prompt_token_ids, logprob
+        return llm_response
