@@ -6,8 +6,9 @@ from .custom import CustomAgent
 from .dummy import DummyAgent
 from .few_shot import FewShotAgent
 from .naive import NaiveAgent
-from .robust_naive import RobustNaiveAgent
-from .robust_cot import RobustCoTAgent
+from .plan import PlanEveryKStep, AlwaysPlan, NeverPlan
+import logging
+logger = logging.getLogger(__name__)
 
 
 class AgentFactory:
@@ -52,10 +53,11 @@ class AgentFactory:
             return CustomAgent(client_factory, prompt_builder)
         elif self.config.agent.type == "few_shot":
             return FewShotAgent(client_factory, prompt_builder, self.config.agent.max_icl_history)
-        elif self.config.agent.type == "robust_naive":
-            return RobustNaiveAgent(client_factory, prompt_builder)
-        elif self.config.agent.type == "robust_cot":
-            return RobustCoTAgent(client_factory, prompt_builder, config=self.config)
-
+        elif self.config.agent.type == "plan_every_k_step":
+            return PlanEveryKStep(client_factory, prompt_builder, self.config)
+        elif self.config.agent.type == "always_plan":
+            return AlwaysPlan(client_factory, prompt_builder, self.config)
+        elif self.config.agent.type == "never_plan":
+            return NeverPlan(client_factory, prompt_builder, self.config)
         else:
             raise ValueError(f"Unknown agent type: {self.config.agent}")
