@@ -1,0 +1,61 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 29,
+        "west": 4,
+        "north": 14,
+        "search": 19,
+        "kick": 17,
+        "south": 7,
+        "southwest": 4,
+        "northeast": 1,
+        "northwest": 3,
+        "open": 2
+    },
+    "input_tokens": 343153,
+    "output_tokens": 1659,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "kick east",
+        "kick east",
+        "kick east",
+        "kick east",
+        "kick east",
+        "kick east",
+        "eastnortheast",
+        "<plan>The goal is to reach the stairs down. From the previous observations, I noticed that the stairs up is adjacent to the north direction, and there is a horizontal wall adjacent to the south, southeast, and southwest directions. This suggests that the stairs down is likely to be adjacent to the south or southeast direction.\n\nTo reach the stairs down, I plan to search the area to find a way around the horizontal wall. If there is no passage, I will try to open the vertical closed door to the east. If it's locked, I will try to kick the door. If the door is open or unlocked, I will proceed through it and try to find a way to move south or southeast.\n\nOnce I reach the stairs down, I will make sure to navigate through it safely and efficiently. To do this, I will need to be cautious of any potential obstacles or enemies that may be in the way. If necessary, I will use my club to defend myself.\n\nThe high-level plan is as follows:\n\n1. Search the area to find a way around the horizontal wall.\n2. Try to open the vertical closed door to the east.\n3. If the door is locked, try to kick it.\n4. Proceed through the open or unlocked door and try to find a way to move south or southeast.\n5. Navigate through the stairs down safely and efficiently.\n\nAction: search",
+        "eastnortheast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-88",
+    "seed": 3944010091,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

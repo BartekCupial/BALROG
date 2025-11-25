@@ -1,0 +1,43 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,8,"Currently, we are at node 15 and our target node is 6, which is not even visible within our k-nearest neighbor radius of 2. We need to find a path to get to a node that is closer to the target node. Upon reviewing our neighbors, we see that we can move to nodes 0, 7, or 17. We have to be cautious not to move into a dead end. We can see that node 0 has only one neighbor, which is 3, and the distance to it from our current node is 1. We can also see that node 17 has only one neighbor, which is 0, and the distance to it from our current node is 1. Node 7, however, has two neighbors, 14 and 15, and its distance from our current node is 1, but the distance between node 7 and any other node which we can see is 2. Node 7 has potential and is our best option. However, looking at node 0 as an alternative if we can see a visible connection from the adjacent node to node 3, then it may also be viable. Our goal is to move to a node with the most potential for reaching the target. Let's move to node 7.","
+node: 0, neighbors: [3, 15, 17]
+node: 3, neighbors: [0]
+node: 7, neighbors: [14, 15]
+node: 8, neighbors: [16]
+node: 14, neighbors: [7]
+node: 15, neighbors: [0, 7, 16]
+node: 16, neighbors: [8, 15]
+node: 17, neighbors: [0]
+
+current node: 15, target node: 6",-6.0,False
+1,7,,"
+node: 0, neighbors: [15]
+node: 6, neighbors: [14]
+node: 7, neighbors: [14, 15]
+node: 14, neighbors: [6, 7]
+node: 15, neighbors: [0, 7, 16]
+node: 16, neighbors: [15]
+
+current node: 7, target node: 6",0,False
+2,6,,"
+node: 0, neighbors: [15]
+node: 6, neighbors: [14]
+node: 7, neighbors: [14, 15]
+node: 14, neighbors: [6, 7]
+node: 15, neighbors: [0, 7, 16]
+node: 16, neighbors: [15]
+
+current node: 7, target node: 6",-6.0,False
+3,14,,"
+node: 6, neighbors: [14]
+node: 7, neighbors: [14, 15]
+node: 14, neighbors: [6, 7]
+node: 15, neighbors: [7]
+
+current node: 14, target node: 6",0,False
+4,6,,"node: 6, neighbors: [14]
+node: 7, neighbors: [14]
+node: 14, neighbors: [6, 7]
+
+current node: 6, target node: 6
+You have reached the target!",100.0,True

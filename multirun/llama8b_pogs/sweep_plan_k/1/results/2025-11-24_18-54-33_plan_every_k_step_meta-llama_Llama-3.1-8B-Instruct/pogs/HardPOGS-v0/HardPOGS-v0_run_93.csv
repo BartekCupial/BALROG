@@ -1,0 +1,48 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,0,"We currently are at node 6 with a target of 5, but unfortunately, we cannot see node 5 in the current observation. Since we are looking at node 6 and it has neighbors 2, 3, and 17, our best course of action would be to expand our search in different directions. We can start by looking at nodes 2, 3, and 17. We have knowledge about nodes 2, 3 and 6 so now we should look at node 17 because it has a high chance of being closer to the goal. We can also explore nodes 2 and 3 if necessary. We should keep in mind that our k-nearest neighbor radius is 2 so if we spot a dead end with only one neighbor and distance less than k, we will be penalized if we choose to move to it.","
+node: 0, neighbors: [3]
+node: 2, neighbors: [6, 11]
+node: 3, neighbors: [0, 6]
+node: 6, neighbors: [2, 3, 17]
+node: 11, neighbors: [2]
+node: 17, neighbors: [6, 18, 19]
+node: 18, neighbors: [17]
+node: 19, neighbors: [17]
+
+current node: 6, target node: 5",-6.0,False
+1,17,,"
+node: 2, neighbors: [6]
+node: 3, neighbors: [6]
+node: 5, neighbors: [18]
+node: 6, neighbors: [2, 3, 17]
+node: 17, neighbors: [6, 18, 19]
+node: 18, neighbors: [5, 17]
+node: 19, neighbors: [17]
+
+current node: 17, target node: 5",0,False
+2,5,,"
+node: 2, neighbors: [6]
+node: 3, neighbors: [6]
+node: 5, neighbors: [18]
+node: 6, neighbors: [2, 3, 17]
+node: 17, neighbors: [6, 18, 19]
+node: 18, neighbors: [5, 17]
+node: 19, neighbors: [17]
+
+current node: 17, target node: 5",-6.0,False
+3,18,"Based on our previous observations, we initially started at node 6, then moved to node 17. Now we are at node 17 and our target is node 5. We can see that node 17 has a neighbor that is node 18, and node 18 has a neighbor that is node 5. Our plan is to first move from node 17 to node 18, and then from node 18 to node 5. This plan takes into account the adjacency list information and the target node, and should allow us to reach the target node in a relatively efficient manner.","
+node: 5, neighbors: [15, 18]
+node: 6, neighbors: [17]
+node: 15, neighbors: [5]
+node: 17, neighbors: [6, 18, 19]
+node: 18, neighbors: [5, 17]
+node: 19, neighbors: [17]
+
+current node: 18, target node: 5",0,False
+4,5,,"node: 5, neighbors: [15, 18]
+node: 15, neighbors: [5]
+node: 17, neighbors: [18]
+node: 18, neighbors: [5, 17]
+
+current node: 5, target node: 5
+You have reached the target!",100.0,True

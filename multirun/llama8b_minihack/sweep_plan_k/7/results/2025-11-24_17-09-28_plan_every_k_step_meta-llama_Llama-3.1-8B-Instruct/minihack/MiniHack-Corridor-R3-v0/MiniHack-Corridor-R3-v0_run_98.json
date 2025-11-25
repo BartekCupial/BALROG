@@ -1,0 +1,52 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 16,
+        "north": 22,
+        "south": 15,
+        "search": 18,
+        "kick": 5,
+        "open": 2,
+        "northwest": 3,
+        "southwest": 14,
+        "west": 5
+    },
+    "input_tokens": 355530,
+    "output_tokens": 820,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nThe goal is to reach the stairs down. Initially, I was trying to move around and explore the level, but it seems that there are no adjacent doors to open or enemies to kick. Given the current situation, I have observed the existence of a vertical open door to the southwest, and the stairs up to the westsouthwest. My plan is to head southwest towards the open door, hoping that it leads to a path that can bring me closer to the stairs down.\n\nTo reach the stairs down, I will:\n\n1. Move southwest towards the open door to gain access to new areas.\n2. Search for hidden doors and passages as I move through the new areas.\n3. Continue to move southwest and search for any paths that can bring me closer to the stairs down.\n4. Use my senses and observations to guide my movement and search.\n\nAction: southwest"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-128",
+    "seed": 2871309525,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 24,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

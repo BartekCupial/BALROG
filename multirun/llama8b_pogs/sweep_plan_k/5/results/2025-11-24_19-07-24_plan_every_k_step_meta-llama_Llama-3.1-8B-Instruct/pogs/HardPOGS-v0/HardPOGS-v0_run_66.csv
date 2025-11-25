@@ -1,0 +1,287 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,0,"Based on the given observations, I plan to navigate from the current node (16) to the target node (6). However, the target node is not directly visible due to the partial observability of the graph. I will first try to find a path to a visible node that is closer to the target node. 
+
+From the observation, I see that the current node (16) is connected to node 10, which is then connected to node 11, and node 11 is connected to node 3. However, node 3 is a dead end since it only has one neighbor (11). I will avoid node 3 for now. 
+
+Considering the neighbors of the current node (16), which are node 10 and node 11, I will choose node 10 as my next action because it has more than one neighbor. After reaching node 10, I will see if it provides more information about the location of the target node.","
+node: 3, neighbors: [11]
+node: 10, neighbors: [16, 17]
+node: 11, neighbors: [3, 16]
+node: 16, neighbors: [10, 11]
+node: 17, neighbors: [10]
+
+current node: 16, target node: 6",-6.0,False
+1,10,,"
+node: 7, neighbors: [17]
+node: 10, neighbors: [16, 17]
+node: 11, neighbors: [16]
+node: 16, neighbors: [10, 11]
+node: 17, neighbors: [7, 10]
+
+current node: 10, target node: 6",0,False
+2,17,,"
+node: 7, neighbors: [17]
+node: 10, neighbors: [16, 17]
+node: 16, neighbors: [10]
+node: 17, neighbors: [7, 10]
+
+current node: 17, target node: 6",0,False
+3,7,,"
+node: 7, neighbors: [17]
+node: 10, neighbors: [17]
+node: 17, neighbors: [7, 10]
+
+current node: 7, target node: 6",-5,False
+4,10,,"
+node: 7, neighbors: [17]
+node: 10, neighbors: [17]
+node: 17, neighbors: [7, 10]
+
+current node: 7, target node: 6",-6.0,False
+5,17,,"
+node: 7, neighbors: [17]
+node: 10, neighbors: [16, 17]
+node: 16, neighbors: [10]
+node: 17, neighbors: [7, 10]
+
+current node: 17, target node: 6",0,False
+6,10,,"
+node: 7, neighbors: [17]
+node: 10, neighbors: [16, 17]
+node: 11, neighbors: [16]
+node: 16, neighbors: [10, 11]
+node: 17, neighbors: [7, 10]
+
+current node: 10, target node: 6",0,False
+7,11,,"
+node: 7, neighbors: [17]
+node: 10, neighbors: [16, 17]
+node: 11, neighbors: [16]
+node: 16, neighbors: [10, 11]
+node: 17, neighbors: [7, 10]
+
+current node: 10, target node: 6",-6.0,False
+8,16,,"
+node: 3, neighbors: [11]
+node: 10, neighbors: [16, 17]
+node: 11, neighbors: [3, 16]
+node: 16, neighbors: [10, 11]
+node: 17, neighbors: [10]
+
+current node: 16, target node: 6",0,False
+9,11,,"
+node: 3, neighbors: [9, 11, 15]
+node: 9, neighbors: [3]
+node: 10, neighbors: [16]
+node: 11, neighbors: [3, 16]
+node: 15, neighbors: [3]
+node: 16, neighbors: [10, 11]
+
+current node: 11, target node: 6",0,False
+10,11,,"
+node: 3, neighbors: [9, 11, 15]
+node: 9, neighbors: [3]
+node: 10, neighbors: [16]
+node: 11, neighbors: [3, 16]
+node: 15, neighbors: [3]
+node: 16, neighbors: [10, 11]
+
+current node: 11, target node: 6",-6.0,False
+11,3,,"
+node: 0, neighbors: [15]
+node: 2, neighbors: [15]
+node: 3, neighbors: [9, 11, 15]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9]
+node: 9, neighbors: [3, 4, 8]
+node: 11, neighbors: [3, 16]
+node: 15, neighbors: [0, 2, 3]
+node: 16, neighbors: [11]
+
+current node: 3, target node: 6",0,False
+12,9,"The target node is 6, but it is not visible in the current observations. To reach the target node, I will try to explore the graph by moving to nodes that are visible in the current observations. 
+
+From the observation, I see that node 3 is connected to nodes 9, 11, and 15. Node 9 is connected to nodes 3, 4, and 8, but node 4 is also connected to node 9 and node 8 is also connected to node 9 and node 3. However, nodes 4 and 8 only have two connections, suggesting that they are not yet dead ends.
+
+Node 15 is connected to nodes 0, 2, and 3. However, node 0 only has one connection, and since the distance from node 3 to node 0 is within the k-nearest neighbor radius (2), node 0 is likely a dead end. Node 2 has the same issue, and node 15 is likely the start of a branch.
+
+Node 9 has the most connections among the nodes visible in the current observations. It is connected to nodes 3, 4, and 8, making it a good candidate to explore next.
+
+However, we do not know if node 6 is connected to any of these nodes. We should start by going through node 9, which has connections to nodes 4 and 8. Node 8 is also visible in the observation, so we can consider going through it as well.
+
+After moving through these nodes, we can reassess the graph and try to find a path to the target node.
+
+Current high-level plan: Explore through node 9 and node 8.","
+node: 3, neighbors: [9, 11, 15]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 11, neighbors: [3]
+node: 12, neighbors: [8]
+node: 15, neighbors: [3]
+
+current node: 9, target node: 6",0,False
+13,4,,"
+node: 3, neighbors: [9]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9]
+node: 9, neighbors: [3, 4, 8]
+
+current node: 4, target node: 6",-5,False
+14,12,,"
+node: 3, neighbors: [9]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9]
+node: 9, neighbors: [3, 4, 8]
+
+current node: 4, target node: 6",-6.0,False
+15,8,,"
+node: 3, neighbors: [9]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9]
+node: 9, neighbors: [3, 4, 8]
+
+current node: 4, target node: 6",-6.0,False
+16,12,,"
+node: 3, neighbors: [9]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9]
+node: 9, neighbors: [3, 4, 8]
+
+current node: 4, target node: 6",-6.0,False
+17,9,,"
+node: 3, neighbors: [9, 11, 15]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 11, neighbors: [3]
+node: 12, neighbors: [8]
+node: 15, neighbors: [3]
+
+current node: 9, target node: 6",0,False
+18,12,,"
+node: 3, neighbors: [9, 11, 15]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 11, neighbors: [3]
+node: 12, neighbors: [8]
+node: 15, neighbors: [3]
+
+current node: 9, target node: 6",-6.0,False
+19,8,,"
+node: 3, neighbors: [9]
+node: 4, neighbors: [9]
+node: 6, neighbors: [12]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 12, neighbors: [6, 8, 14]
+node: 14, neighbors: [12]
+
+current node: 8, target node: 6",0,False
+20,6,,"
+node: 3, neighbors: [9]
+node: 4, neighbors: [9]
+node: 6, neighbors: [12]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 12, neighbors: [6, 8, 14]
+node: 14, neighbors: [12]
+
+current node: 8, target node: 6",-6.0,False
+21,6,,"
+node: 3, neighbors: [9]
+node: 4, neighbors: [9]
+node: 6, neighbors: [12]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 12, neighbors: [6, 8, 14]
+node: 14, neighbors: [12]
+
+current node: 8, target node: 6",-6.0,False
+22,9,,"
+node: 3, neighbors: [9, 11, 15]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 11, neighbors: [3]
+node: 12, neighbors: [8]
+node: 15, neighbors: [3]
+
+current node: 9, target node: 6",-5,False
+23,12,,"
+node: 3, neighbors: [9, 11, 15]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 11, neighbors: [3]
+node: 12, neighbors: [8]
+node: 15, neighbors: [3]
+
+current node: 9, target node: 6",-6.0,False
+24,12,"The target node is 6, but it was not visible in the initial observations. We had to explore the graph by moving to nodes that are visible in the current observations. From the observation, we know that node 6 is now visible and is connected to node 12. We also know that node 12 is connected to nodes 8 and 14, and node 14 is connected to node 12. Our plan is to move through node 8 to node 12 to node 6, but we need to avoid the dead end at node 8 by moving through a path that does not include node 14.
+
+We should go through node 9 to node 4, then from node 4 to node 9, then from node 9 to node 8, then from node 8 to node 12 to node 6.
+
+However, if we are forced to move through node 8, we will be penalized, but it might be the fastest way to reach the target.
+
+High-level plan: Explore through node 9, then node 4, then node 9, then node 8, then node 12 to node 6, while avoiding the dead end at node 8 as much as possible.","
+node: 3, neighbors: [9, 11, 15]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 11, neighbors: [3]
+node: 12, neighbors: [8]
+node: 15, neighbors: [3]
+
+current node: 9, target node: 6",-6.0,False
+25,8,,"
+node: 3, neighbors: [9]
+node: 4, neighbors: [9]
+node: 6, neighbors: [12]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 12, neighbors: [6, 8, 14]
+node: 14, neighbors: [12]
+
+current node: 8, target node: 6",0,False
+26,4,,"
+node: 3, neighbors: [9]
+node: 4, neighbors: [9]
+node: 6, neighbors: [12]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 12, neighbors: [6, 8, 14]
+node: 14, neighbors: [12]
+
+current node: 8, target node: 6",-6.0,False
+27,4,,"
+node: 3, neighbors: [9]
+node: 4, neighbors: [9]
+node: 6, neighbors: [12]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 12, neighbors: [6, 8, 14]
+node: 14, neighbors: [12]
+
+current node: 8, target node: 6",-6.0,False
+28,9,,"
+node: 3, neighbors: [9, 11, 15]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 11, neighbors: [3]
+node: 12, neighbors: [8]
+node: 15, neighbors: [3]
+
+current node: 9, target node: 6",-5,False
+29,12,,"
+node: 3, neighbors: [9, 11, 15]
+node: 4, neighbors: [9]
+node: 8, neighbors: [9, 12]
+node: 9, neighbors: [3, 4, 8]
+node: 11, neighbors: [3]
+node: 12, neighbors: [8]
+node: 15, neighbors: [3]
+
+current node: 9, target node: 6",-6.0,True

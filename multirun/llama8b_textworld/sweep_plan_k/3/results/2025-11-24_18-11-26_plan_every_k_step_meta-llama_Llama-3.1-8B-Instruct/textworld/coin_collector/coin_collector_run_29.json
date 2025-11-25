@@ -1,0 +1,46 @@
+{
+    "task": "coin_collector",
+    "action_frequency": {
+        "go east": 22,
+        "go west": 20,
+        "take coin": 8,
+        "go south": 16,
+        "go north": 13,
+        "<plan>My goal is to find the coin in the game. I will explore all possible rooms and try to find the coin. If I see the coin in a room, I will take it. If not, I will try to go in all possible directions to see if there's a new room. I will keep exploring until I find the coin or run out of steps.\n\nMy high-level plan is to:\n\n1. Explore all rooms and find the exit in each room.\n2. Try to go back to previous rooms if I see an unguarded exit.\n3. If I see the coin, take it.\n4. If I reach a point where I was before but couldn't find the coin, try to explore other directions to see if I missed it.\n\nMy initial priority is to find the coin in the cubicle, as I have seen it before, but couldn't take it.\n\nAction: take coin": 1
+    },
+    "input_tokens": 108735,
+    "output_tokens": 2221,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 80,
+    "failed_candidates": [],
+    "progression": 0.0,
+    "process_num": "ForkProcess-56",
+    "seed": 513236080,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

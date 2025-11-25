@@ -1,0 +1,55 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "0": 1,
+        "5": 3,
+        "7": 4,
+        "18": 1,
+        "13": 1,
+        "11": 4,
+        "16": 1,
+        "19": 3,
+        "14": 5,
+        "15": 4,
+        "9": 1,
+        "10": 1,
+        "4": 1
+    },
+    "input_tokens": 39246,
+    "output_tokens": 504,
+    "done": true,
+    "episode_return": -147.0,
+    "num_steps": 30,
+    "failed_candidates": [
+        "<plan> \nOur goal is to reach the target node 6 from the current node 5. Given the current observation, we can see that we have a few possible paths to explore. However, we also notice that we are at a dead-end node (5), as it only has 2 neighbors (7 and 15) and we are already at node 5.\n\nOur high-level plan is to move away from the dead-end node and explore other possibilities. We will move to node 7, which has a connection to node 18. However, since we already visited node 18 and it did not lead to the target node 6, we will try to find a different path.\n\nTo do this, we will move from node 7 to node 15, which has connections to nodes 5, 9, and 17. We will try to move to node 9, as it has a connection to node 17, which could potentially lead to the target node 6.\n\nThe plan is to move from node 5 to node 7, then to node 15, and finally to node 9.\n\n1. Move from node 5 to node 7.\n2. Move from node 7 to node 15.\n3. Move from node 15 to node 9.\n\nWith this plan in mind, our next action will be to move from node 7 to node 15.\n\n7"
+    ],
+    "progression": 0,
+    "process_num": "ForkProcess-119",
+    "seed": 4246638197,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 24,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

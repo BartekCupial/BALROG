@@ -1,0 +1,51 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 11,
+        "kick": 12,
+        "east": 19,
+        "search": 16,
+        "south": 9,
+        "west": 12,
+        "southwest": 16,
+        "open": 5
+    },
+    "input_tokens": 350264,
+    "output_tokens": 963,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nBased on the observations, my plan is to explore the level and reach the stairs down. \n\nFirst, I will try to move east to investigate the dark area, which seems to be a potential path. If this doesn't work, I will try to move north to see if there's a hidden door or passage. If that fails, I will move to the northeast to see if I can find a doorway or a path to the stairs. Once I find a path to the stairs, I will move down to complete the task.\n\nThe key to solving this task is to carefully explore the level, looking for hidden doors or passages, and to avoid hitting walls or kicking at empty space. \n\nMy high-level plan is to move east first, then to the northeast if necessary, and finally to move down the stairs.\n\nNext action: east"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-107",
+    "seed": 1800530639,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

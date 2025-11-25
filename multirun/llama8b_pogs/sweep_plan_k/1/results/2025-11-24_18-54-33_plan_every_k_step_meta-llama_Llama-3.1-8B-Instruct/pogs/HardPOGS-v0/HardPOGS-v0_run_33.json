@@ -1,0 +1,48 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "7": 1,
+        "6": 1,
+        "19": 1,
+        "1": 1,
+        "12": 1,
+        "3": 1
+    },
+    "input_tokens": 5684,
+    "output_tokens": 435,
+    "done": true,
+    "episode_return": 88.0,
+    "num_steps": 6,
+    "failed_candidates": [
+        "<plan>\nOur high-level plan to reach the target node 3 involves the following steps:\n- Move to node 13, which has the most connections and is closest to node 3.\n- From node 13, move to node 6, which is also connected to node 19 and potentially has a path to node 3.\n- From node 6, move to node 19, which is directly connected to node 12 and has a direct connection to node 3.\n- Finally, move from node 19 to node 12, which is directly connected to the target node 3.\n\nOur goal is to take the shortest path possible while exploring the partially observable graph. We will continue to explore and adjust our plan based on the observed graph.\n\nOur next action is to move to node 12 is not viable as it only has two connections, both being the target 3 and node 19, so we try one of those nodes. \nWe could move to node 3 but it has no more connections.\nSo our next move is to go back to the node 19 as moving to node 12 is going to lead us to 2 nodes where you cant go to either of those nodes so the only option is going back and then move elsewhere.  Then try to get to node 12 from a different node that we could have instead of 19."
+    ],
+    "progression": 0.88,
+    "process_num": "ForkProcess-21",
+    "seed": 72296921,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

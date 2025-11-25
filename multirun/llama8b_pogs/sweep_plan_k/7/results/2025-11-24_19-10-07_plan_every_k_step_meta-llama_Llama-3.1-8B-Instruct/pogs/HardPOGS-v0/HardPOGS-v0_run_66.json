@@ -1,0 +1,52 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "0": 1,
+        "1": 1,
+        "12": 2,
+        "17": 1,
+        "19": 3,
+        "10": 6,
+        "3": 2,
+        "4": 5,
+        "8": 8,
+        "6": 1
+    },
+    "input_tokens": 49056,
+    "output_tokens": 698,
+    "done": true,
+    "episode_return": -123.0,
+    "num_steps": 30,
+    "failed_candidates": [
+        "<plan>\nTo complete the task, my high-level plan is as follows:\n\n1.  Since I've been stuck in a loop with nodes 3 and 10 for a while, I should try to explore other options.\n2.  Upon reviewing the observations, I notice that node 4 was previously a promising lead, but then I got stuck again.\n3.  However, in one of the observations, I saw that node 4 had neighbors 8 and 10. Since I'm currently at node 8, I should try to move to one of its neighbors that might lead me closer to the target node 18.\n4.  Unfortunately, since node 8 only has one neighbor (node 4), and I'm currently at node 8, it would be a dead-end move. So, I need to think about other options.\n5.  Since I'm currently at node 8, I can move to one of its neighbors that might lead me closer to the target node 18. However, there are no other neighbors other than node 4 which is already part of my previous unsuccessful attempt.\n6.  Therefore, I need to move away from the current dead-end and explore other parts of the graph. However, I don't have a clear direction from here.\n7.  In this scenario, my best option is to re-examine the earlier observations where I saw node 4 had neighbors 8 and 10 and move to a node that has the potential to get closer to the target node 18.\n8.  I should move to a node that has multiple neighbors or is closer to the target node 18, considering my current position.\n9.  To achieve this, I need to explore other nodes and their connections in a more systematic way to find a path to the target node 18.\n10.  However, given the current constraints, my next action will be to move to node 4.\n\n Planed Action: 4"
+    ],
+    "progression": 0,
+    "process_num": "ForkProcess-126",
+    "seed": 3699156402,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 24,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

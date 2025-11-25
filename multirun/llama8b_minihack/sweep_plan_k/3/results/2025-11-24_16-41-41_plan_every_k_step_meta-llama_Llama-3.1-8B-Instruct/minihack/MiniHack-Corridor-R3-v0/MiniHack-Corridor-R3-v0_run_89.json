@@ -1,0 +1,52 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 18,
+        "west": 13,
+        "kick": 7,
+        "search": 22,
+        "southwest": 13,
+        "northwest": 4,
+        "south": 8,
+        "east": 13,
+        "open": 2
+    },
+    "input_tokens": 333924,
+    "output_tokens": 2387,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nSince the stairs up are blocking my path to the stairs down, my goal is to find a way around them. I'll search the dark area near west to see if I can find a hidden passage. If I find a passage, I'll follow it to see where it leads. This might take me to the stairs down or other parts of the level. If I don't find a passage, I'll search the stairs up to see if there's a way to disable or destroy them.\n\nMy plan is to:\n\n1. Search the dark area near west to find a hidden passage.\n2. If I find a passage, follow it to see where it leads.\n3. If I don't find a passage, search the stairs up to see if there's a way to disable or destroy them.\n\nI'm taking a more cautious approach since I took damage from kicking the stairs up. I want to avoid taking more damage and find a safe way to proceed.\n\nAction: search"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-60",
+    "seed": 3864481572,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

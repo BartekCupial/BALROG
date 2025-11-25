@@ -1,0 +1,40 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,4,"We are in a partially observable environment with a k-nearest neighbor radius of 2. Our current position is node 9, and we need to reach the target node 12. However, node 12 is not visible from our current position. We can see our neighbors from node 9, which are 3 and 4, but neither of them is the target node 12.
+
+From the observations, we know that node 3 has a neighbor, node 7, but it's also within the k-nearest neighbor radius of node 4, and the distance between node 9 and node 7 is less than k=2, and node 3 has 3 neighbors but the distance to one of them (7) is within our k, the other (9) is the node we are at and the other (9) node (3) has the one (7) at distance less than k we are looking at so 7 is not the best choice to take from node 3, however we also know that the other neighbor of node 3 is node 9 which is us. 
+
+From the observations, we know that node 4 has a neighbor, node 13, but the distance between node 9 and node 13 is greater than k=2, and we also know that node 13 only has one neighbor node 4 so it's a dead end.
+
+The best plan seems to be to move to node 4 and then explore from there. We can take action 4, which is to move to node 4.","
+node: 0, neighbors: [13]
+node: 3, neighbors: [9]
+node: 4, neighbors: [9, 13]
+node: 9, neighbors: [3, 4]
+node: 12, neighbors: [13]
+node: 13, neighbors: [0, 4, 12]
+
+current node: 4, target node: 12",0,False
+1,12,,"
+node: 0, neighbors: [13]
+node: 3, neighbors: [9]
+node: 4, neighbors: [9, 13]
+node: 9, neighbors: [3, 4]
+node: 12, neighbors: [13]
+node: 13, neighbors: [0, 4, 12]
+
+current node: 4, target node: 12",-6.0,False
+2,13,,"
+node: 0, neighbors: [13]
+node: 4, neighbors: [9, 13]
+node: 9, neighbors: [4]
+node: 12, neighbors: [13]
+node: 13, neighbors: [0, 4, 12]
+
+current node: 13, target node: 12",0,False
+3,12,,"node: 0, neighbors: [13]
+node: 4, neighbors: [13]
+node: 12, neighbors: [13]
+node: 13, neighbors: [0, 4, 12]
+
+current node: 12, target node: 12
+You have reached the target!",100.0,True

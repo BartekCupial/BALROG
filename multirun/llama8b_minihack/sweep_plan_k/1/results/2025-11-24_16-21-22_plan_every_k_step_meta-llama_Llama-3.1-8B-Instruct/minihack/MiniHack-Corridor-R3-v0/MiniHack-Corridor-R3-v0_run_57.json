@@ -1,0 +1,55 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "northwest": 8,
+        "east": 18,
+        "south": 17,
+        "north": 14,
+        "search": 25,
+        "kick": 9,
+        "west": 3,
+        "southwest": 4,
+        "open": 2
+    },
+    "input_tokens": 339850,
+    "output_tokens": 4486,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "",
+        "",
+        "<plan>\nThe goal is to find the stairs down. Previous observations indicate that the stairs down are not visible, but the stairs up are. To avoid going up, I need to find a way to move around the stairs up. The map shows that the vertical wall is very near northeast, east, and southeast, which blocks the direct path to the stairs up. The horizontal wall near north and southwest indicates that there might be a passage or door to the north or southwest.\n\nHigh-level plan:\n\n1. Search the area to the north and southwest to find any hidden doors or passages.\n2. If a passage or door is found, move through it to find the stairs down.\n3. If no passage or door is found, explore other areas of the map to find an alternative route.\n\nConsidering the current position and the map, I will start by searching the area to the north to see if there's any hidden passage or door.\n\n<action>north</action>",
+        "kick southeast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-30",
+    "seed": 264056096,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

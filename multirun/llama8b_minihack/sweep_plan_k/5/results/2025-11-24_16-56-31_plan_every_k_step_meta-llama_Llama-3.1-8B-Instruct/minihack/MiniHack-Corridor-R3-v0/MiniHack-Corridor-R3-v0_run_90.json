@@ -1,0 +1,58 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 20,
+        "northwest": 7,
+        "north": 16,
+        "search": 17,
+        "southwest": 12,
+        "kick": 5,
+        "southeast": 1,
+        "south": 10,
+        "west": 11,
+        "open": 1
+    },
+    "input_tokens": 330127,
+    "output_tokens": 1306,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "east southeast",
+        "east southeast",
+        "east northeast",
+        "<plan>\nBased on the current observations, the goal is to reach the stairs down. Since the current position is blocked by a dark area and solid stone, the high-level plan is to try to find a path around the obstacles. This can be achieved by using the search action to scan the area for any hidden doors or passages, and then moving in the direction that allows progress towards the stairs down. If necessary, the kick action can be used to break through any solid stone or locked doors.\n\nThe plan involves a series of actions to map out the area, identify potential paths, and then move towards the stairs down.\n\nAction: search",
+        "kick northeast",
+        "kick southeast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-91",
+    "seed": 3439914918,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 22,
+        "south": 12,
+        "search": 25,
+        "kick": 10,
+        "west": 3,
+        "southwest": 7,
+        "open": 6,
+        "north": 13,
+        "northwest": 1,
+        "northeast": 1
+    },
+    "input_tokens": 372920,
+    "output_tokens": 2599,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "kick east",
+        "<plan>\nBased on previous observations and current situation, the goal is to reach the stairs down. The stairs up is adjacent south, but this would not lead to the goal. The only possible approach is to try and find a way around the obstacles to reach the stairs down. However, there is no visible passage or door to the southwest, which is the direction towards the stairs down. The search action did not reveal any hidden passage. A possible plan is to try to find a different route or to search more carefully around the current location to see if there is a passage or door that was not visible before. Another option is to try to go through the vertical wall, but this could result in death.\n\nTo accomplish this, I will try to search more carefully around the current location and see if there is any hidden passage or door that was not visible before.\n\nNext action: search",
+        "eastnortheast",
+        "eastnortheast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-57",
+    "seed": 3756503575,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

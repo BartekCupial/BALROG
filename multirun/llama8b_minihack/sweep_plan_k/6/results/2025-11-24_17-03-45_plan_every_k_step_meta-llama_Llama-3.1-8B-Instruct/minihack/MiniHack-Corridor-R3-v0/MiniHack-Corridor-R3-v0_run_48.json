@@ -1,0 +1,55 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 26,
+        "south": 9,
+        "north": 13,
+        "southwest": 11,
+        "search": 11,
+        "kick": 10,
+        "northwest": 9,
+        "west": 9,
+        "open": 2
+    },
+    "input_tokens": 333561,
+    "output_tokens": 1196,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nTo reach the stairs down, I need to navigate through the current level. Given the layout, I will try to move east from the current location and then attempt to find a way down. Since I was unable to kick down the wall previously, I will prioritize moving east and then search for a passage or a door that can take me further into the level. If I reach a dead end, I will use search to look for any hidden passages or doors that may not be visible.\n\nMy high-level plan is as follows:\n\n1. Move east until I reach a point where I can continue down.\n2. Search for a passage or a door that can take me down.\n3. If I reach a dead end, search for any hidden passages or doors.\n\nBased on this plan, my next action will be to:\n\neast",
+        "kick east",
+        "open east",
+        "<plan>\nMy goal is to reach the stairs down. The current obstacle is the horizontal wall adjacent to the north and northwest. To progress, I need to remove or bypass this obstacle. Since kicking and searching didn't yield any results, I plan to try to open the doorway west of my current location, which is potentially accessible from the other side of the wall. If that doesn't work, I'll continue exploring and try to find an alternative path.\n\nTo complete the task, I'll focus on exploring the level, bypassing obstacles, and finding the stairs down.\n\nNext action: open"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-101",
+    "seed": 3359399474,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

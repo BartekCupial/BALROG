@@ -1,0 +1,310 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,10,"Based on the given observations, it is clear that the target node is not directly reachable from the current node. The target node is 3, but it is not visible from the current node. We need to move to a node that is closer to the target node. From the current node 0, we have two neighbors: 10 and 16. Both of these nodes are visible. However, we can also see that both 10 and 16 are directly connected to multiple nodes, so they are not dead ends. We should choose the node with the fewest possible dead-end neighbors. Upon inspection, node 10 is connected to node 17, which only has one neighbor (10), and node 17 is not within a k-nearest neighbor radius of 2. Therefore, moving to node 10 does not lead to a dead end. Thus, our plan is to move to node 10 and then explore from there.","
+node: 0, neighbors: [10, 16]
+node: 5, neighbors: [17]
+node: 8, neighbors: [10]
+node: 10, neighbors: [0, 8, 17]
+node: 11, neighbors: [17]
+node: 16, neighbors: [0]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [17]
+
+current node: 10, target node: 3",0,False
+1,17,,"
+node: 0, neighbors: [10]
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 7, neighbors: [19]
+node: 8, neighbors: [10]
+node: 9, neighbors: [11]
+node: 10, neighbors: [0, 8, 17]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 14, neighbors: [19]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [7, 14, 17]
+
+current node: 17, target node: 3",0,False
+2,5,,"
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 10, neighbors: [17]
+node: 11, neighbors: [17]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [17]
+
+current node: 5, target node: 3",0,False
+3,4,,"
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 17, neighbors: [5]
+
+current node: 4, target node: 3",-5,False
+4,3,,"
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 17, neighbors: [5]
+
+current node: 4, target node: 3",-6.0,False
+5,4,,"
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 17, neighbors: [5]
+
+current node: 4, target node: 3",-6.0,False
+6,5,,"
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 10, neighbors: [17]
+node: 11, neighbors: [17]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [17]
+
+current node: 5, target node: 3",0,False
+7,4,,"
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 17, neighbors: [5]
+
+current node: 4, target node: 3",-5,False
+8,4,,"
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 17, neighbors: [5]
+
+current node: 4, target node: 3",-6.0,False
+9,5,,"
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 10, neighbors: [17]
+node: 11, neighbors: [17]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [17]
+
+current node: 5, target node: 3",0,False
+10,4,,"
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 17, neighbors: [5]
+
+current node: 4, target node: 3",-5,False
+11,5,,"
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 10, neighbors: [17]
+node: 11, neighbors: [17]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [17]
+
+current node: 5, target node: 3",0,False
+12,17,"Based on the observations and the fact that the target node is 3, which is not directly reachable from any of the current nodes, a high-level plan can be created. 
+
+1. From the initial state, move to node 10, which has the potential to lead to the target node.
+2. From node 10, move to node 17, which is directly connected to multiple nodes, increasing the chances of reaching the target node.
+3. From node 17, we will re-evaluate the neighbors and decide the next course of action based on the visibility of the target node.
+
+However, upon further inspection, it appears that the target node is not within reach of any of the current nodes, even after moving through the plan. 
+
+A possible alternative is to search for a path to node 3 from the start, by exploring the entire graph.
+
+However, since the graph is partially observable, the only way to reach node 3 would be to navigate through the unexplored nodes until we find a path to the target node. 
+
+One possible path would be to move to node 10, then to node 17, and then to node 5, and from there to node 4. Then, we would have a clear path to the target node, but node 3 is not connected to node 4 and since the graph is unexplored in many parts of it we should explore node 17 connections first and then move to node 4 after that we could go to node 5 then node 4 which then would be next to 3. However the only movement I can take at this point in the planning phase is moving to 17.
+
+The movement to node 17 will not lead to the target node directly, but it will allow us to explore more of the graph and potentially find a path to the target node.","
+node: 0, neighbors: [10]
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 7, neighbors: [19]
+node: 8, neighbors: [10]
+node: 9, neighbors: [11]
+node: 10, neighbors: [0, 8, 17]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 14, neighbors: [19]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [7, 14, 17]
+
+current node: 17, target node: 3",0,False
+13,4,,"
+node: 0, neighbors: [10]
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 7, neighbors: [19]
+node: 8, neighbors: [10]
+node: 9, neighbors: [11]
+node: 10, neighbors: [0, 8, 17]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 14, neighbors: [19]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [7, 14, 17]
+
+current node: 17, target node: 3",-6.0,False
+14,11,,"
+node: 2, neighbors: [9]
+node: 5, neighbors: [17]
+node: 9, neighbors: [2, 11, 15]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 15, neighbors: [9]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [17]
+
+current node: 11, target node: 3",0,False
+15,5,,"
+node: 2, neighbors: [9]
+node: 5, neighbors: [17]
+node: 9, neighbors: [2, 11, 15]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 15, neighbors: [9]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [17]
+
+current node: 11, target node: 3",-6.0,False
+16,9,,"
+node: 2, neighbors: [9]
+node: 9, neighbors: [2, 11, 15]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 15, neighbors: [9]
+node: 17, neighbors: [11]
+
+current node: 9, target node: 3",0,False
+17,2,,"
+node: 2, neighbors: [9]
+node: 9, neighbors: [2, 11, 15]
+node: 11, neighbors: [9]
+node: 15, neighbors: [9]
+
+current node: 2, target node: 3",-5,False
+18,15,,"
+node: 2, neighbors: [9]
+node: 9, neighbors: [2, 11, 15]
+node: 11, neighbors: [9]
+node: 15, neighbors: [9]
+
+current node: 2, target node: 3",-6.0,False
+19,11,,"
+node: 2, neighbors: [9]
+node: 9, neighbors: [2, 11, 15]
+node: 11, neighbors: [9]
+node: 15, neighbors: [9]
+
+current node: 2, target node: 3",-6.0,False
+20,15,,"
+node: 2, neighbors: [9]
+node: 9, neighbors: [2, 11, 15]
+node: 11, neighbors: [9]
+node: 15, neighbors: [9]
+
+current node: 2, target node: 3",-6.0,False
+21,9,,"
+node: 2, neighbors: [9]
+node: 9, neighbors: [2, 11, 15]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 15, neighbors: [9]
+node: 17, neighbors: [11]
+
+current node: 9, target node: 3",0,False
+22,9,,"
+node: 2, neighbors: [9]
+node: 9, neighbors: [2, 11, 15]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 15, neighbors: [9]
+node: 17, neighbors: [11]
+
+current node: 9, target node: 3",-6.0,False
+23,11,,"
+node: 2, neighbors: [9]
+node: 5, neighbors: [17]
+node: 9, neighbors: [2, 11, 15]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 15, neighbors: [9]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [17]
+
+current node: 11, target node: 3",0,False
+24,17,"The target node is 3, which is not visible from the current node 11. To reach the target node, we need to explore other parts of the graph. Based on previous observations, we can see that node 9 has connections to nodes 2, 11, and 15, and node 17 has connections to nodes 5, 10, 11, and 19. 
+
+To increase the chances of reaching the target node, we can move to node 17, which has connections to multiple nodes. From node 17, we can then explore other parts of the graph and try to find a path to the target node.
+
+Alternatively, we can also try to move to node 9, which has connections to node 11, but it's more likely that we'll be able to find a path to the target node from node 17.
+
+We should prioritize exploring nodes with multiple connections, as these nodes are more likely to have paths to the target node.
+
+Let's choose the action that moves us to node 17, which has the most connections, and then re-evaluate the situation from there.
+
+Action: 17","
+node: 0, neighbors: [10]
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 7, neighbors: [19]
+node: 8, neighbors: [10]
+node: 9, neighbors: [11]
+node: 10, neighbors: [0, 8, 17]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 14, neighbors: [19]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [7, 14, 17]
+
+current node: 17, target node: 3",0,False
+25,17,,"
+node: 0, neighbors: [10]
+node: 4, neighbors: [5]
+node: 5, neighbors: [4, 17]
+node: 7, neighbors: [19]
+node: 8, neighbors: [10]
+node: 9, neighbors: [11]
+node: 10, neighbors: [0, 8, 17]
+node: 11, neighbors: [9, 12, 17]
+node: 12, neighbors: [11]
+node: 14, neighbors: [19]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [7, 14, 17]
+
+current node: 17, target node: 3",-6.0,False
+26,19,,"
+node: 1, neighbors: [7]
+node: 5, neighbors: [17]
+node: 7, neighbors: [1, 19]
+node: 10, neighbors: [17]
+node: 11, neighbors: [17]
+node: 14, neighbors: [19]
+node: 17, neighbors: [5, 10, 11, 19]
+node: 19, neighbors: [7, 14, 17]
+
+current node: 19, target node: 3",0,False
+27,7,,"
+node: 1, neighbors: [7, 13]
+node: 7, neighbors: [1, 19]
+node: 13, neighbors: [1]
+node: 14, neighbors: [19]
+node: 17, neighbors: [19]
+node: 19, neighbors: [7, 14, 17]
+
+current node: 7, target node: 3",0,False
+28,14,,"
+node: 1, neighbors: [7, 13]
+node: 7, neighbors: [1, 19]
+node: 13, neighbors: [1]
+node: 14, neighbors: [19]
+node: 17, neighbors: [19]
+node: 19, neighbors: [7, 14, 17]
+
+current node: 7, target node: 3",-6.0,False
+29,1,,"
+node: 1, neighbors: [7, 13]
+node: 7, neighbors: [1, 19]
+node: 13, neighbors: [1]
+node: 19, neighbors: [7]
+
+current node: 1, target node: 3",0,True

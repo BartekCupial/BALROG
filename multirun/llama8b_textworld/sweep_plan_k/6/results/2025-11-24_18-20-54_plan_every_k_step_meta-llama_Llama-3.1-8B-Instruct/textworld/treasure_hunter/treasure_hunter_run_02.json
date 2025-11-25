@@ -1,0 +1,64 @@
+{
+    "task": "treasure_hunter",
+    "action_frequency": {
+        "go north": 9,
+        "take the key": 4,
+        "goal": 1,
+        "look": 2,
+        "go south": 9,
+        "open the shelf": 7,
+        "open the drawer": 4,
+        "go east": 8,
+        "go west": 8,
+        "unlock the drawer with the key.": 1,
+        "take the empty drawer": 2,
+        "drop the empty drawer": 1,
+        "take the shelf": 3,
+        "take the drawer": 8,
+        "unlock the drawer with the empty drawer": 2,
+        "unlock the drawer": 1,
+        "<plan> \nOur goal is to find the target object, which might be located in a closed or locked container. To achieve this, we need to explore different rooms, find keys, and unlock containers. Based on previous observations, we have a laundromat with a drawer and a shelf, a normal kitchenette, a normal cookhouse, and a basement. \n\nTo move forward, we should focus on exploring the laundromat room as it has a drawer and a shelf, which could potentially hold the target object or a key. We should also try to find a way to interact with the drawer and the shelf, possibly by unlocking them or finding a key to unlock them.\n\nOur high-level plan is:\n\n1. Explore the laundromat room to find keys or the target object.\n2. Find a key to unlock the drawer or the shelf.\n3. Unlock the drawer or the shelf and find the target object or another key.\n4. If the target object is not found, try to find another room with a similar structure or a key.\n\nWe should also be aware of our time limit (40 steps) and try to complete the task as efficiently as possible.\n\ngo east": 1,
+        "unlock the drawer with nothing": 2,
+        "unlock the shelf with nothing": 1,
+        "<plan> MY PLAN\n\nMy plan is to explore the rooms, find a key or a drawer that can be unlocked, and then use the key to unlock a shelf or a drawer that contains the target object. I will try to take a key whenever I can, and I will also try to open shelves and drawers to see if the target object is inside.\n\nTo find the target object, I will start by moving around the rooms and looking for any potential key or container that can be opened. I will use the \"go\" command to move between rooms, and the \"look\" command to examine the current room. I will also use the \"take\" command to take any key or object that I find.\n\nOnce I have a key, I will use the \"unlock\" command to unlock any container or shelf that I think might contain the target object. Then, I will use the \"open\" command to open the container or shelf and see if the target object is inside.\n\nIf I get stuck or lose track of the target object, I will try to go back to the previous room and re-examine the objects and containers that I saw there.\n\nThe goal is to find the target object within 40 steps, so I will try to move efficiently and avoid getting stuck in a loop.\n\nIn terms of specific actions, I think my first action will be to go east from the basement.\n\ngo east": 1,
+        "unlock the safe with the non-euclidean keycard": 1,
+        "unlock the drawer with the key": 2,
+        "open the safe with the non-euclidean keycard": 1,
+        "unlock the shelf": 1
+    },
+    "input_tokens": 116073,
+    "output_tokens": 1300,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 80,
+    "failed_candidates": [],
+    "progression": 0.0,
+    "process_num": "ForkProcess-99",
+    "seed": 2336379697,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

@@ -1,0 +1,64 @@
+{
+    "task": "treasure_hunter",
+    "action_frequency": {
+        "<plan>\nObserve the room and note the exits and any objects present.\nIdentify the goal object (if visible) and potential keys or containers.\nConsider the options and plan the next steps:\n- If a key is visible and the door is locked, take the key and unlock the door.\n- If the door is closed but not locked, consider whether to open it immediately.\n- Take any visible objects, especially potential keys.\n- Move in a direction that provides new information (exits or objects) while being mindful of potential danger.\n- Keep track of the inventory and locked containers for future reference.\n\nBased on the current observation, the plan is to:\nLook at the room for more information about the current state before deciding the next action.\n\ngo north": 1,
+        "look": 3,
+        "go north": 9,
+        "take key": 4,
+        "goal": 2,
+        "go east": 12,
+        "go south": 9,
+        "open non-euclidean safe with non-euclidean keycard": 1,
+        "go west": 10,
+        "open drawer": 5,
+        "take non-euclidean keycard from drawer": 2,
+        "unlock safe with key": 2,
+        "take non-euclidean keycard": 1,
+        "unlock non-euclidean safe with non-euclidean keycard": 1,
+        "unlock non-euclidean safe": 2,
+        "open safe": 3,
+        "open non-euclidean safe": 3,
+        "unlock drawer with key": 2,
+        "take drawer": 1,
+        "take key from drawer": 1,
+        "unlock non-euclidean safe with key": 2,
+        "unlock kitchenette safe with key": 2,
+        "take shelf": 1,
+        "open kitchenette safe": 1
+    },
+    "input_tokens": 120682,
+    "output_tokens": 1314,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 80,
+    "failed_candidates": [],
+    "progression": 0.0,
+    "process_num": "ForkProcess-109",
+    "seed": 1115167473,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

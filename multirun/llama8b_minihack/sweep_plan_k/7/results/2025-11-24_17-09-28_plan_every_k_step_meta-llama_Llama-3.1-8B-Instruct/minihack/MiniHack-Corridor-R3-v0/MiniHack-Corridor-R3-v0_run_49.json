@@ -1,0 +1,54 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "south": 18,
+        "open": 8,
+        "north": 17,
+        "east": 21,
+        "search": 11,
+        "kick": 17,
+        "northwest": 2,
+        "southwest": 5,
+        "west": 1
+    },
+    "input_tokens": 365260,
+    "output_tokens": 936,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "eastnortheast",
+        "eastnortheast",
+        "<plan>YOUR_PLAN\nBased on previous observations, the stairs down are always located in a similar position relative to the player's starting position. The player's goal is to reach the stairs down.\n\nTo achieve this goal, the player must move north to reach the doorway. Then, they must move south to reach the stairs down.\n\nHowever, there is a boulder near the south that needs to be moved to access the stairs. The player has a +0 short sword and +0 daggers, which can be used to kick the boulder. \n\nFirst, the player will move north to reach the doorway. Then, they will search to find the boulder's location. After that, they will kick the boulder to move it out of the way. Finally, they will move south to reach the stairs down.\n\nThe final step will be moving north to reach the stairs down and proceed downward. This sequence of actions should allow the player to reach the stairs down successfully.\n\nThe chosen action is:\nsearch"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-126",
+    "seed": 581468690,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 24,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

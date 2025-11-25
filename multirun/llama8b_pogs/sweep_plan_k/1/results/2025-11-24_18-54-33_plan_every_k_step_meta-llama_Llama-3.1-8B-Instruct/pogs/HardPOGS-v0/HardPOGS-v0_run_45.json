@@ -1,0 +1,62 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "19": 2,
+        "17": 2,
+        "12": 3,
+        "4": 2,
+        "7": 6,
+        "14": 1,
+        "18": 6,
+        "15": 3,
+        "16": 1,
+        "1": 1,
+        "9": 1,
+        "10": 1,
+        "13": 1
+    },
+    "input_tokens": 51165,
+    "output_tokens": 2433,
+    "done": true,
+    "episode_return": -110.0,
+    "num_steps": 30,
+    "failed_candidates": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "<plan>I have reviewed my previous observations and realized that I need to find a path to the target node 2, which is not visible in the current observable area. My high-level plan is as follows:\n\n1. Explore the connections of the current node 15, which is a dead end with only one neighbor.\n2. Move to node 7, which has connections to nodes 12, 14, and 18.\n3. Explore the connections of node 7, and choose the node with the most connections to explore further.\n4. If a node has multiple connections, prioritize nodes that are not already visited or that have not been fully explored.\n5. Continue exploring until I find a path to node 2 or exhaust all possible paths.\n\nGiven the current observation, I need to move to node 7 to explore further.\n\nAction: 7",
+        "",
+        ""
+    ],
+    "progression": 0,
+    "process_num": "ForkProcess-26",
+    "seed": 3636750942,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

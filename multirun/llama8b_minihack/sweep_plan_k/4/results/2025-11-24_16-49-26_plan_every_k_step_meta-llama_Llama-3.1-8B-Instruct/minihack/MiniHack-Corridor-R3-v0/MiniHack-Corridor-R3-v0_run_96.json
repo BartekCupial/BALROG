@@ -1,0 +1,56 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "south": 16,
+        "east": 20,
+        "search": 22,
+        "kick": 6,
+        "northwest": 8,
+        "north": 11,
+        "southwest": 7,
+        "open": 5,
+        "northeast": 1,
+        "west": 3,
+        "southeast": 1
+    },
+    "input_tokens": 359759,
+    "output_tokens": 2091,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nGiven the current state of the environment, it seems that I'm stuck in a loop where I keep moving north and then back to the original position. To break this cycle, I need to create a path to the stairs down. Since the stairs up is adjacent to the south, I'll try to move south until I find an opening to access the stairs down. To do this, I'll keep moving south until I can identify a path to the stairs down or a way to break through the obstacles.\n\nMy high-level plan is to move south repeatedly, using the 'search' action to identify potential hidden doors or passages, and the 'kick' action to break through obstacles if necessary.\n\nAction: south",
+        "kick southeast",
+        "<local_plan>The goal is to reach the stairs down. \n\nAfter reviewing the previous observations and actions, I notice that I'm in a room with a doorway in the east direction. The doorway appears to be the only path forward, and it might lead me to the stairs down.\n\nTo reach the stairs down, I need to explore the area east of my current position. I'll try to open the doorway or move around it to access the area behind it.\n\nMy high-level plan is to move east and see what's behind the doorway. I'll try to open it or move around it to access the area behind it. Once I'm in the new area, I'll search for the stairs down or any other paths that might lead me to it.\n\nTo do this, I'll start by moving east, which will take me closer to the doorway. Once I'm in position, I can try to open the doorway or move around it to access the area behind it.\n\nMy first action will be to move east and see what's behind the doorway.</local_plan>\n\neast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-73",
+    "seed": 3136252032,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 8,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

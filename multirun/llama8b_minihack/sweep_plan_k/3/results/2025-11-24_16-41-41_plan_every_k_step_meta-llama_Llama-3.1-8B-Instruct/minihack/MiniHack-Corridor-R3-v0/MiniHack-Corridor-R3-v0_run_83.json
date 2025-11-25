@@ -1,0 +1,53 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 17,
+        "search": 21,
+        "west": 16,
+        "south": 11,
+        "southwest": 9,
+        "east": 13,
+        "northwest": 7,
+        "open": 2,
+        "southeast": 1,
+        "kick": 3
+    },
+    "input_tokens": 344088,
+    "output_tokens": 2958,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>The current situation is that the stairs down are inaccessible due to a solid stone wall in the southwest corner. Upon further examination, I notice that I'm still at the same location and the map hasn't changed. My current goal is to find a way to reach the stairs down. I plan to:\n\n1. Continue searching the area to find any hidden doors, passages, or other objects that might be useful.\n2. If I find a hidden door or passage, I will try to open it to see if it leads to the stairs down.\n3. If I don't find a hidden door or passage, I will try to find a different path to the stairs down, such as by exploring the dark area to the west.\n\nMy reasoning is that the current path is blocked, so I need to find a new way to access the stairs down. By searching and exploring, I might be able to find an alternative route.\n\nAction: search"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-64",
+    "seed": 203260881,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

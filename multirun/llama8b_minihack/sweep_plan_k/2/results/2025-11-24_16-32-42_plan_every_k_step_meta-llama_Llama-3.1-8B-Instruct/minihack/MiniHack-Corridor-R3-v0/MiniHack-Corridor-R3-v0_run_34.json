@@ -1,0 +1,55 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 12,
+        "west": 4,
+        "open": 7,
+        "search": 13,
+        "south": 27,
+        "north": 21,
+        "northwest": 8,
+        "kick": 3,
+        "southwest": 5
+    },
+    "input_tokens": 359659,
+    "output_tokens": 3384,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nBased on my previous observations, I believe the stairs down are located to the west. My goal is to reach the stairs down. I will move east and then check if the stairs down are visible. If they are not visible, I will try to open the horizontal closed door near southsouthwest, as it may lead to the stairs down. If that fails, I will continue to move east until I find a path that leads me to the stairs down. I will also keep an eye on the vertical wall near west, as it may provide clues to the location of the stairs down.\n\nFirst action: search",
+        "",
+        "c",
+        ""
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-42",
+    "seed": 4065706220,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 4,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

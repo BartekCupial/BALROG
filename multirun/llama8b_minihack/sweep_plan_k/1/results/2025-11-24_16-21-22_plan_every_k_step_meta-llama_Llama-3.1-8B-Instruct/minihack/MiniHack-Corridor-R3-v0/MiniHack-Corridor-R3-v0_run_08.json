@@ -1,0 +1,57 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "open": 3,
+        "north": 30,
+        "search": 23,
+        "east": 12,
+        "southwest": 10,
+        "south": 2,
+        "northwest": 5,
+        "kick": 6,
+        "west": 8,
+        "northeast": 1
+    },
+    "input_tokens": 352837,
+    "output_tokens": 4497,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "eastnortheast",
+        "kick southeast",
+        "<plan>\nMy plan is to navigate around the walls and reach the stairs down by moving north until I can see the stairs. Since I am currently at (x=60, y=15) and the stairs are in a fixed location relative to the northeast corner, I will use a combination of 'north' and 'search' actions to avoid hitting walls and to detect any hidden doors or passages that may be in my way. Once I can see the stairs, I will move directly towards them using the most efficient path.\n\nGiven my current position and the layout of the level, my high-level plan is to move north until I reach the vertical wall, then search for any hidden doors or passages that may be adjacent to the wall. From there, I will move in the general direction of the stairs up, using the 'search' action to navigate through any dark areas and detect any obstacles that may be in my way.\n\nOnce I am close enough to the stairs, I will use the 'north' action to move directly towards the stairs up, and from there, I should be able to navigate down the stairs and complete the task.\n\nMy next action is: north",
+        "<plan>\nTo complete the task, my high-level plan is to navigate through the level, avoiding walls and using my search action to detect hidden doors or passages. I will move towards the northeast corner of the level, where I expect to find the stairs down.\n\nMy reasoning is as follows:\n\n* I will move west to explore the doorway I identified earlier.\n* Once I enter the doorway, I will search for a path that will allow me to reach the northeast corner of the level.\n* I will pay close attention to the language observation, using it to guide my movements and avoid hitting walls or getting stuck in dark areas.\n* Once I reach the northeast corner, I will search for the stairs down, which I expect to be located near the vertical wall adjacent to the northeast corner.\n\nBy following this plan, I should be able to navigate through the level and complete the task.\n\nNext action: search",
+        "eastnortheast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-25",
+    "seed": 4187044122,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

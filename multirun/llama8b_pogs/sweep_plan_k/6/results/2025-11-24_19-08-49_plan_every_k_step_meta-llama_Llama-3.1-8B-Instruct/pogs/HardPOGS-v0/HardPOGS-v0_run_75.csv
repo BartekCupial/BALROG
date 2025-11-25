@@ -1,0 +1,35 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,4,"Given the current observation, we're in node 15 and the target node is 5. We don't have a direct connection to 5 from our current node 15. Looking at our neighbors (0 and 4), we know 0 has a neighbor 10, and 4 has neighbors 6 and 10. However, we also know 10 is not a direct neighbor of 5. We see that node 4 has a neighbor 6, but we also see that 6 only has one neighbor, which is 4, and it is at a distance less than k=2 from node 4. Therefore, it is a dead end and should be avoided to avoid penalty.","
+node: 0, neighbors: [15]
+node: 4, neighbors: [6, 15]
+node: 6, neighbors: [4, 14]
+node: 14, neighbors: [6]
+node: 15, neighbors: [0, 4]
+
+current node: 4, target node: 5",0,False
+1,6,,"
+node: 4, neighbors: [6, 15]
+node: 5, neighbors: [14]
+node: 6, neighbors: [4, 14]
+node: 12, neighbors: [14]
+node: 14, neighbors: [5, 6, 12]
+node: 15, neighbors: [4]
+
+current node: 6, target node: 5",0,False
+2,14,,"
+node: 4, neighbors: [6]
+node: 5, neighbors: [11, 14]
+node: 6, neighbors: [4, 14]
+node: 11, neighbors: [5]
+node: 12, neighbors: [14]
+node: 14, neighbors: [5, 6, 12]
+
+current node: 14, target node: 5",0,False
+3,5,,"node: 5, neighbors: [11, 14]
+node: 6, neighbors: [14]
+node: 11, neighbors: [5]
+node: 12, neighbors: [14]
+node: 14, neighbors: [5, 6, 12]
+
+current node: 5, target node: 5
+You have reached the target!",100.0,True

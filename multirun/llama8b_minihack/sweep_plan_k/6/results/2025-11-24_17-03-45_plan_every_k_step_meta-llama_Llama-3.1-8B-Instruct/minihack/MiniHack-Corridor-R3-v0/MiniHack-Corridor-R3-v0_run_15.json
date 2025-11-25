@@ -1,0 +1,53 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 15,
+        "south": 30,
+        "north": 26,
+        "search": 16,
+        "open": 3,
+        "kick": 3,
+        "southwest": 1,
+        "northwest": 5,
+        "west": 1
+    },
+    "input_tokens": 366356,
+    "output_tokens": 1059,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nTo complete the task, I plan to first try to access the stairs down by navigating through the room and possibly interacting with doors and walls. I will use my search action to try to find hidden doors or passages, and my open action to try to open doors that I find. Since I have already kicked a wall in the past, I will be more cautious and avoid trying to kick walls unless absolutely necessary.\n\nMy high-level plan is to move east to try to find a way around the horizontal wall near south, and then use my search and open actions to try to access the stairs down.\n\nAction: east",
+        "<plan>\nBased on the observations, I noticed that I'm stuck in a room with a doorway to the north, which leads to the stairs up. My goal is to explore the level and reach the stairs down. Given the current situation, my plan is to go through the doorway to the north and try to find the stairs down. Since the stairs up are very near the north, I suspect that the stairs down might be in the adjacent room or in the room to the south of the current location. Once I reach the stairs down, I can proceed with the rest of the level exploration.\n\nAction: north"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-112",
+    "seed": 3100540897,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

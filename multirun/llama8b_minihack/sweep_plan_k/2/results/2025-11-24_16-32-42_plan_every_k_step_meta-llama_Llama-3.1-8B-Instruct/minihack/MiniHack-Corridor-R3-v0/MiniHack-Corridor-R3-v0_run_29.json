@@ -1,0 +1,52 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 13,
+        "southwest": 4,
+        "north": 14,
+        "search": 13,
+        "south": 9,
+        "kick": 3,
+        "northwest": 4,
+        "west": 1,
+        "open": 1
+    },
+    "input_tokens": 208465,
+    "output_tokens": 2540,
+    "done": true,
+    "episode_return": 1.0,
+    "num_steps": 62,
+    "failed_candidates": [
+        "<plan>YOUR_PLAN\n\nBased on previous observations and planning, my goal is to reach the stairs down. The room I'm in has a doorway to the northeast and a horizontal wall blocking my path to the south. I've tried to move north and southwest before, but there's a dark area and the northeast room corner. Since I'm stuck in this room, I need to search for hidden doors and passages. Given my current location and inventory, I don't see any visible doors or passages, so I'll try to search again to see if I can find any hidden passages.\n\nThe high-level plan is to continue searching the room and its adjacent areas to find a hidden door or passage leading to the stairs down.\n\nI will choose to search."
+    ],
+    "progression": 1.0,
+    "end_reason": 2,
+    "process_num": "ForkProcess-44",
+    "seed": 1133117421,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 4,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

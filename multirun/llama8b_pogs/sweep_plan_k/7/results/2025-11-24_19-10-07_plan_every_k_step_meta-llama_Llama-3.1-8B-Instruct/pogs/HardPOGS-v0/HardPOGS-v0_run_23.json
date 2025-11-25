@@ -1,0 +1,53 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "11": 6,
+        "13": 2,
+        "8": 9,
+        "1": 1,
+        "5": 2,
+        "7": 1,
+        "4": 3,
+        "12": 3,
+        "14": 1,
+        "10": 1,
+        "2": 1
+    },
+    "input_tokens": 48989,
+    "output_tokens": 664,
+    "done": true,
+    "episode_return": -117.0,
+    "num_steps": 30,
+    "failed_candidates": [
+        "<plan>Given the environment and observations, my plan is to attempt to reach the target node by systematically exploring the graph and utilizing the available information to make informed decisions.\n\n1. Since the target node is 0, and it's not directly observable, I need to navigate through the graph and reach a node that has a neighbor connected to 0.\n2. From the current observation, I have identified that node 14 is not directly connected to any other node, so I will make a note to avoid this node in future decisions to minimize the penalty for entering a dead-end.\n3. Next, I will attempt to find a node that is connected to multiple other nodes and has a higher likelihood of leading me to the target node. This node appears to be 12, as it is connected to 4 and 14, and both of these nodes are relatively close to the target.\n4. From node 12, I will attempt to reach node 14, and then from there, I will try to find a node that is connected to 0.\n5. I will continue to make informed decisions based on the available information and adjust my plan accordingly as I gather more data.\n\nHowever, since I don't have any more observations to consider, I will proceed with the current plan and aim to reach the target node.\n\nBased on this plan, my next action will be: 12"
+    ],
+    "progression": 0,
+    "process_num": "ForkProcess-113",
+    "seed": 3211651819,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 24,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "7": 6,
+        "14": 1,
+        "16": 2,
+        "0": 10,
+        "2": 4,
+        "4": 1,
+        "15": 4,
+        "12": 1,
+        "13": 1
+    },
+    "input_tokens": 54889,
+    "output_tokens": 877,
+    "done": true,
+    "episode_return": -102.0,
+    "num_steps": 30,
+    "failed_candidates": [
+        "",
+        "<plan>\nOur current situation is that we are at node 15, and our target node is 5. From the previous observations, we can see that node 15 has only one neighbor, node 7, and node 7 has only two neighbors, node 0 and node 15. This indicates that we are in a dead-end situation.\n\nHowever, we can backtrack to node 7, which has two neighbors, node 0 and node 15. We previously visited node 0, but we need to explore it again to see if we can find a path to node 5.\n\nOur plan is to backtrack to node 7, then move to node 0. From node 0, we will explore its neighbors to find a path to node 5.\n\nWe will then follow the path and move to node 5.\n\n<plan>\n\n7"
+    ],
+    "progression": 0,
+    "process_num": "ForkProcess-77",
+    "seed": 1078049584,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 8,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

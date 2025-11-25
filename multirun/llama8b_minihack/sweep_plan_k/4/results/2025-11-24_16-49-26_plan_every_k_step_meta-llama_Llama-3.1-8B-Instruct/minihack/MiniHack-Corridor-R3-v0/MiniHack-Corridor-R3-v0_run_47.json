@@ -1,0 +1,57 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 14,
+        "east": 15,
+        "kick": 8,
+        "search": 19,
+        "southwest": 12,
+        "south": 16,
+        "open": 1,
+        "northwest": 6,
+        "west": 8,
+        "southeast": 1
+    },
+    "input_tokens": 350653,
+    "output_tokens": 2252,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "",
+        "",
+        "",
+        "<plan>The goal is to reach the stairs down. Based on previous observations, the stairs down are adjacent to the west or southwest direction. Since I am currently on the eastern edge of the map, I will need to move west and then try to find a path to the stairs down. I will use the \"search\" action to find any hidden doors or passages that might be blocking my path. Once I find a way to access the stairs down, I will move south to reach my goal.\n\nFirst, I will search the current area to see if there are any hidden doors or passages. This will help me understand the layout of the map and make a more informed decision about how to proceed.\n\nNext action: search",
+        "<plan>The goal is to reach the stairs down. Currently, I am in a room with a horizontal wall blocking my way south and a vertical wall blocking my way north and west. There is a stairs up adjacent to the west, which I don't want to reach. I need to find a way to go around the walls and reach the stairs down. Based on previous observations, I believe the stairs down are located in the southeast direction. I will try to move southeast and then search for any hidden doors or passages that might be blocking my path. If I find a way to access the stairs down, I will move south to reach my goal.\n\nNext action: southeast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-72",
+    "seed": 979632542,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 8,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

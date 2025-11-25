@@ -1,0 +1,64 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "open": 6,
+        "north": 26,
+        "northwest": 5,
+        "south": 11,
+        "search": 14,
+        "northeast": 3,
+        "east": 9,
+        "kick": 3,
+        "southwest": 8,
+        "west": 15
+    },
+    "input_tokens": 335071,
+    "output_tokens": 3493,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "",
+        "kick northeast",
+        "kick northeast",
+        "kick north",
+        "kick north",
+        "kick northeast",
+        "kick southeast",
+        "kick southeast",
+        "kick northeast",
+        "kick northeast",
+        "kick northeast",
+        "<plan>\nTo reach the stairs down, I need to find a way past or through the solid stone wall that is currently blocking my path. I've tried searching for hidden doors and passages, but it didn't reveal anything. Since I can move in the southeast direction and the stone wall is blocking my way in the north direction, I should move around it by going southeast and try to find an alternate route.\n\nHere's my high-level plan:\n\n1. Move southeast to go around the stone wall.\n2. Search the new area to see if there are any hidden doors or passages.\n3. If there's no passage, try to find another way to get past the stone wall by moving in other directions.\n4. Once I've found a way past the stone wall, I'll make my way to the stairs down.\n\nThe plan is to move southeast first and see if that opens up any new possibilities.\n\nAction: southeast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-40",
+    "seed": 1535531379,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 4,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

@@ -1,0 +1,80 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,"<plan>Since we are given a partially observable graph with a k-nearest neighbor radius of 2, our primary objective is to navigate from the current node (8) to the target node (3). 
+
+We can observe from our previous observations that node 8 has two neighbors: 16 and 17. However, we cannot see any connection between these neighbors and the target node 3, because our k-nearest neighbor radius is 2. We also see that node 8 is directly connected to node 3, which would be within our k-nearest neighbor radius of 2 if we were to move to either of its neighbors and then move to node 3. However, node 8 also sees node 3 from its current location and node 17 is a dead end.
+
+To reach the target node (3), we can simply move directly to it from the current node (8) or move to one of the neighbors of the current node and then continue our path. Since node 17 is a dead end, our safest choice would be to move to node 16 first and then move to node 3. Therefore, our plan is to move to node 16 first, and then to node 3.
+
+Moving to node 16 will allow us to get closer to the target node, which is a good move in the current state. Our chosen action will be 16.",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 11
+
+Observation:
+
+node: 8, neighbors: [16, 17]
+node: 16, neighbors: [8, 18]
+node: 17, neighbors: [8]
+node: 18, neighbors: [16]
+
+current node: 8, target node: 3",-6.0,False
+1,16,,"
+node: 2, neighbors: [18]
+node: 8, neighbors: [16, 17]
+node: 13, neighbors: [18]
+node: 16, neighbors: [8, 18]
+node: 17, neighbors: [8]
+node: 18, neighbors: [2, 13, 16]
+
+current node: 16, target node: 3",0,False
+2,18,,"
+node: 1, neighbors: [13]
+node: 2, neighbors: [7, 18]
+node: 4, neighbors: [13]
+node: 5, neighbors: [13]
+node: 7, neighbors: [2]
+node: 8, neighbors: [16]
+node: 13, neighbors: [1, 4, 5, 18]
+node: 16, neighbors: [8, 18]
+node: 18, neighbors: [2, 13, 16]
+
+current node: 18, target node: 3",0,False
+3,2,,"
+node: 0, neighbors: [7]
+node: 2, neighbors: [7, 18]
+node: 7, neighbors: [0, 2, 9, 11]
+node: 9, neighbors: [7]
+node: 11, neighbors: [7]
+node: 13, neighbors: [18]
+node: 16, neighbors: [18]
+node: 18, neighbors: [2, 13, 16]
+
+current node: 2, target node: 3",0,False
+4,7,,"
+node: 0, neighbors: [7]
+node: 2, neighbors: [7, 18]
+node: 3, neighbors: [11]
+node: 7, neighbors: [0, 2, 9, 11]
+node: 9, neighbors: [7]
+node: 11, neighbors: [3, 7, 19]
+node: 18, neighbors: [2]
+node: 19, neighbors: [11]
+
+current node: 7, target node: 3",0,False
+5,11,,"
+node: 0, neighbors: [7]
+node: 2, neighbors: [7]
+node: 3, neighbors: [11]
+node: 7, neighbors: [0, 2, 9, 11]
+node: 9, neighbors: [7]
+node: 11, neighbors: [3, 7, 19]
+node: 12, neighbors: [19]
+node: 19, neighbors: [11, 12]
+
+current node: 11, target node: 3",0,False
+6,3,,"node: 3, neighbors: [11]
+node: 7, neighbors: [11]
+node: 11, neighbors: [3, 7, 19]
+node: 19, neighbors: [11]
+
+current node: 3, target node: 3
+You have reached the target!",100.0,True

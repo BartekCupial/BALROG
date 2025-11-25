@@ -1,0 +1,53 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 13,
+        "south": 22,
+        "search": 13,
+        "northwest": 15,
+        "southeast": 2,
+        "east": 19,
+        "west": 3,
+        "southwest": 6,
+        "kick": 7
+    },
+    "input_tokens": 326581,
+    "output_tokens": 689,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>YOUR_PLAN\n\nMy plan is to find a way around the current horizontal wall by moving east to the stairs up, then go down to access the next level, and from there, I can re-examine the layout and find a path to the stairs down.\n\nTo achieve this, I will focus on reaching the stairs up, then descend to the next level, and from there, reassess the situation.\n\nFirst, I will use the whip to see if it will open the wall to the southeast, which may provide access to the stairs up. If it doesn't work, I will reassess the plan.\n\nAction: kick southeast",
+        "kick southwest"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-125",
+    "seed": 2998275092,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 24,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

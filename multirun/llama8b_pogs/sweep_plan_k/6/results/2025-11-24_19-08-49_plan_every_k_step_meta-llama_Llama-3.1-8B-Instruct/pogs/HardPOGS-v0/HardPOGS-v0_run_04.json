@@ -1,0 +1,59 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "5": 4,
+        "18": 2,
+        "12": 2,
+        "9": 2,
+        "10": 2,
+        "13": 3,
+        "7": 2,
+        "11": 2,
+        "19": 2,
+        "15": 1,
+        "16": 1,
+        "17": 1,
+        "0": 2,
+        "8": 1,
+        "2": 1,
+        "4": 1,
+        "14": 1
+    },
+    "input_tokens": 52732,
+    "output_tokens": 463,
+    "done": true,
+    "episode_return": -110.0,
+    "num_steps": 30,
+    "failed_candidates": [
+        "<plan>From the given observation, it's clear that the current node is node 1, and it only has one neighbor, which is node 18. Since the distance to node 18 is less than k=2, node 18 is considered a dead end. However, node 18 has multiple neighbors, including node 18 itself is not a dead end it has [1, 12, 16] as neighbors and node 1 has one neighbor that is a dead end. I will need to find a path to the target node 3 that avoids dead ends. Given that node 1 is a dead end and node 18 has multiple neighbors, my plan is to move to node 18 first, then explore the neighboring nodes of node 18, and try to find a path to the target node 3.\n\nNext Action: 18"
+    ],
+    "progression": 0,
+    "process_num": "ForkProcess-101",
+    "seed": 1141716409,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "task": "coin_collector",
+    "action_frequency": {
+        "go east": 21,
+        "go west": 16,
+        "go south": 16,
+        "go north": 13,
+        "take coin": 10,
+        "": 3,
+        "<plan>I need to find the coin, and I have 5 remaining moves. Given the current layout of the rooms and the fact that I'm stuck in the basement, my plan is to:\n\n1. Backtrack to the attic and explore it more thoroughly to see if I missed the coin.\n2. If I still can't find the coin, I will focus on the cubicle as it seemed like a promising location earlier.\n3. Since I'm low on moves, I will take the coin when I see it, rather than trying to optimize my route to get to it.\n\nAction: go west": 1
+    },
+    "input_tokens": 91147,
+    "output_tokens": 5742,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 80,
+    "failed_candidates": [],
+    "progression": 0.0,
+    "process_num": "ForkProcess-10",
+    "seed": 1478900175,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 2,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

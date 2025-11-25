@@ -1,0 +1,46 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "14": 1,
+        "2": 1,
+        "8": 1,
+        "11": 1
+    },
+    "input_tokens": 2900,
+    "output_tokens": 298,
+    "done": true,
+    "episode_return": 94.0,
+    "num_steps": 4,
+    "failed_candidates": [
+        "<plan>\nBased on the previous observations, my high-level plan is to move from the current node (2) to the target node (11) by navigating through the partially observable graph.\n\nInitially, I moved from node 1 to node 14, and then from node 14 to node 2. Now, I am at node 2, which is one step away from the target node 11.\n\nTo complete the task, I will follow these steps:\n\n- From node 2, move to node 11, as it is directly connected and within the observable range.\n\nMy goal is to reach the target node 11 as quickly and efficiently as possible, avoiding dead-end nodes and minimizing the number of steps required.\n\nNext action: 11"
+    ],
+    "progression": 0.94,
+    "process_num": "ForkProcess-9",
+    "seed": 2441819544,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 2,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

@@ -1,0 +1,101 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Do": 86,
+        "Place Table": 39,
+        "Move West": 5,
+        "Move North": 3,
+        "Make Wood Pickaxe": 6,
+        "Make Wood Sword": 1,
+        "Noop": 25,
+        "Move East": 2,
+        "Sleep": 2
+    },
+    "input_tokens": 242062,
+    "output_tokens": 62140,
+    "done": true,
+    "episode_return": 1.1,
+    "num_steps": 169,
+    "failed_candidates": [
+        "",
+        "<plan>We are currently sleeping with energy 6/9, so we cannot act until energy reaches 9. The immediate step is to do nothing (Noop) to let time pass and energy recover automatically. Once energy is full, we will wake up, place a table on the grass to the west (Place Table) to achieve \"Place Table\", then craft a wood pickaxe and wood sword (Make Wood Pickaxe, Make Wood Sword) using the saplings and the table, achieving \"Make Wood Pickaxe\" and \"Make Wood Sword\". After that we will defeat the adjacent zombie with the wood sword (Do) to get \"Defeat Zombie\". This will also give us food (if the zombie drops) and progress toward further achievements. For now, the only possible action is to wait until we are fully rested.\\plan>\nNoop"
+    ],
+    "score": 2.0,
+    "progression": 0.09090909090909091,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 0,
+        "collect_iron": 0,
+        "collect_sapling": 12,
+        "collect_stone": 0,
+        "collect_wood": 0,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 0,
+        "eat_cow": 1,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 0,
+        "make_wood_sword": 0,
+        "place_furnace": 0,
+        "place_plant": 0,
+        "place_stone": 0,
+        "place_table": 0,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": -1,
+        "collect_iron": -1,
+        "collect_sapling": 47,
+        "collect_stone": -1,
+        "collect_wood": -1,
+        "defeat_skeleton": -1,
+        "defeat_zombie": -1,
+        "eat_cow": 259,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": -1,
+        "make_wood_sword": -1,
+        "place_furnace": -1,
+        "place_plant": -1,
+        "place_stone": -1,
+        "place_table": -1,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-3",
+    "seed": 3791516830,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 2,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-120b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

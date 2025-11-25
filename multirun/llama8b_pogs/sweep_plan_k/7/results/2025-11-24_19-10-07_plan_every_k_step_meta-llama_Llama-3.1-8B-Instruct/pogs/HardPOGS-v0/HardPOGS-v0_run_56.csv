@@ -1,0 +1,82 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,5,"In this partially observable graph search environment, my primary objective is to reach the target node 7 from the current node 9. 
+
+Initially, I'm at node 9, which has two neighbors: 5 and itself is a dead end. I also know that node 0 is connected to node 5 and node 6 is connected to node 5.
+
+My plan is to:
+- First, try to find a path from the current node 9 to node 5 because it is the only directly connected node to the target node (node 7).
+- Then, from node 5, explore its neighbors: 0 and 6. Since node 6 has a connection to node 5 and it is within my observable radius, I will try to reach node 6 from node 5.
+- From node 6, if I can find a connection to node 7, I can continue the path.
+- If I can't find a direct connection from node 6 to node 7, I will try to explore node 0 from node 5 and check if there is a path to node 7.
+
+After this analysis, I can see that I have to go from node 9 to node 5 first.","
+node: 0, neighbors: [5]
+node: 5, neighbors: [0, 6, 9]
+node: 6, neighbors: [5, 12, 13, 14, 18]
+node: 9, neighbors: [5]
+node: 12, neighbors: [6]
+node: 13, neighbors: [6]
+node: 14, neighbors: [6]
+node: 18, neighbors: [6]
+
+current node: 5, target node: 7",0,False
+1,6,,"
+node: 0, neighbors: [5]
+node: 2, neighbors: [14]
+node: 5, neighbors: [0, 6, 9]
+node: 6, neighbors: [5, 12, 13, 14, 18]
+node: 9, neighbors: [5]
+node: 11, neighbors: [18]
+node: 12, neighbors: [6]
+node: 13, neighbors: [6, 15]
+node: 14, neighbors: [2, 6]
+node: 15, neighbors: [13]
+node: 18, neighbors: [6, 11]
+
+current node: 6, target node: 7",0,False
+2,13,,"
+node: 5, neighbors: [6]
+node: 6, neighbors: [5, 12, 13, 14, 18]
+node: 7, neighbors: [15]
+node: 12, neighbors: [6]
+node: 13, neighbors: [6, 15]
+node: 14, neighbors: [6]
+node: 15, neighbors: [7, 13]
+node: 18, neighbors: [6]
+
+current node: 13, target node: 7",0,False
+3,7,,"
+node: 5, neighbors: [6]
+node: 6, neighbors: [5, 12, 13, 14, 18]
+node: 7, neighbors: [15]
+node: 12, neighbors: [6]
+node: 13, neighbors: [6, 15]
+node: 14, neighbors: [6]
+node: 15, neighbors: [7, 13]
+node: 18, neighbors: [6]
+
+current node: 13, target node: 7",-6.0,False
+4,7,,"
+node: 5, neighbors: [6]
+node: 6, neighbors: [5, 12, 13, 14, 18]
+node: 7, neighbors: [15]
+node: 12, neighbors: [6]
+node: 13, neighbors: [6, 15]
+node: 14, neighbors: [6]
+node: 15, neighbors: [7, 13]
+node: 18, neighbors: [6]
+
+current node: 13, target node: 7",-6.0,False
+5,15,,"
+node: 6, neighbors: [13]
+node: 7, neighbors: [15]
+node: 13, neighbors: [6, 15]
+node: 15, neighbors: [7, 13]
+
+current node: 15, target node: 7",0,False
+6,7,,"node: 7, neighbors: [15]
+node: 13, neighbors: [15]
+node: 15, neighbors: [7, 13]
+
+current node: 7, target node: 7
+You have reached the target!",100.0,True
