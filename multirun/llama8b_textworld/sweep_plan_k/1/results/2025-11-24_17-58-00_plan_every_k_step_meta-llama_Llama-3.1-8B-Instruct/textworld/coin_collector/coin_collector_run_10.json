@@ -1,0 +1,47 @@
+{
+    "task": "coin_collector",
+    "action_frequency": {
+        "go north": 17,
+        "go east": 19,
+        "go west": 14,
+        "take coin": 9,
+        "go south": 14,
+        "": 6,
+        "<plan>\nMy plan is to explore the eastward exit in the Lounge, since it is unblocked. If I find the coin in the next room, I can take it. If not, I will backtrack and explore other exits to find the coin.\n\nI will use the following reasoning to guide my exploration:\n- I will always try to go through unblocked exits first.\n- If I have unguarded exits available, I will try to go through them to access rooms that might contain the coin.\n- If I reach a dead end, I will backtrack and explore other exits to find the coin.\n\nI will continue exploring rooms, listing off the contents, and taking the coin if I see it.\n\nNext action: go east": 1
+    },
+    "input_tokens": 118509,
+    "output_tokens": 4827,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 80,
+    "failed_candidates": [],
+    "progression": 0.0,
+    "process_num": "ForkProcess-23",
+    "seed": 1099389647,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

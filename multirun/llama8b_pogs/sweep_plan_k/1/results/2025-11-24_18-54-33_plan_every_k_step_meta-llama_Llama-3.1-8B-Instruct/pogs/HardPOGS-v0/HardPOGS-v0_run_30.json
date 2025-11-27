@@ -1,0 +1,52 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "6": 1,
+        "9": 6,
+        "8": 3,
+        "5": 7,
+        "0": 7,
+        "16": 2,
+        "11": 3,
+        "2": 1
+    },
+    "input_tokens": 57789,
+    "output_tokens": 2143,
+    "done": true,
+    "episode_return": -114.0,
+    "num_steps": 30,
+    "failed_candidates": [
+        "<plan>\nSince we are in node 18 and our target is node 15, which is not visible in our current k-nearest neighbor radius, we need to navigate to a node that is closer to our target or has more information about the graph. We know that node 9 has connections to nodes 0 and 8, which are both within the k-nearest neighbor radius. However, node 9 is also connected to node 18, which is our current position. Considering that node 9 has multiple neighbors, it's a good candidate to move to. Our plan is to move to node 9 first and then reassess our options.\n\nOur next action will be:\n9",
+        "",
+        ""
+    ],
+    "progression": 0,
+    "process_num": "ForkProcess-24",
+    "seed": 2815570026,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

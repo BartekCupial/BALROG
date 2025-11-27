@@ -1,0 +1,58 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 24,
+        "north": 19,
+        "southwest": 7,
+        "search": 15,
+        "open": 5,
+        "northwest": 4,
+        "south": 14,
+        "kick": 6,
+        "west": 5,
+        "northeast": 1
+    },
+    "input_tokens": 367734,
+    "output_tokens": 2785,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "southsouthwest",
+        "kick east",
+        "",
+        "",
+        "<plan>\nMy high-level plan is to explore the area to the east and west of the current position, while keeping an eye out for the stairs down. Since the west path is blocked by a wall, I will try to move east and explore that path. I will use my search action to try and find any hidden doors or passages, and my open action to open any doors that I find. I will also keep track of my position and the layout of the area, using my observations to inform my next actions. My goal is to find the stairs down and complete the task.\n\nThe stairs down are likely to be located in a more central area of the map, since I have been moving around the edges. I will try to move east and see if I can find any doors or passages that lead to the center of the map.\n\nNext action: open",
+        "<plan>\nMy high-level plan is to find a path to the stairs down. Based on my previous observations, I have identified a potential path to the west. However, this path is blocked by a wall, and I have not been able to find any doors or passages that lead to the stairs.\n\nTo solve this task, I will need to find a way to navigate around the walls and potentially blocked doors. I will use my search action to try and find any hidden doors or passages, and my open action to open any doors that I find.\n\nSince I have a blessed pair of leather gloves, which gives me a boost to my Wisdom score, I will use this advantage to aid me in my search for the stairs.\n\nI will start by moving south and searching the area. If I find a door or passage, I will open it and see where it leads. If I find a wall, I will try to move around it or search the area for any hidden doors or passages.\n\nMy goal is to find a path to the stairs down, and I will continue to move and search until I have achieved this goal.\n\nNext action: search"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-50",
+    "seed": 90039301,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

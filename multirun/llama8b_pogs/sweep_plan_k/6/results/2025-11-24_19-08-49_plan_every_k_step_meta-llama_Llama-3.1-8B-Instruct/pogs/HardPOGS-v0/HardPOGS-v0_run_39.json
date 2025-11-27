@@ -1,0 +1,55 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "0": 4,
+        "19": 5,
+        "13": 4,
+        "14": 2,
+        "17": 2,
+        "12": 1,
+        "9": 1,
+        "2": 1,
+        "10": 1,
+        "3": 1,
+        "11": 1,
+        "7": 1,
+        "18": 1
+    },
+    "input_tokens": 35853,
+    "output_tokens": 444,
+    "done": true,
+    "episode_return": 43.0,
+    "num_steps": 25,
+    "failed_candidates": [
+        "<plan>\nBased on the previous observations and the fact that the target node is 18, which is not directly connected to the visible nodes, the plan would be to explore the neighborhood of the current node, try to reach the node 17 which is connected to 14, 9, and 12, and then try to reach the target node from there. \n\nIn order to minimize the chance of going to a dead end, it's essential to check the distance of each neighbor before choosing the next node to visit.\n\nThe high-level plan would be:\n1. Reach node 17\n2. Explore the neighbors of node 17\n3. Try to reach the target node 18\n\nAction: 17"
+    ],
+    "progression": 0.43,
+    "process_num": "ForkProcess-103",
+    "seed": 150841749,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

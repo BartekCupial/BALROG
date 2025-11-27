@@ -1,0 +1,239 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,8,"Based on the observation, I have 2 neighbors: 1 and 8. Since my current node is 5, I know that going to 1 will not bring me closer to the target node 17. However, I also notice that both of my neighbors have more than 1 neighbor and therefore might be a better choice than going to a dead end. I will try to go to the neighbor with the most number of connections which is 5, then from there I'll try to find a path that reaches the target node. To increase my chances of finding a path to the target, I will move to a node that has the most connections. 
+ From my current node 5, I can choose to go to node 8, which has 3 connections. I will try to go to node 8 and then expand from there. To check if my target node 17 is within a k-nearest neighbor radius of 8 I need to get there and check.
+
+Now, I will choose to go to node 8.","
+node: 0, neighbors: [2]
+node: 1, neighbors: [5]
+node: 2, neighbors: [0, 8]
+node: 5, neighbors: [1, 8, 12, 16]
+node: 8, neighbors: [2, 5]
+node: 12, neighbors: [5]
+node: 16, neighbors: [5]
+
+current node: 8, target node: 17",0,False
+1,12,,"
+node: 0, neighbors: [2]
+node: 1, neighbors: [5]
+node: 2, neighbors: [0, 8]
+node: 5, neighbors: [1, 8, 12, 16]
+node: 8, neighbors: [2, 5]
+node: 12, neighbors: [5]
+node: 16, neighbors: [5]
+
+current node: 8, target node: 17",-6.0,False
+2,5,,"
+node: 1, neighbors: [5, 13]
+node: 2, neighbors: [8]
+node: 5, neighbors: [1, 8, 12, 16]
+node: 6, neighbors: [12]
+node: 7, neighbors: [12]
+node: 8, neighbors: [2, 5]
+node: 12, neighbors: [5, 6, 7]
+node: 13, neighbors: [1]
+node: 16, neighbors: [5, 18]
+node: 18, neighbors: [16]
+
+current node: 5, target node: 17",-5,False
+3,12,,"
+node: 1, neighbors: [5]
+node: 5, neighbors: [1, 8, 12, 16]
+node: 6, neighbors: [9, 12]
+node: 7, neighbors: [12]
+node: 8, neighbors: [5]
+node: 9, neighbors: [6]
+node: 12, neighbors: [5, 6, 7]
+node: 16, neighbors: [5]
+
+current node: 12, target node: 17",0,False
+4,7,,"
+node: 5, neighbors: [12]
+node: 6, neighbors: [12]
+node: 7, neighbors: [12]
+node: 12, neighbors: [5, 6, 7]
+
+current node: 7, target node: 17",-5,False
+5,6,,"
+node: 5, neighbors: [12]
+node: 6, neighbors: [12]
+node: 7, neighbors: [12]
+node: 12, neighbors: [5, 6, 7]
+
+current node: 7, target node: 17",-6.0,False
+6,12,,"
+node: 1, neighbors: [5]
+node: 5, neighbors: [1, 8, 12, 16]
+node: 6, neighbors: [9, 12]
+node: 7, neighbors: [12]
+node: 8, neighbors: [5]
+node: 9, neighbors: [6]
+node: 12, neighbors: [5, 6, 7]
+node: 16, neighbors: [5]
+
+current node: 12, target node: 17",0,False
+7,6,,"
+node: 5, neighbors: [12]
+node: 6, neighbors: [9, 12]
+node: 7, neighbors: [12]
+node: 9, neighbors: [6, 11]
+node: 11, neighbors: [9]
+node: 12, neighbors: [5, 6, 7]
+
+current node: 6, target node: 17",0,False
+8,9,,"
+node: 6, neighbors: [9, 12]
+node: 9, neighbors: [6, 11]
+node: 11, neighbors: [9, 14]
+node: 12, neighbors: [6]
+node: 14, neighbors: [11]
+
+current node: 9, target node: 17",0,False
+9,11,,"
+node: 6, neighbors: [9]
+node: 9, neighbors: [6, 11]
+node: 11, neighbors: [9, 14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [14]
+
+current node: 11, target node: 17",0,False
+10,14,,"
+node: 3, neighbors: [17]
+node: 4, neighbors: [17]
+node: 9, neighbors: [11]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [3, 4, 10, 14]
+
+current node: 14, target node: 17",0,False
+11,10,,"
+node: 3, neighbors: [17]
+node: 4, neighbors: [17]
+node: 9, neighbors: [11]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [3, 4, 10, 14]
+
+current node: 14, target node: 17",-6.0,False
+12,"<plan>
+The goal is to reach the target node 17 from the initial node 5 in a partially observable graph with a k-nearest neighbor radius of 2. The allowed actions are integers from 0 to 19, representing the labels of directly connected nodes.
+
+From the initial node 5, I have observed its neighbors as 1, 8, 12, and 16. However, I noticed that the neighbors of node 5 only show connections within the k-nearest neighbor radius of 2.
+
+In episode 1, I chose to go to node 8, which had more connections than node 1. However, from node 8, I only observed node 2 and node 5.
+
+In episode 2, I tried to expand from node 8 to node 5 and then from node 5 to node 12, which had the most connections. However, node 12 only had connections to node 5, node 6, and node 7.
+
+In episode 3, I tried to go from node 5 to node 12 and then from node 12 to node 6 and node 7, but it turned out that node 7 was a dead end.
+
+In episode 4, I went from node 12 to node 5 and then from node 5 to node 8, but I still didn't have a clear path to the target node 17.
+
+In episode 5, I went from node 8 to node 5 and then from node 5 to node 12, which had connections to nodes 5, 6, and 7.
+
+In episode 6, I tried to go from node 12 to node 7 and then from node 7 to node 6.
+
+In episode 7, I went from node 6 to node 9, which had connections to nodes 6 and 11.
+
+In episode 8, I went from node 9 to node 11, which had connections to nodes 9 and 14.
+
+In episode 9, I went from node 11 to node 14, which had connections to nodes 11 and 17.
+
+In episode 10, I went from node 14 to node 10, which had a connection to node 17.
+
+However, since node 10 only has one connection to node 17, it's a dead end.
+
+Therefore, my high-level plan is to:
+
+1. Go from node 14 to node 17 directly, as it's the most straightforward path.
+2. If the path to node 17 is blocked, try to find an alternative path through other nodes.
+3. If all other paths are blocked, go back to node 12 and try to explore other connections.
+
+However, considering the current state of the graph, it seems that going from node 14 to node 10 and then to node 17 is the only viable path.
+
+Based on this plan, I will choose the action to go to node 10.
+
+10",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 13
+
+Observation:
+
+node: 3, neighbors: [17]
+node: 4, neighbors: [17]
+node: 9, neighbors: [11]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [3, 4, 10, 14]
+
+current node: 14, target node: 17",-6.0,False
+13,10,,"
+node: 3, neighbors: [17]
+node: 4, neighbors: [17]
+node: 9, neighbors: [11]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [3, 4, 10, 14]
+
+current node: 14, target node: 17",-6.0,False
+14,14,,"
+node: 3, neighbors: [17]
+node: 4, neighbors: [17]
+node: 9, neighbors: [11]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [3, 4, 10, 14]
+
+current node: 14, target node: 17",-6.0,False
+15,10,,"
+node: 3, neighbors: [17]
+node: 4, neighbors: [17]
+node: 9, neighbors: [11]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [3, 4, 10, 14]
+
+current node: 14, target node: 17",-6.0,False
+16,3,,"
+node: 3, neighbors: [17]
+node: 4, neighbors: [17]
+node: 9, neighbors: [11]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [3, 4, 10, 14]
+
+current node: 14, target node: 17",-6.0,False
+17,10,,"
+node: 3, neighbors: [17]
+node: 4, neighbors: [17]
+node: 9, neighbors: [11]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [3, 4, 10, 14]
+
+current node: 14, target node: 17",-6.0,False
+18,10,,"
+node: 3, neighbors: [17]
+node: 4, neighbors: [17]
+node: 9, neighbors: [11]
+node: 10, neighbors: [17]
+node: 11, neighbors: [9, 14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [3, 4, 10, 14]
+
+current node: 14, target node: 17",-6.0,False
+19,17,,"node: 3, neighbors: [17]
+node: 4, neighbors: [17]
+node: 10, neighbors: [17]
+node: 11, neighbors: [14]
+node: 14, neighbors: [11, 17]
+node: 17, neighbors: [3, 4, 10, 14]
+
+current node: 17, target node: 17
+You have reached the target!",100.0,True

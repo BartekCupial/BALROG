@@ -1,0 +1,53 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "west": 15,
+        "south": 8,
+        "east": 22,
+        "search": 14,
+        "kick": 7,
+        "northwest": 4,
+        "north": 17,
+        "southwest": 12,
+        "open": 1
+    },
+    "input_tokens": 349128,
+    "output_tokens": 2741,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nThe goal is to reach the stairs down. However, the current map doesn't show any stairs down. Upon reviewing the previous observations, I noticed that the current room has a doorway adjacent west. My plan is to move west through the doorway, explore the new area, and try to find the stairs down.\n\nHigh-level plan:\n\n1. Move west through the doorway.\n2. Explore the new area and map it.\n3. Search for the stairs down in the new area.\n\nAction: west",
+        "<plan>My goal is to find the stairs down. However, the current room does not have any visible stairs down, and the northeast passage is blocked by a horizontal wall. In my previous attempts, I tried to find a way through the passage by kicking the wall, but it didn't work.\n\nGiven my current situation, I need to explore other options. I notice that there is a doorway to the west that I haven't explored yet. My plan is to move west through the doorway and map the new room. I will then search for any hidden passages or objects that could help me progress.\n\nOnce I'm in the new room, I will use my senses to identify any potential obstacles or clues that could lead me to the stairs down. I will also consider using my search action to reveal any hidden doors or passages that might be invisible to me.\n\nSince I have an idea of what I want to do, I will move west through the doorway to start exploring the new room.\n\nAction: west"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-49",
+    "seed": 3352044435,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

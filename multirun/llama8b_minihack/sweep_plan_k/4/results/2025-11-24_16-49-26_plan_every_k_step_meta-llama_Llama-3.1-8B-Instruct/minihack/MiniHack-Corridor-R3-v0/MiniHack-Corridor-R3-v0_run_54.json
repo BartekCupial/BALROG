@@ -1,0 +1,59 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 18,
+        "west": 5,
+        "search": 15,
+        "south": 25,
+        "kick": 4,
+        "north": 19,
+        "open": 2,
+        "northwest": 3,
+        "southwest": 7,
+        "southeast": 2
+    },
+    "input_tokens": 358791,
+    "output_tokens": 2505,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "eastnortheast",
+        "<plan>The high-level plan is to access the stairs down. To do this, we need to move through the doorway and search for a way to access the stairs down. Since the doorway is adjacent to the agent's current position, moving through the doorway is the first step. After moving through the doorway, the agent can search for hidden doors or passages that may lead to the stairs down. The final step is to follow the passage or find another way to access the stairs down.\n\nGiven the observations of the horizontal wall near the northeast and northwest, and the dark area near the south, it's likely that there is a passage or door hidden behind the horizontal wall near the northeast and northwest. The agent should search for hidden doors and passages in this area.\n\nThe plan is to move south to access the doorway, and then search for a hidden passage or door in the northeast area.\n\nAction: south",
+        "<plan>The high-level plan is to access the stairs down. To do this, we need to move through the doorway and then head east to reach the stairs up, which are located eastnortheast of the agent's current position. Since the agent is currently on a horizontal wall adjacent to a doorway, moving through the doorway is the first step. After moving through the doorway, the agent can then head east to reach the stairs up and explore the northeast room. The northeast room corner is far northeast of the agent's current position, so we can expect to find the stairs down near the northeast wall. To summarize, the plan is to move through the doorway, head east, and explore the northeast room to find the stairs down.\n\nAction: east",
+        "eastnortheast",
+        "<plan> \nThe high-level plan is to access the stairs down, which are located adjacent west of the current position. The current position is blocked by a horizontal wall and a vertical wall, but there is a horizontal open door adjacent southeast, which provides an alternative path. To access the stairs down, we can move through the horizontal open door and then head west. The east side of the map is now blocked by a vertical wall, so moving through the horizontal open door is the most direct path to the stairs down. \n\nAction: southeast",
+        "",
+        "kick southeast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-77",
+    "seed": 3781943133,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 8,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

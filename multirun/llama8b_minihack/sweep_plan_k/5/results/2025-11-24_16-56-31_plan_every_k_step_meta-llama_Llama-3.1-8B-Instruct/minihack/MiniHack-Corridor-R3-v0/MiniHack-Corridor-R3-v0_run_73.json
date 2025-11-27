@@ -1,0 +1,59 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 27,
+        "south": 19,
+        "east": 20,
+        "search": 10,
+        "west": 6,
+        "southwest": 14,
+        "northwest": 3,
+        "northeast": 1
+    },
+    "input_tokens": 324725,
+    "output_tokens": 1324,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nYour goal is to reach the stairs down. The current observation shows a horizontal wall blocking the way north, northeast, southeast, south, southwest, and northwest. However, there is an open space west of the current position, and a vertical wall far east and west. There is also a closed door far westsouthwest. The task involves navigating through the level to find the stairs down.\n\nGiven the elven priest's abilities as a chaotic character, it's possible that the current environment may pose a challenge due to its vertical orientation. The key action here will be to find a path to the stairs down.\n\nTo achieve the goal, I will start by searching for hidden doors and passages around the current position to determine the potential path. After that, the plan will evolve based on the observations of the search action.\n\nAction: search",
+        "<plan>\nThe goal is to reach the stairs down. After reviewing the previous observations, the only way to proceed is to move east towards the stairs up adjacent to the current east position, then navigate around it. Since there's a closed door far westsouthwest, we should not attempt to go that way.\n\nThe plan involves moving east towards the stairs up, then west to approach the stairs down from the correct angle.\n\nAction: east",
+        "up",
+        "up",
+        "down",
+        "up",
+        "up",
+        "up",
+        "up"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-86",
+    "seed": 645595006,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

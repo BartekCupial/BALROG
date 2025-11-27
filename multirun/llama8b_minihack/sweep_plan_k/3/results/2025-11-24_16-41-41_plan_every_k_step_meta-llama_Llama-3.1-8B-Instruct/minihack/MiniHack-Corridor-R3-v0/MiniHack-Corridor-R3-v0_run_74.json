@@ -1,0 +1,57 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 15,
+        "search": 18,
+        "east": 21,
+        "south": 12,
+        "kick": 9,
+        "open": 5,
+        "southwest": 9,
+        "northwest": 9,
+        "northeast": 1,
+        "west": 1
+    },
+    "input_tokens": 361823,
+    "output_tokens": 2317,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "kick southeast",
+        "<plan>\nBased on my previous observations and the current situation, my plan is to try and find an alternative way to open the vertical closed door. Since kicking it didn't work and I'm still relatively healthy, I will attempt to open the door through a doorway that is adjacent to the northeast room corner. I will first move to the doorway and then try to open it. If this doesn't work, I will need to come up with a new plan, but for now, this seems like the most promising approach.\n\nAction: northwest",
+        "eastnortheast",
+        "westsouthwest",
+        "westnorthwest"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-52",
+    "seed": 1586159355,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

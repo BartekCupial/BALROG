@@ -1,0 +1,54 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 19,
+        "east": 21,
+        "south": 7,
+        "search": 26,
+        "southwest": 4,
+        "west": 5,
+        "kick": 7,
+        "northwest": 8,
+        "open": 3
+    },
+    "input_tokens": 381244,
+    "output_tokens": 1333,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "kick northeast",
+        "kick north",
+        "<plan>Based on the observations and the goal to reach the stairs down, a high-level plan is to:\n\n1. Explore the area to the north of the current position to find a way to pass the vertical closed door.\n2. Once a path is found, proceed east to explore the area behind the dark areas.\n3. Continue moving down to reach the stairs down, following the path that is discovered.\n\nThe reasoning behind this plan is that the vertical closed door is currently blocking the path north, but by searching and examining the area, it may be possible to find a hidden passage or another way to pass the door. Once a path is found, moving east will allow the agent to explore the area behind the dark areas, which may contain useful items or lead to the stairs down.\n\nNext action: north"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-90",
+    "seed": 4202318044,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

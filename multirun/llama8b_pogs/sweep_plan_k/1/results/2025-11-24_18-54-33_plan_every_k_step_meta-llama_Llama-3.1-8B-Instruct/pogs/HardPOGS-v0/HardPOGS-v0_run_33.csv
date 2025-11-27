@@ -1,0 +1,69 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,7,"Our primary goal is to reach the target node 3. However, it is currently not visible due to the k-nearest neighbor radius of 2. We can see its neighbors indirectly through the connections of other visible nodes. We will first attempt to find a path to node 3 by moving to a node that has the most connections and potential paths. Node 13 has the most connections, but it is the current node, so we will look for the next best option. Node 13 is connected to nodes 2, 4, and 6. We can try moving to node 6, which is connected to node 19, and potentially has a path to node 3.","
+node: 2, neighbors: [7, 8, 9, 13]
+node: 4, neighbors: [13]
+node: 6, neighbors: [13, 19]
+node: 7, neighbors: [2]
+node: 8, neighbors: [2]
+node: 9, neighbors: [2]
+node: 13, neighbors: [2, 4, 6]
+node: 19, neighbors: [6]
+
+current node: 13, target node: 3",-6.0,False
+1,6,,"
+node: 2, neighbors: [13]
+node: 4, neighbors: [13]
+node: 6, neighbors: [13, 19]
+node: 12, neighbors: [19]
+node: 13, neighbors: [2, 4, 6]
+node: 19, neighbors: [6, 12]
+
+current node: 6, target node: 3",0,False
+2,19,,"
+node: 3, neighbors: [12]
+node: 6, neighbors: [13, 19]
+node: 12, neighbors: [3, 19]
+node: 13, neighbors: [6]
+node: 19, neighbors: [6, 12]
+
+current node: 19, target node: 3",0,False
+3,"<plan>
+Our high-level plan to reach the target node 3 involves the following steps:
+- Move to node 13, which has the most connections and is closest to node 3.
+- From node 13, move to node 6, which is also connected to node 19 and potentially has a path to node 3.
+- From node 6, move to node 19, which is directly connected to node 12 and has a direct connection to node 3.
+- Finally, move from node 19 to node 12, which is directly connected to the target node 3.
+
+Our goal is to take the shortest path possible while exploring the partially observable graph. We will continue to explore and adjust our plan based on the observed graph.
+
+Our next action is to move to node 12 is not viable as it only has two connections, both being the target 3 and node 19, so we try one of those nodes. 
+We could move to node 3 but it has no more connections.
+So our next move is to go back to the node 19 as moving to node 12 is going to lead us to 2 nodes where you cant go to either of those nodes so the only option is going back and then move elsewhere.  Then try to get to node 12 from a different node that we could have instead of 19.",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 1
+
+Observation:
+
+node: 3, neighbors: [12]
+node: 6, neighbors: [13, 19]
+node: 12, neighbors: [3, 19]
+node: 13, neighbors: [6]
+node: 19, neighbors: [6, 12]
+
+current node: 19, target node: 3",-6.0,False
+4,12,,"
+node: 0, neighbors: [3]
+node: 3, neighbors: [0, 12]
+node: 6, neighbors: [19]
+node: 12, neighbors: [3, 19]
+node: 19, neighbors: [6, 12]
+
+current node: 12, target node: 3",0,False
+5,3,,"node: 0, neighbors: [3, 5]
+node: 3, neighbors: [0, 12]
+node: 5, neighbors: [0]
+node: 12, neighbors: [3, 19]
+node: 19, neighbors: [12]
+
+current node: 3, target node: 3
+You have reached the target!",100.0,True

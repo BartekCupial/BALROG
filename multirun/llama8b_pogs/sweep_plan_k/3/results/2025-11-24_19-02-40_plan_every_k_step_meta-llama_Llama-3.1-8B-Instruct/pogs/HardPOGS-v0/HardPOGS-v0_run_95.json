@@ -1,0 +1,46 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "1": 1,
+        "8": 1,
+        "2": 1,
+        "6": 1
+    },
+    "input_tokens": 2916,
+    "output_tokens": 171,
+    "done": true,
+    "episode_return": 94.0,
+    "num_steps": 4,
+    "failed_candidates": [
+        "<plan>\nTo reach the target node 6, which is not directly connected to my current node 4, I need to navigate through the graph. \n\nFirst, I will move towards node 8, which is directly connected to my current node 4, and has more neighbors, increasing the chances of finding a path to the target node 6. \n\nAfter reaching node 8, I will then plan my next move from there to try and reach node 6 or find a new path to it.\n\nThe critical insight here is that node 8 has 5 neighbors, which are not dead ends, and one of them might be connected to node 6. \n\nOverall, my goal is to reach node 8 and then explore its neighbors for the best path to node 6.\n\nAction: 8"
+    ],
+    "progression": 0.94,
+    "process_num": "ForkProcess-55",
+    "seed": 2591375221,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

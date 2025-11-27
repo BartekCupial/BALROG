@@ -1,0 +1,61 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 18,
+        "northeast": 1,
+        "north": 16,
+        "southwest": 10,
+        "northwest": 6,
+        "search": 21,
+        "south": 7,
+        "west": 12,
+        "open": 3,
+        "kick": 6
+    },
+    "input_tokens": 341154,
+    "output_tokens": 3348,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "take g",
+        "<plan>Given my current situation and the goal to reach the stairs down, my high-level plan is as follows:\n1. I need to recover my health since I'm low on hit points. I can do this by drinking a potion of extra healing from my inventory.\n2. Once I've recovered my health, I'll search the area to see if there's a hidden door or passage that could lead me to the stairs down.\n3. If I don't find a hidden door or passage, I'll try to find a way around the vertical wall or search for a new path.\n\nAction: drink",
+        "g",
+        "<plan>My high-level plan is as follows:\n1. Since I've recovered my health, I'll focus on finding a way to reach the stairs down. Given the layout of the map, I notice that the stairs down are located east of the current position, but there's a vertical wall blocking the direct path.\n2. My plan is to search the area carefully to find a hidden door or passage that could lead me to the stairs down. I'll examine the walls, floors, and ceilings in the current room to see if I can find any clues.\n3. If I don't find a hidden door or passage, I'll try to find a way around the vertical wall or search for a new path.\n\nAction: search",
+        "<plan>\nMy high-level plan to complete the task is as follows:\n\nSince the stairs down are located near the east, but I'm currently blocked by a vertical wall, my goal is to find a way around this wall. After reviewing my observations, I notice that I have a blessed scroll of magic mapping (h) in my inventory, which could be useful for mapping out the area and potentially finding a hidden passage.\n\nMy plan is to use the scroll of magic mapping to gain a better understanding of the layout of the level and the location of the stairs down. This will allow me to make a more informed decision about how to proceed and potentially find a way around the vertical wall.\n\nAction: f (use the scroll of magic mapping)",
+        "h",
+        "h",
+        "h",
+        "<plan>\nMy high-level plan is as follows:\n\nSince I've been blocked by vertical walls, I've decided to try and find a passage or door to the southeast, where I can access the stairs down. The map shows that the southeast corner is nearby, so I'll try to make my way there. I can then use the scroll of magic mapping to see if I can find any hidden doors or passages that can lead me to the stairs down.\n\nAction: southeast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-41",
+    "seed": 2903650490,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 4,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

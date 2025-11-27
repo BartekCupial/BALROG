@@ -1,0 +1,57 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "southwest": 7,
+        "south": 34,
+        "north": 19,
+        "east": 15,
+        "northwest": 10,
+        "search": 12,
+        "kick": 1,
+        "west": 2
+    },
+    "input_tokens": 350529,
+    "output_tokens": 1798,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "kick southwest",
+        "southsouthwest",
+        "southsoutheast",
+        "<plan>I have reviewed my previous observations and plan, and I have come up with a new plan to complete the task of reaching the stairs down. Here's my plan:\n\n1. Since I am currently adjacent to the stairs up, my goal is to move down the stairs. However, to do that, I need to move up the stairs first.\n2. I will move up the stairs, and then I will be able to see what's on the next level, including the location of the stairs down.\n3. Once I reach the next level, I will search the area to see if I can find the stairs down.\n4. If I find the stairs down, I will move down the stairs to complete the task.\n\nConsidering my current location and the information I have, I will choose the action to move up the stairs. I will move up the stairs to the east, since the stairs up are adjacent to my current location.\n\nThe action is: east",
+        "southsoutheast",
+        "southsoutheast",
+        "southsoutheast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-68",
+    "seed": 1382551294,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 8,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

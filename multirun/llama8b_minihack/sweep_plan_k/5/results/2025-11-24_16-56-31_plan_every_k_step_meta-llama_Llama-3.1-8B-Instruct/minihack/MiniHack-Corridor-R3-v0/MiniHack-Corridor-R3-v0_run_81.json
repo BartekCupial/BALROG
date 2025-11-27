@@ -1,0 +1,60 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "southwest": 11,
+        "north": 18,
+        "east": 15,
+        "kick": 8,
+        "search": 19,
+        "northwest": 8,
+        "open": 1,
+        "south": 19,
+        "west": 1
+    },
+    "input_tokens": 337895,
+    "output_tokens": 1420,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan> \nTo complete the task, my goal is to reach the stairs down. Based on the map, the stairs down appear to be located far eastnortheast, but there's a vertical closed door blocking the path. Initially, I was trying to move towards the closed door and search for hidden doors or passages. However, it seems that the path towards the stairs down is not directly accessible. \n\nMy revised plan is to find an alternative route to the stairs down by searching for hidden passages or doors in the adjacent areas, especially in the northwest direction where there are no walls blocking the way. If no alternative route is found, I will try to open the closed door or kick it to clear the path.\n\nNext action: search",
+        "eastnortheast",
+        "eastnortheast",
+        "eastnortheast",
+        "eastnortheast",
+        "eastnortheast",
+        "<plan>I need to find a way to access the stairs down. The stairs up is adjacent to the south, but I'm not sure if that's relevant to finding the stairs down. I've been trying to open or kick the closed door and searching for hidden doors and passages, but so far, I haven't made any progress. Given the layout of the room, it seems like I need to move south to get closer to the stairs down. However, I'm stuck with a horizontal wall in the way. My next move should be to search the room again, looking for any hidden doors or passages that I might have missed.\n\naction: search",
+        "eastnortheast",
+        "kick east"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-96",
+    "seed": 4263506207,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

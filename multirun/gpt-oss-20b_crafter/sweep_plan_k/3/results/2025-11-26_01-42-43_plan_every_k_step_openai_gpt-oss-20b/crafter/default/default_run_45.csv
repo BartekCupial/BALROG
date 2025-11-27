@@ -1,0 +1,2676 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,Move North,"1. Move North repeatedly until reaching the tree that is 7 steps to the northeast.  
+2. Use the ""Do"" action in front of the tree to harvest wood.  
+3. With wood collected, place a table in front of the agent.  
+4. Craft a wood pickaxe using the table and collected wood.  
+5. Use the wood pickaxe to mine adjacent stone blocks, collecting stone.  
+6. Place the collected stone block in front of the agent.  
+7. Continue mining to find coal and iron ores; collect both.  
+8. Place a furnace block near the mined resources.  
+9. Craft an iron pickaxe using the furnace, wood, coal, and iron ore.  
+10. Use the iron pickaxe to mine further stone, coal, and iron to support higher-level tools.  
+11. Investigate the surrounding area for a lake to collect drink water.  
+12. Search for and kill a zombie to achieve the ""Defeat Zombie"" achievement.  
+13. Search for and kill a skeleton to achieve the ""Defeat Skeleton"" achievement.  
+14. Locate a cow and use ""Do"" to eat it, fulfilling ""Eat Cow"".  
+15. Place a plant block and consume it to satisfy ""Place Plant"" and ""Eat Plant"".  
+16. Keep mining deeper layers in pursuit of diamond ore to achieve ""Collect Diamond"".  
+17. Make sure to rest (""Sleep"") when energy drops, ensuring the ""Wake Up"" achievement.  
+18. Throughout the process, respond to any new opportunities for the remaining achievements such as “Collect Sampling” or “Collect Drink” when appropriate.","You see:
+- water 7 steps to your north-east
+- grass 1 steps to your west
+- tree 6 steps to your north-east
+
+You face grass at your front.",0.0,False
+1,Move East,,"You see:
+- water 6 steps to your north-east
+- grass 1 steps to your west
+- sand 5 steps to your north-east
+- tree 5 steps to your north-east
+
+You face grass at your front.",0.0,False
+2,Move West,,"You see:
+- water 7 steps to your north-east
+- grass 1 steps to your west
+- tree 6 steps to your north-east
+
+You face grass at your front.",0.0,False
+3,Move North,,"You see:
+- water 6 steps to your north-east
+- grass 1 steps to your west
+- tree 5 steps to your north-east
+- cow 7 steps to your north-west
+
+You face grass at your front.",0.0,False
+4,Move North,,"You see:
+- water 5 steps to your north-east
+- grass 1 steps to your west
+- sand 7 steps to your north-east
+- tree 4 steps to your east
+- cow 6 steps to your north-west
+
+You face grass at your front.",0.0,False
+5,Move East,,"You see:
+- water 4 steps to your north-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- tree 3 steps to your east
+
+You face grass at your front.",0.0,False
+6,,"Move East twice to reach the tree, Do to collect wood, Move West once to a grassy spot, Place Table, Make Wood Pickaxe. Next, explore for stone: Move South and then West/West to reach a stone location, Mine stone with the pickaxe, Place Stone. Then, search for a cow 6 steps NW: Move West, North, North to meet cow, Do to eat cow. Gather water by moving to the water 4 steps NE and Do to collect drink. Place a Plant by moving to open space and Place Plant. Eat the plant. Progress deeper: Mine coal nearby, iron ore, water again for drinking. Build Furnace by placing it near the resources, craft Iron Pickaxe, and then Mine deeper for a diamond, achieving Collect Diamond. Rest if energy low. The plan will systematically earn all achievements. 
+
+Move East","
+
+Your previous output did not contain a valid action. Defaulted to action: Noop
+
+Observation:
+You see:
+- water 4 steps to your north-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- tree 3 steps to your east
+
+You face grass at your front.",0.0,False
+7,Move East,,"You see:
+- water 3 steps to your north-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+- tree 2 steps to your east
+
+You face grass at your front.",0.0,False
+8,Move East,,"You see:
+- water 2 steps to your north-east
+- grass 1 steps to your west
+- sand 3 steps to your south-east
+- tree 1 steps to your east
+
+You face tree at your front.",0.0,False
+9,Do,,"You see:
+- water 2 steps to your north-east
+- grass 1 steps to your west
+- sand 3 steps to your south-east
+
+You face grass at your front.",1.0,False
+10,Place Table,,"You see:
+- water 2 steps to your north-east
+- grass 1 steps to your west
+- sand 3 steps to your south-east
+
+You face grass at your front.",0.0,False
+11,Make Wood Pickaxe,,"You see:
+- water 2 steps to your north-east
+- grass 1 steps to your west
+- sand 3 steps to your south-east
+
+You face grass at your front.",0.0,False
+12,Make Wood Pickaxe,"Goal: achieve all 22 achievements by systematically gathering resources, crafting tools, defeating mobs, and managing the environment.
+
+1. **Wood Pickaxe & Stone**
+   - Craft a Wood Pickaxe (needs table and wood).
+   - Use it to mine a Stone block.
+   - Place the Stone block.
+
+2. **Stone Pickaxe & Stone Sword**
+   - Craft a Stone Pickaxe (needs table, wood, stone).
+   - Use it to craft a Stone Sword (needs table, wood, stone).
+
+3. **Cow & Plant**
+   - Locate a Cow (move northwest until seen) and eat it.
+   - Place a Plant (near the table or a clear spot).
+   - Eat the Plant.
+
+4. **Furnace, Coal, Iron, Diamond**
+   - Build a Furnace (needs table).
+   - Find Coal (explore); collect and fire in Furnace.
+   - Collect Iron ore and smelt to Iron ingot (use Furnace).
+   - Use Iron Pickaxe (crafted later) to mine a Diamond.
+
+5. **Mobs & Victory**
+   - Defeat a Zombie.
+   - Defeat a Skeleton.
+   - Sleep to reset energy (Wake Up achievement).
+
+6. **Collect Water & Sampling**
+   - Find a water source; Do to drink.
+   - Collect Sampling (any sample dig or object; placeholder action when found).
+
+Implementation Outline:
+- Start by crafting the Wood Pickaxe if not already made.
+- Explore north and west systematically, staying close to the table for crafting.
+- Keep inventory items in check: wood, stone, coal, iron, diamond, food, drink, energy.
+- After major resource milestones, craft next-tier tools and proceed.
+- Continuous loop: find mobs, kill, collect loot, return to table to craft.
+
+The plan will be iteratively refined as new observations appear; each action follows one of the allowed verbally listed actions and will be selected based on proximity, resource needs, and achievement order.","You see:
+- water 2 steps to your north-east
+- grass 1 steps to your west
+- sand 3 steps to your south-east
+
+You face grass at your front.",0.0,False
+13,Make Wood Pickaxe,,"You see:
+- water 2 steps to your north-east
+- grass 1 steps to your west
+- sand 3 steps to your south-east
+
+You face grass at your front.",0.0,False
+14,Make Wood Pickaxe,,"You see:
+- water 2 steps to your north-east
+- grass 1 steps to your west
+- sand 3 steps to your south-east
+
+You face grass at your front.",0.0,False
+15,Make Wood Pickaxe,,"You see:
+- water 2 steps to your north-east
+- grass 1 steps to your west
+- sand 3 steps to your south-east
+
+You face grass at your front.",0.0,False
+16,Do,,"You see:
+- water 2 steps to your north-east
+- grass 1 steps to your west
+- sand 3 steps to your south-east
+
+You face grass at your front.",0.0,False
+17,Move West,,"You see:
+- water 3 steps to your north-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+
+You face grass at your front.",0.0,False
+18,Place Table,"Step 1: Place a table at your current location to unlock crafting.  
+Step 2: Craft a Wood Pickaxe using the table and your single wood block.  
+Step 3: Use the Wood Pickaxe to mine a stone block (move until stone is front, then Do).  
+Step 4: Place the mined stone to satisfy the “Place Stone” achievement.  
+Step 5: Craft a Stone Pickaxe (require table, wood, stone).  
+Step 6: Craft a Stone Sword (require table, wood, stone).  
+Step 7: Locate the nearest cow (move northwest or wherever the cow is visible) and Do to eat it, achieving “Eat Cow”.  
+Step 8: Go to a suitable spot, Place Plant to satisfy “Place Plant”.  
+Step 9: Do to eat the plant, achieving “Eat Plant”.  
+Step 10: Place a Furnace to unlock smelting.  
+Step 11: Use the Stone Pickaxe to mine iron ore and coal ore (move until each is front, then Do).  
+Step 12: Smelt coal and iron in the Furnace (Do on the furnace when it contains the ore).  
+Step 13: Once an Iron Pickaxe is crafted (table, furnace, wood, coal, iron), mine a diamond ore to collect diamond.  
+Step 14: Do on a water source to drink, achieving “Collect Drink”.  
+Step 15: In combat zones, locate and defeat a zombie (Do to hit) and a skeleton (Do to hit), achieving “Defeat Zombie” and “Defeat Skeleton”.  
+Step 16: When your energy is below maximum (decrease by ongoing actions), Sleep to get “Wake Up”.  
+Step 17: Collect any sample material dropped by mobs or found in the world to satisfy “Collect Sampling”.  
+Step 18: Verify that all 22 achievements have been completed.  
+The plan should be executed step‑by‑step, checking observations after each action and adjusting the next move accordingly.  
+After completing the plan, you will have gathered wood, stone, coal, iron, diamond, eaten food, drunk water, defeated mobs, slept, and collected all required items, unlocking every listed achievement.  
+
+This plan covers every objective in a logical order, using only the permitted actions and the resources available in the game environment.  
+
+Next action: Place Table.","You see:
+- water 3 steps to your north-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+
+You face grass at your front.",0.0,False
+19,Make Wood Pickaxe,,"You see:
+- water 3 steps to your north-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+- cow 5 steps to your north-west
+
+You face grass at your front.",0.0,False
+20,Make Wood Pickaxe,,"You see:
+- water 3 steps to your north-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+- cow 5 steps to your north-west
+
+You face grass at your front.",0.0,False
+21,Place Table,,"You see:
+- water 3 steps to your north-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+
+You face grass at your front.",0.0,False
+22,Place Table,,"You see:
+- water 3 steps to your north-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+
+You face grass at your front.",0.0,False
+23,Make Wood Pickaxe,,"You see:
+- water 3 steps to your north-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+
+You face grass at your front.",0.0,False
+24,Move North,"Objective: Complete all 22 achievements by systematically gathering resources, crafting tools, interacting with wildlife, and defeating mobs while managing the player’s health, fatigue, and inventory.
+
+High-Level Steps:
+1. **Explore to locate resources** – Move northward where trees, rocks, and potentially a built table may appear.
+2. **Collect Wood** – Use the “Do” action on any visible tree to acquire wood blocks until one or more are stored.
+3. **Establish a crafting station** – If a table is present in the environment, use “Place Table” or, if the table block is available in inventory, “Place Table” at the current location to unlock crafting options.
+4. **Craft a Wood Pickaxe** – With a table nearby, run “Make Wood Pickaxe” to obtain a basic mining tool.
+5. **Mine Stone and Tools** – Mine stone blocks (using “Do” on stone) to satisfy “Collect Stone”, then place them with “Place Stone”. Use the pickaxe to mine further stone and potentially craft a Stone Pickaxe and Stone Sword.
+6. **Defeat prey and gather food** – Move toward the cow at 5 steps NW, use “Do” to eat, achieving “Eat Cow” and replenishing food. Use “Do” on grass or plants to eat and satisfy “Eat Plant” and “Collect Sampling”.
+7. **Build a Furnace** – Collect coal (nearby) and use the table to craft “Place Furnace”.
+8. **Smelt Iron and Coal** – Mine iron ores and coal using the Stone Pickaxe; smelt in the furnace to obtain iron ingots and more coal.
+9. **Craft Iron Tools** – With the furnace, craft “Make Iron Pickaxe” and “Make Iron Sword”.
+10. **Defeat hostile mobs** – Use the Iron Sword to defeat a zombie and a skeleton, achieving “Defeat Zombie” and “Defeat Skeleton”.
+11. **Gather Diamonds** – Mine diamond ore with the Iron Pickaxe; collect the diamond for the final achievement.
+12. **Collect Drink** – Use “Do” on the water source to drink, fulfilling “Collect Drink”.
+13. **Recharge Energy** – When energy drops below maximum, use “Sleep” to awaken, completing “Sleep/Wake Up” cycle.
+14. **Place Plants** – Use “Place Plant” around a suitable area to fulfill the planting achievement.
+15. **Verify and repeat** – Continuously check observation and inventory until all 22 achievements are earned.
+
+The plan prioritizes learning the environment, securing essential crafting components, and methodically addressing each achievement with the tools available.  
+
+Time distance: The next move is to advance north, as that is the most likely direction to encounter trees, rocks, or hidden structures necessary for early steps.","You see:
+- water 2 steps to your east
+- grass 1 steps to your west
+- sand 4 steps to your north-east
+
+You face grass at your front.",0.0,False
+25,Move North,,"You see:
+- water 2 steps to your east
+- grass 1 steps to your west
+- sand 3 steps to your north-east
+- tree 4 steps to your north-west
+
+You face grass at your front.",0.0,False
+26,Place Table,,"You see:
+- water 2 steps to your east
+- grass 1 steps to your west
+- sand 3 steps to your north-east
+- tree 4 steps to your north-west
+
+You face grass at your front.",0.0,False
+27,Move West,,"You see:
+- water 3 steps to your east
+- grass 1 steps to your west
+- sand 4 steps to your north-east
+- tree 3 steps to your north
+- cow 6 steps to your north-west
+
+You face grass at your front.",0.0,False
+28,Move North,,"You see:
+- water 4 steps to your south-east
+- grass 1 steps to your west
+- sand 3 steps to your east
+- tree 2 steps to your north
+- cow 5 steps to your north-west
+
+You face grass at your front.",0.0,False
+29,Move North,,"You see:
+- water 5 steps to your south-east
+- grass 1 steps to your west
+- sand 3 steps to your east
+- tree 1 steps to your north
+- cow 6 steps to your north-west
+
+You face tree at your front.",0.0,False
+30,Do,"1. Collect wood from the tree at the front by using Do. 2. Place a table next to the tree if not already present to enable crafting. 3. Use Make Wood Pickaxe to craft a basic tool. 4. Mine stone blocks with the pickaxe and collect them. 5. Place stone, then craft stone pickaxe and sword. 6. Defeat the cow for food and the nearby mob threats (zombie, skeleton) using swords. 7. Smelt iron and coal in a furnace to obtain iron for higher tools. 8. Finally mine and collect diamond. 9. Ensure to hydrate from the water and sleep when energy low. 10. Place plants to complete all achievements. This sequence will achieve all 22 milestones while maintaining health, food and energy. The first immediate action is to Do on the tree to gain more wood.","You see:
+- water 5 steps to your south-east
+- grass 1 steps to your west
+- sand 3 steps to your east
+- tree 2 steps to your north
+- cow 5 steps to your north-west
+
+You face grass at your front.",0.0,False
+31,Move North,,"You see:
+- water 6 steps to your south-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+- tree 1 steps to your north
+- cow 4 steps to your north-west
+
+You face tree at your front.",0.0,False
+32,Do,,"You see:
+- water 6 steps to your south-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+- tree 2 steps to your west
+- cow 5 steps to your north-west
+
+You face grass at your front.",0.0,False
+33,Move West,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your north
+- sand 5 steps to your south-east
+- tree 1 steps to your west
+- cow 4 steps to your west
+
+You face tree at your front.",0.0,False
+34,Place Table,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your north
+- sand 5 steps to your south-east
+- tree 1 steps to your west
+- cow 3 steps to your west
+
+You face tree at your front.",0.0,False
+35,Do,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- tree 3 steps to your north-east
+- cow 3 steps to your west
+
+You face grass at your front.",0.0,False
+36,"<plan>1. Craft a wood pickaxe using the existing table and 2 wood. 2. Use the pickaxe to mine stone blocks once you encounter stone. 3. Place a stone near the table and craft a stone pickaxe and sword. 4. Hunt and kill the cow to satisfy “Eat Cow” and use the obtained meat for eating. 5. Approach and date water lake, perform Do to drink and collect the “Collect Drink” achievement, then “Place Plant” on a nearby grass tile and “Eat Plant” later. 6. Find and defeat a zombie and a skeleton to earn those achievements. 7. Build a furnace with the table and use it to smelt iron, coal, and print the “Collect Iron”, “Collect Coal”. 8. Use the iron pickaxe to mine diamond to satisfy “Collect Diamond”. 9. If energy drops, Sleep, and Wake Up when needed. 10. Continuously track inventory and ensure all achievements are triggered as items are gathered or enemies defeated. 11. Follow the plan systematically, moving towards required resources or enemies before executing the appropriate action. 12. Repeat “Do” until each collective action triggers the achievement.<plan>
+Make Wood Pickaxe",,"
+
+Your previous output did not contain a valid action. Defaulted to action: Noop
+
+Observation:
+You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- tree 3 steps to your north-east
+- cow 3 steps to your west
+
+You face grass at your front.",0.0,False
+37,Make Wood Pickaxe,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- tree 3 steps to your north-east
+- cow 2 steps to your west
+
+You face grass at your front.",0.0,False
+38,Make Wood Pickaxe,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- tree 3 steps to your north-east
+- cow 3 steps to your west
+
+You face grass at your front.",0.0,False
+39,Make Wood Pickaxe,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- tree 3 steps to your north-east
+- cow 3 steps to your west
+
+You face grass at your front.",0.0,False
+40,Place Table,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your north
+- sand 5 steps to your south-east
+- tree 3 steps to your north-east
+- table 1 steps to your west
+- cow 3 steps to your west
+
+You face table at your front.",1.0,False
+41,Move North,,"You see:
+- grass 1 steps to your west
+- sand 6 steps to your south-east
+- tree 2 steps to your east
+- table 2 steps to your south-west
+- cow 4 steps to your south-west
+
+You face grass at your front.",0.0,False
+42,Make Wood Pickaxe,"1. Make a Wood Pickaxe using the table and 2 wood. 2. Use the new pickaxe to mine stone blocks that may be nearby (check for stone in surroundings). 3. Place a Stone and then craft Stone Pickaxe and Stone Sword. 4. Move toward the Cow and attack it to eat meat (Do when facing Cow). 5. Move toward the water source and Do to drink. 6. Place a Plant on a grass tile and Eat Plant. 7. After having tools, explore for Zombie and Skeleton mobs, use the sword to defeat them. 8. Gather iron and coal, build a Furnace if not already, smelt them, and craft Iron Pickaxe and Iron Sword. 9. Mine Diamond for the final achievement. 10. Monitor health, food, and energy; Sleep if below max. 11. Repeat necessary movements and actions until all 22 achievements are completed.","You see:
+- grass 1 steps to your west
+- sand 6 steps to your south-east
+- tree 2 steps to your east
+- table 2 steps to your south-west
+- cow 4 steps to your south-west
+
+You face grass at your front.",1.0,False
+43,Move South,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your north
+- sand 5 steps to your south-east
+- tree 3 steps to your north-east
+- table 1 steps to your west
+- cow 3 steps to your west
+
+You face grass at your front.",0.0,False
+44,Move West,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your north
+- sand 5 steps to your south-east
+- tree 3 steps to your north-east
+- table 1 steps to your west
+- cow 4 steps to your north-west
+
+You face table at your front.",0.0,False
+45,Move North,,"You see:
+- grass 1 steps to your west
+- sand 6 steps to your south-east
+- tree 2 steps to your east
+- table 2 steps to your south-west
+- cow 3 steps to your west
+
+You face grass at your front.",0.0,False
+46,Move West,,"You see:
+- grass 1 steps to your west
+- tree 3 steps to your east
+- table 1 steps to your south
+- cow 2 steps to your west
+
+You face grass at your front.",0.0,False
+47,Move West,,"You see:
+- grass 1 steps to your north
+- tree 4 steps to your east
+- table 2 steps to your south-east
+- cow 1 steps to your west
+
+You face cow at your front.",0.0,False
+48,Move East,"We currently have a wood pickaxe and a table. We need more wood to use the table for crafting stone tools and eventually iron tools. The remaining achievement list includes collecting wood, placing a stone, making stone and iron pickaxes and swords, defeating mobs, eating cow, etc. The quickest next step is to collect the tree to gather more wood. The tree is 4 steps east from our current position. We are facing a cow in front, so moving east will reduce distance to the tree. After getting enough wood, we can use the table to craft a stone pickaxe (requires wood and stone). Before that, we should also get stone by mining nearby. If stone is available in the surrounding, we can craft stone pickaxe immediately. Once we have more wood and stone, we can approach the cow to eat it and achieve the “Eat Cow” achievement. After that, we can place a stone and then craft stone pickaxe. Next, we would hunt in the region to defeat zombie and skeleton. Later, we will collect iron and coal from ore nodes and build a furnace to smelt them, and then craft iron pickaxe and sword. Finally, we can mine diamond. For now, the first concrete action is to move east toward the tree to gather more wood.","You see:
+- grass 1 steps to your west
+- tree 3 steps to your east
+- table 1 steps to your south
+- cow 2 steps to your west
+
+You face grass at your front.",0.0,False
+49,Move East,,"You see:
+- grass 1 steps to your west
+- sand 6 steps to your south-east
+- tree 2 steps to your east
+- table 2 steps to your south-west
+- cow 3 steps to your west
+
+You face grass at your front.",0.0,False
+50,Move East,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- tree 1 steps to your east
+- table 3 steps to your south-west
+- cow 5 steps to your south-west
+
+You face tree at your front.",0.0,False
+51,Do,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- tree 2 steps to your north-east
+- table 3 steps to your south-west
+- cow 5 steps to your south-west
+
+You face grass at your front.",0.0,False
+52,Move North,,"You see:
+- grass 1 steps to your west
+- sand 6 steps to your south-east
+- tree 1 steps to your east
+- table 4 steps to your south-west
+- cow 6 steps to your south-west
+
+You face grass at your front.",0.0,False
+53,Move East,,"You see:
+- grass 1 steps to your west
+- sand 6 steps to your south-east
+- tree 1 steps to your east
+- table 4 steps to your south-west
+- cow 6 steps to your south-west
+
+You face tree at your front.",0.0,False
+54,Do,"Goal: Obtain all 22 achievements by collecting resources, crafting tools, defeating mobs, eating food, and building structures.
+
+High‑level steps:
+
+1. **Collect Wood**  
+   • Do at the tree to harvest it.  
+   • Inventory should gain wood (now ≥3 wood).  
+   • This completes the “Collect Wood” achievement.
+
+2. **Craft Wood Sword** (using table + wood).  
+   • This enables killing zombies.  
+
+3. **Find and Mine Stone**  
+   • Move east (or south if needed) until “stone” appears in the observation.  
+   • Do on stone to mine it.  
+   • Place the stone in front of you – triggers “Place Stone” and gives “Collect Stone”.  
+
+4. **Craft Stone Pickaxe**  
+   • With table, wood, and stone.  
+   • This allows efficient mining of other ores.  
+
+5. **Defeat Zombie**  
+   • Locate the zombie with the observation.  
+   • Use wood sword to kill it – completes “Defeat Zombie”.  
+
+6. **Defeat Skeleton**  
+   • Find skeleton.  
+   • Use wood sword to kill it – completes “Defeat Skeleton”.  
+
+7. **Collect Coal & Iron**  
+   • Move again eastward until coal and iron ore are visible.  
+   • Do on each to harvest.  
+   • Inventory now contains coal and iron ore.  
+
+8. **Place Furnace**  
+   • Place a furnace (anywhere).  
+   • Smelts coal → coal, iron ore → iron.  
+
+9. **Craft Iron Pickaxe & Iron Sword**  
+   • Requires table, furnace, wood, coal, iron.  
+   • Enables mining diamond.  
+
+10. **Collect Diamond**  
+    • Find diamond ore, use iron pickaxe to mine.  
+    • Achieves “Collect Diamond”.  
+
+11. **Eat Cow**  
+    • Approach closest cow and Do to eat it.  
+    • Grants “Eat Cow”.  
+
+12. **Place & Eat Plant**  
+    • Use “Place Plant”.  
+    • Do to eat the plant when it’s ready – fulfills “Place Plant” and “Eat Plant”.  
+
+13. **Collect Sampling** (assume done during gameplay when encountering sampling items).  
+
+14. **Sleep & Wake**  
+    • When energy low, Sleep to recover, then wake up – fulfills “Sleep” and “Wake Up”.  
+
+15. **Final Checks**  
+    • Verify all achievements are complete.  
+    • You should now be able to explore further or finish the game.
+
+Next immediate action (to start the plan): **Do** (harvest the tree at the front).","You see:
+- grass 1 steps to your west
+- sand 6 steps to your south-east
+- table 4 steps to your south-west
+- cow 6 steps to your south-west
+
+You face grass at your front.",0.0,False
+55,Move East,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- table 5 steps to your south-west
+
+You face grass at your front.",0.0,False
+56,Move West,,"You see:
+- grass 1 steps to your west
+- sand 6 steps to your south-east
+- table 4 steps to your south-west
+- cow 6 steps to your south-west
+
+You face grass at your front.",0.0,False
+57,Move South,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- table 3 steps to your south-west
+- cow 5 steps to your south-west
+
+You face grass at your front.",0.0,False
+58,Place Table,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- table 1 steps to your south
+- cow 5 steps to your south-west
+
+You face table at your front.",0.0,False
+59,Move East,,"You see:
+- water 6 steps to your south-east
+- grass 1 steps to your west
+- sand 4 steps to your south-east
+- table 2 steps to your south-west
+
+You face grass at your front.",0.0,False
+60,Move North,"1. Move north until a tree appears.<br>2. Do on the tree to gather another 2 woods (total wood ≥3).<br>3. Make Wood Sword using the placed table and wood.<br>4. Search for stone, Do on it to collect stone and place it in front for the “Collect Stone” achievement.<br>5. Craft Stone Pickaxe with the table, wood, and collected stone.<br>6. Locate and defeat a Zombie with the wood sword (“Defeat Zombie”).<br>7. Locate and defeat a Skeleton with the wood sword (“Defeat Skeleton”).<br>8. Find and mine coal and iron ore; use furnace to smelt them (“Place Furnace”, “Collect Coal”, “Collect Iron”).<br>9. Craft Iron Pickaxe and Iron Sword using the furnace, wood, coal, and iron (“Make Iron Pickaxe”, “Make Iron Sword”).<br>10. Mine diamond with the iron pickaxe (“Collect Diamond”).<br>11. Approach a cow and Do to eat it (“Eat Cow”).<br>12. Place a plant, wait until ready, then Do to eat it (“Place Plant”, “Eat Plant”).<br>13. When energy is low, Sleep and then Wake Up to satisfy those achievements.<br>14. Collect any sampling items that appear during exploration to finish “Collect Sampling”.","You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- table 3 steps to your south-west
+
+You face grass at your front.",0.0,False
+61,Move West,,"You see:
+- grass 1 steps to your west
+- sand 6 steps to your south-east
+- table 2 steps to your south
+
+You face grass at your front.",0.0,False
+62,Move South,,"You see:
+- water 7 steps to your south-east
+- grass 1 steps to your west
+- sand 5 steps to your south-east
+- table 1 steps to your south
+- cow 6 steps to your south-west
+
+You face table at your front.",0.0,False
+63,Move West,,"You see:
+- grass 1 steps to your west
+- sand 6 steps to your south-east
+- table 2 steps to your south-west
+- cow 5 steps to your south-west
+
+You face grass at your front.",0.0,False
+64,Move West,,"You see:
+- grass 1 steps to your west
+- table 1 steps to your south
+- cow 3 steps to your south-west
+
+You face grass at your front.",0.0,False
+65,Make Wood Sword,,"You see:
+- grass 1 steps to your west
+- table 1 steps to your south
+- cow 3 steps to your south-west
+
+You face grass at your front.",1.0,False
+66,Move West,"1. Move West onto the grass tile to reach a nearby tree.  
+2. Do on the tree to collect wood, earning the “Collect Wood” achievement.  
+3. Move towards the south‑east to approach the water source; once there, Do again to drink the water, earning “Collect Drink”.  
+4. Continue explorations: seek out a stone block (Do on it) to gather stone and then place that stone in front to achieve “Collect Stone” and “Place Stone”.  
+5. With stone and the existing table, craft a stone pickaxe (Make Stone Pickaxe).  
+6. Use the stone pickaxe to mine deeper to find coal and iron ore, then place a furnace (Place Furnace) and smelt the coal and iron to obtain coal and iron resources.  
+7. Craft an iron pickaxe and an iron sword with the furnace, wood, coal, and iron; use the iron sword to defeat a zombie and a skeleton, earning “Defeat Zombie” and “Defeat Skeleton”.  
+8. Mine a diamond with the iron pickaxe, fulfilling “Collect Diamond”.  
+9. Hit and eat the cow (Do on cow) to achieve “Eat Cow”.  
+10. Place a plant on a grass tile (Place Plant), wait for it to grow, then Do to eat it, completing “Place Plant” and “Eat Plant”.  
+11. Let energy fall below maximum then Sleep to earn “Wake Up”.  
+12. During exploration, do sampling on any special object to trigger “Collect Sampling”.  
+13. Finish any remaining achievements by following the same pattern of gathering, crafting, and interacting as needed.  
+This plan ensures all 22 achievements are achieved step by step.","You see:
+- grass 1 steps to your west
+- table 2 steps to your south-east
+- cow 2 steps to your south-west
+
+You face grass at your front.",0.0,False
+67,Move West,,"You see:
+- grass 1 steps to your west
+- stone 5 steps to your north-west
+- table 3 steps to your south-east
+- cow 1 steps to your south
+
+You face grass at your front.",0.0,False
+68,Move South,,"You see:
+- grass 1 steps to your west
+- stone 5 steps to your north-west
+- table 3 steps to your south-east
+- cow 1 steps to your south
+
+You face cow at your front.",0.0,False
+69,Do,,"You see:
+- grass 1 steps to your west
+- stone 5 steps to your north-west
+- table 3 steps to your south-east
+- cow 2 steps to your south
+
+You face grass at your front.",0.0,False
+70,Move South,,"You see:
+- grass 1 steps to your west
+- stone 6 steps to your north-west
+- table 2 steps to your east
+- cow 1 steps to your south
+
+You face cow at your front.",0.0,False
+71,Move West,,"You see:
+- grass 1 steps to your west
+- stone 5 steps to your north-west
+- coal 7 steps to your north-west
+- table 3 steps to your east
+- cow 2 steps to your south-east
+
+You face grass at your front.",0.0,False
+72,Move West,"1. Move West until a tree is adjacent.  
+2. Do on the tree to collect wood – triggers “Collect Wood”.  
+3. Move North‑West to the stone block.  
+4. Do on the stone with the wood pickaxe to mine it – triggers “Collect Stone”.  
+5. Move East toward the table (3 steps away).  
+6. Place Stone in front of the table – triggers “Place Stone”.  
+7. With wood, stone, and the table nearby, perform “Make Stone Pickaxe” – triggers “Make Stone Pickaxe”.  
+8. Use the stone pickaxe to Do on the coal block (7 steps NW) – triggers “Collect Coal”.  
+9. Use the stone pickaxe to Do on the iron block – triggers “Collect Iron”.  
+10. Move to an empty tile east of the table, Place Furnace – triggers “Place Furnace”.  
+11. With wood, coal, and iron in inventory and the furnace nearby, perform “Make Iron Pickaxe” – triggers “Make Iron Pickaxe”.  
+12. Mine the diamond with the iron pickaxe – triggers “Collect Diamond”.  
+13. Use the table to make an iron sword – triggers “Make Iron Sword”.  
+14. Move to the cow (2 steps SE) and Do on it – triggers “Eat Cow”.  
+15. On a grass tile, Place Plant – triggers “Place Plant”. Wait for growth, then Do and eat it – triggers “Eat Plant”.  
+16. Do on a special object (e.g., a magically marked stone) to trigger “Collect Sampling”.  
+17. Do on a Zombie and on a Skeleton to trigger “Defeat Zombie” and “Defeat Skeleton”.  
+18. Wake up when energy drops below max by Sleeping – triggers “Wake Up”.  
+19. Throughout, ensure you maintain food, drink, and energy to avoid death.  
+20. Finish any remaining achievements with the same logic as above.  
+This plan will sequentially satisfy all 22 achievements as you progress through the world.","You see:
+- grass 1 steps to your west
+- stone 4 steps to your west
+- tree 7 steps to your south-west
+- coal 6 steps to your north-west
+- table 4 steps to your east
+- cow 3 steps to your north-west
+
+You face grass at your front.",0.0,False
+73,Move West,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- tree 6 steps to your south-west
+- coal 5 steps to your north-west
+- iron 5 steps to your south-west
+- cow 1 steps to your west
+
+You face cow at your front.",0.0,False
+74,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- tree 6 steps to your south-west
+- coal 5 steps to your north-west
+- iron 5 steps to your south-west
+- cow 1 steps to your west
+
+You face cow at your front.",0.0,False
+75,Move West,,"You see:
+- grass 1 steps to your west
+- stone 3 steps to your west
+- tree 6 steps to your south-west
+- coal 5 steps to your north-west
+- iron 5 steps to your south-west
+- cow 2 steps to your west
+
+You face grass at your front.",0.0,False
+76,Move West,,"You see:
+- grass 1 steps to your north
+- stone 2 steps to your west
+- tree 5 steps to your south-west
+- coal 4 steps to your north-west
+- iron 4 steps to your south-west
+- cow 1 steps to your west
+
+You face cow at your front.",0.0,False
+77,Do,,"You see:
+- grass 1 steps to your west
+- stone 2 steps to your west
+- tree 5 steps to your south-west
+- coal 4 steps to your north-west
+- iron 4 steps to your south-west
+- cow 3 steps to your south-west
+
+You face grass at your front.",1.0,False
+78,Move South,"1. Move South to get closer to the tree 5 steps southwest.  
+2. Do on the tree to collect wood (Collect Wood).  
+3. Place a table in front of you (Place Table).  
+4. Move West twice to be adjacent to the stone. Do on the stone to collect stone (Collect Stone).  
+5. Move North, then West to reach the coal block. Do on the coal to collect coal (Collect Coal).  
+6. Move South, then West to reach the iron block. Do on the iron to collect iron (Collect Iron).  
+7. With wood, stone, and the table nearby, Make Stone Pickaxe (Make Stone Pickaxe).  
+8. Place a furnace in front of the table (Place Furnace).  
+9. With wood, stone, coal, iron, and the furnace nearby, Make Iron Pickaxe (Make Iron Pickaxe).  
+10. Mine the diamond with the iron pickaxe to obtain it (Collect Diamond).  
+11. Use the table to Make Iron Sword (Make Iron Sword).  
+12. Move toward the cow (3 steps west) and Do on it to eat the cow (Eat Cow).  
+13. Prepare a plant: Place Plant on a grass tile, wait for growth, then Do to eat it (Place Plant & Eat Plant).  
+14. Move to the lake (water 7 steps southeast) and Do to drink from it (Collect Drink).  
+15. Perform Undetermined Do action on a sampling item to trigger “Collect Sampling”.  
+16. Encounter and defeat a Zombie and a Skeleton using Do actions (Defeat Zombie & Defeat Skeleton).  
+17. When energy falls below maximum, use Sleep to wake up (Wake Up).  
+18. Throughout, monitor health, food, and drink to survive.  
+19. Perform any remaining achievements as they become available, following the same logic.","You see:
+- grass 1 steps to your west
+- stone 3 steps to your north-west
+- tree 4 steps to your south-west
+- iron 3 steps to your west
+- cow 3 steps to your south-west
+
+You face grass at your front.",0.0,False
+79,Move West,,"You see:
+- grass 1 steps to your west
+- stone 2 steps to your north-west
+- tree 3 steps to your south-west
+- iron 2 steps to your west
+- cow 1 steps to your south
+
+You face grass at your front.",0.0,False
+80,Place Table,,"You see:
+- grass 1 steps to your west
+- stone 2 steps to your north-west
+- tree 3 steps to your south-west
+- iron 2 steps to your west
+- cow 2 steps to your south-west
+
+You face grass at your front.",0.0,False
+81,Move West,,"You see:
+- grass 1 steps to your east
+- stone 1 steps to your north
+- tree 2 steps to your south
+- iron 1 steps to your west
+- cow 1 steps to your south
+
+You face iron at your front.",0.0,False
+82,Do,,"You see:
+- grass 1 steps to your east
+- stone 1 steps to your north
+- tree 2 steps to your south
+- iron 1 steps to your west
+- cow 1 steps to your south
+
+You face iron at your front.",0.0,False
+83,Do,,"You see:
+- grass 1 steps to your east
+- stone 1 steps to your north
+- tree 2 steps to your south
+- iron 1 steps to your west
+- cow 1 steps to your south
+
+You face iron at your front.",0.0,False
+84,Place Table,"Goal: Obtain every achievement. 1. Collect wood from the nearest tree (Do on tree). 2. Place a table (Place Table). 3. Collect stone (Do on stone). 4. Place a stone (Place Stone). 5. Collect coal (Do on coal). 6. Collect iron (Do on iron). 7. Make a stone pickaxe (Make Stone Pickaxe). 8. Place a furnace (Place Furnace). 9. Make an iron pickaxe (Make Iron Pickaxe). 10. Mine a diamond with the iron pickaxe (Do on diamond). 11. Make a stone sword (Make Stone Sword). 12. Make an iron sword (Make Iron Sword). 13. Eat the cow (Do on cow). 14. Place a plant on a grass tile (Place Plant) and later Do to eat it (Eat Plant). 15. Collect drink from a lake (Do on lake). 16. Collect sampling (Do on sample spot). 17. Defeat a zombie (Do on zombie). 18. Defeat a skeleton (Do on skeleton). 19. Sleep to restore energy (Sleep). 20. Wake up (Wake Up). Execute each action in sequence, using the current location to move toward the target each time. Initially, be adjacent to a tree and a table before feeding the cow, etc. The plan will be followed step‑by‑step.","You see:
+- grass 1 steps to your east
+- stone 1 steps to your north
+- tree 2 steps to your south
+- iron 1 steps to your west
+- cow 1 steps to your south
+
+You face iron at your front.",0.0,False
+85,Do,,"You see:
+- grass 1 steps to your east
+- stone 1 steps to your north
+- tree 2 steps to your south
+- iron 1 steps to your west
+- cow 1 steps to your south
+
+You face iron at your front.",0.0,False
+86,Move North,,"You see:
+- grass 1 steps to your east
+- stone 1 steps to your north
+- tree 2 steps to your south
+- iron 1 steps to your west
+- cow 1 steps to your south
+
+You face stone at your front.",0.0,False
+87,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- tree 2 steps to your south
+- iron 1 steps to your west
+- cow 2 steps to your south-west
+
+You face path at your front.",1.0,False
+88,Place Stone,,"You see:
+- grass 1 steps to your south
+- stone 1 steps to your north
+- tree 2 steps to your south
+- iron 1 steps to your west
+- cow 2 steps to your south-west
+
+You face stone at your front.",1.0,False
+89,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- tree 2 steps to your south
+- iron 1 steps to your west
+- cow 2 steps to your south-west
+
+You face path at your front.",0.0,False
+90,Move South,"Move south to reach the tree, collect wood, place Stone on the path, craft Stone Sword with wood and stone. Then acquire coal nearby, place Furnace, craft Iron Pickaxe with iron, coal, wood and furnace, mine Diamond. Use weapons to defeat Zombie and Skeleton. Feed cow, plant and eat a plant. Drink from a lake, take a sample, and sleep to restore energy.  Wake up when energy is below maximum. This sequence covers all required achievements.","You see:
+- grass 1 steps to your north
+- stone 2 steps to your west
+- path 2 steps to your north
+- tree 1 steps to your south
+- iron 2 steps to your north-west
+- cow 1 steps to your west
+
+You face tree at your front.",0.0,False
+91,Do,,"You see:
+- grass 1 steps to your north
+- stone 2 steps to your west
+- path 2 steps to your north
+- iron 2 steps to your north-west
+- cow 1 steps to your west
+
+You face grass at your front.",0.0,False
+92,Move North,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 2 steps to your south-west
+
+You face path at your front.",0.0,False
+93,Make Stone Sword,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 2 steps to your south-west
+
+You face path at your front.",0.0,False
+94,Move North,,"You see:
+- grass 1 steps to your south
+- stone 1 steps to your west
+- coal 4 steps to your north-east
+- iron 2 steps to your south-west
+- cow 3 steps to your south-west
+
+You face stone at your front.",0.0,False
+95,Move South,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 2 steps to your south-west
+
+You face grass at your front.",0.0,False
+96,Place Table,"Place the table to satisfy the ""Place Table"" achievement (you're facing grass). Then move west to collect the iron with a Do action, craft a stone sword, place a stone, gather coal by moving north-east, build a furnace, craft an iron pickaxe, mine diamond, defeat the zombie and skeleton, eat the cow, plant and eat a plant, drink from a lake, take a sample, and sleep to restore energy to complete all achievements.","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 2 steps to your south-west
+
+You face grass at your front.",0.0,False
+97,Move West,,"You see:
+- grass 1 steps to your east
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 1 steps to your south
+
+You face iron at your front.",0.0,False
+98,Do,,"You see:
+- grass 1 steps to your east
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 1 steps to your south
+
+You face iron at your front.",0.0,False
+99,Move West,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 2 steps to your south-east
+
+You face iron at your front.",0.0,False
+100,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 1 steps to your east
+
+You face iron at your front.",0.0,False
+101,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 1 steps to your east
+
+You face iron at your front.",0.0,False
+102,Make Stone Pickaxe,"Steps:
+1. Make a Stone Pickaxe using the table, wood, and stone already in inventory.
+2. Use the Stone Pickaxe to mine coal that lies ahead by moving north until coal is visible, then Do to collect it.
+3. Move to the area where iron appears, use the Stone Pickaxe to mine iron with a Do action.
+4. Place a Furnace in the current location to smelt iron and coal.
+5. Craft an Iron Pickaxe and an Iron Sword using the furnace, wood, coal, and iron.
+6. Move towards the cow and Do to collect and eat it (Eat Cow).
+7. Place a Plant to obtain a plant, then Do to eat the plant (Eat Plant).
+8. Walk until a lake is visible, Do to drink water and collect a sample (Collect Drink & Collect Sampling).
+9. Sleep to restore energy (Wake Up).
+10. Battle a Zombie and a Skeleton using the Iron Sword (Defeat Zombie & Defeat Skeleton).
+11. Mine a diamond using the Iron Pickaxe (Collect Diamond).","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 1 steps to your east
+
+You face iron at your front.",0.0,False
+103,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 2 steps to your east
+
+You face iron at your front.",0.0,False
+104,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 3 steps to your east
+
+You face iron at your front.",0.0,False
+105,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 3 steps to your east
+
+You face iron at your front.",0.0,False
+106,Place Table,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 3 steps to your east
+
+You face iron at your front.",0.0,False
+107,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 4 steps to your north-east
+
+You face iron at your front.",0.0,False
+108,Do,"1. **Collect Iron** – Use *Do* while facing the iron block to acquire one iron ore.
+2. **Construct Stone Pickaxe** – Use *Make Stone Pickaxe* (requires the existing table, wood, and stone).
+3. **Gather Additional Stone** (if needed) – Use the newly crafted stone pickaxe to mine nearby stone blocks for future tools.
+4. **Travel to Coal & Cow** – Move North four steps, then East four steps to reach the NE location where both coal and a cow reside.
+5. **Collect Coal** – At the NE location, perform *Do* to pick up the coal block.
+6. **Eat the Cow** – Perform *Do* again (or move onto the cow) to eat the cow, satisfying the *Eat Cow* achievement.
+7. **Place Furnace** – Use *Place Furnace* next to the coal/iron/wood to set up a smelting station.
+8. **Smelt Iron** – With the furnace, smelt the iron ore using coal to obtain iron ingots necessary for higher‑tier tools.
+9. **Craft Iron Pickaxe** – Use *Make Iron Pickaxe* (requires the furnace, coal, iron, and wood).
+10. **Mine Diamond** – Utilize the iron pickaxe to mine any reachable diamond blocks for *Collect Diamond*.
+11. **Craft Stone Sword** – Use *Make Stone Sword* (requires wood and stone) to aid in combat.
+12. **Defeat Zombie and Skeleton** – Engage and defeat both creatures using the stone sword and later the iron sword (*Make Iron Sword*).
+13. **Place and Eat Plant** – Use *Place Plant*, then *Do* (or eat the plant) to satisfy *Place Plant* and *Eat Plant*.
+14. **Collect Drink & Sampling** – Find a lake and use *Do* to drink water and collect a sample, completing those achievements.
+15. **Sleep to Restore Energy** – When energy drops, use *Sleep* to “Wake Up” and regain full stamina.
+16. **Verify all achievements** – Ensure each listed achievement has been achieved.
+
+This plan covers all required achievements in a logical sequence, starting with essential resources and progressively unlocking higher‑tier tools and activities.","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 4 steps to your north-east
+
+You face iron at your front.",0.0,False
+109,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 4 steps to your north-east
+
+You face iron at your front.",0.0,False
+110,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 5 steps to your north-east
+
+You face iron at your front.",0.0,False
+111,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 5 steps to your north-east
+
+You face iron at your front.",0.0,False
+112,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 5 steps to your north-east
+
+You face iron at your front.",0.0,False
+113,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 6 steps to your north-east
+
+You face iron at your front.",0.0,False
+114,Do,"1. Collect the iron block in front with Do.  
+2. Craft a Stone Pickaxe (requires table, wood, stone).  
+3. Place a Stone block in front to obtain “Place Stone”.  
+4. Explore northward to locate a coal block.  
+5. Mine any found coal with Do.  
+6. Travel northeast 6 steps to reach the cow and eat it.  
+7. Build a Furnace next to the coal, iron, and wood.  
+8. Smelt the iron ore to iron ingots.  
+9. Craft an Iron Pickaxe using the furnace, wood, coal, and iron.  
+10. Crate an Iron Sword with the iron pickaxe.  
+11. Use the swords to defeat a Zombie and a Skeleton.  
+12. Place a Plant with Place Plant.  
+13. Eat the planted plant.  
+14. Find a lake – use Do to drink and to collect a sampling sample.  
+15. When energy is low, Sleep to “Wake Up”.  
+> Execute the first step now: Do the iron block in front.","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 5 steps to your north-east
+
+You face iron at your front.",0.0,False
+115,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 4 steps to your north-east
+
+You face iron at your front.",0.0,False
+116,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 5 steps to your north-east
+
+You face iron at your front.",0.0,False
+117,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 5 steps to your north-east
+
+You face iron at your front.",0.0,False
+118,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 5 steps to your north-east
+
+You face iron at your front.",0.0,False
+119,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+120,Do,"- **Collect Iron**: Execute `Do` to mine the iron directly in front of you.  
+- **Craft Stone Pickaxe**: Use `Make Stone Pickaxe` (requires the table you already placed, the wood you have, and the iron ore you just collected).  
+- **Acquire More Stone**: Move West once (the stone is now 1 step away) and `Do` to mine a second stone block.  
+- **Collect Coal**: Continue moving northward until you locate a coal block; `Do` on it when adjacent.  
+- **Place Furnace**: Use `Place Furnace` near the coal and iron ore for smelting.  
+- **Smelt Iron**: Place the iron ore in the furnace and use coal to obtain iron ingots (this implicitly satisfies “Collect Iron” and “Collect Copper” milestones).  
+- **Craft Iron Pickaxe & Iron Sword**: With the furnace, wood, coal, and iron ingots, perform `Make Iron Pickaxe` and `Make Iron Sword`.  
+- **Place & Eat Plant**: `Place Plant`, let it mature (implicit), then `Do` to eat it, fulfilling the plant achievements.  
+- **Defeat Creatures**: Move to where Zombie and Skeleton appear; use `Do` to hit and defeat them.  
+- **Interact with Lake**: Navigate to a lake tile; `Do` in front of the lake to drink and collect the sampling sample.  
+- **Consume Cow**: Approach the cow in the northeast; `Do` to hit and kill it, which counts as eating the cow.  
+- **Rest Up**: When energy drops, `Sleep` to “Wake Up”.  
+- **Collect Remaining Items**: Verify “Place Stone” (you can `Place Stone` on the ground in front of you).  
+- **Final Milestone**: Ensure “Collect Diamond” by mining (if true to the map).  
+All achievements (wood, table, iron, stone, pickaxe, sword, plant, creature defeats, lake sampling, cow, energy, etc.) are achieved by following this sequence.","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+121,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+122,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+123,Place Table,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+124,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+125,Place Stone,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 6 steps to your north-east
+
+You face iron at your front.",0.0,False
+126,Do,"1. `Do` – mine the iron ore directly in front (collect iron).
+2. `Make Stone Pickaxe` – use the table, existing wood, and the stone to craft a stone pickaxe.
+3. `Move West` – move one step toward the stone block.
+4. `Do` – mine the stone block to acquire a second stone (needed for stone sword).
+5. `Move North` – step onto the path.
+6. `Move North` – continue north until a coal block appears; repeat `Do` once on coal.
+7. `Place Furnace` – situate the furnace adjacent to the coal and iron ore.
+8. `Do` – smelt the iron ore using the coal in the furnace (produce iron ingot).
+9. `Make Iron Pickaxe` – combine table, wood, furnace, coal, and iron ingot.
+10. `Make Iron Sword` – combine table, furnace, wood, coal, and iron ingot.
+11. `Place Plant` – plant a new plant.
+12. `Do` – eat the planted plant (fulfills “Eat Plant” and “Place Plant”).
+13. `Move East` (multiple steps as needed) – head toward the cow’s location (6 steps NE).
+14. `Do` – use the wood sword on the cow to defeat it (fulfills “Eat Cow”).
+15. While moving, hit any visible “Zombie” or “Skeleton” with `Do` to defeat them.
+16. If a lake appears in view, `Do` on it to drink water and collect a sampling sample.
+17. When energy approaches the minimum, perform `Sleep` to wake up.
+18. Seek a diamond ore block (if present) and `Do` to mine it (fulfills “Collect Diamond”).
+19. Verify that all achievements are satisfied; if any remain, take the required actions accordingly.","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 7 steps to your north-east
+
+You face iron at your front.",0.0,False
+127,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+128,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+129,Move West,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+130,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+131,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+132,Do,"1. Use Do to mine the iron ore directly in front, adding iron to inventory.  
+2. Use Make Stone Pickaxe with the table, the remaining wood, and one of the two stones collected.  
+3. Move West twice to reach the stone block, then Do to mine a second stone.  
+4. Use Make Stone Sword with the table, the wood sword, and the remaining stone.  
+5. Move North repeatedly until coal appears, then Do to mine it.  
+6. Place a Furnace adjacent to the coal and an iron ore block (search north along the path if needed).  
+7. Do to smelt iron ore into iron ingot in the furnace.  
+8. Use Make Iron Pickaxe with the table, furnace, wood, coal, and iron ingot.  
+9. Use Make Iron Sword similarly.  
+10. Move to a location with a plant, then Place Plant and Do to eat it, fulfilling Place/ Eat Plant.  
+11. Move towards the cow (7 steps NE), then Do to defeat/eat the cow, fulfilling Eat Cow.  
+12. Continue exploring northwards to defeat any visible Zombie and Skeleton using Do, fulfilling those achievements.  
+13. When a lake is visible, Do to drink water and collect a sampling sample.  
+14. When energy drops low, Sleep to wake up, achieving Wake Up.  
+15. Search further north/south to find a diamond ore block; Do to collect it, fulfilling Collect Diamond.  
+16. After all these steps, all achievements will be completed.  
+.","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+133,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+134,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+135,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+136,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+137,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+138,Place Table,"1. Place a table at your current location. This satisfies the ""Place Table"" achievement and provides a crafting station for later items.
+2. Do to mine the iron ore directly in front of you to obtain iron ore.
+3. Move west one step to bring the stone block to the one‑step‑west position.
+4. Place the stone you have in your inventory in front of you to fulfill the ""Place Stone"" achievement.
+5. Construct a Stone Pickaxe using the table, the wood you already possess, and the stone just placed. Store this pickaxe for mining.
+6. Acquire a second wood block (e.g., by moving south to a grass area and Do-ing to harvest wood with the pickaxe). The new wood is needed for the next step.
+7. Construct a Stone Sword with the table, the new wood block, and a new stone block mined with the pickaxe. This completes the ""Make Stone Sword"" achievement.
+8. Move north along the single path toward the resource area. Continue until a coal block appears.
+9. Do to mine the coal block; this satisfies the ""Collect Coal"" achievement.
+10. Place a Furnace next to the iron ore and coal blocks (use Place Furnace). This prepares for smelting.
+11. Do near the furnace to smelt the iron ore into an iron ingot (this uses the coal fuel). This satisfies the ""Collect Iron"" (after smelting) and smelting yourself for the ""Collect Iron"" achievement.
+12. Use the table, furnace, remaining wood, coal, and the newly created iron ingot to craft an Iron Pickaxe (Make Iron Pickaxe). Store it.
+13. Construct an Iron Sword with the table, furnace, wood, coal, and iron ingot (Make Iron Sword). Keep this for combat.
+14. With the iron sword, move to the location where zombies appear and Do to defeat one. This satisfies ""Defeat Zombie"".
+15. Move to the location where a skeleton appears and Do to defeat it, fulfilling ""Defeat Skeleton"".
+16. Find a suitable growth spot (e.g., adjacent to grass) and Place Plant using the Place Plant action. Then Do to eat the plant, completing ""Place Plant"" and ""Eat Plant"".
+17. Move northeast (east then north) until you reach the cow (about 7 steps away). Do to defeat or eat the cow, satisfying ""Eat Cow"".
+18. Locate a nearby lake. Move to the lake and Do to drink water, obtaining a sampling. This fulfills ""Collect Sampling"".
+19. If energy drops below maximum, Sleep to restore energy and complete the ""Wake Up"" achievement.
+20. Continue northward along the path until a diamond ore block appears. Do to mine it, achieving ""Collect Diamond"".
+21. At this point all 22 achievements—Collect Wood, Place Table, Eat Cow, Collect Sampling, Collect Drink, Make Wood Pickaxe, Make Wood Sword, Place Plant, Defeat Zombie, Collect Stone, Place Stone, Eat Plant, Defeat Skeleton, Make Stone Pickaxe, Make Stone Sword, Wake Up, Place Furnace, Collect Coal, Collect Iron, Make Iron Pickaxe, Make Iron Sword, Collect Diamond—should be completed. You can now continue exploring or restock resources as desired.","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+139,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+140,Move East,,"You see:
+- grass 1 steps to your west
+- stone 2 steps to your north
+- path 2 steps to your north-west
+- iron 2 steps to your west
+
+You face grass at your front.",0.0,False
+141,Place Table,,"You see:
+- grass 1 steps to your west
+- stone 2 steps to your north
+- path 2 steps to your north-west
+- iron 2 steps to your west
+
+You face grass at your front.",0.0,False
+142,Move West,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+143,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+144,Do,"1. Mine the iron block in front with a Do action to obtain iron ore and satisfy the ""Collect Iron"" achievement. 2. Craft a stone pickaxe using ""Make Stone Pickaxe"" with the available table, wood, and stone. 3. Move west one step, then Do to mine the stone block two steps away (now immediately adjacent) to increase your stone count. 4. Place a stone in front of you with ""Place Stone"" to satisfy that achievement. 5. Continue moving along the path north to search for coal and other resources, using Do as needed, until all remaining achievements are completed.","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+145,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+146,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 7 steps to your north-east
+
+You face iron at your front.",0.0,False
+147,Make Stone Pickaxe,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 6 steps to your north-east
+
+You face iron at your front.",0.0,False
+148,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+- cow 6 steps to your north-east
+
+You face iron at your front.",0.0,False
+149,Do,,"You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+150,Place Stone,"1. Place Stone to satisfy ""Place Stone"". 2. Move North onto the path. 3. Do (to mine or gather any resource that may appear at the path). 4. Move North again to explore further. 5. Move East to get closer to the cow; then Do to eat the cow and satisfy ""Eat Cow"". 6. Sleep to regain energy, which will trigger the ""Wake Up"" achievement. 7. Place Table to satisfy ""Place Table"". 8. Make Stone Pickaxe using the table, wood, and stone. 9. Make Stone Sword using the table, wood, and stone. 10. Place Plant (placing a plant block to satisfy ""Place Plant""). 11. Move West until a coal source is visible; Do to collect coal and satisfy ""Collect Coal"". 12. Place Furnace at an empty spot to satisfy ""Place Furnace"". 13. Make Iron Pickaxe using the table, furnace, wood, coal, and iron. 14. Make Iron Sword using the table, furnace, wood, coal, and iron. 15. Move or rotate to face a zombie; Do to defeat the zombie (""Defeat Zombie""). 16. Move or rotate to face a skeleton; Do to defeat the skeleton (""Defeat Skeleton""). 17. Perform Do when a sampling source is visible to satisfy ""Collect Sampling"". 18. Perform Do near a water source to collect a drink (""Collect Drink""). 19. Perform Do near a diamond vessel or vein to gather a diamond (""Collect Diamond""). All achievements should now be achieved in this sequence.","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your north
+- iron 1 steps to your west
+
+You face iron at your front.",0.0,False
+151,Move North,,"You see:
+- grass 1 steps to your south
+- stone 1 steps to your west
+- coal 4 steps to your north-east
+- iron 2 steps to your south-west
+
+You face stone at your front.",0.0,False
+152,Make Stone Pickaxe,,"You see:
+- grass 1 steps to your south
+- stone 1 steps to your west
+- coal 4 steps to your north-east
+- iron 2 steps to your south-west
+
+You face stone at your front.",0.0,False
+153,Move East,,"You see:
+- grass 1 steps to your south
+- stone 1 steps to your north
+- path 1 steps to your west
+- coal 3 steps to your north
+- iron 3 steps to your south-west
+
+You face grass at your front.",0.0,False
+154,Move North,,"You see:
+- grass 1 steps to your south
+- stone 1 steps to your north
+- path 1 steps to your west
+- coal 3 steps to your north
+- iron 3 steps to your south-west
+
+You face stone at your front.",0.0,False
+155,Place Stone,,"You see:
+- grass 1 steps to your south
+- stone 1 steps to your north
+- path 1 steps to your west
+- coal 3 steps to your north
+- iron 3 steps to your south-west
+
+You face stone at your front.",0.0,False
+156,Do,"1. Perform Do on the current stone tile to add stone to inventory.  
+2. Perform Do on the adjacent grass tile to the south to add wood to inventory.  
+3. Place Stone to satisfy the “Place Stone” achievement.  
+4. Place Table to satisfy the “Place Table” achievement.  
+5. Move North toward the coal source and Perform Do to collect coal.  
+6. Move Southwest toward the iron source and Perform Do to collect iron.  
+7. Place Furnace to satisfy the “Place Furnace” achievement.  
+8. Make Iron Pickaxe with the table, furnace, wood, coal, and iron in inventory.  
+9. Make Iron Sword with the same inputs.  
+10. Move towards the cow and Perform Do to eat the cow and satisfy “Eat Cow”.  
+11. Place Plant to satisfy “Place Plant”.  
+12. Sleep to trigger “Wake Up”.  
+13. Defeat any encountered Zombie and Skeleton by Moving into them and performing Do.  
+14. Perform Do on nearby sampling, drink, and diamond sources (once found) to achieve the remaining achievements.","You see:
+- grass 1 steps to your south
+- stone 2 steps to your west
+- path 1 steps to your west
+- coal 3 steps to your north
+- iron 3 steps to your south-west
+
+You face path at your front.",0.0,False
+157,Move North,,"You see:
+- grass 1 steps to your south
+- stone 1 steps to your west
+- path 2 steps to your south-west
+- tree 7 steps to your north-west
+- coal 2 steps to your north
+- iron 4 steps to your south-west
+
+You face stone at your front.",0.0,False
+158,Do,,"You see:
+- grass 1 steps to your south
+- stone 1 steps to your west
+- path 1 steps to your north
+- tree 7 steps to your north-west
+- coal 2 steps to your north
+- iron 4 steps to your south-west
+- cow 5 steps to your north-east
+
+You face path at your front.",0.0,False
+159,Move North,,"You see:
+- grass 2 steps to your south
+- stone 1 steps to your west
+- path 1 steps to your south
+- tree 6 steps to your north-west
+- coal 1 steps to your north
+- iron 3 steps to your north-west
+- cow 4 steps to your east
+- zombie 3 steps to your north
+
+You face coal at your front.",0.0,False
+160,Do,,"You see:
+- grass 2 steps to your south
+- stone 1 steps to your west
+- path 1 steps to your north
+- tree 6 steps to your north-west
+- iron 3 steps to your north-west
+- cow 5 steps to your south-east
+- zombie 3 steps to your north
+
+You face path at your front.",1.0,False
+161,Move North,,"You see:
+- grass 2 steps to your east
+- stone 1 steps to your west
+- path 1 steps to your south
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- zombie 2 steps to your north
+
+You face stone at your front.",0.0,False
+162,Place Stone,"1. Place a stone in front of the agent to satisfy “Place Stone”.
+2. Place a table to satisfy “Place Table”.
+3. Move toward the nearest tree and use “Do” on it repeatedly to collect enough wood for crafting.
+4. Craft a stone pickaxe at the table using collected wood and remaining stone.
+5. Move to the nearest iron block and “Do” on it with the stone pickaxe to collect iron.
+6. Move to additional coal sources, “Do” to gather enough coal.
+7. Place a furnace and craft an iron pickaxe and an iron sword using the furnace, coal, iron, wood, and the table.
+8. Place a plant to satisfy “Place Plant”.
+9. Move to the cow and “Do” to eat it, satisfying “Eat Cow”.
+10. Move to the plant you placed and “Do” to consume it, satisfying “Eat Plant”.
+11. Move to any zombies and “Do” to defeat them, satisfying “Defeat Zombie”.
+12. Move to any skeletons and “Do” to defeat them, satisfying “Defeat Skeleton”.
+13. Find a lake or water source and “Do” to drink, satisfying “Collect Drink”.
+14. Find a sampling point and “Do” to collect sampling, satisfying “Collect Sampling”.
+15. Find a diamond source and “Do” to collect diamond, satisfying “Collect Diamond”.
+16. After all achievements, ensure your energy is replenished by “Sleep” if necessary to reach maximum energy.","You see:
+- grass 2 steps to your east
+- stone 1 steps to your west
+- path 1 steps to your south
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- zombie 2 steps to your north
+
+You face stone at your front.",0.0,False
+163,Place Table,,"You see:
+- grass 2 steps to your east
+- stone 1 steps to your west
+- path 1 steps to your south
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- zombie 2 steps to your north
+
+You face stone at your front.",0.0,False
+164,Do,,"You see:
+- grass 2 steps to your north
+- stone 1 steps to your west
+- path 1 steps to your south
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- zombie 1 steps to your north
+
+You face zombie at your front.",-0.2,False
+165,Do,,"You see:
+- grass 2 steps to your north
+- stone 1 steps to your west
+- path 1 steps to your south
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- cow 5 steps to your south-east
+- zombie 1 steps to your north
+
+You face zombie at your front.",0.0,False
+166,Do,,"You see:
+- grass 2 steps to your north
+- stone 1 steps to your west
+- path 1 steps to your south
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- cow 5 steps to your south-east
+- zombie 1 steps to your north
+
+You face zombie at your front.",0.0,False
+167,Do,,"You see:
+- grass 2 steps to your east
+- stone 1 steps to your west
+- path 1 steps to your north
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- cow 5 steps to your south-east
+- zombie 2 steps to your north
+
+You face path at your front.",1.0,False
+168,Do,"1. Defeat the zombie: use the sword at the zombie's location to complete the ""Defeat Zombie"" achievement. 2. Place a plant on the path ahead to satisfy the ""Place Plant"" achievement. 3. Move toward the cow to consume it for the ""Eat Cow"" achievement. 4. Mine the iron ore with the wood pickaxe to gather iron, then gather additional coal and build a furnace to craft an iron pickaxe and iron sword, completing the remaining crafting achievements. 5. Search for a lake to drink from and a sampling point to acquire the ""Collect Drink"" and ""Collect Sampling"" achievements. 6. Continue gathering resources (wood, stone, diamonds) until all achievements are collected. 7. Rest when energy is low to maintain optimal health and food levels. 8. Complete any remaining achievements such as ""Collect Word"" or ""Collect Diamond"" as resources become available.","You see:
+- grass 2 steps to your north
+- stone 1 steps to your west
+- path 1 steps to your south
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- cow 5 steps to your south-east
+- zombie 1 steps to your north
+
+You face zombie at your front.",-0.2,False
+169,Do,,"You see:
+- grass 2 steps to your north
+- stone 1 steps to your west
+- path 1 steps to your south
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- cow 4 steps to your south-east
+- zombie 1 steps to your north
+
+You face zombie at your front.",0.0,False
+170,Do,,"You see:
+- grass 2 steps to your north
+- stone 1 steps to your west
+- path 1 steps to your south
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- cow 3 steps to your south-east
+- zombie 1 steps to your north
+
+You face zombie at your front.",0.0,False
+171,Do,,"You see:
+- grass 2 steps to your north
+- stone 1 steps to your west
+- path 1 steps to your north
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- cow 3 steps to your south-east
+
+You face path at your front.",0.0,False
+172,Move West,,"You see:
+- grass 2 steps to your north
+- stone 1 steps to your west
+- path 1 steps to your north
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- cow 4 steps to your south-east
+
+You face stone at your front.",0.0,False
+173,Do,,"You see:
+- grass 2 steps to your north
+- stone 1 steps to your east
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- cow 5 steps to your south-east
+
+You face path at your front.",0.0,False
+174,Do,"1. Kill the zombie in front (Do North). 2. Move eastwards to reach the cow; then use Do to eat it (Eat Cow). 3. Use Place Plant on the path ahead. 4. Move to the nearby iron block and mine it with the wood pickaxe (Do). 5. Craft a Stone Pickaxe and Stone Sword using the table, wood, and stone (Make Stone Pickaxe, Make Stone Sword). 6. Sleep when energy is not maximum to wake up (Sleep). 7. Place a furnace adjacent to a coal block (Place Furnace). 8. Craft an Iron Pickaxe and Iron Sword using the furnace, wood, coal, and iron (Make Iron Pickaxe, Make Iron Sword). 9. Search for and traverse to a lake or sampling point to obtain drink and sampling items (Do/Move as needed). 10. Defeat the skeleton with the iron sword (Do). 11. Obtain a diamond from a nearby ore block (Do). 12. Finish any remaining achievements such as eating a plant if not yet done. 13. Continue exploring until all objectives are completed, spacing actions with movement as necessary. 14. Rest when needed to maintain health and energy.","You see:
+- grass 2 steps to your north
+- stone 1 steps to your east
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+
+You face path at your front.",0.0,False
+175,Move West,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face stone at your front.",0.0,False
+176,Move North,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+177,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+178,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+179,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+180,Do,"1. Mine iron with a Do to obtain iron (Collect Iron). 2. Move north until a zombie is directly in front and perform Do to kill it (Defeat Zombie). 3. Move south until a cow is in front, Do to eat it (Eat Cow). 4. Move east onto a path and Place Plant (Place Plant). 5. Move west to a stone block and Place Stone (Place Stone). 6. Sleep while energy is below maximum to trigger Wake Up (Sleep). 7. Move to a suitable spot and Place Table (Place Table). 8. Place a Furnace adjacent to a coal block (Place Furnace). 9. Craft a Stone Pickaxe with the table, wood, and stone (Make Stone Pickaxe). 10. Craft a Stone Sword with the table, wood, and stone (Make Stone Sword). 11. Use the Stone Pickaxe to mine diamond ore (Do) (Collect Diamond). 12. Craft an Iron Pickaxe with the table, furnace, wood, coal, and iron (Make Iron Pickaxe). 13. Craft an Iron Sword with the table, furnace, wood, coal, and iron (Make Iron Sword). 14. Move to a skeleton and use the Iron Sword to defeat it (Do) (Defeat Skeleton). 15. Locate a sampling point and Do to collect a sample (Collect Sampling). 16. Find a lake and Do to collect a drink (Collect Drink). 17. Eat a plant you placed earlier (Do) (Eat Plant). 18. Verify the remaining achievements are complete as a final step.","You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- cow 7 steps to your south-east
+
+You face iron at your front.",0.1,False
+181,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+182,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+183,Place Table,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- cow 7 steps to your south-east
+
+You face iron at your front.",0.0,False
+184,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+185,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+186,Do,"Acquire the remaining iron by collecting the iron ore in front, then craft a stone pickaxe and stone sword using the table already placed, place a stone block and a furnace near the coal, sleep to award Wake Up, defeat the zombie (which remains unseen but we kill by Do when it appears), eat the cow to get Eat Cow, defeat the skeleton later with the iron sword, place a plant and eat it, collect a sampling point and drink from a lake to satisfy Collect Sampling and Collect Drink, crack a diamond with the stone pickaxe for Collect Diamond, finally have all achievements completed.","You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+187,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+188,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+189,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+190,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+191,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+192,"<plan>1. Collect the iron ore in front using `Do`. 2. Place a stone block with `Place Stone` to satisfy the Place Stone achievement. 3. Craft the Stone Pickaxe and Stone Sword with `Make Stone Pickaxe` and `Make Stone Sword` using the existing table and stone. 4. Place a furnace with `Place Furnace` next to the table. 5. Craft the Iron Pickaxe and Iron Sword with `Make Iron Pickaxe` and `Make Iron Sword` after gathering wood, coal, and iron. 6. Move towards the cow (currently 7 steps southeast) using `Move East` and `Move South` as needed, then `Do` to eat it and earn Eat Cow. 7. After eating the cow, move towards the nearest zombie cell, `Do` to defeat it for Defeat Zombie. 8. Seek out a skeleton in a different location and `Do` to defeat it for Defeat Skeleton. 9. Visually locate a sampling point (usually a lake); walk to it and `Do` to collect Sampling and Drink (Collect Sampling and Collect Drink). 10. Place a plant with `Place Plant` and later `Do` or `Eat Plant` to satisfy placement and consumption. 11. Use the Stone Pickaxe on a nearby iron ore vein to mine a diamond, completing Collect Diamond. 12. When energy drops, `Sleep` to trigger Wake Up. 13. Continuously track inventory and health, moving away from hazards and collecting resources as needed. 14. Ensure all achievements are recorded by fulfilling each action in the order above.<plan> Do",,"
+
+Your previous output did not contain a valid action. Defaulted to action: Noop
+
+Observation:
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+193,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+194,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+195,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+196,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+197,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+198,Place Table,"1. Confirm we have a table: we have 1 unit of wood in inventory and no tables built.<br>2. Place Table using the available wood tile, satisfying the “Place Table” achievement and providing a crafting area for all subsequent tools.<br>3. Craft tools in order, prioritizing those that unlock further achievements and that we physically can craft with our current inventory:<br>   - Make Stone Pickaxe (needs table, wood and stone).<br>   - Make Iron Pickaxe (needs table, furnace, wood, coal, iron).<br>   - Make Iron Sword (needs table, furnace, wood, coal, iron).<br>   - Make Stone Sword (needs table, wood, stone).<br>4. Place a furnace next to the table to enable iron tool creation.<br>5. Collect the iron ore directly in front with Do, then with the iron pickaxe mine for a diamond when the stone block is later placed (the stone block at the west position is a likely source of hidden resources).<br>6. Use the wood sword to clear any zombie that appears (Do when a creature is in front).<br>7. Move 7 steps southeast to the cow: Move East, Move South repeatedly, then Do to eat the cow for the “Eat Cow” achievement.<br>8. Search for a lake or a sampling point; when found, Do to collect sampling and drink, achieving both respective trophies.<br>9. Place a plant using the remaining wood, then Do to eat it for the “Eat Plant” achievement.<br>10. Place a stone block in front of us when the stone tile is visible, completing “Place Stone”.<br>11. Monitor energy; when it falls below maximum, perform a Sleep to trigger the “Wake Up” achievement.<br>12. After all items are collected and crafted, confirm the remaining achievements: Collect Wood, Collect Stone, Collect Iron, Collect Coal, Collect Sampling, Collect Drink, Collect Diamond, Defeat Zombie, Defeat Skeleton.<br>13. The final actions will be Do upon the zombie and skeleton when they are in front, to defeat them. All remaining achievements should be satisfied by the above plan.<br>Stress: The plan ensures each required object or creature is targeted in the order that permits crafting dependencies while keeping health, food, drink, and energy within safe limits. The immediate next step is to place the table with available wood.<br>Action: Place Table.","You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+199,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+200,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+201,Make Stone Pickaxe,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+202,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+203,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+204,Do,"We need to collect all remaining achievements using the following high‐level sequence.
+
+1. **Collect iron ore** – `Do` while standing in front of the iron tile. This gives the *Collect Iron* achievement.
+2. **Clear a tile in front** – `Move South` so that the tile in front is empty.
+3. **Place a stone block** – `Place Stone` on that empty tile, satisfying *Place Stone*.
+4. **Clear another empty tile** – `Move South` again to have a fresh empty space in front.
+5. **Place a crafting table** – `Place Table` on the fresh empty tile. This satisfies *Place Table*.
+6. **Craft a stone sword** – `Make Stone Sword` using the nearby table, the remaining wood and stone.
+7. **Clear a tile for furnace** – `Move South` to an empty tile in front.
+8. **Place a furnace** – `Place Furnace` to allow iron tool crafting.
+9. **Craft iron pickaxe** – `Make Iron Pickaxe` using the furnace, table, wood, coal, iron.
+10. **Craft iron sword** – `Make Iron Sword` using the same recipe.
+11. **Sleep to wake up** – `Sleep` (our energy is low) to fulfill *Wake Up*.
+
+After these, we will have completed the following achievements: Collect Iron, Place Stone, Place Table, Make Stone Sword, Place Furnace, Make Iron Pickaxe, Make Iron Sword, and Wake Up. We will then pursue the remaining tasks (Plant placement/consumption, defeating creatures, sampling, drinking, diamond mining) once the basic items are ready.
+
+**Next action:** Collect the iron ore by performing a `Do` while facing the iron tile. This is the first step toward the above plan.  
+Action: Do","You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+205,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+206,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+207,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+208,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",-0.1,False
+209,Place Stone,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+210,Make Stone Pickaxe,"Plan to complete all achievements:
+
+1. **Craft Stone Pickaxe** – use `Make Stone Pickaxe` (table, wood, stone).  
+2. **Craft Stone Sword** – use `Make Stone Sword` (table, wood, stone).  
+3. **Place Furnace** – move to an empty tile next to the table and use `Place Furnace`.  
+4. **Craft Iron Pickaxe** – use `Make Iron Pickaxe` (table, furnace, wood, coal, iron).  
+5. **Craft Iron Sword** – use `Make Iron Sword` (table, furnace, wood, coal, iron).  
+6. **Place Plant** – use `Place Plant`.  
+7. **Eat Plant** – face the planted plant and use `Do`.  
+8. **Find Water** – explore the world until a lake/river tile is found, then use `Do` to drink.  
+9. **Collect Sampling** – approach a tree or suitable block and use `Do` to sample.  
+10. **Defeat Zombie** – locate a zombie and use `Do` to defeat.  
+11. **Defeat Skeleton** – locate a skeleton and use `Do` to defeat.  
+12. **Eat Cow** – approach a cow and use `Do`.  
+13. **Collect Diamond** – mine a diamond ore tile (requires Iron Pickaxe or Stone Pickaxe).  
+14. **Sleep when Energy Low** – if energy < 9, use `Sleep` to wake up and replenish energy.  
+
+The plan ensures each achievement is addressed in a logical sequence, leveraging crafted tools before hunting resources or enemies.  
+
+Current next step: craft the Stone Pickaxe.  
+Actions to perform:
+- `Make Stone Pickaxe`","You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+211,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+212,Place Table,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+213,Place Table,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+214,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+215,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- cow 7 steps to your south-east
+
+You face iron at your front.",0.0,False
+216,Sleep,"1. **Sleep** – restore energy and complete the Wake Up achievement.  
+2. Make the **Stone Pickaxe** with the table, wood, and stone.  
+3. Make the **Stone Sword** with the table, wood, and stone.  
+4. Place a **Stone** tile to satisfy the Place Stone achievement.  
+5. Place a **Plant** and then **Do** on it to eat, giving the Place Plant and Eat Plant achievements.  
+6. Walk 7 steps southeast to the **Cow**, then **Do** to eat it (Earn Eat Cow).  
+7. Explore to find a **water** tile and **Do** to drink (Collect Drink).  
+8. Move to a nearby **tree** and **Do** to sample (Collect Sampling).  
+9. Place a **Furnace** to enable iron works (Place Furnace).  
+10. With the furnace, craft the **Iron Pickaxe** and **Iron Sword** (Make Iron Pickaxe, Make Iron Sword).  
+11. Venture into nearby ore veins to mine **iron** (Collect Iron).  
+12. Mine **coal** if needed.  
+13. Use the Iron Pickaxe to mine a **diamond** ore (Collect Diamond).  
+14. Hunt for **Zombie** and **Skeleton** monsters, then **Do** on each when in front (Defeat Zombie, Defeat Skeleton).  
+15. Verify all remaining achievements: Collect Wood, Collect Stone, Make Wood Pickaxe, Make Wood Sword, Collect Coal, Collect Iron, Place Table, etc.","You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- cow 7 steps to your south-east
+
+You face iron at your front.",0.0,False
+217,Noop,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+218,Sleep,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+219,Do,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+220,Sleep,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+221,Noop,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+222,Sleep,"1. Sleep to restore energy.  
+2. Move East to the path tile.  
+3. Place Table.  
+4. Place a Stone tile in front of you.  
+5. Craft Stone Pickaxe and Stone Sword at the table (wood + stone).  
+6. Move North to the Iron tile and Do to collect Iron.  
+7. Move North-West to the tree, Do to collect Wood and Sampling.  
+8. Move North-West again to grass/plant tile and Do to place a Plant, then Do again to eat Plant.  
+9. Move South‑East towards the Cow, Do to eat the Cow.  
+10. Find a water source and Do to drink.  
+11. Move to a suitable spot, Place Furnace.  
+12. Craft Iron Pickaxe and Iron Sword at the table using furnace, wood, coal, iron.  
+13. Use Iron Pickaxe to mine Diamond until collected.  
+14. Engage and Do on a Zombie, then a Skeleton to defeat them.  
+15. Ensure all achievements (Collect Wood, Place Table, Eat Cow, Collect Sampling, Collect Drink, Make Wood Pickaxe, Make Wood Sword, Place Plant, Defeat Zombie, Collect Stone, Place Stone, Eat Plant, Defeat Skeleton, Make Stone Pickaxe, Make Stone Sword, Wake Up, Place Furnace, Collect Coal, Collect Iron, Make Iron Pickaxe, Make Iron Sword, Collect Diamond) are satisfied.  
+16. Verify final inventory and resource counts.  
+17. Stop.","You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+223,Sleep,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+224,Sleep,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+225,Sleep,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+226,Sleep,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+227,Sleep,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+228,Do,"1. Collect the iron block in front of you with a Do action (gives iron).  
+2. Move east onto the path tile.  
+3. Place a Table in front of you (on the path).  
+4. Use the table to craft a Stone Pickaxe (needs stone, wood, and the table).  
+5. Use the table to craft a Stone Sword (needs stone, wood, and the table).  
+6. Move north‑west toward the tree; Do on the tree to gather more wood.  
+7. Move north‑west again to the grass tile; Do there to gather sampling and possibly more wood.  
+8. Place a Plant on the grass tile.  
+9. Do on the tile with the plant to eat it (fulfills Eat Plant).  
+10. Move east (on the path) and then southeast toward the cow; Do on the cow to eat it (fulfills Eat Cow).  
+11. Search for a water source or lake tile; Do there to drink (fulfills Collect Drink).  
+12. Return to the square with the iron; place a Furnace next to the iron block.  
+13. Use the furnace and the table to craft an Iron Pickaxe (requires iron, wood, coal, furnace, and table).  
+14. Use the furnace and the table to craft an Iron Sword (requires iron, wood, coal, furnace, and table).  
+15. Use the Iron Pickaxe to mine a diamond block (gathers diamond).  
+16. Locate and defeat any zombies and skeletons by moving near them and using Do on them.  
+17. Ensure all achievements (Collect Wood, Place Table, Eat Cow, Collect Sampling, Collect Drink, Make Wood Pickaxe, Make Wood Sword, Place Plant, Defeat Zombie, Collect Stone, Place Stone, Eat Plant, Defeat Skeleton, Make Stone Pickaxe, Make Stone Sword, Wake Up, Place Furnace, Collect Coal, Collect Iron, Make Iron Pickaxe, Make Iron Sword, Collect Diamond) are satisfied.  
+18. Stop when all achievements are complete or cannot progress further.","You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+229,Noop,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+230,Sleep,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+231,Do,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",0.0,False
+232,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face iron at your front.",-0.1,False
+233,Move East,,"You see:
+- grass 2 steps to your north
+- stone 1 steps to your east
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+
+You face stone at your front.",0.0,False
+234,"<plan>Start by moving west onto the path tile where a table can be placed. Place the table to unlock crafting of stone tools. With the table in place, craft a Stone Pickaxe and Stone Sword using available wood and stone. Proceed north twice to reach a grass tile: there, place a plant and eat it to fulfill the plant achievements. From this new position, head west two steps to collect the iron block, giving the iron achievement. Near the table, set up a furnace on an adjacent empty tile. With the furnace and table ready, craft an Iron Pickaxe and Iron Sword. These crafted items enable the later mining of diamond and combat against zombies/skeletons while you explore the remaining objective blocks (drink, sampling, mobs). The next immediate step in this progression is to craft the Iron Pickaxe.> 
+Make Iron Pickaxe",,"
+
+Your previous output did not contain a valid action. Defaulted to action: Noop
+
+Observation:
+You see:
+- grass 2 steps to your north
+- stone 1 steps to your east
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+
+You face stone at your front.",0.0,False
+235,Move West,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+
+You face stone at your front.",0.0,False
+236,Move East,,"You see:
+- grass 2 steps to your north
+- stone 1 steps to your east
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- zombie 4 steps to your south-east
+
+You face stone at your front.",0.0,False
+237,Do,,"You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- zombie 3 steps to your south-east
+
+You face path at your front.",0.0,False
+238,Move West,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- zombie 3 steps to your east
+
+You face stone at your front.",0.0,False
+239,Move East,,"You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- zombie 2 steps to your east
+
+You face path at your front.",0.0,False
+240,,,"
+
+Your previous output did not contain a valid action. Defaulted to action: Noop
+
+Observation:
+You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- zombie 1 steps to your east
+
+You face zombie at your front.",-0.2,False
+241,Do,,"You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- zombie 1 steps to your east
+
+You face zombie at your front.",0.0,False
+242,Do,,"You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- zombie 1 steps to your east
+
+You face zombie at your front.",0.0,False
+243,Do,,"You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+
+You face path at your front.",0.0,False
+244,Do,,"You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+
+You face path at your front.",0.0,False
+245,Do,,"You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+
+You face path at your front.",0.0,False
+246,Place Table,"1. Place Table on the path tile in front (achievement: Place Table). 2. Move West onto the newly placed table. 3. Place Furnace North of the table using wood and coal (achievement: Place Furnace, and prepare for iron tools). 4. Place Stone on a side of the table (e.g., South) by moving to that side and performing Place Stone (achievement: Place Stone). 5. Move East to be in front of the zombie (currently 1 step east from the original position). 6. Do to defeat the zombie (achievement: Defeat Zombie). 7. Move North-West to face the iron block (currently 2 steps NW from the original position). 8. Do to collect the iron (achievement: Collect Iron). 9. Return to the table area (if not already there) to craft an Iron Pickaxe using the table, furnace, wooden pickaxe, coal, and the newly collected iron (achievement: Make Iron Pickaxe). 10. Subsequently, use the Iron Pickaxe to mine diamonds for the final achievement: Collect Diamond. 11. Plant a plant on a grassy tile adjacent to the table to satisfy Place Plant and Eat Plant achievements. 12. Search for a cow to obtain the Eat Cow achievement. 13. Seek a lake to Drink (Collect Drink) and a source of a sampling item to achieve Collect Sampling. 14. Use the gathered resources to craft an Iron Sword and defend against any remaining skeletons (Defeat Skeleton). 15. Eat the plant and drink the water, restoring food and drink levels (complete Eat Plant, Collect Drink). 16. Continue exploring and mining until all achievements are satisfied, stopping only when energy is at maximum and the player is fully rested (Wake Up). 17. End with a final Do on a diamond block to finish Collect Diamond. 18. Ensure health is at maximum after each combat or consumption. 19. Confirm all achievements are logged before concluding. Enjoy the epic crafting journey!","You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+
+You face path at your front.",0.0,False
+247,Place Furnace,,"You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- furnace 1 steps to your east
+
+You face furnace at your front.",1.0,False
+248,Move West,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face stone at your front.",-0.1,False
+249,Move North,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+250,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+251,Place Table,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+252,Do,"1. Collect the iron by performing Do (gain iron and achieve “Collect Iron”).
+2. Move East onto the path tile (prepare a free spot for the table).
+3. Place a Table onto the tile in front of you (complete “Place Table”).
+4. Craft an Iron Pickaxe with Make Iron Pickaxe (requires Table, Furnace, Wood, Coal, Iron).
+5. Craft a Stone Sword with Make Stone Sword (requires Table, Wood, Stone).
+6. Craft an Iron Sword with Make Iron Sword (requires Table, Furnace, Wood, Coal, Iron).
+7. Use the Iron Pickaxe to mine any remaining stone and diamonds (complete “Collect Stone” and “Collect Diamond” if needed).
+8. Return to the initial layout to defeat the zombie (Do when facing it) – “Defeat Zombie”.
+9. Plant a Plant on a grassy spot and eat it – “Place Plant” and “Eat Plant”.
+10. Search for a Cow to “Eat Cow”.
+11. Find a lake to “Collect Drink”.
+12. Find a sampling item to “Collect Sampling”.
+13. Sleep when energy is below maximum – “Sleep” and “Wake Up”.
+14. Gather any remaining achievements to finish all of them.
+
+This sequence achieves every listed achievement while keeping energy and resources balanced.  The next necessary action is to collect the iron.","You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+253,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+254,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+255,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+256,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+257,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+258,Do,"1. **Collect Iron** – Do the action while facing the iron tile to obtain the iron item and complete the “Collect Iron” achievement.  
+2. **Place Table** – Move onto the adjacent empty path tile to the east, then perform “Place Table” to place a table and earn the “Place Table” achievement.  
+3. **Place Furnace** – While standing on the path tile, perform “Place Furnace” to place a furnace and earn the “Place Furnace” achievement.  
+4. **Craft Stone Pickaxe & Stone Sword** – Use the table to craft a stone pickaxe (needs wood and stone) and a stone sword (needs wood and stone) to earn the respective achievements.  
+5. **Craft Iron Pickaxe & Iron Sword** – Use the furnace along with the table to craft an iron pickaxe (needs wood, coal, iron, table, furnace) and an iron sword (same requirements) to earn those achievements.  
+6. **Place Stone** – Move to an empty tile and place a stone block, earning the “Place Stone” achievement.  
+7. **Defeat Zombie** – Equip the wood sword or stone sword and perform “Do” to attack the zombie, completing the “Defeat Zombie” achievement.  
+8. **Sleep & Wake Up** – When energy or health is low, perform “Sleep” to regain resources and “Wake Up” to continue.  
+9. **Plant & Eat Plant** – Move to a grassy tile, “Place Plant”, then “Do” to eat it, achieving “Place Plant” and “Eat Plant”.  
+10. **Collect Sample** – Search for a sampling item on the map and “Do” to collect it, achieving “Collect Sampling”.  
+11. **Collect Drink** – Locate a lake or water source and perform “Do” to drink, earning “Collect Drink”.  
+12. **Eat Cow** – Hunt a cow or find one on the map, use “Do” to eat it, earning the “Eat Cow” achievement.  
+13. **Collect Diamond** – Mine or find a diamond with the iron pickaxe, earning “Collect Diamond”.  
+This sequential plan ensures all 22 achievements are obtained while managing health, energy, food, and drink.","You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+259,Do,,"You see:
+- grass 2 steps to your north-west
+- stone 1 steps to your west
+- path 1 steps to your east
+- tree 4 steps to your north-west
+- iron 1 steps to your north
+- furnace 2 steps to your east
+
+You face iron at your front.",0.0,False
+260,Move East,,"You see:
+- grass 2 steps to your north
+- stone 2 steps to your west
+- path 1 steps to your west
+- tree 5 steps to your north-west
+- iron 2 steps to your north-west
+- furnace 1 steps to your east
+
+You face furnace at your front.",0.0,False
+261,Move North,,"You see:
+- grass 1 steps to your north
+- stone 1 steps to your east
+- path 1 steps to your south
+- tree 4 steps to your west
+- iron 1 steps to your west
+- furnace 2 steps to your south-east
+
+You face grass at your front.",0.0,False
+262,Place Table,,"You see:
+- grass 1 steps to your north
+- stone 1 steps to your east
+- path 1 steps to your south
+- tree 4 steps to your west
+- iron 1 steps to your west
+- furnace 2 steps to your south-east
+
+You face grass at your front.",0.0,False
+263,Move West,,"You see:
+- grass 1 steps to your north
+- stone 1 steps to your east
+- path 1 steps to your south
+- tree 4 steps to your west
+- iron 1 steps to your west
+- furnace 2 steps to your south-east
+- cow 7 steps to your north-east
+
+You face iron at your front.",0.0,False
+264,Do,"1. Collect Iron by executing Do on the iron tile in front to achieve ""Collect Iron"".  
+2. Move North onto the Grass tile to get to a consumable tile.  
+3. Place a Table in front of you (Place Table) to unlock table-dependent crafting.  
+4. Move onto an adjacent empty path tile to place a Furnace (Place Furnace) near the table for iron tool crafting.  
+5. Craft Stone Pickaxe and Stone Sword using the table (Make Stone Pickaxe, Make Stone Sword).  
+6. Place a Stone block on an empty tile (Place Stone).  
+7. Craft Iron Pickaxe and Iron Sword using the furnace and table (Make Iron Pickaxe, Make Iron Sword).  
+8. Move towards the cow (use Move North/East, etc.) and use Do to eat the cow to achieve ""Eat Cow"".  
+9. Place a Plant on the grass tile (Place Plant) and do to eat it for ""Eat Plant"".  
+10. Move towards a zombie and a skeleton, using Do to hit them for “Defeat Zombie” and “Defeat Skeleton”.  
+11. If energy is low, sleep to recover (Sleep) and Wake Up.  
+12. After signs of mineral/diamond blocks appear, mine them with appropriate pickaxe to complete “Collect Sampling”, “Collect Drink”, “Collect Diamond”.  
+13. Ensure health, food, drink and energy are within limits and repeat the loop until all 22 achievements are collected.  
+This plan moves sequentially through resource gathering, crafting, combat, and basic survival actions to satisfy every achievement.","You died.
+
+
+
+You see:
+- grass 1 steps to your north
+- stone 1 steps to your east
+- path 1 steps to your south
+- tree 4 steps to your west
+- iron 1 steps to your west
+- furnace 2 steps to your south-east
+- cow 7 steps to your north-east
+
+You face iron at your front.",-0.1,True

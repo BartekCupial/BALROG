@@ -1,0 +1,54 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,19,"OUR_PLAN
+
+Our goal is to reach the target node, which is 11, starting from the current node, which is 13. However, the target node is not directly visible in our current observation, likely due to the partial observability of the graph.
+
+Given the current observation, the only visible node directly connected to the current node (13) is the node with label 19. However, we know that the node with label 19 has multiple neighbors, including the node with label 11, which is our target.
+
+To reach the target node 11, we need to move to the node with label 19, which has multiple connections to our target node. We should then explore the node with label 19 and its neighbors to reach our target node.","
+node: 1, neighbors: [4]
+node: 3, neighbors: [18]
+node: 4, neighbors: [1, 7, 19]
+node: 6, neighbors: [9]
+node: 7, neighbors: [4]
+node: 9, neighbors: [6, 12, 19]
+node: 12, neighbors: [9]
+node: 13, neighbors: [19]
+node: 18, neighbors: [3, 19]
+node: 19, neighbors: [4, 9, 13, 18]
+
+current node: 19, target node: 11",0,False
+1,9,,"
+node: 4, neighbors: [19]
+node: 6, neighbors: [9]
+node: 8, neighbors: [12]
+node: 9, neighbors: [6, 12, 19]
+node: 11, neighbors: [12]
+node: 12, neighbors: [8, 9, 11]
+node: 13, neighbors: [19]
+node: 18, neighbors: [19]
+node: 19, neighbors: [4, 9, 13, 18]
+
+current node: 9, target node: 11",0,False
+2,12,"The initial plan is to reach the target node 11 from the current node. In previous observations, we saw that the node with label 19 was a key node, but it is not our target node. We should try to move towards the target node 11.
+
+In this observation, we see that the node with label 9 is the current node, and we also see the node with label 11 is directly connected to the node with label 12, which is connected to the node with label 9.
+
+Our high-level plan is to move from the node with label 9 to the node with label 12, and then move from the node with label 12 to the node with label 11.
+
+In the next steps, we will move to the node with label 12, as it is directly connected to the node with label 9 and has a path to the target node.","
+node: 6, neighbors: [9]
+node: 8, neighbors: [12]
+node: 9, neighbors: [6, 12, 19]
+node: 11, neighbors: [12]
+node: 12, neighbors: [8, 9, 11]
+node: 19, neighbors: [9]
+
+current node: 12, target node: 11",0,False
+3,11,,"node: 8, neighbors: [12]
+node: 9, neighbors: [12]
+node: 11, neighbors: [12]
+node: 12, neighbors: [8, 9, 11]
+
+current node: 11, target node: 11
+You have reached the target!",100.0,True

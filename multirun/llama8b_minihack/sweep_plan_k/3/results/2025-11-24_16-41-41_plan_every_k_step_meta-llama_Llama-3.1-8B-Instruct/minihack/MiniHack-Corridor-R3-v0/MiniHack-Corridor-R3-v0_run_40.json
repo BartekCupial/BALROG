@@ -1,0 +1,52 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "open": 6,
+        "east": 17,
+        "search": 16,
+        "west": 11,
+        "kick": 9,
+        "north": 19,
+        "south": 8,
+        "northwest": 7,
+        "southwest": 7
+    },
+    "input_tokens": 353232,
+    "output_tokens": 2440,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>Plan to complete the task:\n\nSince I'm close to the stairs up, I should try to move west through the open door to reach the stairs down. I'll then try to move north to reach the stairs down. If this plan doesn't work, I'll search the area to see if there are any other paths or hidden doors that I can take.\n\nGiven my current position and the map, my high-level plan is to try to reach the stairs down by moving west and then north through the open door.\n\nAction: west"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-58",
+    "seed": 187174106,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

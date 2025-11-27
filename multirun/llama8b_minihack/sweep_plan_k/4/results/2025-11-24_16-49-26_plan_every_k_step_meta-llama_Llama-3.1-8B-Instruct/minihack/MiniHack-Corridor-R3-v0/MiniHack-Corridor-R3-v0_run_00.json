@@ -1,0 +1,52 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 21,
+        "search": 15,
+        "kick": 7,
+        "south": 20,
+        "east": 15,
+        "southwest": 8,
+        "west": 8,
+        "open": 3,
+        "northwest": 3
+    },
+    "input_tokens": 344144,
+    "output_tokens": 1729,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>The current situation shows that the goal of reaching the stairs down is still uncertain. Upon reviewing previous observations, it seems that the stairs down are adjacent to the south, but there is a locked door in the way. The current location is at (x=63, y=19) and the stairs down are likely to be adjacent to the south at (x=19, y=0). Given the layout of the map and the presence of a doorway adjacent to the northwest, it seems that the stairs down might be accessible from the west. The high-level plan is to navigate through the doorway to the west and see if it leads to the stairs down. If not, explore other possible paths to reach the stairs down.\n\n The chosen action is: northwest."
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-65",
+    "seed": 1806150311,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 8,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 17,
+        "west": 7,
+        "north": 23,
+        "search": 14,
+        "southwest": 14,
+        "south": 16,
+        "northwest": 3,
+        "kick": 6
+    },
+    "input_tokens": 330622,
+    "output_tokens": 1621,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>YOUR_PLAN\n\nAfter reviewing the observations, I have determined that my goal of reaching the stairs down is blocked by a horizontal wall in the east direction and a vertical wall in the southeast direction. The only possible path to the stairs down is to the north.\n\nTo solve the task, I will move north repeatedly until I reach the stairs down.\n\nSince the stairs up is very near the north, I will use the stairs up to ascend and see if there's a clear path to the stairs down from the top.\n\nI will then use the search action to look for any hidden doors or passages that might lead to the stairs down.\n\nIf the search action doesn't reveal any new paths, I will try to find a new path by moving in a different direction and use the search action again.\n\n<plan>\n\nsearch",
+        "<plan>\nBased on my previous observations and the current layout of the room, I plan to try and find a way to move down to the stairs. Since there is a horizontal wall near the north and northeast, I need to find a way to bypass or go around it. My plan is to search for hidden passages or doors that may allow me to move in a different direction. If that doesn't work, I may try to kick at the wall to see if there is a hidden door or passage. Once I find a way to move down, I will focus on finding a path to the stairs down.\n\nNext action: search",
+        "<plan>The current situation shows that I am stuck in a dead-end room with no visible exit. However, I have observed a stairs up location in the west direction, which suggests that there may be a passage or door in that direction. My goal is to explore the level and reach the stairs down. I will plan to move towards the stairs up location and try to find a way to move down to the stairs. Given that I have a katana in my hand, I will plan to search the current room for any hidden passages or doors that may lead to the stairs up location.\n\nUpon reviewing the previous observations, I noticed that there was a horizontal wall near the stairs up location, but it's now adjacent to the current position. I will plan to try to find an exit to the west or south direction to access the stairs up location.\n\nMy high-level plan is to search the current room for any hidden passages or doors, try to move west or south to access the stairs up location, and then explore the room to find an exit to the stairs down location.\n\nMy first action is to: kick"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-94",
+    "seed": 947580594,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

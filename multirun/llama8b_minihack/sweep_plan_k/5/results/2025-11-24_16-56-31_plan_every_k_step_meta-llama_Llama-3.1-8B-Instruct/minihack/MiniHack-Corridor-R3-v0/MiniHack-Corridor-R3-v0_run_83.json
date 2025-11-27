@@ -1,0 +1,53 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 28,
+        "northwest": 10,
+        "search": 19,
+        "east": 8,
+        "south": 24,
+        "southwest": 2,
+        "open": 5,
+        "kick": 4
+    },
+    "input_tokens": 357544,
+    "output_tokens": 1491,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>The initial goal is to reach the stairs down, but the stairs up is now visible. Considering the presence of a doorway and a dark area near the north, it seems likely that there's another room to the north of my current location. Given the lack of obstacles in the north direction, I'll aim to move north to explore that area and possibly find a path leading to the stairs down. If the dark area leads to a separate room, it may contain additional objects or obstacles that need to be addressed.\n\nUpon reaching the new area, I'll reassess the situation and adjust my plan accordingly.\n\nGiven the current situation, I'll start by moving north to explore the dark area and see what lies beyond.\n\neast",
+        "<plan>The goal is to reach the stairs down. Initially, I was trying to move north and explore the dark area. However, I encountered solid stone and was forced to backtrack. Now that I'm back in the main room, I should reassess the situation. The stairs up is near south, but I'm not sure if it's the correct path to reach the stairs down. The presence of the doorway near the south suggests that there might be a path leading to the stairs down through that doorway. I'll need to move south to investigate further.\n\nThe next step will be to open the doorway to see where it leads, and then proceed from there.\n\nAction: south",
+        "<plan>The goal is to reach the stairs down. Initially, I was trying to move north and explore the dark area, but I was forced to backtrack. I should have focused on investigating the doorway near the south instead. Since I'm stuck with a wall in front of me, my high-level plan is to try to find a path around the wall by moving in a different direction, possibly going through the doorway. Once I'm on the other side, I'll reassess the situation and try to find a way to the stairs down. If necessary, I'll use the \"search\" action to find any hidden doors or passages that might be useful.\n\nAction: search"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-85",
+    "seed": 2839609055,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

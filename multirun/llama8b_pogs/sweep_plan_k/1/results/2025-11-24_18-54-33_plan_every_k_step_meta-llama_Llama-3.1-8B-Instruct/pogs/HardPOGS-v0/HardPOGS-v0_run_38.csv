@@ -1,0 +1,28 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,13,"The target node is 12, but it's not visible in the current observation due to the k-nearest neighbor radius of 2. 
+From the current node 3, I have options to move to nodes 1, 7, or 13. However, moving to node 1 is a dead end as its neighbors are only at a distance of 1 from the current node, making it not suitable for further exploration. Node 7 is also not preferred as it would require backtracking later.
+Moving to node 13 seems promising as it is directly connected to node 3 and might lead us to discover more nodes, including a path to the target node 12.
+After reaching node 13, I'll reassess the situation to determine the next course of action.","
+node: 1, neighbors: [3]
+node: 3, neighbors: [1, 7, 13]
+node: 7, neighbors: [3]
+node: 11, neighbors: [12, 13]
+node: 12, neighbors: [11]
+node: 13, neighbors: [3, 11]
+
+current node: 13, target node: 12",0,False
+1,11,,"
+node: 3, neighbors: [13]
+node: 11, neighbors: [12, 13]
+node: 12, neighbors: [11, 15]
+node: 13, neighbors: [3, 11]
+node: 15, neighbors: [12]
+
+current node: 11, target node: 12",0,False
+2,12,,"node: 11, neighbors: [12, 13]
+node: 12, neighbors: [11, 15]
+node: 13, neighbors: [11]
+node: 15, neighbors: [12]
+
+current node: 12, target node: 12
+You have reached the target!",100.0,True

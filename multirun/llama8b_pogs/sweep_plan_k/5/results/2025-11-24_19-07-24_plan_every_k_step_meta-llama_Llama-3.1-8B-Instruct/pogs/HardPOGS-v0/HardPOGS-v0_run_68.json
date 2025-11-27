@@ -1,0 +1,49 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "15": 1,
+        "0": 1,
+        "3": 2,
+        "4": 1,
+        "17": 2,
+        "8": 2,
+        "7": 1
+    },
+    "input_tokens": 9856,
+    "output_tokens": 226,
+    "done": true,
+    "episode_return": 71.0,
+    "num_steps": 10,
+    "failed_candidates": [
+        "<plan> MY_PLAN\n\nMy high-level plan involves avoiding dead ends and exploring neighboring nodes that are more likely to lead me closer to the target node 8.\n\nBased on the current observation, I am at node 4. I can see that node 4 has only one neighbor, which is node 3. However, I know that node 3 also has more neighbors, and one of them is node 17. Unfortunately, node 17 is also a dead end.\n\nTo avoid the dead end at node 3 and node 17, I will focus on exploring other neighbors of node 3. I can see that node 3 has another neighbor, which is node 0. Since I can explore nodes that are within a 2-neighbor radius, I will try to move to node 0 and see if it leads me closer to the target node 8.\n\nThe goal is to move to node 0 and explore its neighbors to see if we can reach the target node 8.\n\n Action: 0"
+    ],
+    "progression": 0.71,
+    "process_num": "ForkProcess-83",
+    "seed": 491053023,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

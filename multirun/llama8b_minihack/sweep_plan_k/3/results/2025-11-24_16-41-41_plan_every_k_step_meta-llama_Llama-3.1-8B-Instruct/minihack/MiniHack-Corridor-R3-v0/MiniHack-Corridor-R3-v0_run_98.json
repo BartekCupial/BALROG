@@ -1,0 +1,60 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 13,
+        "kick": 16,
+        "west": 16,
+        "search": 17,
+        "south": 1,
+        "east": 21,
+        "northwest": 4,
+        "open": 5,
+        "southwest": 6,
+        "southeast": 1
+    },
+    "input_tokens": 341360,
+    "output_tokens": 2674,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nBased on my previous observations, I understand that the goal is to reach the stairs down. The current room layout indicates that there is a doorway to the west, but no door. The northwest room corner is also accessible but does not have a door. I plan to search the room to look for hidden doors or passages, and then use the lock pick to unlock any potential doors. If no hidden doors are found, I will try to kick the doorway to see if it can be opened. If the doorway cannot be opened, I will attempt to move east to explore the adjacent room, where I see stairs up, but this is not my current goal. The highest priority is to find a way to descend to the stairs down.\n\nAction: search",
+        "",
+        "eastnortheast",
+        "eastnortheast",
+        "",
+        "eastnortheast",
+        "eastnortheast",
+        "kick east"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-49",
+    "seed": 1966516109,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

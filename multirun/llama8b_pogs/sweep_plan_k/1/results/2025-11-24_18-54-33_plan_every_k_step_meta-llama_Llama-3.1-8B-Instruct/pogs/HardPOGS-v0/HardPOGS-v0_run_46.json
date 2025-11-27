@@ -1,0 +1,51 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "0": 5,
+        "7": 3,
+        "17": 2,
+        "10": 3,
+        "4": 1,
+        "13": 1,
+        "15": 1,
+        "19": 1,
+        "1": 1
+    },
+    "input_tokens": 30786,
+    "output_tokens": 1731,
+    "done": true,
+    "episode_return": 54.0,
+    "num_steps": 18,
+    "failed_candidates": [
+        "<plan>We have been trying to reach the target node 1, but our path has been hindered by the partially observable graph and our current location. Based on our previous observations and actions, we have the following information:\n\n- Node 1 is not visible from our current location.\n- We have been stuck in a loop between nodes 7, 10, 4, and 7.\n- We were able to get to node 13 and then node 15, but we are still far from reaching node 1.\n\nOur high-level plan to complete the task is as follows:\n\n1. Get a better view of the graph by moving to a node that is closer to the target node or has more connections.\n2. Once we have a better view of the graph, try to identify a path to node 1.\n3. If we cannot find a direct path to node 1, try to find a node that has a connection to node 1 and move to that node.\n\nTo achieve this plan, we will need to take actions one at a time and adjust our plan based on the new observations.\n\nOur first action will be to move to a node that is closer to the target node or has more connections. Based on our previous observations, we know that node 19 has connections to nodes 0 and 15, and node 0 has a connection to node 19. Therefore, we will try to move to node 0.\n\nAction: 0"
+    ],
+    "progression": 0.54,
+    "process_num": "ForkProcess-31",
+    "seed": 1802116556,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

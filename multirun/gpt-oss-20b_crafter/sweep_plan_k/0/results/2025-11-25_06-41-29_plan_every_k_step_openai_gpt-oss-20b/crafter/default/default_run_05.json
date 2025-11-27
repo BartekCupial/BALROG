@@ -1,0 +1,103 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Move West": 18,
+        "Do": 126,
+        "Move East": 12,
+        "Noop": 4,
+        "Place Table": 7,
+        "Move North": 6,
+        "Place Plant": 2,
+        "Make Wood Pickaxe": 2,
+        "Sleep": 1
+    },
+    "input_tokens": 362191,
+    "output_tokens": 137009,
+    "done": true,
+    "episode_return": 2.099999999999999,
+    "num_steps": 178,
+    "failed_candidates": [
+        "Move West.",
+        "",
+        "",
+        "<plan>Step\u202f1: Use the **Do** action to collect the plant that sits directly in front of the agent.  \nStep\u202f2: After harvesting the plant, use **Place Plant** to satisfy the \u201cPlace Plant\u201d achievement.  \nStep\u202f3: Move onto the newly placed plant tile with **Move East** and then **Do** again to consume the plant, fulfilling \u201cEat Plant\u201d.  \nStep\u202f4: Harvest nearby trees or, if unavailable, gather the sapling to craft a **Wood Pickaxe** (requires a nearby table, so also **Place Table** on a grass tile first).  \nStep\u202f5: Mine stone blocks with the new pickaxe, place them (**Place Stone**), and craft a **Stone Pickaxe**.  \nStep\u202f6: Use the stone pickaxe to gather iron ore, craft a **Furnace** (after placing some coal), smelt the iron, and craft **Iron Pickaxe** and **Iron Sword**.  \nStep\u202f7: Defeat the skeleton encountered north, then head in the direction of the lake to collect water (**Collect Drink**) and any sampling items (**Collect Sampling**).  \nStep\u202f8: Hunt animals (e.g., cow) to get food (**Eat Cow**), and collect the needed coal for the furnace (**Collect Coal**).  \nStep\u202f9: Use the iron sword to defeat the zombie (**Defeat Zombie**).  \nStep\u202f10: Finally mine a diamond vein with the iron pickaxe to complete \u201cCollect Diamond\u201d.  \nThroughout, monitor health and energy; when energy drops below maximum, use **Sleep** to restore. <plan>  \nDo"
+    ],
+    "score": 3.0,
+    "progression": 0.13636363636363635,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 12,
+        "collect_iron": 0,
+        "collect_sapling": 6,
+        "collect_stone": 0,
+        "collect_wood": 0,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 0,
+        "eat_cow": 0,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 0,
+        "make_wood_sword": 0,
+        "place_furnace": 0,
+        "place_plant": 2,
+        "place_stone": 0,
+        "place_table": 0,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": 37,
+        "collect_iron": -1,
+        "collect_sapling": 151,
+        "collect_stone": -1,
+        "collect_wood": -1,
+        "defeat_skeleton": -1,
+        "defeat_zombie": -1,
+        "eat_cow": -1,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": -1,
+        "make_wood_sword": -1,
+        "place_furnace": -1,
+        "place_plant": 161,
+        "place_stone": -1,
+        "place_table": -1,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-6",
+    "seed": 903897481,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 2,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-20b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

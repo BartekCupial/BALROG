@@ -1,0 +1,59 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 24,
+        "south": 10,
+        "search": 18,
+        "north": 13,
+        "northwest": 7,
+        "open": 2,
+        "kick": 6,
+        "west": 10,
+        "southwest": 8,
+        "northeast": 1,
+        "southeast": 1
+    },
+    "input_tokens": 356513,
+    "output_tokens": 4865,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "kick northeast",
+        "kick eastnortheast",
+        "<plan>Based on the observations, the goal is to reach the stairs down. A high-level plan to achieve this would be:\n\n1. Identify the location of the stairs down.\n2. Find a path to the stairs down.\n3. If the path involves a locked door, use the kick action or try to open it.\n4. If the path involves a dark area, try to search for hidden doors or passages.\n\nGiven the current situation, the stairs down are not visible in the current map, but there is a dark area near the east direction. A possible path to the stairs down might involve exploring the east direction and searching for hidden doors or passages. The plan would be to move east and search for a way down.\n\nAction: east",
+        "eastnortheast",
+        "",
+        "<plan>\nTo find the stairs down, I need to find a way out of the current level. I have explored the current room and found a doorway to the east. I plan to move east through the doorway to see if I can find a new room that might lead to the stairs down. If I find the stairs down, I will move towards them. If not, I will continue to explore the new area until I find a way down. I will also keep an eye out for any hidden doors or passages that might lead to the stairs down.\n\nThe current room has a horizontal wall adjacent to the north, northeast, and northwest, which means I can move in those directions. I will try to move northeast to see if I can find a way out of the current room.\n\nReasoning:\nI have tried moving north, west, and south without finding any new paths. I have also tried kicking the wall without finding anything. Moving northeast might allow me to find a new room that leads to the stairs down.\n\nAction: northeast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-17",
+    "seed": 3855199853,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

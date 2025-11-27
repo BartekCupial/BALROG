@@ -1,0 +1,55 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 20,
+        "southwest": 7,
+        "search": 21,
+        "open": 9,
+        "north": 25,
+        "south": 8,
+        "kick": 1,
+        "northeast": 2,
+        "northwest": 6,
+        "west": 1
+    },
+    "input_tokens": 354231,
+    "output_tokens": 13474,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "",
+        "<plan>The goal is to reach the stairs down. However, I observed that the stairs up are near the southwest corner, which is inaccessible due to the wall. My plan is to navigate through the northeast room corner to find a path to the stairs down. To achieve this, I will move through the dark area near the north and northwest, and then explore the northeast room corner to find a path to the stairs down.\n\nHigh-level plan:\n\n1. Move north to explore the dark area.\n2. Move through the dark area to reach the northeast room corner.\n3. Explore the northeast room corner to find a path to the stairs down.\n\nAction: north",
+        "<plan>The goal is to reach the stairs down. I previously observed that the stairs up are near the southwest corner, which is inaccessible due to the wall. My plan is to move north and then navigate through the northeast room corner to find a path to the stairs down.\n\nI noticed that the northeast room corner is adjacent to the southeast direction. To reach the southeast direction, I can move east.\n\nHigh-level plan:\n\n1. Move east to reach the southeast direction.\n2. Move through the southeast direction to reach the northeast room corner.\n3. Explore the northeast room corner to find a path to the stairs down.\n\nAction: east"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-4",
+    "seed": 1363382879,
+    "agent": {
+        "type": "always_plan",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 5,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

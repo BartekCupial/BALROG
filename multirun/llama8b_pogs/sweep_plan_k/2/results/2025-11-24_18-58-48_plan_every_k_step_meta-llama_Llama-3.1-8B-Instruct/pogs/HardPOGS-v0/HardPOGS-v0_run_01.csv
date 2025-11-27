@@ -1,0 +1,91 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,8,"Given the current node 12 and the target node 11, the current observable environment reveals that we cannot move directly to the target. Since our k-nearest neighbor radius is 2, we should look for nodes within this radius. Our current node 12 is connected to 8, but moving to 8 would require a change in direction and does not directly take us to the target. 
+
+One high-level strategy could be to explore all the options within the k-nearest neighbor radius of our current position. If possible, try to move to a node with multiple connections (not a dead end) that would increase our chances of reaching the target node in the next move.
+
+However, given the provided environment and current node 12, moving to node 8 would be a necessary first step to potentially reach our target. Given the structure of the environment, if we move to 8, we can explore more possibilities from that node, including a possible path to the target.
+
+Further consideration will be taken once we reach node 8, taking into account new information about the environment.
+
+From our current node 12, we need to move to a node that is directly connected to it, so we have the following options: 
+8, 17.
+However, node 17 only has one neighbor (8) and the distance between 12 and 17 is more than 2. Hence, it would be penalized as a dead-end if we choose to move to it.
+
+Hence, we will choose to move to the node with multiple connections which is node 8.
+
+The action to take is: 8.","
+node: 2, neighbors: [6]
+node: 6, neighbors: [2, 8, 15]
+node: 8, neighbors: [6, 12, 17]
+node: 12, neighbors: [8]
+node: 13, neighbors: [17]
+node: 15, neighbors: [6]
+node: 17, neighbors: [8, 13]
+
+current node: 8, target node: 11",0,False
+1,17,,"
+node: 1, neighbors: [13]
+node: 3, neighbors: [13]
+node: 6, neighbors: [8]
+node: 8, neighbors: [6, 12, 17]
+node: 9, neighbors: [13]
+node: 12, neighbors: [8]
+node: 13, neighbors: [1, 3, 9, 16, 17]
+node: 16, neighbors: [13]
+node: 17, neighbors: [8, 13]
+
+current node: 17, target node: 11",0,False
+2,13,,"
+node: 0, neighbors: [9]
+node: 1, neighbors: [13]
+node: 3, neighbors: [5, 13]
+node: 5, neighbors: [3]
+node: 8, neighbors: [17]
+node: 9, neighbors: [0, 13]
+node: 13, neighbors: [1, 3, 9, 16, 17]
+node: 16, neighbors: [13]
+node: 17, neighbors: [8, 13]
+
+current node: 13, target node: 11",0,False
+3,3,,"
+node: 1, neighbors: [13]
+node: 3, neighbors: [5, 13]
+node: 5, neighbors: [3, 10, 11, 19]
+node: 9, neighbors: [13]
+node: 10, neighbors: [5]
+node: 11, neighbors: [5]
+node: 13, neighbors: [1, 3, 9, 16, 17]
+node: 16, neighbors: [13]
+node: 17, neighbors: [13]
+node: 19, neighbors: [5]
+
+current node: 3, target node: 11",0,False
+4,5,"From the observations, we can see that the target node 11 is directly connected to node 5. In one of the previous observations, we were at node 3 and could have moved to node 5, but we chose to move to node 13 instead. 
+
+Now that we are back at node 3, we have the opportunity to correct our path and move directly to node 5. From there, we can move to node 11 to reach our target. This plan involves backtracking to correct our previous decision and then moving forward to reach the target.
+
+To complete the task, we will:
+
+1. Move from node 3 to node 5 to correct our previous path.
+2. Move from node 5 to node 11 to reach our target.
+
+Our current position is node 3, and the target is node 11. We need to move to node 5 to reach the target. We can see that we can move to node 5 from node 3.
+
+The action to take is: 5","
+node: 3, neighbors: [5, 13]
+node: 5, neighbors: [3, 10, 11, 19]
+node: 10, neighbors: [5, 14]
+node: 11, neighbors: [5]
+node: 13, neighbors: [3]
+node: 14, neighbors: [10]
+node: 19, neighbors: [5]
+
+current node: 5, target node: 11",0,False
+5,11,,"node: 3, neighbors: [5]
+node: 5, neighbors: [3, 10, 11, 19]
+node: 10, neighbors: [5]
+node: 11, neighbors: [5]
+node: 19, neighbors: [5]
+
+current node: 11, target node: 11
+You have reached the target!",100.0,True

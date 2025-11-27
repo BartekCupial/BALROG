@@ -1,0 +1,54 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 22,
+        "south": 2,
+        "north": 7,
+        "search": 16,
+        "kick": 8,
+        "northwest": 7,
+        "southwest": 8,
+        "west": 21,
+        "open": 9
+    },
+    "input_tokens": 367054,
+    "output_tokens": 5482,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan> \nThe goal is to reach the stairs down. From the current map, I can see that the stairs up is very near to the west. I will need to search for a door or a hidden passage to move down instead of up. My high-level plan is to move northwest to expand my map, search for a hidden passage, and try to find the stairs down. Once I find a way down, I will try to move down and explore the area below to see if I can find more items and map out the area. The chaotic alignment and the items I have in my inventory should help me navigate through the level and avoid danger. Once I reach the stairs down, I should be able to complete the task. \n\nkick north",
+        "<plan> \nTo complete the task, I need to find the stairs down. The stairs up is visible, but it's not my goal. From the current map, I can see that there's an open door near the northwest. I will try to move through that door to explore the area to the north. Once I'm through the door, I will try to find the stairs down, which might be hidden in a dark area or a hidden passage. If I encounter any danger, I will use my lock pick to unlock any doors or chests, or I will kick any enemies or locked doors. I will search for any hidden doors or passages as I move through the level to ensure I don't miss any stairs down.\n\nnorthwest",
+        "use e"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-28",
+    "seed": 3442813306,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

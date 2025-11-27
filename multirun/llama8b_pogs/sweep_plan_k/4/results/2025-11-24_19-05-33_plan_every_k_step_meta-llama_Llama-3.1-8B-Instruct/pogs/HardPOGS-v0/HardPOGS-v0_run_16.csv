@@ -1,0 +1,47 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,0,"We are given a target node 8, which is not present in our current observations. This means we are operating in a partially observable environment with limited knowledge of the graph structure. However, we know that our current node is 9 and we have a k-nearest neighbor radius of 2.
+
+From the given observations, we can see that node 9 has neighbors 13 and 17. To progress towards the target node 8, we need to first focus on exploring the neighbors of node 9.
+
+Our high-level plan is to first explore the neighbor 13, as it has a higher potential for leading us closer to the target node 8. We will also need to keep track of our current node and its neighbors as we move forward.
+
+Based on this plan, our next action is to move to node 13.","
+node: 1, neighbors: [17]
+node: 2, neighbors: [17]
+node: 9, neighbors: [13, 17]
+node: 11, neighbors: [13]
+node: 13, neighbors: [9, 11]
+node: 17, neighbors: [1, 2, 9, 19]
+node: 19, neighbors: [17]
+
+current node: 9, target node: 8",-6.0,False
+1,13,,"
+node: 6, neighbors: [11]
+node: 8, neighbors: [11]
+node: 9, neighbors: [13, 17]
+node: 11, neighbors: [6, 8, 13]
+node: 13, neighbors: [9, 11]
+node: 17, neighbors: [9]
+
+current node: 13, target node: 8",0,False
+2,11,,"
+node: 6, neighbors: [11, 16]
+node: 8, neighbors: [11, 15, 18]
+node: 9, neighbors: [13]
+node: 11, neighbors: [6, 8, 13]
+node: 13, neighbors: [9, 11]
+node: 15, neighbors: [8]
+node: 16, neighbors: [6]
+node: 18, neighbors: [8]
+
+current node: 11, target node: 8",0,False
+3,8,,"node: 0, neighbors: [18]
+node: 6, neighbors: [11]
+node: 8, neighbors: [11, 15, 18]
+node: 11, neighbors: [6, 8, 13]
+node: 13, neighbors: [11]
+node: 15, neighbors: [8]
+node: 18, neighbors: [0, 8]
+
+current node: 8, target node: 8
+You have reached the target!",100.0,True

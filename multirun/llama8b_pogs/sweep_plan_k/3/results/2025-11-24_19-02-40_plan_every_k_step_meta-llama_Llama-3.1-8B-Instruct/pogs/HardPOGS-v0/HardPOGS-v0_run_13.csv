@@ -1,0 +1,41 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,16,"Since I am currently at node 14, I have several possible paths to explore. My goal is to reach node 6. However, I have observed that there are multiple nodes that are not directly connected to my current position, including node 6. I need to explore neighboring nodes to find a path to the target node.
+
+From my current node 14, I have the following neighbors: [3, 15, 17]. I will start by checking if there are any dead ends in my k-nearest neighbor radius (k=2). However, all of my neighbors have more than one neighbor. 
+
+So, I will choose a neighbor to move towards, and from there, I can further explore the graph. Since node 17 is directly connected to node 1, and node 1 has a neighbor node 17, which in turn has a path to the rest of the graph (but only 3 of it can be observed directly, however node 6 is in the radius of the next knn), which means there are more unexplored paths.
+
+I choose to move towards node 17.","
+node: 0, neighbors: [3]
+node: 1, neighbors: [17]
+node: 3, neighbors: [0, 9, 13, 14]
+node: 9, neighbors: [3]
+node: 13, neighbors: [3]
+node: 14, neighbors: [3, 15, 17]
+node: 15, neighbors: [14, 16]
+node: 16, neighbors: [15]
+node: 17, neighbors: [1, 14]
+
+current node: 14, target node: 6",-6.0,False
+1,17,,"
+node: 1, neighbors: [6, 17]
+node: 3, neighbors: [14]
+node: 6, neighbors: [1]
+node: 14, neighbors: [3, 15, 17]
+node: 15, neighbors: [14]
+node: 17, neighbors: [1, 14]
+
+current node: 17, target node: 6",0,False
+2,1,,"
+node: 1, neighbors: [6, 17]
+node: 6, neighbors: [1]
+node: 14, neighbors: [17]
+node: 17, neighbors: [1, 14]
+
+current node: 1, target node: 6",0,False
+3,6,,"node: 1, neighbors: [6, 17]
+node: 6, neighbors: [1]
+node: 17, neighbors: [1]
+
+current node: 6, target node: 6
+You have reached the target!",100.0,True

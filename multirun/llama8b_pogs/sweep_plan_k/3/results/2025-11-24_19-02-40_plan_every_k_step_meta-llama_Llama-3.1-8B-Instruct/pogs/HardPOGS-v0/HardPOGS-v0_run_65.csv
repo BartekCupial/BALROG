@@ -1,0 +1,92 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,16,"Since the current node is 11, which has multiple neighbors (6, 10, 16, 17), there are several possible paths to explore. However, we don't have a direct connection to the target node 2 in the current observation. To find a path to the target node 2, we should try to move towards nodes that have a higher chance of leading to the target node. We can start by moving to a node that has a high number of neighbors, as these nodes are more likely to have a connection to the target node. We will prioritize moving to node 10, as it has 4 neighbors, which is more than any other node currently visible.","
+node: 0, neighbors: [1, 16]
+node: 1, neighbors: [0]
+node: 5, neighbors: [9, 16]
+node: 6, neighbors: [11]
+node: 8, neighbors: [15, 16]
+node: 9, neighbors: [5]
+node: 10, neighbors: [11]
+node: 11, neighbors: [6, 10, 16, 17]
+node: 15, neighbors: [8]
+node: 16, neighbors: [0, 5, 8, 11]
+node: 17, neighbors: [11]
+
+current node: 16, target node: 2",0,False
+1,10,,"
+node: 0, neighbors: [1, 16]
+node: 1, neighbors: [0]
+node: 5, neighbors: [9, 16]
+node: 6, neighbors: [11]
+node: 8, neighbors: [15, 16]
+node: 9, neighbors: [5]
+node: 10, neighbors: [11]
+node: 11, neighbors: [6, 10, 16, 17]
+node: 15, neighbors: [8]
+node: 16, neighbors: [0, 5, 8, 11]
+node: 17, neighbors: [11]
+
+current node: 16, target node: 2",-6.0,False
+2,11,,"
+node: 0, neighbors: [16]
+node: 4, neighbors: [10]
+node: 5, neighbors: [16]
+node: 6, neighbors: [11]
+node: 8, neighbors: [16]
+node: 10, neighbors: [4, 11, 14, 19]
+node: 11, neighbors: [6, 10, 16, 17]
+node: 14, neighbors: [10]
+node: 16, neighbors: [0, 5, 8, 11]
+node: 17, neighbors: [11]
+node: 19, neighbors: [10]
+
+current node: 11, target node: 2",-5,False
+3,10,,"
+node: 4, neighbors: [10, 13]
+node: 6, neighbors: [11]
+node: 10, neighbors: [4, 11, 14, 19]
+node: 11, neighbors: [6, 10, 16, 17]
+node: 13, neighbors: [4]
+node: 14, neighbors: [10]
+node: 16, neighbors: [11]
+node: 17, neighbors: [11]
+node: 19, neighbors: [10]
+
+current node: 10, target node: 2",0,False
+4,4,,"
+node: 3, neighbors: [13]
+node: 4, neighbors: [10, 13]
+node: 10, neighbors: [4, 11, 14, 19]
+node: 11, neighbors: [10]
+node: 13, neighbors: [3, 4]
+node: 14, neighbors: [10]
+node: 19, neighbors: [10]
+
+current node: 4, target node: 2",0,False
+5,13,,"
+node: 2, neighbors: [3]
+node: 3, neighbors: [2, 13]
+node: 4, neighbors: [10, 13]
+node: 10, neighbors: [4]
+node: 13, neighbors: [3, 4]
+
+current node: 13, target node: 2",0,False
+6,3,"The initial goal is to reach the target node 2. However, it is not possible to reach node 2 directly from the start, and the target node is not visible in the partial observation. After several observations, we eventually see the target node 2 and its single neighbor 3. To reach node 2, we must navigate through the partially observable graph and use the information from each observation to decide the next action.
+
+The plan is to move towards nodes with a high chance of leading to the target node, and use the adjacency list to decide the next action. We also need to avoid going to nodes that are dead ends, as this will incur a penalty. The graph search is partially observable, and we need to use this information to our advantage by exploring the most promising nodes first.
+
+Since we can see the target node 2, we can now focus on reaching it directly. We are currently at node 13, which has two neighbors: 3 and 4. We know that node 3 is connected to the target node 2, so our best course of action is to move to node 3.","
+node: 2, neighbors: [3, 18]
+node: 3, neighbors: [2, 13]
+node: 4, neighbors: [13]
+node: 13, neighbors: [3, 4]
+node: 18, neighbors: [2]
+
+current node: 3, target node: 2",0,False
+7,2,,"node: 2, neighbors: [3, 18]
+node: 3, neighbors: [2, 13]
+node: 13, neighbors: [3]
+node: 18, neighbors: [2]
+
+current node: 2, target node: 2
+You have reached the target!",100.0,True

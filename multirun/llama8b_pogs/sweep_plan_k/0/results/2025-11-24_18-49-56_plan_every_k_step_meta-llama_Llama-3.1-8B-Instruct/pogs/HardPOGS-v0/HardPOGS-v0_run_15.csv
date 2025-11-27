@@ -1,0 +1,549 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,12,"To complete the task, I plan to find a path to the target node 1 from the current node 10. However, I observe that the current node 10 only has a single neighbor 7 within a distance of 2, but I also notice that there are multiple nodes connected to node 7. I will attempt to find a path from node 7 to the target node 1 or any other node that has 1 as its neighbor. Since the graph is partially observable, I will have to rely on the information provided by the current observation and update my plan accordingly.","
+node: 0, neighbors: [7]
+node: 4, neighbors: [7]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 19, neighbors: [7]
+
+current node: 10, target node: 1",-6.0,False
+1,7,,"
+node: 0, neighbors: [7]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 8, neighbors: [4]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 17, neighbors: [4]
+node: 19, neighbors: [7]
+
+current node: 7, target node: 1",0,False
+2,4,"To find a path to the target node 1, I should first identify nodes that are within the current observable radius (k=2) and have a direct connection to the target node 1. However, it appears that node 1 is not directly connected to any node within the current observable radius. I need to plan a path that goes through multiple nodes to reach the target node 1. Since I was previously at node 7, which is connected to node 0 and node 4, I can try to reach node 4 first and then explore from there to reach node 1.","
+node: 0, neighbors: [7]
+node: 2, neighbors: [17]
+node: 3, neighbors: [17]
+node: 4, neighbors: [7, 8, 17]
+node: 6, neighbors: [17]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 8, neighbors: [4, 14, 15]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 14, neighbors: [8]
+node: 15, neighbors: [8]
+node: 17, neighbors: [2, 3, 4, 6]
+node: 19, neighbors: [7]
+
+current node: 4, target node: 1",0,False
+3,8,,"
+node: 1, neighbors: [14]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [4]
+node: 8, neighbors: [4, 14, 15]
+node: 9, neighbors: [15]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8, 9]
+node: 16, neighbors: [14]
+node: 17, neighbors: [4]
+
+current node: 8, target node: 1",0,False
+4,14,"The target node 1 is now visible, and I can see that it is directly connected to node 14. In the previous observation, I was at node 8, which is also directly connected to node 14. Given this new information, I can plan a direct path to the target node 1 by moving to node 14.
+
+However, the graph is partially observable, and I need to be aware of the potential for dead ends. Since I am already at a node (node 8) with multiple neighbors, I can safely move to any of its directly connected nodes.
+
+My high-level plan is to:
+
+1. Identify the target node and its connections.
+2. Determine the safest and most direct path to the target node, considering the partially observable nature of the graph.
+3. Execute a series of actions to reach the target node, monitoring the graph for any changes in node visibility or connectivity.
+
+To start, I will move from node 8 to its directly connected node 14, which is also connected to the target node 1.","
+node: 1, neighbors: [13, 14]
+node: 4, neighbors: [8]
+node: 8, neighbors: [4, 14, 15]
+node: 13, neighbors: [1]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8]
+node: 16, neighbors: [14]
+
+current node: 14, target node: 1",0,False
+5,13,,"
+node: 1, neighbors: [13, 14]
+node: 4, neighbors: [8]
+node: 8, neighbors: [4, 14, 15]
+node: 13, neighbors: [1]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8]
+node: 16, neighbors: [14]
+
+current node: 14, target node: 1",-6.0,False
+6,,"I have observed the following information:
+
+- I started at node 10, then moved to node 7, then node 4, then node 8, then node 14, and finally node 14.
+- The target node is 1, but I was unable to reach it due to a lack of direct connections from my current position (node 14).
+- The only connection I can see between the target node 1 and my current node 14 is the shared neighbor node 14, but since 14 is not directly connected to 1 from node 1's perspective, it is also not connected in this direction, since in the observation before 1's neighbors were updated.
+- Since I have no direct connections to the target node 1 and am limited to a k-nearest neighbor radius of 2, I must search for an alternative path.
+- I can see that node 13 is connected to node 1, but it is not visible to me from my current position (node 14).
+- I must move to a node that is closer to the target node 1.
+
+To reach the target node 1, I plan to:
+
+1. Move to a node that has a direct connection to node 13 or node 1.
+2. Once I reach a node with a connection to node 1, I will try to reach node 1.
+
+The plan is to move to node 15 or node 16, both of which are connected to node 14, and see if they have a direct connection to node 1.
+
+I choose to move to node 15.","
+
+Your previous output did not contain a valid action. Defaulted to action: 2
+
+Observation:
+
+node: 1, neighbors: [13, 14]
+node: 4, neighbors: [8]
+node: 8, neighbors: [4, 14, 15]
+node: 13, neighbors: [1]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8]
+node: 16, neighbors: [14]
+
+current node: 14, target node: 1",-6.0,False
+7,15,,"
+node: 1, neighbors: [13, 14]
+node: 4, neighbors: [8]
+node: 8, neighbors: [4, 14, 15]
+node: 13, neighbors: [1]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8]
+node: 16, neighbors: [14]
+
+current node: 14, target node: 1",-6.0,False
+8,8,"Based on my previous observations, I plan to find a path to the target node 1.
+
+I started at node 10 and moved to node 7, then node 4, then node 8, then node 14, and finally node 14. I was unable to reach node 1 directly from node 14.
+
+From the observations, I can see that node 13 is connected to node 1, and I plan to move to node 8 and then find a path to node 13.
+
+The high-level plan is as follows:
+1. Move from node 14 to node 15 to get closer to node 13.
+2. From node 15, move to node 8 to have more connections to explore.
+3. From node 8, move to node 13 to reach the target node 1.
+
+I will follow this plan and take actions accordingly.","
+node: 1, neighbors: [14]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [4]
+node: 8, neighbors: [4, 14, 15]
+node: 9, neighbors: [15]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8, 9]
+node: 16, neighbors: [14]
+node: 17, neighbors: [4]
+
+current node: 8, target node: 1",-5,False
+9,14,,"
+node: 1, neighbors: [13, 14]
+node: 4, neighbors: [8]
+node: 8, neighbors: [4, 14, 15]
+node: 13, neighbors: [1]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8]
+node: 16, neighbors: [14]
+
+current node: 14, target node: 1",0,False
+10,"<plan>
+Based on my previous observations and plan, I have come up with a revised high-level plan to complete the task.
+
+1. I noticed that I had trouble reaching node 1 from node 14, but I can see that node 1 is connected to node 14. However, I should consider moving to node 13 instead of node 14 to reach node 1. 
+2. To get to node 13, I can see that I am currently at node 8, and I need to move to node 15 to reach node 9, which in turn has node 13 as its neighbor. 
+3. I will continue to move towards node 9 and then node 13.
+
+I have identified a feasible path from the current node to the target node 1.
+
+Next action:
+9",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 7
+
+Observation:
+
+node: 1, neighbors: [13, 14]
+node: 4, neighbors: [8]
+node: 8, neighbors: [4, 14, 15]
+node: 13, neighbors: [1]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8]
+node: 16, neighbors: [14]
+
+current node: 14, target node: 1",-6.0,False
+11,15,,"
+node: 1, neighbors: [13, 14]
+node: 4, neighbors: [8]
+node: 8, neighbors: [4, 14, 15]
+node: 13, neighbors: [1]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8]
+node: 16, neighbors: [14]
+
+current node: 14, target node: 1",-6.0,False
+12,"<plan>
+I have been observing the graph and trying to find a path to the target node 1. However, I have encountered several obstacles, including not being able to move to a valid neighbor from certain nodes.
+
+Upon reviewing the observations, I notice that the target node 1 is connected to node 13, but not directly to any of the other nodes I have been able to reach. Therefore, I plan to move to node 13.
+
+I have identified a feasible path from the current node 14 to node 13: I will move to node 15, then use the observation that node 8 is reachable from node 15 and move to node 8, and then move to node 4, and then to node 13.
+
+I will continue to move towards node 13.
+
+Next action: 15",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 8
+
+Observation:
+
+node: 1, neighbors: [14]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [4]
+node: 8, neighbors: [4, 14, 15]
+node: 9, neighbors: [15]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8, 9]
+node: 16, neighbors: [14]
+node: 17, neighbors: [4]
+
+current node: 8, target node: 1",-5,False
+13,9,,"
+node: 1, neighbors: [14]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [4]
+node: 8, neighbors: [4, 14, 15]
+node: 9, neighbors: [15]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8, 9]
+node: 16, neighbors: [14]
+node: 17, neighbors: [4]
+
+current node: 8, target node: 1",-6.0,False
+14,"<plan>
+Upon reviewing my previous observations and actions, I have come up with a revised high-level plan to complete the task.
+
+Based on the graph structure, I can see that the target node 1 is connected to node 14, which is also connected to node 8. However, from node 8, I have not been able to find a direct path to node 1.
+
+My plan is to revisit the graph structure and try to find an alternative path from node 8 to node 1.
+
+Upon further examination, I notice that node 8 is connected to node 15, which is also connected to node 9. However, node 9 is only connected to node 15, and not to node 1. I then notice that node 15 is also connected to node 8, which means I have already visited this path.
+
+My next step is to look for alternative paths from node 8 that do not involve node 15. I notice that node 8 is also connected to node 14, which means I can move to node 14 and then try to find a path from there.
+
+However, from node 14, I can see that it is connected to node 1, but it is also connected to node 8, which means I have already visited this path as well.
+
+I need to find a path from node 8 to node 1 that does not involve node 14 or node 15.
+
+Upon further examination, I realize that I need to backtrack and re-examine my previous observations.
+
+I notice that node 8 is connected to node 4, which is also connected to node 7, and then to node 10, but node 10 has no connection to node 1, except through a long path that I have not yet seen.
+
+But I have seen a path from node 8 to node 4. And from node 4, I can see that it is connected to node 7. And then, I can see that node 7 is connected to nodes 10, 12, and 19.
+
+The path from node 8 to node 7, then to node 12, and then I can check if I can reach node 1.
+
+I will try this path.
+
+<plan>
+
+15",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 7
+
+Observation:
+
+node: 1, neighbors: [14]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [4]
+node: 8, neighbors: [4, 14, 15]
+node: 9, neighbors: [15]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8, 9]
+node: 16, neighbors: [14]
+node: 17, neighbors: [4]
+
+current node: 8, target node: 1",-6.0,False
+15,17,,"
+node: 1, neighbors: [14]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [4]
+node: 8, neighbors: [4, 14, 15]
+node: 9, neighbors: [15]
+node: 14, neighbors: [1, 8, 16]
+node: 15, neighbors: [8, 9]
+node: 16, neighbors: [14]
+node: 17, neighbors: [4]
+
+current node: 8, target node: 1",-6.0,False
+16,"<plan>
+To complete the task, I need to reach the target node 1 from the current node 8. However, the graph structure is complex, and there are many dead ends.
+
+My high-level plan is to start by examining the neighbors of node 8, which are nodes 4, 14, and 15. I will then try to find a path from each of these neighbors to node 1.
+
+Upon reviewing the graph, I notice that node 14 is already connected to node 1, and I have already visited this path. I also notice that node 15 is connected to node 9, but node 9 is only connected to node 15, and not to node 1.
+
+Next, I will focus on node 4, which is connected to node 7, and then to nodes 10, 12, and 19. However, I need to find a way to connect node 4 to node 7 in a way that will allow me to reach node 1.
+
+To do this, I will start by examining the graph from the perspective of node 7. Node 7 is connected to nodes 4, 10, 12, and 19. I notice that node 7 is connected to node 10, and node 10 has connections to other nodes in the graph.
+
+My next step will be to explore the connections of node 10, and see if I can find a path from node 4 to node 1.
+
+I also noticed that I have been penalized for visiting dead ends, such as node 10, node 12, and node 19. Therefore, I will be more careful in selecting my next actions, and make sure that I am not wasting any time by visiting dead ends.
+
+Overall, my plan is to carefully explore the graph, and try to find a path from node 4 to node 1.
+
+4",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 4
+
+Observation:
+
+node: 0, neighbors: [7]
+node: 2, neighbors: [17]
+node: 3, neighbors: [17]
+node: 4, neighbors: [7, 8, 17]
+node: 6, neighbors: [17]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 8, neighbors: [4, 14, 15]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 14, neighbors: [8]
+node: 15, neighbors: [8]
+node: 17, neighbors: [2, 3, 4, 6]
+node: 19, neighbors: [7]
+
+current node: 4, target node: 1",-5,False
+17,7,,"
+node: 0, neighbors: [7]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 8, neighbors: [4]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 17, neighbors: [4]
+node: 19, neighbors: [7]
+
+current node: 7, target node: 1",-5,False
+18,10,"Based on my previous observations and actions, I have come to the realization that the target node 1 is no longer reachable due to the constraints of the graph and my own actions.
+
+I will review my previous plan and actions to understand how I ended up in this situation. From my previous observations, I can see that I have been moving through the graph, trying to find a path to the target node 1. However, I have encountered several dead ends and have been penalized for visiting them.
+
+Upon further examination, I notice that the graph has a specific structure, with some nodes having more connections than others. I also notice that I have been focusing on finding a path from node 8 to node 1, but this path has proven to be elusive.
+
+Given the constraints of the graph and my own actions, I conclude that it is not possible for me to reach the target node 1. Therefore, my plan is to admit defeat and end the task.","
+node: 0, neighbors: [7]
+node: 4, neighbors: [7]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 19, neighbors: [7]
+
+current node: 10, target node: 1",-5,False
+19,7,,"
+node: 0, neighbors: [7]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 8, neighbors: [4]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 17, neighbors: [4]
+node: 19, neighbors: [7]
+
+current node: 7, target node: 1",0,False
+20,"<plan>
+Given the constraints of the graph and the current state of the environment, I will make a high-level plan to complete the task. My goal is to reach the target node 1 from the current node 7.
+
+Based on my previous observations, I can see that the graph has a complex structure, and some nodes have more connections than others. I also notice that I have been trying to find a path from node 8 to node 1, but this path has proven to be elusive.
+
+To complete the task, I will use a depth-first search approach, exploring the graph as far as possible along each branch before backtracking. My plan is to start from node 7 and explore the graph, making sure to keep track of the nodes I have already visited.
+
+I will begin by exploring the connections of node 7, which are nodes 0, 4, 10, 12, and 19. I will choose one of these nodes and explore its connections, repeating this process until I reach the target node 1 or until I have explored all possible paths.
+
+Given the complexity of the graph and the constraints of the task, I anticipate that I may need to backtrack and revisit previously explored nodes. However, I will try to avoid revisiting the same nodes multiple times to minimize the number of dead ends and penalties.
+
+My high-level plan is to be flexible and adapt to the changing environment, using a combination of exploration and backtracking to find a path to the target node 1.
+
+I will now choose an action to take based on my plan. 
+
+4",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 16
+
+Observation:
+
+node: 0, neighbors: [7]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 8, neighbors: [4]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 17, neighbors: [4]
+node: 19, neighbors: [7]
+
+current node: 7, target node: 1",-6.0,False
+21,10,,"
+node: 0, neighbors: [7]
+node: 4, neighbors: [7]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 19, neighbors: [7]
+
+current node: 10, target node: 1",-5,False
+22,"<plan>
+Based on my previous observations, I have come to the realization that the graph is extremely limited and I have been unable to reach the target node 1. My high-level plan is to start from the current node 10 and explore the graph, making sure to keep track of the nodes I have already visited.
+
+I will begin by exploring the connections of node 10, which is node 7. From there, I will try to find a path to the target node 1, but I anticipate that this will be difficult due to the limited connectivity of the graph.
+
+Since the target node 1 is not visible, I can only assume that it might be a neighbor of node 4 or node 7. My best chance to reach the target node 1 is to move to node 7 and then try to find a path to node 1 from there.
+
+However, I have already visited node 7 and it is a dead end, which means that I will be penalized if I choose to move there again. My only option is to try a different path that I haven't explored before.
+
+Unfortunately, the graph is too limited, and I have no choice but to try to move to node 7, hoping that I can find a different path to the target node 1.
+
+I will now choose an action to take based on my plan.
+
+19",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 10
+
+Observation:
+
+node: 0, neighbors: [7]
+node: 4, neighbors: [7]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 19, neighbors: [7]
+
+current node: 10, target node: 1",-6.0,False
+23,12,,"
+node: 0, neighbors: [7]
+node: 4, neighbors: [7]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 19, neighbors: [7]
+
+current node: 10, target node: 1",-6.0,False
+24,"<plan>
+Given the constraints of the graph and my own observations, I realize that I have been unable to reach the target node 1 from the current node 10. The graph has limited connectivity, and I have been unable to find a path to the target node.
+
+Upon reviewing my previous actions and observations, I notice that I have been moving through the graph, trying to find a path to the target node. However, I have encountered several dead ends and have been penalized for visiting them.
+
+To complete the task, I will use a more systematic approach to search the graph. I will start from the current node 10 and systematically explore the graph, making sure to keep track of the nodes I have already visited.
+
+I will begin by exploring the connections of node 10, which is node 7. From there, I will try to find a path to the target node 1. However, I will also try to find a path from node 7 to node 4, as it is a possible alternative route to the target node.
+
+I will keep track of the nodes I have visited and avoid revisiting the same nodes multiple times to minimize the number of dead ends and penalties.
+
+My goal is to reach the target node 1 from the current node 10. I will take it one step at a time and use my observations and reasoning to guide my actions.
+
+Next action: 7",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 0
+
+Observation:
+
+node: 0, neighbors: [7]
+node: 4, neighbors: [7]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 19, neighbors: [7]
+
+current node: 10, target node: 1",-6.0,False
+25,4,,"
+node: 0, neighbors: [7]
+node: 4, neighbors: [7]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 19, neighbors: [7]
+
+current node: 10, target node: 1",-6.0,False
+26,"<plan>
+Based on my previous observations, I have come to the realization that the graph has a very limited connectivity, with many nodes having only one or two connections. This has made it extremely difficult for me to find a path to the target node 1.
+
+After reviewing my previous actions and observations, I have come to the conclusion that the best course of action is to exhaustively search the graph, exploring all possible paths and connections. I will start from the current node 10 and systematically explore the graph, making sure to keep track of the nodes I have already visited.
+
+My plan is to use a combination of breadth-first search (BFS) and depth-first search (DFS) to explore the graph. I will start by exploring the connections of node 10, which are node 7. From there, I will try to find a path to the target node 1, but I will also try to find alternative routes and connections.
+
+I will keep track of the nodes I have visited and avoid revisiting the same nodes multiple times to minimize the number of dead ends and penalties.
+
+My goal is to reach the target node 1 from the current node 10. I will take it one step at a time and use my observations and reasoning to guide my actions.
+
+One possible strategy I can use is to try to find a path from node 10 to node 7, and then explore the connections of node 7. From there, I can try to find a path to the target node 1.
+
+Another possible strategy I can use is to try to find a path from node 10 to node 4, and then explore the connections of node 4. From there, I can try to find a path to the target node 1.
+
+I will choose one of these strategies and start exploring the graph.
+
+Action: 7",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 16
+
+Observation:
+
+node: 0, neighbors: [7]
+node: 4, neighbors: [7]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 19, neighbors: [7]
+
+current node: 10, target node: 1",-6.0,False
+27,7,,"
+node: 0, neighbors: [7]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 8, neighbors: [4]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 17, neighbors: [4]
+node: 19, neighbors: [7]
+
+current node: 7, target node: 1",0,False
+28,"<plan>
+Based on my previous observations, I realize that the target node 1 is no longer reachable due to the constraints of the graph and my own actions. The graph has a very limited connectivity, with many nodes having only one or two connections.
+
+After reviewing my previous actions and observations, I have come to the conclusion that the best course of action is to admit defeat and end the task, as it is not possible for me to reach the target node 1 from the current node 7.
+
+However, I can still provide a plan for how to solve the task, assuming that the graph structure remains the same.
+
+If I were to start from a node that has more connections, I could try to find a path to the target node 1 by exploring the graph systematically. I could use a combination of breadth-first search (BFS) and depth-first search (DFS) to explore the graph, making sure to keep track of the nodes I have already visited.
+
+Unfortunately, the current node 7 does not have many connections, making it difficult for me to find a path to the target node 1.
+
+Given the constraints of the task, I will choose the following action:
+
+12",,"
+
+Your previous output did not contain a valid action. Defaulted to action: 17
+
+Observation:
+
+node: 0, neighbors: [7]
+node: 4, neighbors: [7, 8, 17]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 8, neighbors: [4]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 17, neighbors: [4]
+node: 19, neighbors: [7]
+
+current node: 7, target node: 1",-6.0,False
+29,19,,"
+node: 0, neighbors: [7]
+node: 4, neighbors: [7]
+node: 7, neighbors: [0, 4, 10, 12, 19]
+node: 10, neighbors: [7]
+node: 12, neighbors: [7]
+node: 19, neighbors: [7]
+
+current node: 19, target node: 1",-5,True

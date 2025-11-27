@@ -1,0 +1,277 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,14,"Our goal is to reach the target node 13, but it's not visible in the current observation. Since we're currently at node 10, we have four neighbors to choose from. However, node 1, 2, 8 are not options because they are more than 2 steps away from the target node 13, and have no k-nearest neighbors of the target. On the other hand, going to node 19 is not an option either because we have already passed the dead end node 19 with 1 neighbor. Node 14 has a 2-step path to the target node 13, therefore we will go to node 14 and then to target node 13 after reobserving. Additionally, we can see from the information that nodes 1, 6, 19 have only 1 neighbor node within 2 steps, and node 6 has no k-nearest neighbors of target.","
+node: 0, neighbors: [10]
+node: 2, neighbors: [10]
+node: 6, neighbors: [14]
+node: 10, neighbors: [0, 2, 14, 19]
+node: 14, neighbors: [6, 10]
+node: 19, neighbors: [10]
+
+current node: 14, target node: 13",0,False
+1,12,,"
+node: 0, neighbors: [10]
+node: 2, neighbors: [10]
+node: 6, neighbors: [14]
+node: 10, neighbors: [0, 2, 14, 19]
+node: 14, neighbors: [6, 10]
+node: 19, neighbors: [10]
+
+current node: 14, target node: 13",-6.0,False
+2,12,,"
+node: 0, neighbors: [10]
+node: 2, neighbors: [10]
+node: 6, neighbors: [14]
+node: 10, neighbors: [0, 2, 14, 19]
+node: 14, neighbors: [6, 10]
+node: 19, neighbors: [10]
+
+current node: 14, target node: 13",-6.0,False
+3,13,,"
+node: 0, neighbors: [10]
+node: 2, neighbors: [10]
+node: 6, neighbors: [14]
+node: 10, neighbors: [0, 2, 14, 19]
+node: 14, neighbors: [6, 10]
+node: 19, neighbors: [10]
+
+current node: 14, target node: 13",-6.0,False
+4,10,,"
+node: 0, neighbors: [8, 10]
+node: 1, neighbors: [19]
+node: 2, neighbors: [10, 15]
+node: 6, neighbors: [14]
+node: 8, neighbors: [0]
+node: 10, neighbors: [0, 2, 14, 19]
+node: 12, neighbors: [19]
+node: 14, neighbors: [6, 10]
+node: 15, neighbors: [2]
+node: 19, neighbors: [1, 10, 12]
+
+current node: 10, target node: 13",0,False
+5,12,,"
+node: 0, neighbors: [8, 10]
+node: 1, neighbors: [19]
+node: 2, neighbors: [10, 15]
+node: 6, neighbors: [14]
+node: 8, neighbors: [0]
+node: 10, neighbors: [0, 2, 14, 19]
+node: 12, neighbors: [19]
+node: 14, neighbors: [6, 10]
+node: 15, neighbors: [2]
+node: 19, neighbors: [1, 10, 12]
+
+current node: 10, target node: 13",-6.0,False
+6,11,,"
+node: 0, neighbors: [8, 10]
+node: 1, neighbors: [19]
+node: 2, neighbors: [10, 15]
+node: 6, neighbors: [14]
+node: 8, neighbors: [0]
+node: 10, neighbors: [0, 2, 14, 19]
+node: 12, neighbors: [19]
+node: 14, neighbors: [6, 10]
+node: 15, neighbors: [2]
+node: 19, neighbors: [1, 10, 12]
+
+current node: 10, target node: 13",-6.0,False
+7,2,,"
+node: 0, neighbors: [10]
+node: 2, neighbors: [10, 15]
+node: 10, neighbors: [0, 2, 14, 19]
+node: 14, neighbors: [10]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [15]
+node: 19, neighbors: [10]
+
+current node: 2, target node: 13",0,False
+8,15,,"
+node: 2, neighbors: [10, 15]
+node: 3, neighbors: [17]
+node: 9, neighbors: [17]
+node: 10, neighbors: [2]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 15, target node: 13",0,False
+9,16,,"
+node: 2, neighbors: [15]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [15]
+
+current node: 16, target node: 13",-5,False
+10,17,,"
+node: 2, neighbors: [15]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [15]
+
+current node: 16, target node: 13",-6.0,False
+11,17,,"
+node: 2, neighbors: [15]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [15]
+
+current node: 16, target node: 13",-6.0,False
+12,17,"The task is to reach the target node 13 from the current position in a partially observable graph. Initially, we were at node 10 and couldn't see node 13 in the observation. We then moved to node 14, then node 10 again, and finally node 16, but still couldn't see node 13. Now, we are at node 16 and still don't see node 13 in the current observation. However, based on the previous observations, we can try to go back to node 15, which is a previous node where we could have reached node 17. If we go to node 17, we can try to find a path to node 13. However, if we go back to node 15 and then node 17, this action will be inefficient. The goal now should be to directly attempt to reach the nearest neighbor that might have path to the node 13. Since node 16 only has a connection to node 15, it is now too late. Node 16 can only go one path and since we can't see any new paths with K=2 it is time to find one in the path that leads to 17.
+
+ Going to node 17, since it is the nearest neighbor and then try to plan a path to node 13 from there, keeping in mind that we might need to backtrack or go through other nodes if the path is not clear.","
+node: 2, neighbors: [15]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [15]
+
+current node: 16, target node: 13",-6.0,False
+13,17,,"
+node: 2, neighbors: [15]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [15]
+
+current node: 16, target node: 13",-6.0,False
+14,17,,"
+node: 2, neighbors: [15]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [15]
+
+current node: 16, target node: 13",-6.0,False
+15,15,,"
+node: 2, neighbors: [10, 15]
+node: 3, neighbors: [17]
+node: 9, neighbors: [17]
+node: 10, neighbors: [2]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 15, target node: 13",0,False
+16,9,,"
+node: 2, neighbors: [10, 15]
+node: 3, neighbors: [17]
+node: 9, neighbors: [17]
+node: 10, neighbors: [2]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 15, target node: 13",-6.0,False
+17,17,,"
+node: 2, neighbors: [15]
+node: 3, neighbors: [11, 17]
+node: 4, neighbors: [9]
+node: 7, neighbors: [9]
+node: 9, neighbors: [4, 7, 17]
+node: 11, neighbors: [3]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 17, target node: 13",0,False
+18,3,,"
+node: 3, neighbors: [11, 17]
+node: 9, neighbors: [17]
+node: 11, neighbors: [3]
+node: 15, neighbors: [17]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 3, target node: 13",0,False
+19,9,,"
+node: 3, neighbors: [11, 17]
+node: 9, neighbors: [17]
+node: 11, neighbors: [3]
+node: 15, neighbors: [17]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 3, target node: 13",-6.0,False
+20,11,,"
+node: 3, neighbors: [11, 17]
+node: 11, neighbors: [3]
+node: 17, neighbors: [3]
+
+current node: 11, target node: 13",-5,False
+21,17,,"
+node: 3, neighbors: [11, 17]
+node: 11, neighbors: [3]
+node: 17, neighbors: [3]
+
+current node: 11, target node: 13",-6.0,False
+22,3,,"
+node: 3, neighbors: [11, 17]
+node: 9, neighbors: [17]
+node: 11, neighbors: [3]
+node: 15, neighbors: [17]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 3, target node: 13",0,False
+23,3,,"
+node: 3, neighbors: [11, 17]
+node: 9, neighbors: [17]
+node: 11, neighbors: [3]
+node: 15, neighbors: [17]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 3, target node: 13",-6.0,False
+24,9,"Based on the observations and current situation, it's clear that we are stuck in a loop of node 3, 11, and 17. We need to break out of this loop and find a path to node 13. 
+
+From previous observations, we saw that node 17 had neighbors 3, 9, and 15. However, the recent observations have not shown any new connections to node 13 from node 3. Our goal now is to explore the neighboring nodes of node 17 and node 9.
+
+Since we are currently at node 3, the action should be to explore node 9, which has a connection to node 17.","
+node: 3, neighbors: [11, 17]
+node: 9, neighbors: [17]
+node: 11, neighbors: [3]
+node: 15, neighbors: [17]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 3, target node: 13",-6.0,False
+25,9,,"
+node: 3, neighbors: [11, 17]
+node: 9, neighbors: [17]
+node: 11, neighbors: [3]
+node: 15, neighbors: [17]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 3, target node: 13",-6.0,False
+26,9,,"
+node: 3, neighbors: [11, 17]
+node: 9, neighbors: [17]
+node: 11, neighbors: [3]
+node: 15, neighbors: [17]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 3, target node: 13",-6.0,False
+27,17,,"
+node: 2, neighbors: [15]
+node: 3, neighbors: [11, 17]
+node: 4, neighbors: [9]
+node: 7, neighbors: [9]
+node: 9, neighbors: [4, 7, 17]
+node: 11, neighbors: [3]
+node: 15, neighbors: [2, 16, 17]
+node: 16, neighbors: [15]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 17, target node: 13",0,False
+28,9,,"
+node: 3, neighbors: [17]
+node: 4, neighbors: [5, 9, 13]
+node: 5, neighbors: [4]
+node: 7, neighbors: [9]
+node: 9, neighbors: [4, 7, 17]
+node: 13, neighbors: [4]
+node: 15, neighbors: [17]
+node: 17, neighbors: [3, 9, 15]
+
+current node: 9, target node: 13",0,False
+29,4,,"
+node: 4, neighbors: [5, 9, 13]
+node: 5, neighbors: [4]
+node: 7, neighbors: [9]
+node: 9, neighbors: [4, 7, 17]
+node: 13, neighbors: [4]
+node: 17, neighbors: [9]
+
+current node: 4, target node: 13",0,True

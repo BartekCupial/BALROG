@@ -1,0 +1,54 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "open": 4,
+        "west": 14,
+        "search": 17,
+        "east": 16,
+        "southwest": 12,
+        "north": 11,
+        "kick": 4,
+        "south": 12,
+        "northwest": 9,
+        "southeast": 1
+    },
+    "input_tokens": 348316,
+    "output_tokens": 942,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nFirst, I will try to find a safe path to the stairs down. Given that I'm currently on the north side of the room and the stairs are on the south side, I'll try to make my way around the room to avoid any potential danger. I will do this by trying to move east, as I've seen a doorway near east. If I can safely make it to the east doorway, I'll then be able to assess the situation and plan my next steps, possibly including moving south towards the stairs. If I encounter any danger, I'll search the room for any hidden doors or passages that could provide an alternative route.\n\nAction: east",
+        "kick southwest"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-100",
+    "seed": 890308458,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

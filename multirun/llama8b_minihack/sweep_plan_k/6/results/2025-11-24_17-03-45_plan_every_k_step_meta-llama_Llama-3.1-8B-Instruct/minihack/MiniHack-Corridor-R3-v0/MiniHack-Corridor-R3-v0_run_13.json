@@ -1,0 +1,54 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 14,
+        "north": 24,
+        "south": 30,
+        "kick": 5,
+        "search": 10,
+        "west": 2,
+        "southwest": 6,
+        "northwest": 7,
+        "open": 2
+    },
+    "input_tokens": 348641,
+    "output_tokens": 981,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan> \nThe goal is to reach the stairs down. I have observed that there is a doorway adjacent south, which could potentially lead to the stairs. However, the path is currently blocked by dark areas and walls. My plan is to search for hidden doors or passages to potentially reveal a new path, and then use the doorway to progress towards the stairs.\n\nMy strategy is to move south through the doorway, which will bring me to a new area. From there, I can explore and try to find a way to the stairs down. If the current path is still blocked, I can use search again to try and find alternative routes.\n\nTo start, I will search to try and reveal any hidden doors or passages.\n\nopen southeast",
+        "kick northeast",
+        "Move north and then open the doorway to access the stairs down, which is the goal.\n\neast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-110",
+    "seed": 2040124103,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

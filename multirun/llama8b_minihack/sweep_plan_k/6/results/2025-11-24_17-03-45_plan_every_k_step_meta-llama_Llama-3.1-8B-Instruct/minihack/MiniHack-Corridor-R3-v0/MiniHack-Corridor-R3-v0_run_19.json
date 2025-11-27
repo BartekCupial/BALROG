@@ -1,0 +1,54 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 14,
+        "search": 22,
+        "west": 4,
+        "north": 11,
+        "southwest": 10,
+        "northwest": 8,
+        "south": 20,
+        "kick": 10,
+        "open": 1
+    },
+    "input_tokens": 356607,
+    "output_tokens": 1062,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "kick westnorthwest",
+        "<plan>\nGiven the current situation, my plan is to explore the area and find the stairs down. Since I'm stuck in a dead-end room, I need to find a way to move north or west to continue exploring. I'll try to search for hidden doors and passages, and if that doesn't work, I'll try to kick the closed door to see if it opens. Once I find a way out, I'll move towards the stairs up, which I believe is the stairs down in the game, and try to find the stairs down from there.\n\nFirst action: search",
+        "kick westnorthwest"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-98",
+    "seed": 1501196756,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

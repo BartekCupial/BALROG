@@ -1,0 +1,53 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "southwest": 6,
+        "north": 20,
+        "east": 19,
+        "search": 11,
+        "south": 28,
+        "northwest": 7,
+        "west": 4,
+        "open": 3,
+        "kick": 2
+    },
+    "input_tokens": 382293,
+    "output_tokens": 1062,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "kick southeast",
+        "<plan>YOUR_PLAN\n\nTo complete the task of reaching the stairs down, I need to navigate through the map to find the correct path. From the current observations, I see a doorway near west, which could lead to the stairs down. However, there are also vertical and horizontal closed doors in the way, and some dark areas that need to be explored.\n\nMy plan is to try to open the vertical and horizontal closed doors to gain access to the western part of the map, and then proceed through the doorway to find the stairs down. If there are any dark areas that need to be explored, I will use my search action to try to reveal any hidden doors or passages.\n\nThe high-level plan is:\n\n1. Open the vertical and horizontal closed doors to gain access to the western part of the map.\n2. Proceed through the doorway to find the stairs down.\n3. If necessary, search any dark areas to reveal hidden doors or passages.\n\nThe first action to take is:\n\nsearch"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-97",
+    "seed": 807853663,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

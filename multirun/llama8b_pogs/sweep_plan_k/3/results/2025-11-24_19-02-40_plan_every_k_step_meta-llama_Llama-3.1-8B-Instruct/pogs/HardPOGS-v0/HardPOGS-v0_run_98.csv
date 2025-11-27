@@ -1,0 +1,58 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,13,"We need to reach node 18 from the current node 16. Observing the graph, we have limited visibility due to the k-nearest neighbor radius of 2. We can see that node 16 is directly connected to nodes 10, 12, and 13. To make progress, we will try to explore the connections from these nodes. We can see that node 10 is directly connected to nodes 2, 4, 12, 13, and 16, which is our current node, and also to nodes 16 and 12 is directly connected to only 1 node which is a dead end, thus we can rule it out as it does not lead us closer to the target. On the other hand node 10 has multiple connections to unvisited nodes which makes it a priority. Also, since we are currently on node 16 which has multiple options for going further so we can move in any direction we prefer and see which one opens up more options to visit, and in the case of 13, which is directly connected to 10 and also 13 has multiple connections, so we can also consider going there. Considering these options we will try to prioritize visiting node 10 and node 13, in hopes that it will open up more paths to our target node 18.","
+node: 2, neighbors: [10]
+node: 4, neighbors: [10]
+node: 10, neighbors: [2, 4, 12, 13, 16]
+node: 12, neighbors: [10]
+node: 13, neighbors: [10]
+node: 16, neighbors: [10]
+
+current node: 16, target node: 18",-6.0,False
+1,10,,"
+node: 0, neighbors: [2]
+node: 2, neighbors: [0, 10]
+node: 4, neighbors: [10]
+node: 10, neighbors: [2, 4, 12, 13, 16]
+node: 11, neighbors: [13]
+node: 12, neighbors: [10, 14]
+node: 13, neighbors: [10, 11]
+node: 14, neighbors: [12]
+node: 16, neighbors: [10]
+
+current node: 10, target node: 18",0,False
+2,12,,"
+node: 1, neighbors: [14]
+node: 2, neighbors: [10]
+node: 4, neighbors: [10]
+node: 8, neighbors: [14]
+node: 10, neighbors: [2, 4, 12, 13, 16]
+node: 12, neighbors: [10, 14]
+node: 13, neighbors: [10]
+node: 14, neighbors: [1, 8, 12, 18]
+node: 16, neighbors: [10]
+node: 18, neighbors: [14]
+
+current node: 12, target node: 18",0,False
+3,14,,"
+node: 1, neighbors: [14]
+node: 7, neighbors: [18]
+node: 8, neighbors: [14]
+node: 10, neighbors: [12]
+node: 12, neighbors: [10, 14]
+node: 14, neighbors: [1, 8, 12, 18]
+node: 18, neighbors: [7, 14, 19]
+node: 19, neighbors: [18]
+
+current node: 14, target node: 18",0,False
+4,18,,"node: 1, neighbors: [14]
+node: 5, neighbors: [7]
+node: 7, neighbors: [5, 18]
+node: 8, neighbors: [14]
+node: 12, neighbors: [14]
+node: 14, neighbors: [1, 8, 12, 18]
+node: 17, neighbors: [19]
+node: 18, neighbors: [7, 14, 19]
+node: 19, neighbors: [17, 18]
+
+current node: 18, target node: 18
+You have reached the target!",100.0,True

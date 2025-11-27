@@ -1,0 +1,56 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "0": 1,
+        "12": 2,
+        "9": 3,
+        "11": 1,
+        "16": 3,
+        "17": 4,
+        "10": 5,
+        "13": 5,
+        "5": 2,
+        "2": 1,
+        "8": 1,
+        "18": 2
+    },
+    "input_tokens": 53145,
+    "output_tokens": 1052,
+    "done": true,
+    "episode_return": -97.0,
+    "num_steps": 30,
+    "failed_candidates": [
+        "<plan>\nBased on the previous observations and plan, it's clear that we have reached a dead end. The current node is 5, and it only has one neighbor, which is also a dead end. The target node 15 is still out of reach.\n\nTo complete the task, I plan to backtrack and explore other paths. Since we've reached a dead end, we'll have to revisit previous nodes and try different paths. I'll start by going back to the previous node that had multiple neighbors, which was node 10. From there, we can try to explore different paths and see if we can reach the target node 15.\n\nThe high-level plan is to:\n\n1. Backtrack to node 10\n2. Explore different paths from node 10\n3. Try to reach the target node 15\n\nI'll need to be cautious and carefully choose each action to avoid getting stuck in another dead end.\n\nBased on this plan, my next action is:\n10",
+        "",
+        ""
+    ],
+    "progression": 0,
+    "process_num": "ForkProcess-59",
+    "seed": 455408749,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

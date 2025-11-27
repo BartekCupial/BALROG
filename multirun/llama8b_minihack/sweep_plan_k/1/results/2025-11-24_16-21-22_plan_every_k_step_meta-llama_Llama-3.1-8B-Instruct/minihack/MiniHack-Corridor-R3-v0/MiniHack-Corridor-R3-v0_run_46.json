@@ -1,0 +1,54 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "northwest": 8,
+        "north": 31,
+        "search": 13,
+        "south": 25,
+        "east": 14,
+        "open": 5,
+        "southwest": 3,
+        "southeast": 1
+    },
+    "input_tokens": 360557,
+    "output_tokens": 5471,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nBased on previous observations, the goal is to find the stairs down. The current room has a blocked-off area to the north and a staircase leading up to the north. Given the symmetry of the room and the presence of the open door to the north, it's likely that the stairs down are in a similar location, but possibly in a different direction. Considering the dark areas and the blocked-off space, a possible solution is to explore the areas that are not immediately visible. To do this, I plan to search the room for any hidden doors or passages that may lead to the stairs down.\n\nTo achieve this goal, the high-level plan is:\n\n1. Continue to explore the room by moving in different directions to find any hidden doors or passages.\n2. Use the search action to reveal any hidden areas or doors.\n3. Navigate through any discovered hidden passages or doors to reach the stairs down.\n4. Once the stairs down are located, move towards them to complete the task.\n\nTo begin this plan, I will take the following action:\n\nsearch",
+        "",
+        "<plan>The goal is to reach the stairs down. To do this, I need to navigate through the obstacles in the room. Based on my previous observations, I have identified the following steps:\n\n1. I will try to open the doorway adjacent to my current location, as it might provide a passage to the stairs down.\n2. If the doorway is locked or blocked, I will search the area for any hidden doors or passages that could provide an alternative route.\n3. If I cannot find a way to bypass the horizontal and vertical walls, I will try to kick the walls or the doorway to see if they can be broken or opened.\n\nAction: open",
+        "<plan>The goal is to reach the stairs down. To do this, I need to navigate through the obstacles in the room. Based on my previous observations, I have identified the following steps:\n\n1. I need to locate the doorway in the southeast area, as it is the only potential passage to the stairs down.\n2. I will try to open the doorway to see if it provides access to the stairs down.\n3. If the doorway is locked or blocked, I will search the area for any hidden doors or passages that could provide an alternative route.\n4. If I cannot find a way to bypass the horizontal and vertical walls, I will try to kick the walls or the doorway to see if they can be broken or opened.\n\nGiven my current position and the location of the doorway, I will try to move east to get closer to the doorway.\n\nAction: east"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-31",
+    "seed": 89477883,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

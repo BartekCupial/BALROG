@@ -1,0 +1,52 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 17,
+        "northwest": 9,
+        "south": 13,
+        "search": 17,
+        "east": 25,
+        "southwest": 7,
+        "kick": 1,
+        "west": 9,
+        "open": 2
+    },
+    "input_tokens": 376999,
+    "output_tokens": 2094,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nMy high-level plan is to navigate through the level and reach the stairs down. Based on the observations, I will move through the doorway that I just opened and continue exploring the room. Since I have a sense of the layout, I will head towards the stairs up, which is likely to be in the north direction, as it is adjacent to the vertical open door. Once I find the stairs up, I will take note of its location and proceed to move downwards, hopefully reaching the stairs down.\n\nAfter that, I will search the room to make sure I didn't miss any hidden doors or passages. If I do find any, I will explore them thoroughly.\n\nSince my current priority is to reach the stairs down, I will focus on navigating through the room and avoiding any potential dangers or obstacles.\n\nNow, I will take the following action to start moving towards the stairs up:\n\nopen\n\nHowever, I just opened a door and I am in the doorway, so I will take the following action to move through the doorway and continue exploring the room:\n\nnorth"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-67",
+    "seed": 3626260063,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 8,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

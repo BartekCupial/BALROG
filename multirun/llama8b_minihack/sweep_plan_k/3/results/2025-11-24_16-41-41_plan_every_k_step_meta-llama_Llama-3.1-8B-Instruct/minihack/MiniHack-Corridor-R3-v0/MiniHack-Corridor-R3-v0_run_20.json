@@ -1,0 +1,55 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "southwest": 10,
+        "search": 13,
+        "south": 9,
+        "west": 16,
+        "north": 12,
+        "east": 19,
+        "open": 3,
+        "northwest": 7,
+        "kick": 11
+    },
+    "input_tokens": 353939,
+    "output_tokens": 2393,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "northnortheast",
+        "<plan>The goal is to reach the stairs down. Previous attempts to kick the dark area have resulted in damage. Given the presence of a doorway adjacent to the dark area, it seems more feasible to try to open the doorway instead of kicking the dark area. If the doorway is locked, it's possible that kicking it could provide an alternative solution.\n\nHigh-level plan:\n\n1. Attempt to open the doorway adjacent to the dark area.\n2. If the doorway is locked, try to kick it.\n3. If kicking the doorway doesn't work, search the area to see if there are any other hidden doors or passages that can be used to access the stairs down.\n\nAction: open",
+        "<plan>The task is to reach the stairs down, and the current situation is that I'm surrounded by dark areas, with a doorway adjacent to the east. Given the presence of a doorway and the lack of a clear path through the dark areas, I'll focus on opening the doorway to access the stairs down. I'll also be mindful of my current inventory and the tools I have available to me.\n\nFirst, I'll examine the doorway to determine its status. If it's locked, I'll try to open it or find an alternative method to access the stairs down.\n\nTo complete the task, I'll:\n\n1. Examine the doorway to determine its status.\n2. If the doorway is locked, try to open it or find an alternative method to access the stairs down.\n\nAction: open",
+        "<plan>The goal is to reach the stairs down, and I'm currently surrounded by dark areas with a doorway adjacent to the east. Given my current situation, I need to restore some of my health and make progress towards the stairs. \n\nTo complete the task, I'll:\n\n1. Focus on restoring my health by finding a way to attack or interact with the dark areas that are causing damage to me.\n2. Use my available tools and inventory to aid in this process.\n3. Once my health is restored, I'll re-evaluate my situation and determine the best course of action to reach the stairs down.\n\nAction: east"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-62",
+    "seed": 1693536322,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

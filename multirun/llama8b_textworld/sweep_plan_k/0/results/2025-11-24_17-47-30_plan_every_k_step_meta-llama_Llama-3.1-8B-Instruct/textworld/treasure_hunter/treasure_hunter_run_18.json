@@ -1,0 +1,52 @@
+{
+    "task": "treasure_hunter",
+    "action_frequency": {
+        "Look for the target object (mantle) in the current room and try to find a key to unlock any closed or locked container. Since the mantle is already in the room, try to open the locker or find a key to unlock it. Once unlocked, the locker might have more items, including the target object. If the target object is not in the locker, continue exploring the cubicle and then go north to explore other rooms.\n\ngo north": 1,
+        "look": 1,
+        "goal": 1,
+        "open locker": 1,
+        "go north": 6,
+        "take mantle": 1,
+        "take passkey": 1,
+        "go south": 4,
+        "unlock locker with passkey": 2,
+        "go east": 1,
+        "go west": 1,
+        "take spork": 2
+    },
+    "input_tokens": 24218,
+    "output_tokens": 1440,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 22,
+    "failed_candidates": [],
+    "progression": 0.0,
+    "process_num": "ForkProcess-7",
+    "seed": 2473947886,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 2,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

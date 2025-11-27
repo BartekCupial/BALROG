@@ -1,0 +1,48 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "11": 2,
+        "16": 1,
+        "18": 1,
+        "2": 1,
+        "7": 1,
+        "3": 1
+    },
+    "input_tokens": 6873,
+    "output_tokens": 296,
+    "done": true,
+    "episode_return": 94.0,
+    "num_steps": 7,
+    "failed_candidates": [
+        "<plan>Since we are given a partially observable graph with a k-nearest neighbor radius of 2, our primary objective is to navigate from the current node (8) to the target node (3). \n\nWe can observe from our previous observations that node 8 has two neighbors: 16 and 17. However, we cannot see any connection between these neighbors and the target node 3, because our k-nearest neighbor radius is 2. We also see that node 8 is directly connected to node 3, which would be within our k-nearest neighbor radius of 2 if we were to move to either of its neighbors and then move to node 3. However, node 8 also sees node 3 from its current location and node 17 is a dead end.\n\nTo reach the target node (3), we can simply move directly to it from the current node (8) or move to one of the neighbors of the current node and then continue our path. Since node 17 is a dead end, our safest choice would be to move to node 16 first and then move to node 3. Therefore, our plan is to move to node 16 first, and then to node 3.\n\nMoving to node 16 will allow us to get closer to the target node, which is a good move in the current state. Our chosen action will be 16."
+    ],
+    "progression": 0.94,
+    "process_num": "ForkProcess-104",
+    "seed": 1649877033,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

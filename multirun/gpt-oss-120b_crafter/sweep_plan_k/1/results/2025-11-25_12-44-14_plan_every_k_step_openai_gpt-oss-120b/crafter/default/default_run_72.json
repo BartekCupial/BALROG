@@ -1,0 +1,102 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Do": 99,
+        "Move West": 6,
+        "Place Table": 26,
+        "Make Wood Pickaxe": 22,
+        "Noop": 3,
+        "Place Plant": 1,
+        "Move North": 2,
+        "Sleep": 4,
+        "Move East": 1
+    },
+    "input_tokens": 272258,
+    "output_tokens": 51330,
+    "done": true,
+    "episode_return": 2.0999999999999996,
+    "num_steps": 164,
+    "failed_candidates": [
+        "<plan>We currently have 2 saplings and a placed table adjacent to us (grass tile to the west). To craft a wood pickaxe we need wood material. The grass tile in front can be harvested with the Do action, which also can collect material (likely wood). After obtaining wood, we can use the table to craft a wood pickaxe (Make Wood Pickaxe). This will unlock ability to mine stone for many downstream achievements (Collect Stone, Place Stone, Make Stone Pickaxe, etc.). The overall high\u2011level roadmap after obtaining the wood pickaxe:\n\n1. Craft wood pickaxe.\n2. Use wood pickaxe to mine stone deposits (found by exploring north/east) and collect stone (Collect Stone).\n3. Place a stone block (Place Stone) and craft stone pickaxe (Make Stone Pickaxe) using wood and stone at the table.\n4. Use stone pickaxe to collect coal (Collect Coal) and later iron ore (Collect Iron). Place furnace (Place Furnace) and smelt iron.\n5. Craft iron pickaxe (Make Iron Pickaxe) and then mine diamond (Collect Diamond). Also craft iron sword (Make Iron Sword).\n6. While exploring, locate and defeat a zombie (Defeat Zombie) and a skeleton (Defeat Skeleton) using appropriate swords.\n7. Eat the cow (Eat Cow) by moving to its location and using Do when adjacent.\n8. Collect drink from the lake (Collect Drink) using Do facing water.\n9. Place a plant (Place Plant) near the table, then eat it (Eat Plant).\n10. Craft wood, stone, and iron swords (Make Wood Sword, Make Stone Sword, Make Iron Sword) for combat.\n11. Sleep when energy is low to achieve Wake Up.\n12. Collect sampling if any special item appears (Collect Sampling).\n\nThe immediate next action is to harvest the grass in front to obtain wood material needed for the wood pickaxe.<plan>\nDo",
+        "",
+        ""
+    ],
+    "score": 3.0,
+    "progression": 0.13636363636363635,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 9,
+        "collect_iron": 0,
+        "collect_sapling": 6,
+        "collect_stone": 0,
+        "collect_wood": 0,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 0,
+        "eat_cow": 0,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 0,
+        "make_wood_sword": 0,
+        "place_furnace": 0,
+        "place_plant": 1,
+        "place_stone": 0,
+        "place_table": 0,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": 253,
+        "collect_iron": -1,
+        "collect_sapling": 57,
+        "collect_stone": -1,
+        "collect_wood": -1,
+        "defeat_skeleton": -1,
+        "defeat_zombie": -1,
+        "eat_cow": -1,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": -1,
+        "make_wood_sword": -1,
+        "place_furnace": -1,
+        "place_plant": 219,
+        "place_stone": -1,
+        "place_table": -1,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-18",
+    "seed": 726186729,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-120b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

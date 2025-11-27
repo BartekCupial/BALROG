@@ -1,0 +1,102 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Move South": 30,
+        "Move East": 14,
+        "Do": 36,
+        "Place Table": 10,
+        "Move North": 30,
+        "Move West": 20,
+        "Make Wood Pickaxe": 1,
+        "Make Wood Sword": 1,
+        "Noop": 10,
+        "Place Plant": 1,
+        "Sleep": 13
+    },
+    "input_tokens": 305584,
+    "output_tokens": 52932,
+    "done": true,
+    "episode_return": 6.099999999999998,
+    "num_steps": 166,
+    "failed_candidates": [
+        "<plan>Current achievements: collected wood, placed table, crafted wood pickaxe and wood sword. Inventory: 1 wood, wood pickaxe, wood sword. Remaining key achievements: Eat Cow, Defeat Zombie, Collect Stone, Place Stone, Collect Drink, Collect Sampling, Eat Plant, Defeat Skeleton, Make Stone/Iron tools, Place Furnace, Collect Coal/Iron/Diamond, Wake Up, etc.\n\nImmediate objectives:\n1. Move toward the cow (south\u2011east) and use Do to eat it (achievement Eat Cow, also regains food).\n2. Then move toward the zombie (south\u2011east) and use Do with the wood sword to defeat it (Defeat Zombie).\n3. After those, explore the map (north\u2011west where the table is, and other directions) to locate stone, coal, iron and a lake for drinking and sampling. Use the wood pickaxe to mine stone, place stone, place furnace, collect coal/iron, then craft stone and iron tools and swords, defeat skeleton, collect diamond, etc.\n\nThus the next immediate action is to move one step south to get closer to the cow.\\plan>\nMove South"
+    ],
+    "score": 7.0,
+    "progression": 0.3181818181818182,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 10,
+        "collect_iron": 0,
+        "collect_sapling": 0,
+        "collect_stone": 0,
+        "collect_wood": 10,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 2,
+        "eat_cow": 3,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 1,
+        "make_wood_sword": 1,
+        "place_furnace": 0,
+        "place_plant": 0,
+        "place_stone": 0,
+        "place_table": 4,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": 173,
+        "collect_iron": -1,
+        "collect_sapling": -1,
+        "collect_stone": -1,
+        "collect_wood": 11,
+        "defeat_skeleton": -1,
+        "defeat_zombie": 81,
+        "eat_cow": 99,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": 57,
+        "make_wood_sword": 59,
+        "place_furnace": -1,
+        "place_plant": -1,
+        "place_stone": -1,
+        "place_table": 25,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-75",
+    "seed": 2415263519,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 8,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-120b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

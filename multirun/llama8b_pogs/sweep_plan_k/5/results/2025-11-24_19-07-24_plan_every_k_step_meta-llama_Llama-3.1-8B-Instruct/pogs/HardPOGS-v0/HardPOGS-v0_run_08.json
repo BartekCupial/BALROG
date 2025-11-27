@@ -1,0 +1,55 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "14": 5,
+        "18": 1,
+        "15": 1,
+        "19": 1,
+        "4": 5,
+        "1": 2,
+        "9": 1,
+        "0": 4,
+        "11": 3,
+        "12": 1,
+        "16": 1,
+        "10": 2,
+        "2": 3
+    },
+    "input_tokens": 50950,
+    "output_tokens": 642,
+    "done": true,
+    "episode_return": -100.0,
+    "num_steps": 30,
+    "failed_candidates": [
+        "<plan>The high-level plan for completing the task is as follows:\n\n1. We are currently stuck in a node with no outgoing connections (node 16), which means we have to backtrack and try a different approach.\n2. Looking at the previous observations, we see that the target node 5 is not visible in the current k-nearest neighbor radius.\n3. We need to find a node that has a higher chance of revealing more connections to the target node 5.\n4. One possible approach is to move to a node that has connections to multiple other nodes, such as node 4.\n5. From node 4, we can explore its neighbors and try to find a path to the target node 5.\n6. If this approach fails, we can continue to backtrack and try different paths.\n\nBased on this plan, our initial action will be to move to node 4, which has connections to multiple other nodes.\n\n2"
+    ],
+    "progression": 0,
+    "process_num": "ForkProcess-89",
+    "seed": 408577765,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

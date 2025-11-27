@@ -1,0 +1,320 @@
+hydra:
+  run:
+    dir: .
+  sweep:
+    dir: multirun/gpt-oss-20b_crafter/sweep_plan_k
+    subdir: ${hydra.job.num}
+  launcher:
+    _target_: hydra._internal.core_plugins.basic_launcher.BasicLauncher
+  sweeper:
+    _target_: hydra._internal.core_plugins.basic_sweeper.BasicSweeper
+    max_batch_size: null
+    params: null
+  help:
+    app_name: ${hydra.job.name}
+    header: '${hydra.help.app_name} is powered by Hydra.
+
+      '
+    footer: 'Powered by Hydra (https://hydra.cc)
+
+      Use --hydra-help to view Hydra specific help
+
+      '
+    template: '${hydra.help.header}
+
+      == Configuration groups ==
+
+      Compose your configuration from those groups (group=option)
+
+
+      $APP_CONFIG_GROUPS
+
+
+      == Config ==
+
+      Override anything in the config (foo.bar=value)
+
+
+      $CONFIG
+
+
+      ${hydra.help.footer}
+
+      '
+  hydra_help:
+    template: 'Hydra (${hydra.runtime.version})
+
+      See https://hydra.cc for more info.
+
+
+      == Flags ==
+
+      $FLAGS_HELP
+
+
+      == Configuration groups ==
+
+      Compose your configuration from those groups (For example, append hydra/job_logging=disabled
+      to command line)
+
+
+      $HYDRA_CONFIG_GROUPS
+
+
+      Use ''--cfg hydra'' to Show the Hydra config.
+
+      '
+    hydra_help: ???
+  hydra_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(asctime)s][HYDRA] %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: simple
+        stream: ext://sys.stdout
+    root:
+      level: INFO
+      handlers:
+      - console
+    loggers:
+      logging_example:
+        level: DEBUG
+    disable_existing_loggers: false
+  job_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: simple
+        stream: ext://sys.stdout
+      file:
+        class: logging.FileHandler
+        formatter: simple
+        filename: ${hydra.runtime.output_dir}/${hydra.job.name}.log
+    root:
+      level: INFO
+      handlers:
+      - console
+      - file
+    disable_existing_loggers: false
+  env: {}
+  mode: MULTIRUN
+  searchpath: []
+  callbacks: {}
+  output_subdir: null
+  overrides:
+    hydra:
+    - hydra.sweep.dir=multirun/gpt-oss-20b_crafter/sweep_plan_k
+    - hydra.mode=MULTIRUN
+    task:
+    - client.client_name=vllm
+    - client.model_id=openai/gpt-oss-20b
+    - client.base_url=http://localhost:8080/v1
+    - eval.num_workers=16
+    - envs.names=crafter
+    - eval.num_episodes.pogs=100
+    - eval.num_episodes.minihack=100
+    - eval.num_episodes.crafter=100
+    - eval.num_episodes.textworld=33
+    - agent.type=plan_every_k_step
+    - agent.plan_k=2,3,4,6,8,12,16,24
+  job:
+    name: eval
+    chdir: null
+    override_dirname: agent.plan_k=2,3,4,6,8,12,16,24,agent.type=plan_every_k_step,client.base_url=http://localhost:8080/v1,client.client_name=vllm,client.model_id=openai/gpt-oss-20b,envs.names=crafter,eval.num_episodes.crafter=100,eval.num_episodes.minihack=100,eval.num_episodes.pogs=100,eval.num_episodes.textworld=33,eval.num_workers=16
+    id: ???
+    num: ???
+    config_name: config
+    env_set: {}
+    env_copy: []
+    config:
+      override_dirname:
+        kv_sep: '='
+        item_sep: ','
+        exclude_keys: []
+  runtime:
+    version: 1.3.2
+    version_base: '1.1'
+    cwd: /home/bartek_sakana_ai/BALROG
+    config_sources:
+    - path: hydra.conf
+      schema: pkg
+      provider: hydra
+    - path: /home/bartek_sakana_ai/BALROG/balrog/config
+      schema: file
+      provider: main
+    - path: ''
+      schema: structured
+      provider: schema
+    output_dir: ???
+    choices:
+      hydra/env: default
+      hydra/callbacks: null
+      hydra/job_logging: default
+      hydra/hydra_logging: default
+      hydra/hydra_help: default
+      hydra/help: default
+      hydra/sweeper: basic
+      hydra/launcher: basic
+      hydra/output: default
+  verbose: false
+agent:
+  type: plan_every_k_step
+  remember_cot: true
+  max_text_history: 16
+  max_image_history: 0
+  max_cot_history: 1
+  max_icl_history: 1000
+  cache_icl: false
+  plan_k: 5
+  prompt_builder:
+    type: plan_history
+eval:
+  output_dir: results
+  resume_from: null
+  num_workers: 16
+  num_episodes:
+    pogs: 100
+    nle: 5
+    minihack: 100
+    babyai: 10
+    crafter: 100
+    babaisai: 3
+    textworld: 33
+  max_steps_per_episode: null
+  save_trajectories: true
+  save_images: false
+  icl_episodes: 1
+  icl_dataset: records
+  feedback_on_invalid_action: true
+client:
+  client_name: vllm
+  model_id: openai/gpt-oss-20b
+  base_url: http://localhost:8080/v1
+  generate_kwargs:
+    temperature: 1.0
+    max_tokens: 16384
+  timeout: 60
+  max_retries: 5
+  delay: 2
+  alternate_roles: false
+envs:
+  names: crafter
+  env_kwargs:
+    seed: null
+  pogs_kwargs:
+    num_nodes: 20
+    max_steps: 30
+    k_nearest: 2
+    min_backtracks: 3
+    step_penalty: 0
+    revisit_penalty: 0
+    expert_penalty: -5
+  nle_kwargs:
+    character: '@'
+    max_episode_steps: 100000
+    no_progress_timeout: 150
+    savedir: null
+    save_ttyrec_every: 0
+    skip_more: true
+  minihack_kwargs:
+    character: '@'
+    max_episode_steps: 100
+    penalty_step: 0.0
+    penalty_time: 0.0
+    penalty_mode: constant
+    savedir: null
+    save_ttyrec_every: 0
+    autopickup: false
+    skip_more: true
+  babyai_kwargs:
+    num_dists: 0
+  crafter_kwargs:
+    area:
+    - 64
+    - 64
+    view:
+    - 9
+    - 9
+    size:
+    - 256
+    - 256
+    reward: true
+    seed: null
+    max_episode_steps: 2000
+  textworld_kwargs:
+    objective: true
+    description: true
+    score: true
+    max_score: true
+    won: true
+    max_episode_steps: 80
+    textworld_games_path: tw_games
+  babaisai_kwargs:
+    add_ruleset: true
+tasks:
+  pogs_tasks:
+  - HardPOGS-v0
+  nle_tasks:
+  - NetHackChallenge-v0
+  minihack_tasks:
+  - MiniHack-Corridor-R3-v0
+  crafter_tasks:
+  - default
+  babyai_tasks:
+  - BabyAI-MixedTrainLocal-v0/goto
+  - BabyAI-MixedTrainLocal-v0/pickup
+  - BabyAI-MixedTrainLocal-v0/open
+  - BabyAI-MixedTrainLocal-v0/putnext
+  - BabyAI-MixedTrainLocal-v0/pick_up_seq_go_to
+  textworld_tasks:
+  - treasure_hunter
+  - the_cooking_game
+  - coin_collector
+  babaisai_tasks:
+  - env/make_win-distr_obj_rule
+  - env/goto_win-distr_obj_rule
+  - env/goto_win
+  - env/goto_win-distr_obj
+  - env/goto_win-distr_rule
+  - env/goto_win-distr_obj-irrelevant_rule
+  - env/make_win-distr_obj
+  - env/make_win-distr_rule
+  - env/make_win
+  - env/make_win-distr_obj-irrelevant_rule
+  - env/two_room-goto_win
+  - env/two_room-goto_win-distr_obj_rule
+  - env/two_room-goto_win-distr_rule
+  - env/two_room-goto_win-distr_obj
+  - env/two_room-goto_win-distr_obj-irrelevant_rule
+  - env/two_room-goto_win-distr_win_rule
+  - env/two_room-break_stop-goto_win-distr_obj_rule
+  - env/two_room-break_stop-goto_win-distr_obj
+  - env/two_room-break_stop-goto_win-distr_rule
+  - env/two_room-break_stop-goto_win-distr_obj-irrelevant_rule
+  - env/two_room-break_stop-goto_win
+  - env/two_room-maybe_break_stop-goto_win-distr_obj_rule
+  - env/two_room-maybe_break_stop-goto_win
+  - env/two_room-maybe_break_stop-goto_win-distr_obj
+  - env/two_room-maybe_break_stop-goto_win-distr_rule
+  - env/two_room-maybe_break_stop-goto_win-distr_obj-irrelevant_rule
+  - env/two_room-make_win-distr_obj_rule
+  - env/two_room-make_win-distr_rule
+  - env/two_room-make_win
+  - env/two_room-make_win-distr_obj-irrelevant_rule
+  - env/two_room-make_win-distr_obj
+  - env/two_room-make_win-distr_win_rule
+  - env/two_room-break_stop-make_win-distr_obj_rule
+  - env/two_room-break_stop-make_win-distr_rule
+  - env/two_room-break_stop-make_win
+  - env/two_room-break_stop-make_win-distr_obj-irrelevant_rule
+  - env/two_room-break_stop-make_win-distr_obj
+  - env/two_room-make_you
+  - env/two_room-make_you-make_win
+  - env/two_room-make_wall_win

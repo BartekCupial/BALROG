@@ -1,4 +1,5 @@
 from .history import HistoryPromptBuilder
+from .plan_history import PlanHistoryPromptBuilder
 
 import warnings
 
@@ -27,8 +28,17 @@ def create_prompt_builder(config):
     if max_text_history is None:
         max_text_history = config.max_text_history
 
-    return HistoryPromptBuilder(
+    if config.prompt_builder.type == "history":
+        return HistoryPromptBuilder(
         max_text_history=max_text_history,
         max_image_history=config.max_image_history,
         max_cot_history=config.max_cot_history,
     )
+    elif config.prompt_builder.type == "plan_history":
+        return PlanHistoryPromptBuilder(
+            max_text_history=config.max_text_history,
+            max_image_history=config.max_image_history,
+            max_cot_history=config.max_cot_history,
+        )
+    else:
+        raise ValueError(f"Unknown prompt builder type: {config.prompt_builder.type}")

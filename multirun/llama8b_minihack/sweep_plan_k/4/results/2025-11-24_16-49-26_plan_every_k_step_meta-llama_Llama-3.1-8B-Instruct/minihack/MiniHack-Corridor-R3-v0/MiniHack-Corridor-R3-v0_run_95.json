@@ -1,0 +1,61 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 25,
+        "south": 12,
+        "search": 17,
+        "east": 21,
+        "open": 5,
+        "southwest": 7,
+        "kick": 8,
+        "northwest": 4,
+        "west": 1
+    },
+    "input_tokens": 350960,
+    "output_tokens": 1910,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "put on f",
+        "<plan>The goal is to reach the staircase down, which is likely located on the same level as the player's current position. Based on previous observations, the staircase up is located in the northwest direction. The staircase down is probably in the southeast direction, considering the level's layout.\n\nTo reach the staircase down, the player must navigate through the dark area in the southeast direction. This will involve moving east from the current position, then south through the dark area.\n\nGiven the player's current situation, wearing an uncursed blindfold will be useful for navigating through the dark area.\n\nThe high-level plan is:\n\n1. Put on the blindfold to prepare for navigating through the dark area.\n2. Move east through the horizontal wall.\n3. Move south through the dark area to reach the staircase down.\n\nAction: put on f",
+        "put on f",
+        "<plan>The goal is to reach the staircase down, which is likely located in the southeast direction. Based on previous observations, the staircase up is located in the northwest direction, and the current position is adjacent to a doorway in the northwest direction.\n\nThe high-level plan is:\n\n1. Remove the blindfold to improve visibility and perception.\n2. Move north through the doorway to reach a new area.\n3. From there, move southeast through the dark area to reach the staircase down.\n\nAction: remove f",
+        "remove f",
+        "remove",
+        "remove",
+        "remove",
+        "remove",
+        ""
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-77",
+    "seed": 1171519691,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 8,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

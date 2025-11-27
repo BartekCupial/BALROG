@@ -1,0 +1,55 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 19,
+        "east": 26,
+        "south": 8,
+        "west": 2,
+        "search": 18,
+        "southwest": 3,
+        "kick": 12,
+        "open": 4,
+        "northwest": 5,
+        "southeast": 2,
+        "northeast": 1
+    },
+    "input_tokens": 347480,
+    "output_tokens": 1099,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>Your goal is to reach the stairs down, and you've located it in the far west. However, it's blocked by a series of horizontal walls and a vertical closed door that you can't open. To solve this task, you'll need to explore the level and find an alternate path to the stairs.\n\nYou've already searched the current room and found a northeast room corner. Your next step is to investigate this new area. You can then use search and open actions to explore the level and find the stairs down.\n\nYou'll need to plan carefully to avoid getting stuck in dead-end rooms or getting blocked by new walls. You may need to go back to previous rooms and try new paths.\n\nAction: search",
+        "<plan>\nThe current goal is to reach the stairs down. The plan is to move southeast to explore the new pathway that was discovered and to try and find the stairs. Once the southeast direction is explored, the plan is to re-evaluate the situation and make a decision based on the new information. The reasoning behind this plan is that the southeast direction appears to have a doorway, which may lead to new areas and possibly the stairs down. By exploring this new direction, we may be able to find a way to progress towards the goal.\n\neast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-109",
+    "seed": 2769801246,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 16,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

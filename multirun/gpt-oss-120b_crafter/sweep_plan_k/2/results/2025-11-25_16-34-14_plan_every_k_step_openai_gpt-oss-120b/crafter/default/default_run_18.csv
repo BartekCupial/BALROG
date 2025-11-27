@@ -1,0 +1,2339 @@
+Step,Action,Reasoning,Observation,Reward,Done
+0,Move West,"We start with full health, food, drink, and energy but no items. The nearby resources are grass (1 step west) and a tree (7 steps south‑west). The long‑term goal is to complete all 22 achievements, which requires gathering each type of material, crafting tools and items, placing structures, eating food, and defeating enemies.
+
+High‑level sequence:
+
+1. **Collect basic resources**
+   - Move to the tree and use Do to harvest wood (Achievement 1: Collect Wood).
+   - Gather some grass/sampling if needed (Achievement 4: Collect Sampling, Achievement 5: Collect Drink from lake later).
+
+2. **Place a crafting table**
+   - Use collected wood to craft a table (Achiev. 2: Place Table).
+
+3. **Craft basic tools**
+   - With the table and wood, make a Wood Pickaxe (Achiev. 6) and Wood Sword (Achiev. 7).
+
+4. **Collect stone and coal**
+   - Use the Wood Pickaxe to mine stone deposits (Achiev. 10: Collect Stone, Achiev. 11: Place Stone).
+   - Mine coal (Achiev. 18: Collect Coal).
+
+5. **Place a furnace**
+   - Use stone and wood to place a furnace (Achiev. 17).
+
+6. **Collect iron and diamonds**
+   - Use the Stone Pickaxe (or later Iron Pickaxe) to mine iron ore (Achiev. 19) and eventually diamonds (Achiev. 22).
+
+7. **Upgrade tools**
+   - Craft Stone Pickaxe (Achiev. 14) and Stone Sword (Achiev. 15).
+   - With iron, furnace, wood, and coal, craft Iron Pickaxe (Achiev. 20) and Iron Sword (Achiev. 21).
+
+8. **Obtain food**
+   - Locate and eat a cow (Achiev. 3: Eat Cow) and a plant (Achiev. 12: Eat Plant). Plant can be placed (Achiev. 8) and later harvested.
+
+9. **Defeat enemies**
+   - Use swords to defeat a Zombie (Achiev. 9) and a Skeleton (Achiev. 13).
+
+10. **Maintain survival**
+    - Sleep when energy is low (Achiev. 16: Wake Up) and drink/eat as needed.
+
+11. **Final checks**
+    - Ensure all achievements are logged, then continue exploring or building.
+
+Each step will be broken into individual actions (Move, Do, Place, Make, Sleep) as the agent progresses.
+
+We will begin by moving west toward the grass and then continue toward the tree to collect wood.","You see:
+- grass 1 steps to your west
+- tree 5 steps to your north-west
+
+You face grass at your front.",0.0,False
+1,Move West,,"You see:
+- grass 1 steps to your west
+- stone 6 steps to your north-west
+- tree 4 steps to your north-west
+- coal 4 steps to your west
+- cow 3 steps to your north
+
+You face grass at your front.",0.0,False
+2,Move West,,"You see:
+- grass 1 steps to your west
+- stone 5 steps to your north-west
+- path 4 steps to your west
+- tree 3 steps to your north-west
+- coal 3 steps to your west
+- cow 5 steps to your north-east
+
+You face grass at your front.",0.0,False
+3,Move West,,"You see:
+- grass 1 steps to your west
+- stone 4 steps to your west
+- path 3 steps to your west
+- tree 2 steps to your north-west
+- coal 2 steps to your west
+- cow 7 steps to your north-east
+
+You face grass at your front.",0.0,False
+4,Move West,"We need to complete all 22 achievements. The immediate priority is to gather basic resources and unlock crafting. Current surroundings provide grass (sampling), stone, coal, and a tree a short distance away. We have no items, so the first step is to acquire wood from the tree, which will allow us to place a table (achievement 2) and then craft a wood pickaxe (achievement 6) and wood sword (achievement 7). With the wood pickaxe we can mine stone (achievement 10) and coal (achievement 18). After collecting enough stone we can place a furnace (achievement 17) to smelt iron later. Meanwhile we will also collect grass as a sampling (achievement 4) and later eat plant (achievement 12) and cow (achievement 3). The high‑level sequence:
+
+1. Move to the tree and use Do to collect wood (Collect Wood).
+2. Place a table near the wood (Place Table).
+3. Make a wood pickaxe (Make Wood Pickaxe) and wood sword (Make Wood Sword).
+4. Use the wood pickaxe to mine stone and coal (Collect Stone, Collect Coal).
+5. Place stone blocks (Place Stone) and place a furnace (Place Furnace).
+6. Gather grass (Collect Sampling) and later eat plant/cow.
+7. Craft stone tools, then iron tools, defeat zombies/skeletons, collect iron/diamond, etc.
+8. Manage energy with Sleep and Drink/ Food as needed, achieving Wake Up, Collect Drink, etc.
+
+The immediate action is to move west toward the grass (which is also a sampling) and get closer to the tree. This positions us to then move north to the tree next turn.","You see:
+- grass 1 steps to your east
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 1 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+5,Move North,,"You see:
+- grass 1 steps to your east
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 1 steps to your north
+- coal 1 steps to your west
+
+You face tree at your front.",0.0,False
+6,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 1 steps to your south
+- coal 1 steps to your west
+
+You face grass at your front.",1.0,False
+7,Place Table,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 1 steps to your south
+- coal 1 steps to your west
+
+You face grass at your front.",0.0,False
+8,Move South,"We currently have 1 wood and a placed table north of us. To progress we need more wood, stone, coal, and to collect the grass sampling. The immediate steps are:
+1. Move south to the tree and use Do to collect another wood (ensuring enough wood for crafting).
+2. Afterwards, collect the grass sampling by using Do on the grass north of the table (once we have space to interact).
+3. Collect coal and stone by using Do on the nearby coal (west) and stone (west) when we have a pickaxe.
+4. Craft a wood pickaxe and wood sword at the table (requires at least 2 wood).
+5. Use the wood pickaxe to mine stone and collect coal (achieve Collect Stone and Collect Coal).
+6. Place a stone block (Place Stone) and later a furnace (Place Furnace) after gathering enough stone.
+7. Sleep to trigger Wake Up achievement.
+Subsequent goals will include finding a lake for drinking, eating the cow, defeating zombies and skeletons, gathering iron and diamond, and crafting iron tools. For now, the immediate action is to get another piece of wood from the tree.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 1 steps to your south
+- coal 1 steps to your west
+
+You face tree at your front.",0.0,False
+9,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face grass at your front.",0.0,False
+10,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face grass at your front.",0.0,False
+11,Make Wood Pickaxe,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face grass at your front.",0.0,False
+12,Move West,"Current state: We have a placed table north of us, 2 wood in inventory, and likely a wood pickaxe crafted (requires wood, table). Achievements already obtained: Collect Wood, Place Table, Make Wood Pickaxe (if crafting succeeded). Next goals: collect stone and coal, place stone, collect more wood to craft a wood sword, then progress to furnace, iron, etc.
+
+Step-by-step high-level plan:
+1. Move west to approach the stone (3 steps away) and coal (1 step away).
+2. While adjacent to coal, use Do to collect coal (Collect Coal achievement).
+3. Use Do on the now‑adjacent stone to collect stone (Collect Stone achievement).
+4. With stone in inventory, use Place Stone to place a stone block in front (Place Stone achievement).
+5. Move south to the tree, use Do to collect another piece of wood (ensuring we have wood left for the wood sword).
+6. Use Make Wood Sword at the table (requires wood and table) to get a wood sword (Make Wood Sword achievement).
+7. Optionally, use the wood pickaxe to mine additional stone if needed for furnace.
+8. Gather enough stone (and later iron) to Place Furnace (Place Furnace achievement).
+9. Continue later with eating cow, drinking from lake, defeating mobs, collecting iron, diamond, etc.
+
+Immediate action: Move West to get within range of coal and stone.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+13,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+14,Move West,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+15,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+16,Do,"Current state: At position with grass north, table placed north of us, 2 wood in inventory, likely a wood pickaxe already crafted (though not shown). Coal is 1 step west, stone 3 steps west. Goals: collect coal, then collect stone, place stone, craft wood sword, then later progress to furnace, iron, etc. Immediate next step is to collect the coal using Do (Collect Coal achievement). After that we will move west to get adjacent to stone and collect it, then place stone, and craft wood sword at the table. This sequence will achieve several pending achievements (Collect Coal, Collect Stone, Place Stone, Make Wood Sword) and set up for further progress.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+17,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+18,Make Wood Pickaxe,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+19,Move West,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+20,Do,"Current state: standing with coal directly west, table placed north (adjacent), 2 wood in inventory, no pickaxe yet. Achievements needed include Collect Coal, Make Wood Pickaxe, Collect Stone, Place Stone, Make Wood Sword, and later many others. Immediate steps: 1) Use Do to collect the coal (achievement Collect Coal). 2) Craft a wood pickaxe using Make Wood Pickaxe (requires wood and the nearby table). 3) Move west stepwise toward the stone (3 steps west total). 4) Use Do on the stone block to collect stone (requires pickaxe). 5) Use Place Stone to place a stone block (achievement Place Stone). 6) Craft a wood sword with Make Wood Sword (requires wood and table). These actions will secure early achievements and give tools for further progress (collecting coal, stone, crafting weapons, etc.). After completing these, we can plan to gather plant, defeat mobs, and advance to iron and diamond stages.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+21,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+22,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+23,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+24,Do,"We currently have 2 wood and are standing with coal directly to the west. The early achievements we still need are Collect Coal, Place Table, Make Wood Pickaxe, Collect Stone, Place Stone, Make Wood Sword, and later many more (Place Furnace, Collect Iron, etc.). High‑level plan:
+
+1. Use Do on the coal to collect it (achieve Collect Coal).
+2. Place a table on the grass tile to the north (Place Table) – needed for crafting.
+3. Craft a wood pickaxe using the table and our wood (Make Wood Pickaxe).
+4. Move west twice (first onto the path, then onto the stone) to reach the stone block.
+5. Use Do on the stone with the pickaxe to mine it (achieve Collect Stone).
+6. Place the mined stone (Place Stone) to satisfy that achievement.
+7. Craft a wood sword at the table (Make Wood Sword) for future combat.
+8. After these, gather plants, defeat zombies/skeletons, place furnace, mine coal/iron, craft iron tools, and eventually collect diamond, following the same pattern of acquiring resources, placing required stations, and crafting required items.
+
+The immediate next action is to collect the coal in front of us.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+25,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+26,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+27,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+28,Do,"We have 2 wood in inventory and are facing a coal block one step west. The immediate missing achievements are Collect Coal, Place Table, Make Wood Pickaxe, Collect Stone, Place Stone, Make Wood Sword, among many later goals (Place Furnace, Collect Iron, etc.). High‑level strategy:
+
+1. Use Do on the coal in front to collect it (Collect Coal).
+2. Place a table on the grass tile north of us (Place Table) to enable crafting.
+3. Craft a wood pickaxe at the table using our wood (Make Wood Pickaxe); this also secures the Make Wood Pickaxe achievement.
+4. Move west onto the path then further west onto the stone (Move West twice) to stand next to the stone block.
+5. Use Do while holding the wood pickaxe to mine the stone (Collect Stone).
+6. Place the mined stone on the ground (Place Stone) to get that achievement.
+7. Craft a wood sword at the table (Make Wood Sword) for future combat.
+8. After these basics, we will obtain other resources: move north to the tree to collect additional wood if needed, move to any lake to drink (Collect Drink), explore to find cows (Eat Cow) and plants (Eat Plant, Place Plant), locate zombies/skeletons to defeat (Defeat Zombie/Skeleton), place a furnace (Place Furnace) using stone and wood, mine coal/iron/diamond, craft stone and iron tools/weapons, and finally collect diamond. Throughout we will sleep when energy drops (Sleep) to get Wake Up, and collect sampling, etc. This plan ensures we sequentially unlock the early achievements and set up the infrastructure for the later, more advanced achievements.
+
+Now we need to collect the coal directly in front of us.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+29,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+30,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+31,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+32,Do,"Current state: I have 2 wood in inventory and am facing a coal block one step west. My immediate missing achievements include Collect Coal, Place Table, Make Wood Pickaxe, Collect Stone, Place Stone, Make Wood Sword, among many later goals (placing furnace, collecting iron, diamond, etc.). 
+
+High‑level strategy:
+1. **Collect Coal** – Use the Do action on the coal block in front to pick it up. This grants the “Collect Coal” achievement.
+2. **Place Table** – Move north onto the grass tile, then place a table (Place Table) to enable crafting.
+3. **Make Wood Pickaxe** – With the table and my wood, craft a wood pickaxe (Make Wood Pickaxe) to earn that achievement.
+4. **Collect Stone** – Move west onto the path and then further west to reach the stone block. Use Do with the wood pickaxe to mine the stone (Collect Stone achievement).
+5. **Place Stone** – Place the mined stone on the ground (Place Stone) for that achievement.
+6. **Make Wood Sword** – Return to the table and craft a wood sword (Make Wood Sword) for future combat.
+7. **Expand** – After securing basic tools and structures, explore to gather more resources (wood from the tree, eat plants/cow, drink from lake, defeat zombie/skeleton, place furnace, collect iron, coal, diamond, craft stone/iron tools and weapons, etc.). Use Sleep when energy is low to get Wake Up, and collect sampling when possible.
+
+The first concrete step needed now is to collect the coal directly in front of me.
+
+Next action: Do","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+33,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+34,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+35,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+36,Do,"We are currently standing near a coal block directly to our west and have 2 wood in inventory. Our immediate missing achievements include Collect Coal, Place Table, Make Wood Pickaxe, Collect Stone, Place Stone, Make Wood Sword, and many later achievements such as placing furnace, collecting iron and diamond, defeating mobs, etc.
+
+High‑level strategy:
+1. **Collect Coal** – Use the Do action on the coal block in front to pick it up. This completes the “Collect Coal” achievement and adds coal to our inventory.
+2. **Place Table** – Move north onto the grass tile (or any suitable flat ground) and place a table. This enables crafting.
+3. **Make Wood Pickaxe** – With the table and the 2 wood we already have, craft a wood pickaxe (Make Wood Pickaxe) to allow mining.
+4. **Collect Stone** – Move west along the path to reach the stone block 3 steps away. Use Do with the wood pickaxe to mine the stone, earning “Collect Stone”.
+5. **Place Stone** – Place the mined stone on the ground (Place Stone) for that achievement.
+6. **Make Wood Sword** – Return to the table and craft a wood sword (Make Wood Sword) for combat.
+7. **Expand resources** – After securing basic tools and structures, gather more wood from the tree, collect food (grass, plants, possibly a cow), drink from any lake, and defeat the nearby zombie and skeleton to earn combat achievements.
+8. **Place Furnace** – After collecting additional coal and stone, place a furnace (Place Furnace) to enable smelting.
+9. **Collect Iron and Coal** – Mine iron ore and additional coal using the stone pickaxe (once crafted) to unlock iron-related achievements.
+10. **Craft Iron Tools and Weapons** – Use the furnace, table, wood, iron, and coal to craft iron pickaxe and iron sword (Make Iron Pickaxe, Make Iron Sword).
+11. **Collect Diamond** – Mine deeper with the iron pickaxe to obtain diamond and complete the final achievement.
+12. **Maintain health, food, drink, and energy** – Use Do to drink from lakes, eat plants or cows, and Sleep when energy is low to get the “Wake Up” achievement.
+
+The first concrete step is to collect the coal directly in front of us.
+
+Action: Do","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+37,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+38,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+39,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+40,Do,"We start by collecting the coal directly in front of us (Do). This completes the “Collect Coal” achievement and gives us coal for future crafting.
+
+Next, we will move north onto the grass tile where the tree is nearby, then place a table (Place Table) to enable crafting. With the table and our 2 wood we will craft a wood pickaxe (Make Wood Pickaxe) to mine stone.
+
+We will then move west along the path to the stone block, mine it with the wood pickaxe (Do), achieving “Collect Stone”. We will place the mined stone (Place Stone) for that achievement.
+
+After that, we will return to the table and craft a wood sword (Make Wood Sword) for combat. We will also collect wood from the nearby tree (Do) and plant (Place Plant) to enable “Eat Plant” and “Collect Plant” later.
+
+We will then gather food (grass), drink from any lake if present (Do), and sleep when needed (Sleep) to get “Wake Up”.
+
+With stone and coal we will place a furnace (Place Furnace), then upgrade to a stone pickaxe (Make Stone Pickaxe) using wood, stone, and coal, allowing us to mine iron (Collect Iron) and later diamond (Collect Diamond). We will craft stone/iron swords and defeat zombies and skeletons for combat achievements.
+
+Throughout we will manage health, food, drink, and energy, sleeping when low, to stay alive and complete all achievements.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+41,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+42,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+43,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+44,Do,"We currently have 2 wood and see coal directly in front (west). The first missing achievement is “Collect Coal”. Use the Do action to collect the coal. After that we will move north to the grass (1 step) and then to the tree (3 steps north) to collect more wood, allowing us to place a table and start crafting tools needed for later achievements (stone, pickaxes, swords, furnace, etc.). This will set up the sequence to complete all achievements.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+45,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+46,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+47,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+48,Do,"We need to start gathering the basic resources. The first missing achievement is “Collect Coal”. Coal is directly in front of us, so we should use the Do action now to collect it. After that we will move west to pick up stone, then go north to the tree to collect wood, place a table, craft a wood pickaxe and sword, and continue the progression toward all remaining achievements (placing furnace, collecting iron, making iron tools, defeating mobs, etc.).","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+49,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+50,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+51,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+52,Do,"We currently have wood (2) and are near grass (north), stone (west at distance 3), a path (west 2), a tree (north 3), and coal (west 1, directly in front). The next immediate achievement is “Collect Coal”. Using the Do action will collect the coal that is directly in front of us. After obtaining coal we will move west to gather stone, move north to the tree to collect more wood, place a table, craft wood tools (pickaxe and sword), then place a furnace, collect stone, coal, iron, make iron tools, defeat mobs, etc., to complete all achievements.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+53,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+54,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+55,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+56,Do,"We have wood (2) and are facing coal directly in front, which allows us to complete the ""Collect Coal"" achievement immediately. The next steps after collecting coal will be to move west to collect stone, move north to collect more wood from the tree, place a table, craft wood tools (pickaxe, sword), then place a furnace, collect stone, iron, and other resources to complete all remaining achievements. The immediate high‑level action is to collect the coal by using the Do action.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+57,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+58,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+59,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+60,Do,"Current status: health 9, food 7, drink 7, energy 8, inventory wood 2. Nearby resources: coal 1 step west (facing), stone 3 steps west, grass north, tree north, path west.
+
+Immediate goal: obtain the “Collect Coal” achievement by gathering the coal in front of us. This will also increase our inventory and bring us closer to later achievements (e.g., furnace, iron tools).
+
+High‑level roadmap after coal:
+1. **Collect Coal** (Do).  
+2. **Collect Stone**: Move West twice (first onto path, then toward stone) and Do to pick up stone → “Collect Stone”, “Place Stone” later.  
+3. **Collect More Wood**: Move North toward tree, Do to harvest wood → increase wood count for crafting.  
+4. **Place Table** (Place Table) near collected wood → “Place Table”.  
+5. **Craft Wood Tools**: Use table to Make Wood Pickaxe and Make Wood Sword → achievements “Make Wood Pickaxe”, “Make Wood Sword”.  
+6. **Collect Grass & Eat Plant**: Move north to grass, Do to collect grass → “Collect Sampling”, then Place Plant and Eat Plant → “Place Plant”, “Eat Plant”.  
+7. **Place Furnace**: With stone and wood, place furnace (Place Furnace) → “Place Furnace”.  
+8. **Collect Coal (additional) & Iron**: Use pickaxe to mine nearby coal/iron deposits (if present) → “Collect Coal”, “Collect Iron”.  
+9. **Craft Stone & Iron Tools**: Place additional stone, then Make Stone Pickaxe/Sword, then Make Iron Pickaxe/Sword → achievements 14‑16, 20‑21.  
+10. **Defeat Hostile Mobs**: Use swords/pickaxes to defeat Zombie and Skeleton → “Defeat Zombie”, “Defeat Skeleton”.  
+11. **Collect Diamond**: Mine deeper with iron pickaxe → “Collect Diamond”.  
+12. **Eat Cow**: Find and eat a cow if encountered → “Eat Cow”.  
+13. **Wake Up**: If we ever sleep (Sleep) when energy is low → “Wake Up”.
+
+Each step will be taken sequentially, ensuring we have enough food/drink (collect grass, eat plant) and energy (Sleep if needed). This plan covers all 22 achievements.
+
+Now execute the first required action: collect the coal in front of us.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+61,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+62,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+63,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+64,Do,"We currently have health 9, food 7, drink 6, energy 7, and 2 wood in inventory. Nearby resources: coal 1 step west (facing), stone 3 steps west, path 2 steps west, grass north, tree north. The immediate goal is to obtain the ""Collect Coal"" achievement, which also adds coal to inventory for later furnace and iron work. After collecting coal, we will move west to gather stone, then north to harvest more wood from the tree and grass, place a table, craft wood tools (pickaxe and sword), place a plant and eat it, place a furnace, collect iron and coal for iron tools, craft stone and iron tools, defeat zombie and skeleton, collect diamond, eat cow, and finally wake up. This sequence follows the achievement list and ensures we have food, drink, and energy management (sleep if needed). The first concrete action is to collect the coal directly in front of us.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+65,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+66,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+67,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+68,Do,"Current status: health 9, food 7, drink 6, energy 7, wood 2. Nearby resources: coal 1 step west (facing), stone 3 steps west, path 2 steps west, grass 1 step north, tree 3 steps north. Achievements to obtain: all 22 listed.
+
+High‑level roadmap:
+1. Collect the coal in front (Do). → Achievement “Collect Coal”.
+2. Move west to the stone (Move West twice, then Do) to collect stone. → “Collect Stone”.
+3. Move north to grass and tree, use Do repeatedly to collect more wood and grass. → “Collect Wood”, “Eat Plant” (grass) for food.
+4. Place a table on flat ground (Place Table). → “Place Table”.
+5. Craft wood tools (Make Wood Pickaxe, Make Wood Sword). → Achievements 6 and 7.
+6. Use the wood pickaxe to break any nearby rocks if needed, and to gather more resources.
+7. Place a plant (Place Plant) and then eat it (Do) → “Place Plant”, “Eat Plant” (already covered).
+8. Gather enough stone and coal to place a furnace (Place Furnace). → “Place Furnace”.
+9. Use furnace with wood and coal to produce charcoal if needed, then locate iron ore (assume reachable after moving further east/south) and collect iron (Do) → “Collect Iron”.
+10. Craft iron tools (Make Iron Pickaxe, Make Iron Sword). → Achievements 20 and 21.
+11. Locate and defeat a zombie (Do while equipped with a sword) → “Defeat Zombie”.
+12. Locate and defeat a skeleton → “Defeat Skeleton”.
+13. Find and eat a cow (Do) → “Eat Cow”.
+14. Locate a diamond deposit and collect it (Do) → “Collect Diamond”.
+15. Ensure we have collected sampling and drink (Do on lake if present) → “Collect Sampling”, “Collect Drink”.
+16. Manage hunger, thirst, and energy: eat grass/plants/cow, drink from lake, sleep when energy low (Sleep). → “Wake Up”.
+17. Finally, verify all achievements are unlocked.
+
+Throughout, monitor health, food, drink, energy; sleep, eat, or drink as needed.
+
+Now execute the first immediate step: collect the coal in front.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+69,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+70,Move West,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+71,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+72,Do,"We start by collecting the coal directly in front to achieve ""Collect Coal"". Then we will move west to gather the stone (Collect Stone) and further explore to gather more wood from the tree and grass (Collect Wood, Eat Plant). We'll place a table (Place Table) and craft wood tools (Make Wood Pickaxe, Make Wood Sword). Next, we’ll place a plant (Place Plant) and later a furnace (Place Furnace) to smelt ore. We'll collect coal, iron, and eventually diamond (Collect Coal, Collect Iron, Collect Diamond). Using the furnace and gathered resources, we’ll craft stone and iron tools (Make Stone Pickaxe, Make Stone Sword, Make Iron Pickaxe, Make Iron Sword). We'll then locate and defeat a zombie and a skeleton (Defeat Zombie, Defeat Skeleton), eat a cow (Eat Cow), and collect sampling and drink from any lake (Collect Sampling, Collect Drink). Finally, we’ll manage hunger, thirst, and energy by eating, drinking, and sleeping when needed (Wake Up). This sequence will unlock all 22 achievements.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+73,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+74,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+75,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+76,Do,"Current situation: I have modest food, drink, and energy, and 2 wood in inventory. Directly in front (west) is coal that I have not yet collected, which is needed for the “Collect Coal” achievement and later for smelting. The first concrete step is to collect this coal.
+
+Overall high-level strategy after acquiring coal:
+1. **Collect basic resources**: Take the coal (Do), then move west to the stone (Move West twice) and collect it (Do). Move north to the tree and collect more wood (Do) to ensure enough wood for crafting and eating plants if needed.
+2. **Establish a base**: Place a table (Place Table) near the collected resources. Use the table and wood to craft a wood pickaxe and wood sword (Make Wood Pickaxe, Make Wood Sword). Place a plant (Place Plant) for future food (Eat Plant) and a furnace (Place Furnace) for smelting.
+3. **Advance to stone tools**: Use the wood pickaxe to gather more stone if needed, then craft a stone pickaxe and stone sword (Make Stone Pickaxe, Make Stone Sword). Collect coal again if needed for smelting.
+4. **Progress to iron**: Mine iron ore (using stone or iron pickaxe when obtained), collect iron, and use the furnace with coal to smelt it. Craft iron pickaxe and iron sword (Make Iron Pickaxe, Make Iron Sword). Collect diamond thereafter.
+5. **Complete combat and food achievements**: Locate and defeat a zombie (Defeat Zombie) and a skeleton (Defeat Skeleton) using appropriate weapons. Find and eat a cow (Eat Cow). Collect drink from a lake (Collect Drink) and sampling if possible (Collect Sampling). Eat plants as needed (Eat Plant).
+6. **Maintain survival**: Monitor food, drink, and energy. Sleep when energy is low (Sleep) to achieve “Wake Up”. Ensure “Place Stone” and “Place Furnace” achievements are satisfied when placing those objects.
+7. **Finish remaining achievements**: Collect remaining resources (stone, coal, iron, diamond) and place required structures, ensuring all 22 achievements are unlocked.
+
+Immediate next action: Collect the coal that is directly in front by using the Do action.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+77,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+78,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+79,Move West,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+80,Do,"We have sufficient health, food, drink, and energy to act. In inventory we have 2 wood and no coal yet. Directly west is coal, which we need to achieve ""Collect Coal"" and later for smelting. The immediate step is to collect the coal with the Do action. After acquiring coal we will move west to the stone (3 steps away) and collect stone, then move north to the tree (3 steps away) to collect more wood, enabling us to place a table, craft a wood pickaxe and wood sword, and place a plant and furnace. This will set the foundation to complete the early achievements (Collect Wood, Place Table, Make Wood Pickaxe, Make Wood Sword, Place Plant, Place Furnace, Collect Coal, Collect Stone, Place Stone) and later progress to stone and iron tools, combat, food, and diamond. The high‑level roadmap:
+1. Do → collect coal (Collect Coal).
+2. Move West twice → reach stone; Do → collect stone (Collect Stone, Place Stone later).
+3. Move North three times → reach tree; Do → collect wood (Collect Wood, have enough for crafting).
+4. Place Table; craft wood pickaxe and wood sword.
+5. Place Plant; later Eat Plant.
+6. Place Furnace; later smelt iron and craft iron tools.
+7. Continue to gather stone, iron, diamond; defeat zombies/skeletons; eat cow; collect drink; sleep to achieve Wake Up, etc.
+
+Immediate action: collect the coal in front.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+81,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+82,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+83,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+84,Do,"Current status: health good, enough food and drink, energy moderate, inventory has 2 wood. We are facing coal 1 step west. Immediate goal is to collect coal (achievement “Collect Coal”) using Do. After that, we will move west to reach the stone (3 steps away) and collect stone (Collect Stone). Then move north to the tree (3 steps) to collect more wood (Collect Wood) and possibly grass (for eating). With wood and stone we can place a table (Place Table) and craft a wood pickaxe and wood sword (Make Wood Pickaxe, Make Wood Sword). We will also place a plant (Place Plant) to later Eat Plant, and place a furnace (Place Furnace) to smelt iron and coal for iron tools. Subsequent steps will involve gathering iron, making iron pickaxe/sword, defeating zombies/skeletons, eating cows, drinking from lake, sleeping (Wake Up), and finally collecting diamond. The high‑level roadmap:
+
+1. Do → collect coal (Collect Coal).
+2. Move West twice → reach stone; Do → collect stone (Collect Stone).
+3. Move North three times → reach tree; Do → collect wood (Collect Wood) and also collect grass if needed.
+4. Place Table; craft wood pickaxe & wood sword.
+5. Place Plant; later Eat Plant.
+6. Place Furnace; later collect iron, make iron tools.
+7. Continue exploration to find cows, zombies, skeletons, iron ore, diamonds; fulfill remaining achievements (Eat Cow, Defeat Zombie, Defeat Skeleton, Collect Iron, Make Iron Pickaxe/Sword, Collect Diamond, Sleep, etc.).
+All actions will respect energy, food, and drink levels, sleeping when low.
+
+Immediate action: collect the coal in front of us.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+85,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+86,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+87,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+88,Do,"We have sufficient food, drink, and energy to act. Our immediate goal is to obtain the first achievement, Collect Coal, which is directly in front of us (1 step west). Use the Do action to gather the coal. After that we will move west to reach the stone (Collect Stone), then move north to the tree to gather more wood (Collect Wood) and grass. With wood and stone we can Place Table, then craft a Wood Pickaxe and Wood Sword (achievements Make Wood Pickaxe, Make Wood Sword). Next we will Place Plant (Place Plant) and later Eat Plant. Then we will Place Furnace (Place Furnace) to enable smelting iron and making iron tools. Subsequent steps will involve collecting iron, making iron pickaxe and sword, defeating zombies and skeletons, eating cows, drinking from lake, sleeping to Wake Up, and finally collecting diamond. This high‑level roadmap will guide each subsequent action, always monitoring health, food, drink, and energy and using Sleep when needed.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+89,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+90,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+91,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+92,Do,"We need to start by obtaining the first few achievements. Currently we have wood (2) but lack coal, stone, and additional wood. The observation shows coal directly west, so we can use the Do action to collect it, achieving ""Collect Coal"". After that we will move west (path then stone) and use Do to collect stone for ""Collect Stone"". Then move north to the grass/tree and use Do to collect more wood for ""Collect Wood"". With wood and stone we can place a table, then craft a wood pickaxe and wood sword, unlocking those achievements. From there we will continue the roadmap: place plant, eat plant, place furnace, collect coal/iron/diamond, craft iron tools, defeat mobs, etc. This step‑by‑step approach respects health, food, drink, and energy levels, using Sleep when needed.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+93,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+94,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+95,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+96,Do,"We start by gathering the immediate resources needed for the early achievements. The observation shows coal directly in front, so using Do will collect coal (achievement 18). After that we will move west along the path to reach stone (3 steps west) and use Do to collect stone (achievement 10). Then we will move north to the grass/tree area to gather more wood (using Do on grass or tree) to have enough wood for crafting (achievement 1). With wood and stone we can place a table (Place Table) to unlock crafting. Then we will craft a wood pickaxe (Make Wood Pickaxe) and a wood sword (Make Wood Sword) to earn achievements 6 and 7. Next we will place a plant (Place Plant) and eat it (Do on plant) for achievement 12. We will then place a furnace (Place Furnace) near the table, collect additional coal and later iron ore (by mining with pickaxe), and craft iron tools (Make Iron Pickaxe, Make Iron Sword) for achievements 20 and 21. Using the iron sword we will defeat a zombie (Defeat Zombie) and later a skeleton (Defeat Skeleton) for achievements 9 and 13. After gathering enough resources we will collect a diamond (Collect Diamond) to complete the final achievement. Throughout we will monitor food, drink, and energy, using Sleep when energy is low and Do on grass/lake for food/drink as needed. This step‑by‑step approach will systematically achieve all listed goals.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+97,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+98,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+99,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+100,Do,"We need to systematically obtain all resources and craft items to earn every achievement.
+
+Current resources: 2 wood, no stone, no coal. Nearby: coal directly in front, stone 3 west, grass 1 north, tree 3 north, path west.
+
+High‑level steps:
+1. Collect coal (Do) → achievement 18.
+2. Move west along the path (Move West) twice to reach the stone location.
+3. Collect stone (Do) → achievement 10.
+4. Move east back to start, then move north to grass/tree.
+5. Collect wood by Do on grass and on tree until we have enough (≥4) for table and crafting.
+6. Place Table (Place Table) → achievement 2.
+7. Craft Wood Pickaxe (Make Wood Pickaxe) → achievement 6.
+8. Craft Wood Sword (Make Wood Sword) → achievement 7.
+9. Place Plant (Place Plant) → achievement 8, then Do on plant to eat it (Eat Plant) → achievement 12.
+10. Explore to find a lake for drink (Do on lake) → achievement 5, and collect more food as needed.
+11. Place Furnace near table (Place Furnace) → achievement 17.
+12. Collect more coal (if needed) and iron ore (by mining with pickaxe) → achievements 19, 20, 21.
+13. Craft Stone tools after gathering enough stone (Make Stone Pickaxe, Stone Sword) → achievements 14, 15.
+14. Defeat Zombie (use sword) → achievement 9, then defeat Skeleton → achievement 13.
+15. Collect Diamond (mine with iron pickaxe) → achievement 22.
+16. Sleep when energy is low, drink/eat to maintain health/food.
+
+We will start by collecting the coal that is directly in front. This is the first required resource and also grants achievement 18.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+101,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+102,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+103,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+104,Do,"Current resources: 2 wood, no coal, no stone. Nearby: coal 1 step west (front), stone 3 steps west, grass 1 north, tree 3 north, path west 2 steps. Goal: earn all 22 achievements.
+
+Phase 1 – Gather basic resources:
+1. Collect coal (Do) → Achievement 18.
+2. Move west along path (Move West) twice to reach stone location.
+3. Collect stone (Do) → Achievement 10.
+4. Return east to start (Move East twice).
+5. Collect additional wood:
+   - Move north to grass (Move North) and Do to eat grass (counts as wood collection).
+   - Move north further to tree (Move North twice) and Do to obtain wood from tree.
+   Ensure we have at least 4 wood for crafting and table.
+
+Phase 2 – Core crafting & placements:
+6. Place Table (Place Table) → Achievement 2.
+7. Make Wood Pickaxe (Make Wood Pickaxe) → Achievement 6.
+8. Make Wood Sword (Make Wood Sword) → Achievement 7.
+9. Place Plant (Place Plant) → Achievement 8.
+10. Eat Plant (Do on plant) → Achievement 12.
+11. Collect drink from lake when encountered (Do) → Achievement 5.
+
+Phase 3 – Advanced tools & combat:
+12. Place Furnace near Table (Place Furnace) → Achievement 17.
+13. Collect more coal if needed (Do on coal).
+14. Use Wood Pickaxe to mine additional stone to have enough for stone tools.
+15. Make Stone Pickaxe (Make Stone Pickaxe) → Achievement 14.
+16. Make Stone Sword (Make Stone Sword) → Achievement 15.
+17. Defeat Zombie (Do on zombie with sword) → Achievement 9.
+18. Defeat Skeleton (Do on skeleton) → Achievement 13.
+
+Phase 4 – Iron & diamond:
+19. Use Stone Pickaxe to mine iron ore → Achievement 19.
+20. Collect additional wood/coal if needed, then make Iron Pickaxe (Make Iron Pickaxe) → Achievement 20.
+21. Make Iron Sword (Make Iron Sword) → Achievement 21.
+22. Use Iron Pickaxe to mine diamond → Achievement 22.
+
+Support actions:
+- Sleep when energy low (Sleep) → Achievement 16 (Wake Up after sleeping).
+- Eat cow when found (Do) → Achievement 3.
+- Collect sampling (Do on sampling) → Achievement 4.
+- Collect wood (Do on grass/tree) → Achievement 1.
+- Place stone (Place Stone) → Achievement 11.
+
+Overall, the immediate next step is to collect the coal directly in front to unlock coal collection and fuel future furnace use.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+105,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+106,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+107,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 4 steps to your north-east
+
+You face coal at your front.",0.0,False
+108,Do,"Current resources: 2 wood, no stone, coal directly in front, stone 3 steps west, grass 1 north, tree 3 north, arrow 4 north-east. Health, food, drink, energy are sufficient for immediate actions.
+
+Immediate goal: collect coal (Achievement 18) to enable furnace later. Then gather additional wood (Achievement 1) by collecting grass and tree. Collect stone (Achievement 10) by moving west and using Do. Place Table (Achievement 2) once enough wood is gathered. Craft Wood Pickaxe (6) and Wood Sword (7) using the table and wood. Place Plant (8) and eat it (12). Use Wood tools to collect more resources as needed. Place Stone (11) after obtaining stone. Sleep to get Wake Up (16). Place Furnace (17) near the table. Collect additional coal if needed. Craft Stone Pickaxe (14) and Stone Sword (15) using stone, wood, and the table/furnace. Defeat Zombie (9) and Skeleton (13) with swords. Collect Iron (19) by mining iron ore with appropriate pickaxe, then craft Iron Pickaxe (20) and Iron Sword (21). Finally, mine Diamond (22). Along the way, eat any cows encountered (3), collect sampling (4), and drink from lakes (5) to complete remaining achievements.
+
+The first concrete action to progress is to collect the coal that is directly in front.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 3 steps to your north-east
+
+You face coal at your front.",0.0,False
+109,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 2 steps to your north-east
+
+You face coal at your front.",0.0,False
+110,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 1 steps to your east
+
+You face coal at your front.",0.0,False
+111,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 2 steps to your south-east
+
+You face coal at your front.",0.0,False
+112,Do,"We need to complete all 22 achievements. Current resources: 2 wood, no stone, no coal collected yet. Observations show coal directly ahead, stone a few steps west, grass north, tree north, arrow southeast. First, use Do to collect the coal in front, achieving ""Collect Coal"". Next, move west to collect stone (Do) for ""Collect Stone"". Then place a table using wood (Place Table) to get ""Place Table"". With the table and wood, craft a Wood Pickaxe (Make Wood Pickaxe) and a Wood Sword (Make Wood Sword) for achievements 6 and 7. Use the pickaxe to collect more wood (grass/tree) and stone, and the sword to defeat any nearby zombie/skeleton (Defeat Zombie, Defeat Skeleton). Place a furnace (Place Furnace) near the table to enable smelting. Use coal and stone to craft a Stone Pickaxe and Stone Sword (achievements 14,15). Gather iron ore with the stone pickaxe, smelt it in the furnace to get iron, then craft Iron Pickaxe and Iron Sword (achievements 20,21). Use the iron pickaxe to mine diamond (Collect Diamond). Along the way, collect other resources: grass (Collect Wood), place plants (Place Plant), eat plants (Eat Plant), find a cow to eat (Eat Cow), drink from any lake (Collect Drink), collect sampling if available (Collect Sampling), and sleep to get Wake Up. This roadmap covers all achievements in a logical order, starting with the immediate collection of coal.
+
+Action: Do","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 3 steps to your south-east
+
+You face coal at your front.",0.0,False
+113,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+114,Move West,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+115,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+116,Do,"We start by collecting the coal that is directly in front of us, giving us the “Collect Coal” achievement. Then we will place a table to get “Place Table”. With the table and our 2 wood we can craft a wood pickaxe (“Make Wood Pickaxe”) and a wood sword (“Make Wood Sword”). Next we will move west twice to reach the stone deposit (stone is 3 steps west, with a path 2 steps west). Once adjacent to stone we will use Do to collect it, achieving “Collect Stone”. After that we can place the stone (“Place Stone”) and continue gathering resources (more wood from grass/tree, planting, eating, drinking, sleeping, etc.) to work toward the remaining achievements such as crafting stone/iron tools, defeating mobs, placing furnace, collecting iron, coal, diamond, etc. The immediate next step is to collect the coal in front of us.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+117,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+118,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+119,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+120,Do,"We currently have 2 wood, coal directly in front, and stone a few steps west. First we must collect coal (achievement Collect Coal) using the Do action. Then we will move west to reach the path and stone, collect stone (Collect Stone achievement), and use it later to place stone. Next we will place a table (Place Table) in front of us, then craft a wood pickaxe and wood sword (Make Wood Pickaxe, Make Wood Sword) using the table and our wood. We will then collect more wood by using Do on the tree to the north, ensuring enough material for further crafting and placing a furnace later. After gathering sufficient resources (stone, coal, wood, later iron), we will place a furnace, collect iron and coal, craft iron tools and sword, and eventually aim for the remaining achievements (defeat mobs, collect diamond, etc.). The immediate step is to collect the coal that is directly in front of us.\n","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+121,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+122,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+123,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+124,Do,"We currently have 2 wood and can see coal directly in front (west). The first achievement to obtain is Collect Coal. We will use the Do action to collect the coal tile we are facing. After obtaining coal, we will move west to reach the path and then the stone three steps further, collect stone (Collect Stone), place a table (Place Table) using the table item, then craft a wood pickaxe (Make Wood Pickaxe) and a wood sword (Make Wood Sword) with the wood we have. This will complete early achievements (Collect Wood, Collect Coal, Collect Stone, Place Table, Make Wood Pickaxe, Make Wood Sword). Subsequent steps will involve gathering more wood from the tree, placing a furnace, collecting iron and coal, making iron tools, and defeating mobs, but the immediate action is to collect the coal in front of us.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+125,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+126,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+127,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+128,Do,"We currently have 2 wood and see coal directly to our west. The next missing achievement is “Collect Coal”. Using the Do action will collect the coal tile we are facing, adding coal to our inventory and completing that achievement. After that we will move west onto the path, then further west to the stone, collect stone, place a table near the tree, gather more wood from the tree, place a furnace, collect iron and coal, craft pickaxes and swords, place plants, eat, defeat zombies and skeletons, and finally collect diamonds. For now the immediate step is to collect the coal in front of us.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+129,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+130,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+131,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+132,Do,"We currently have wood and see coal directly in front. The next missing achievement is “Collect Coal”. Use the Do action to collect the coal tile we are facing, which will add coal to our inventory and complete that achievement. After collecting coal we will move west onto the path, then further west to collect stone, move north to the tree to gather more wood, place a table near the tree, craft a wood pickaxe and wood sword, place a plant, place a furnace, collect iron and additional coal, craft stone and iron tools, defeat zombies and skeletons, eat grass and plants, and finally collect diamond. This step‑by‑step approach will let us earn all achievements while managing food, drink, and energy.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+133,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+134,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+135,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 4 steps to your north-east
+
+You face coal at your front.",0.0,False
+136,Do,"We start by collecting the coal directly in front using Do (achieving Collect Coal). Then move west onto the path, continue west to reach the stone tile and use Do to collect stone (Collect Stone). Next, move north to the tree, use Do to gather wood (Collect Wood). With wood, coal, and stone in inventory, place a table (Place Table) and craft a wood pickaxe and wood sword (Make Wood Pickaxe, Make Wood Sword). Place a plant (Place Plant) and later eat it for Eat Plant. After gathering enough resources, place a furnace (Place Furnace), collect iron and additional coal, then craft stone and iron tools (Make Stone Pickaxe/Sword, Make Iron Pickaxe/Sword). Use the weapons to defeat zombies and skeletons (Defeat Zombie, Defeat Skeleton). Collect food and drink from grass/lake as needed, eat a cow when encountered (Eat Cow), and finally locate and collect a diamond (Collect Diamond). Throughout, manage food, drink, and energy by sleeping (Sleep) when low and drinking from lakes (Do) when needed, and wake up (Wake Up) after sleeping. This step‑by‑step progression will complete all achievements.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 3 steps to your north-east
+
+You face coal at your front.",0.0,False
+137,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 2 steps to your north-east
+
+You face coal at your front.",0.0,False
+138,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 1 steps to your east
+
+You face coal at your front.",0.0,False
+139,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 2 steps to your south-east
+
+You face coal at your front.",0.0,False
+140,Do,"We have wood (2), moderate food and drink, and enough energy to act. The immediate nearby resources are coal directly in front (west) and stone a few steps further west. Our first needed achievement is Collect Coal, followed by Collect Stone and Collect Wood. We will use the multi‑use Do action to harvest the coal in front, gaining the coal item. After that we will move west toward the stone tile, collect the stone, then head north to the tree to gather more wood. With wood, coal, and stone we can later place a table and craft basic tools, but the first concrete step is to collect the coal now. Hence the next action is Do to pick up the coal.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 3 steps to your south-east
+
+You face coal at your front.",0.0,False
+141,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+142,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+143,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+144,Do,"Current status: health good, moderate food/drink, energy 5. Inventory has 2 wood. Nearby resources: coal 1 step west, stone 3 steps west, tree 3 steps north (wood), grass north (for placing items).  
+
+Immediate objectives:
+1. Collect Coal (use Do on coal in front) → achievement 18.
+2. Collect Stone (move west twice onto path then west onto stone tile, then Do) → achievement 10.
+3. Ensure we have enough wood (already have 2) and place a Table on a flat tile (e.g., north on grass) → achievement 2.
+4. Craft Wood Pickaxe and Wood Sword at the table (requires wood) → achievements 6 and 7.
+5. Use tools to gather more resources, eventually find iron ore, place Furnace (needs flat ground), smelt iron, craft iron tools, collect diamond, defeat zombies/skeletons, eat cow/plant, etc.
+6. Manage food/drink: if food or drink low, use Do on grass/lake if available, or sleep when energy low.  
+
+First action is to collect the coal directly in front.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+145,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+146,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+147,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+148,Do,"Current status: health good, food moderate, drink low, energy decent. Inventory has 2 wood. Nearby resources: coal one step west (in front), stone three steps west, tree three steps north (wood source), grass north (possible placement). Immediate goal: collect coal to earn achievement 18 and have fuel for future furnace. Use the multiuse Do action on the coal in front. After securing coal, plan to move west to the stone location and use Do to collect stone (achievement 10). Then move north to place a table on the grass (achievement 2). With the table and wood inventory, craft a wood pickaxe (achievement 6) and a wood sword (achievement 7) using Make Wood Pickaxe and Make Wood Sword actions. Subsequent steps will involve using the pickaxe to gather more resources, finding a lake or grass for drink/food, placing a furnace, mining iron, making iron tools, and eventually completing remaining achievements such as defeating mobs and collecting diamonds. For now, the first action is to collect the coal directly in front.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+
+You face coal at your front.",0.0,False
+149,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 4 steps to your north-east
+
+You face coal at your front.",0.0,False
+150,Move West,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 3 steps to your north-east
+
+You face coal at your front.",0.0,False
+151,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 2 steps to your north-east
+
+You face coal at your front.",0.0,False
+152,Do,"First, collect the coal that is directly in front using Do. Then move west to the stone location (3 steps) and use Do to collect stone. Next, move north to the tree (3 steps) and use Do to collect wood, increasing our wood supply. After gathering enough wood, move north one step to the grass and use Place Table to set up a table (achievement 2). With the table nearby and wood in inventory, craft a Wood Pickaxe (Make Wood Pickaxe) and a Wood Sword (Make Wood Sword) to unlock achievements 6 and 7. These tools will allow us to mine further resources (stone, coal, iron) and defeat mobs, moving us toward the remaining achievements such as collecting drink, eating plant, defeating zombies, and ultimately gathering diamonds.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 1 steps to your east
+
+You face coal at your front.",0.0,False
+153,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 2 steps to your south-east
+
+You face coal at your front.",0.0,False
+154,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 3 steps to your north-east
+
+You face coal at your front.",0.0,False
+155,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 2 steps to your north-east
+
+You face coal at your front.",0.0,False
+156,Do,"We currently have 2 wood and low food/drink. First, collect the coal directly in front using Do, achieving the coal resource needed for later tools. After that, we will move west toward the stone, then collect stone, then move north to the tree to gather more wood, then place a table north (grass) and craft a wood pickaxe and wood sword. We'll also eat the grass (or plant) to restore food and earn the Eat Plant achievement, and drink from a lake later. This sequence will unlock early achievements (Collect Coal, Collect Stone, Place Table, Make Wood Pickaxe, Make Wood Sword, Eat Plant) and give us tools to progress further.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 1 steps to your east
+
+You face coal at your front.",0.0,False
+157,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- arrow 2 steps to your south-east
+
+You face coal at your front.",0.0,False
+158,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 3 steps to your south-east
+
+You face coal at your front.",0.0,False
+159,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 3 steps to your north-east
+
+You face coal at your front.",0.0,False
+160,Do,"Current resources: wood x2, low food (3) and drink (2), energy 4. Nearby: coal 1 step west (front), stone 3 steps west, path 2 steps west, grass 1 step north, tree 3 steps north, skeleton further away. Goal: complete achievements by gathering basic materials, placing table, crafting wood tools, eating plant, and handling food/drink.
+
+Step-by-step high-level plan:
+1. Do – collect the coal in front. (Achievement: Collect Coal)
+2. Move West twice to get within 1 step of the stone.
+3. Do – collect the stone. (Achievement: Collect Stone, Place Stone later)
+4. Move East back to original position, then Move North to grass.
+5. Do – collect grass (food boost). (May contribute to Eat Plant later)
+6. Move North again to the tree.
+7. Do – collect wood from the tree, increasing wood count. (Achievement: Collect Wood)
+8. Place Table in front (on the grass tile). (Achievement: Place Table)
+9. Make Wood Pickaxe using the table and wood. (Achievement: Make Wood Pickaxe)
+10. Make Wood Sword using the table and wood. (Achievement: Make Wood Sword)
+11. Place Plant in front of the table. (Achievement: Place Plant)
+12. Do on the plant to “collect” it, counting as eating the plant. (Achievement: Eat Plant)
+13. Manage food/drink: If food or drink gets low, use Do on a lake (if present) or Sleep to restore energy and then continue.
+14. After basic tools, explore to defeat Zombie and Skeleton, place furnace, collect coal/iron, craft higher-tier tools, and ultimately collect diamond.
+
+Throughout, monitor energy; if it drops too low, use Sleep to restore (Achievement: Wake Up). This plan covers early achievements and sets up for later ones.
+
+Next immediate action: collect the coal that is directly in front.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 2 steps to your north-east
+
+You face coal at your front.",0.0,False
+161,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 3 steps to your north-east
+- arrow 1 steps to your east
+
+You face coal at your front.",0.0,False
+162,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 2 steps to your south-east
+
+You face coal at your front.",0.0,False
+163,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 3 steps to your south-east
+
+You face coal at your front.",0.0,False
+164,Do,"Current resources: wood x2, food low, drink low, energy 4/9. Nearby items: coal 1 step west (front), stone 3 steps west, grass 1 step north, tree 3 steps north, skeleton farther NE, arrow irrelevant.
+
+Goal: complete early achievements and set up for later ones.
+
+Steps:
+1. Do – collect the coal in front (Collect Coal).
+2. Move West twice to get within 1 step of the stone, then Do to collect stone (Collect Stone).
+3. Move East back to original location, then Move North to grass, Do to collect grass (food) and later Eat Plant.
+4. Move North again to tree, Do to collect wood (already have wood, but ensure wood count for crafting).
+5. Place Table on the grass tile (Place Table).
+6. Using the table and wood, Make Wood Pickaxe (Make Wood Pickaxe) and Make Wood Sword (Make Wood Sword).
+7. Place Plant in front of the table (Place Plant) and Do on it to Eat Plant.
+8. If food or drink drops too low, use Do on lake if present or Sleep to restore energy (Wake Up).
+9. After basic tools, explore to collect stone (already), place stone (Place Stone), collect coal (done), collect iron, make furnaces, defeat skeleton/zombie, etc., progressing toward higher achievements.
+
+Immediate action: collect the coal now.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 3 steps to your north-east
+
+You face coal at your front.",0.0,False
+165,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 5 steps to your north-east
+- arrow 2 steps to your east
+
+You face coal at your front.",0.0,False
+166,Move West,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 5 steps to your north-east
+- arrow 3 steps to your south-east
+
+You face coal at your front.",0.0,False
+167,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 4 steps to your south-east
+
+You face coal at your front.",0.0,False
+168,Do,"Current status: wood 2, food 3, drink 1, energy 4. Nearby resources: coal directly in front (west), stone 3 steps west, grass 1 step north, tree 3 steps north. Immediate goals: collect coal (achievement Collect Coal), then stone (Collect Stone), gather more food (grass) and wood (tree), place a table, craft wood pickaxe and wood sword, place a plant and eat it, and manage resources (food/drink/energy) by sleeping or drinking later. High-level sequence:
+1. Do – collect the coal in front.
+2. Move West twice to reach the stone, then Do – collect stone.
+3. Move East back to original position.
+4. Move North to grass, Do – collect grass (food).
+5. Move North again to tree, Do – collect wood (increase wood count).
+6. Place Table on the current tile.
+7. Make Wood Pickaxe using the table and wood.
+8. Make Wood Sword using the table and wood.
+9. Place Plant in front of the table.
+10. Do on the plant to eat it (Eat Plant achievement).
+11. When energy or food/drink low, use Sleep or seek drink sources, achieving Wake Up.
+12. Continue exploring to collect stone, place stone, defeat skeleton/zombie, collect iron, make iron tools, collect diamond, etc., fulfilling remaining achievements.
+Immediate action: collect the coal now.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 5 steps to your north-east
+- arrow 5 steps to your south-east
+
+You face coal at your front.",0.0,False
+169,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 5 steps to your north-east
+
+You face coal at your front.",0.0,False
+170,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 5 steps to your north-east
+
+You face coal at your front.",0.0,False
+171,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 6 steps to your north-east
+
+You face coal at your front.",0.0,False
+172,Do,"Current status: wood 2, food 3, drink 1, energy 4. Achievements still missing include Collect Coal, Collect Stone, Place Table, Make Wood Pickaxe, Make Wood Sword, Place Plant, Eat Plant, etc. Immediate priority is to collect the coal that is directly in front (west). This will give the “Collect Coal” achievement and add coal to inventory for later tool crafting. After coal, we will move west toward the stone, collect stone, return, gather grass and wood, place a table, craft wood tools, place and eat a plant, and manage food/drink/energy with sleeping as needed.
+
+Action: Do (collect the coal now).","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 6 steps to your north-east
+
+You face coal at your front.",0.0,False
+173,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 5 steps to your north-east
+
+You face coal at your front.",0.0,False
+174,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 5 steps to your north-east
+
+You face coal at your front.",0.0,False
+175,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 5 steps to your north-east
+- arrow 4 steps to your north-east
+
+You face coal at your front.",0.0,False
+176,Do,"Current status: health 9/9, food 3/9, drink 1/9, energy 4/9, wood 2. Nearby resources: coal 1 step west, stone 3 steps west, grass 1 step north, tree 3 steps north. Achievements still missing include Collect Coal, Collect Stone, Place Table, Make Wood Pickaxe, Make Wood Sword, Place Plant, Eat Plant, Defeat Zombie, Defeat Skeleton, Wake Up, Place Furnace, Collect Iron, Make Iron Pickaxe/Sword, Collect Diamond, etc.
+
+High‑level strategy:
+1. **Collect immediate resources** – Use the multi‑use “Do” action while facing coal to collect it (Collect Coal achievement). Energy will drop by 1.
+2. **Move to stone** – Move West twice (first onto the path, second onto the stone tile) and “Do” to collect stone (Collect Stone achievement). This also gives material for placing stone and crafting tools.
+3. **Gather more wood** – Move North to the grass/tree, “Do” to collect grass (counts as wood) and possibly more wood from the tree, achieving Collect Wood if not already done and increasing wood inventory for crafting and placing a table.
+4. **Place essential structures** – With enough wood, “Place Table” at a free adjacent tile. Then “Place Plant” near the table to later “Eat Plant”. After obtaining coal and stone, “Place Stone” and later “Place Furnace” when iron is acquired.
+5. **Craft basic tools** – Use the table to “Make Wood Pickaxe” and “Make Wood Sword”. These give the Make Wood Pickaxe and Make Wood Sword achievements.
+6. **Combat and food** – Use the wood sword to “Do” on the nearby skeleton (defeat it) for the Defeat Skeleton achievement. Later, find a cow (or other animal) to “Eat Cow”. Use the pickaxe to mine stone/coal for stronger tools.
+7. **Upgrade tools** – After collecting enough stone and wood, “Make Stone Pickaxe” and “Make Stone Sword”. Then collect iron (by mining iron ore), place furnace, smelt iron, and craft iron pickaxe/sword for the corresponding achievements.
+8. **Advanced achievements** – Use iron tools to mine diamond (Collect Diamond). Defeat zombies, wake up (by sleeping when energy is low), and any remaining achievements (Place Furnace, Collect Coal already done, etc.).
+9. **Resource management** – Keep food >0, drink >0, and sleep when energy is low to avoid death. Use “Sleep” to restore energy (counting as Wake Up achievement).
+
+Immediate next action: collect the coal directly in front to secure the first missing achievement.
+
+Action: Do","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 5 steps to your north-east
+- arrow 3 steps to your north-east
+
+You face coal at your front.",0.0,False
+177,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 2 steps to your north
+
+You face coal at your front.",0.0,False
+178,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+
+You face coal at your front.",0.0,False
+179,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 3 steps to your north-east
+
+You face coal at your front.",0.0,False
+180,Do,"We currently have 2 wood and are facing a coal block one step west. The first missing achievement is Collect Coal, so we should use the Do action to collect the coal now. After that we will have coal in inventory, enabling later crafting of tools and furnace. The overall high‑level strategy will then be:
+
+1. **Collect resources**: Do to take the coal, then move west to the stone (3 steps away) and Do to collect stone, then move north to grass/tree and Do to collect more wood (achieve Collect Wood). Also collect grass for food if needed.
+2. **Place basic structures**: With enough wood, Place Table near us, then Place Plant next to the table (to later Eat Plant). Place Stone once we have stone.
+3. **Craft basic tools**: Use the table to Make Wood Pickaxe and Make Wood Sword (gaining those achievements).
+4. **Combat and food**: Use the wood sword with Do on the nearby skeleton (defeat it) for Defeat Skeleton, and Eat Plant for food. Later find a cow to Eat Cow.
+5. **Upgrade tools and furnace**: Collect more stone and coal, then Make Stone Pickaxe/Sword, place Furnace, collect iron, smelt it, then Make Iron Pickaxe/Sword, and finally Collect Diamond.
+6. **Manage health/energy**: Keep food/drink above zero, Sleep when energy low to get Wake Up achievement.
+7. **Finish remaining achievements**: Defeat Zombies, Collect Sampling, etc., as they appear.
+
+The immediate next action is to collect the coal in front of us.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 2 steps to your east
+
+You face coal at your front.",0.0,False
+181,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 3 steps to your south-east
+
+You face coal at your front.",0.0,False
+182,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 4 steps to your south-east
+
+You face coal at your front.",0.0,False
+183,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 3 steps to your north-east
+
+You face coal at your front.",0.0,False
+184,Do,"We are currently low on food and drink, but have enough energy to act. The first missing achievement is Collect Coal, and coal is directly in front of us. Using the Do action now will collect the coal into our inventory, granting the Collect Coal achievement. After that we can move north to collect grass (food) and then wood from the tree, later place a table, craft basic tools, defeat the nearby skeleton, and continue gathering stone, placing structures, and upgrading to iron tools and furnace to eventually collect all remaining resources and achievements.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 2 steps to your east
+
+You face coal at your front.",0.0,False
+185,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 3 steps to your south-east
+
+You face coal at your front.",0.0,False
+186,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 3 steps to your north-east
+- arrow 4 steps to your south-east
+
+You face coal at your front.",0.0,False
+187,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+- arrow 5 steps to your south-east
+
+You face coal at your front.",0.0,False
+188,Do,"We are currently at the starting position with low food (2) and no drink, enough health, and 3 energy. Inventory contains 2 wood. The immediate missing achievement we can earn right now is **Collect Coal**, which is directly in front of us. Collecting it now also frees up one action slot for later tasks. 
+
+After obtaining coal we must address our urgent needs:
+1. **Drink** – Find a lake and use Do to drink (Collect Drink achievement).
+2. **Food** – Collect grass to the north for food (Collect Sampling / Eat Plant). Then harvest wood from the tree to the north (Collect Wood achievement).
+3. **Stone** – Move west to pick up stone (Collect Stone achievement).
+4. **Place Table** – Use placed table to craft tools (Make Wood Pickaxe, Make Wood Sword, etc.).
+5. **Place Furnace** – After gathering coal and stone, craft furnace for iron tools.
+6. **Defeat enemies** – Use swords to defeat the skeleton (Defeat Skeleton) and later a zombie.
+7. **Higher tier tools** – Gather iron, craft iron pickaxe/sword, then collect diamond, etc.
+
+Thus the immediate high‑priority action is to **Do** to collect the coal in front of us, securing the Collect Coal achievement and expanding our resources. After that we will move north to get grass, then continue with the above roadmap.
+
+Action:
+Do","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your north-east
+
+You face coal at your front.",0.0,False
+189,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 3 steps to your east
+
+You face coal at your front.",0.0,False
+190,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+
+You face coal at your front.",0.0,False
+191,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+
+You face coal at your front.",0.0,False
+192,Do,"Current status: health 9, food 2, drink 0, energy 3, inventory wood 2. Immediate missing achievements: Collect Coal (coal is directly west and we are facing it), Collect Drink (need to find a lake later), Collect Wood (already have wood), Collect Stone (stone is 3 west), Place Table, Place Stone, etc. High‑level roadmap:
+1. Use Do now to collect the coal in front (achieve Collect Coal).
+2. Then move west to reach the stone (Collect Stone) and place it (Place Stone) to satisfy those achievements.
+3. Move north to collect grass (Do) for food and later Eat Plant.
+4. Explore to find a lake; when found, use Do to drink (Collect Drink).
+5. Use placed table to craft wood pickaxe/sword, then stone/iron tools, place furnace, collect iron/coal, defeat skeleton and zombie, etc., progressing through remaining achievements.
+For now, the immediate action is to collect the coal in front.","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+- arrow 3 steps to your east
+
+You face coal at your front.",0.0,False
+193,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+- arrow 2 steps to your east
+
+You face coal at your front.",0.0,False
+194,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+- arrow 1 steps to your east
+
+You face coal at your front.",0.0,False
+195,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 3 steps to your east
+
+You face coal at your front.",-0.2,False
+196,Do,"Current status: health 7, food 2, drink 0, energy 3, inventory wood 2. Immediate missing achievements: Collect Coal, Collect Stone, Place Stone, Place Table, Make Wood Pickaxe, Make Wood Sword, Place Plant, Eat Plant, Eat Cow, Collect Drink, Wake Up, etc., eventually progressing to stone, iron, diamonds and defeating enemies.
+
+Short‑term goal: Collect the coal that is directly west. This will complete the “Collect Coal” achievement and give a useful resource for later crafting (e.g., furnace).
+
+Mid‑term roadmap after coal:
+1. Move west to reach the stone (3 steps away) and the path. Collect the stone (Collect Stone achievement) using Do when adjacent.
+2. Place the stone (Place Stone achievement) to have a building block.
+3. Move east back to the original tile, then move north to the grass/tree area. Use Do on grass to collect it (food) and later eat plant (Eat Plant) after placing a plant.
+4. Use Do on the tree to collect wood if needed (though we already have wood). Possibly place a plant (Place Plant) then eat it.
+5. Use Do on the arrow (if still present) for a weapon or ignore.
+6. Find a suitable flat area (path) to place a table (Place Table). With wood in inventory, use Make Wood Pickaxe and Make Wood Sword at the table.
+7. Use the wood pickaxe to break the stone (if needed) and collect more stone.
+8. Use the wood sword to defeat the nearby skeleton (Defeat Skeleton) after we have a weapon.
+9. Collect drink by finding a lake (Collect Drink) using Do when facing water.
+10. Sleep when energy low to get “Wake Up”.
+11. Place a furnace (Place Furnace) once we have stone and wood.
+12. Gather coal (already have) and later iron by mining (Collect Iron) using stone/iron pickaxe.
+13. Upgrade tools to stone then iron pickaxe/sword using Make Stone Pickaxe, Make Stone Sword, Make Iron Pickaxe, Make Iron Sword as resources become available.
+14. Defeat zombie (Defeat Zombie) with suitable weapon.
+15. Collect diamond (Collect Diamond) using iron pickaxe.
+16. Complete remaining achievements: Eat Cow (if cow appears), Place Plant, etc.
+
+Overall, the immediate action is to use Do now to collect the coal in front, securing the “Collect Coal” achievement and a key resource for future steps.
+
+Action: Do","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 3 steps to your east
+
+You face coal at your front.",0.0,False
+197,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+
+You face coal at your front.",0.0,False
+198,Move West,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+- arrow 3 steps to your east
+
+You face coal at your front.",0.0,False
+199,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+- arrow 2 steps to your east
+
+You face coal at your front.",0.0,False
+200,Do,"Current situation: I am facing coal one step to the west. I have wood (2), health 7, food 2, no drink, low energy (3). My immediate missing achievements are Collect Coal, Collect Stone, Place Stone, Place Table, Make Wood Pickaxe, Make Wood Sword, Defeat Skeleton, etc. 
+
+High‑level roadmap:
+1. **Collect Coal** – Use Do while facing the coal to pick it up (Collect Coal achievement).
+2. **Collect Stone** – Move west toward the stone (3 steps away) and use Do on it (Collect Stone achievement).
+3. **Place Stone** – With stone in inventory, use Place Stone in front of me (Place Stone achievement).
+4. **Gather more wood** – Move north to the tree (3 steps) and Do to harvest wood if needed.
+5. **Place Table** – Find a flat tile (path) and use Place Table (Place Table achievement).
+6. **Craft tools** – With the table and wood, use Make Wood Pickaxe and Make Wood Sword (achievements 6 and 7).
+7. **Defeat Skeleton** – Face the skeleton (now 4 steps east) and attack with the wood sword (Defeat Skeleton achievement).
+8. **Place Plant & Eat Plant** – Use Place Plant on a suitable tile, then Do to eat it (Eat Plant).
+9. **Find Drink & Sleep** – Locate a lake (not yet visible) to Do for drink, then Sleep when energy low, gaining Wake Up.
+10. **Progress to stone/iron tools** – Use stone pickaxe and furnace (Place Furnace) to mine iron, craft iron tools, defeat zombie, collect diamond, etc., completing remaining achievements.
+
+Thus, the very next required step is to collect the coal that is directly in front of me.
+
+Action: Do","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+- arrow 1 steps to your east
+
+You face coal at your front.",0.0,False
+201,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+
+You face coal at your front.",-0.2,False
+202,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+
+You face coal at your front.",0.0,False
+203,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+- arrow 3 steps to your east
+
+You face coal at your front.",0.0,False
+204,Do,"Current situation: I have low health and energy, but I have 2 wood and am facing coal one step west. The ultimate goal is to earn all 22 achievements.
+
+High‑level roadmap:
+
+1. **Gather basic resources**
+   - Do → collect the coal (Collect Coal achievement).
+   - Move West three times to reach the stone, then Do → collect stone (Collect Stone achievement).
+   - Place Stone in front of me (Place Stone achievement).
+
+2. **Set up a work area**
+   - Move West two steps onto the path (flat ground).
+   - Place Table there (Place Table achievement).
+
+3. **Craft wooden tools**
+   - With the table and my 2 wood, use Make Wood Pickaxe (Make Wood Pickaxe achievement).
+   - Use Make Wood Sword (Make Wood Sword achievement).
+
+4. **Obtain more wood and plants**
+   - Move North three steps to the tree and Do → harvest additional wood (Collect Wood achievement, also gives material for later tools).
+   - Move back to a grass tile north of the table, Place Plant (Place Plant achievement), then Do → eat the plant (Eat Plant achievement).
+
+5. **Sustain health, food, drink, and energy**
+   - Explore east/west to locate a lake; Do → drink water (Collect Drink achievement).
+   - When energy drops, use Sleep (Sleep → Wake Up achievement) and then continue.
+
+6. **Combat**
+   - Face the skeleton (now 4 steps east) with the wood sword and Do → hit it until defeated (Defeat Skeleton achievement).
+   - Later, after obtaining iron tools, locate and defeat a zombie (Defeat Zombie achievement).
+
+7. **Advance to stone and iron tier**
+   - Use the stone and wood at the table to Make Stone Pickaxe (Make Stone Pickaxe) and Make Stone Sword (Make Stone Sword) (achievements 14 and 15).
+   - Place Furnace on flat ground (Place Furnace achievement) and use it with wood, coal, and iron to smelt iron.
+   - Collect Iron ore (Collect Iron) and Coal (already have) then Make Iron Pickaxe and Iron Sword (achievements 20, 21).
+
+8. **Mine rare resources**
+   - With iron pickaxe, mine diamond (Collect Diamond achievement).
+
+9. **Complete remaining achievements**
+   - Ensure all placements (stone, table, furnace, plant) are done.
+   - Verify that eating cow, collecting sampling, etc., are addressed by exploring further (e.g., find cow to eat, find sampling spot).
+
+The immediate next necessary step is to collect the coal that is right in front of me.
+
+Action: Do","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- cow 5 steps to your north-east
+- skeleton 4 steps to your east
+- arrow 2 steps to your east
+
+You face coal at your front.",0.0,False
+205,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- cow 5 steps to your north-east
+- skeleton 3 steps to your east
+- arrow 1 steps to your east
+
+You face coal at your front.",0.0,False
+206,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- cow 5 steps to your north-east
+- skeleton 3 steps to your east
+
+You face coal at your front.",-0.2,False
+207,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- cow 6 steps to your north-east
+- skeleton 4 steps to your east
+
+You face coal at your front.",0.0,False
+208,Sleep,"Current situation: Very low health (3/9), food (1/9), drink (0/9) and energy (3/9). Immediate survival is priority. There is no visible water source, but we can regain energy (and possibly some health) by sleeping. Sleeping does not use any item and is safe when no hostile creature is directly in front. After sleeping we will have higher energy to move and explore for a lake or other drink source.
+
+Long‑term roadmap (once we are stable):
+1. Collect the coal that is directly west (Collect Coal) and then the stone farther west (Collect Stone). Place the stone (Place Stone).
+2. Move onto the flat path and place a Table (Place Table). With the 2 wood we already have, craft a Wood Pickaxe and Wood Sword (Make Wood Pickaxe, Make Wood Sword) and claim the Collect Wood achievement by harvesting the tree north (Collect Wood).
+3. Eat the cow (Eat Cow) for food, and find a lake to Drink (Collect Drink). Use Sleep when energy is low (Wake Up).
+4. Use the wooden tools to collect more wood, plant seeds (Place Plant, Eat Plant) and set up a Furnace (Place Furnace). Smelt the coal + iron ore (Collect Iron) to make Iron Pickaxe and Iron Sword (Make Iron Pickaxe, Make Iron Sword). This also gives the Collect Coal, Collect Iron, and Place Furnace achievements.
+5. With the stone tools craft Stone Pickaxe and Stone Sword (Make Stone Pickaxe, Make Stone Sword) to defeat the skeleton (Defeat Skeleton) and later a zombie (Defeat Zombie) for those achievements.
+6. Use the Iron Pickaxe to mine diamond (Collect Diamond) and also to collect any remaining sampling material (Collect Sampling) if present.
+7. Ensure all placement achievements are done (Table, Stone, Furnace, Plant) and that we have eaten plant and cow, defeated both skeleton and zombie, and collected all resources.
+
+The first immediate action is to Sleep to restore energy and avoid death while we plan the next moves.
+
+Action: Sleep","You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- cow 6 steps to your north-east
+- skeleton 4 steps to your east
+
+You face coal at your front.",-0.1,False
+209,Do,,"You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- cow 7 steps to your north-east
+- skeleton 4 steps to your east
+- arrow 3 steps to your east
+
+You face coal at your front.",0.0,False
+210,Sleep,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+- arrow 2 steps to your east
+
+You face coal at your front.",0.0,False
+211,Noop,,"You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+- arrow 1 steps to your east
+
+You face coal at your front.",0.0,False
+212,Sleep,"Current status: very low health (2/9), low food (1/9), no drink, low energy (3/9). We are sleeping and cannot act until energy is full. Immediate priority is to restore energy safely, then obtain drink and more food to survive, then collect resources and place structures to achieve achievements.
+
+Steps:
+1. Continue sleeping (Sleep) until energy reaches maximum. This will also give us time to avoid death while low health.
+2. After waking, collect coal directly in front (Do) to earn Collect Coal.
+3. Move west to the stone (Move West) and collect it (Do) for Collect Stone.
+4. Place the collected stone on the ground (Place Stone) for Place Stone achievement.
+5. Move west onto the path (Move West) where flat ground is available, then place a table (Place Table) to enable crafting.
+6. Use the wood in inventory (2 wood) and the table to craft a Wood Pickaxe (Make Wood Pickaxe) and a Wood Sword (Make Wood Sword), fulfilling Make Wood Pickaxe and Make Wood Sword achievements.
+7. Harvest the tree north (Move North, then Do) to collect wood and achieve Collect Wood. This also replenishes wood for further crafting.
+8. Approach the cow (north‑east) and eat it (Do) to gain food and achieve Eat Cow.
+9. Search for a lake or water source (explore north/east) and drink (Do) to obtain drink and achieve Collect Drink.
+10. With wood and stone, craft Stone Pickaxe (Make Stone Pickaxe) and Stone Sword (Make Stone Sword) after placing another stone if needed, achieving those achievements.
+11. Use the Stone Sword/Pickaxe to defeat the skeleton (Do) for Defeat Skeleton.
+12. Find a zombie (explore) and defeat it (Do) for Defeat Zombie.
+13. Place a furnace (Place Furnace) near the table.
+14. Collect coal (already have) and find iron ore (explore) then use furnace to smelt iron, collecting iron (Collect Iron) and allowing Make Iron Pickaxe and Make Iron Sword (craft with wood, coal, iron).
+15. Use the iron tools to mine diamond (Collect Diamond) and any sampling material (Collect Sampling).
+16. Place a plant (Place Plant) and later eat it (Do) for Eat Plant.
+17. Ensure Wake Up achievement by sleeping once after energy is low again.
+
+Overall, the immediate next action is to keep sleeping to restore energy.","You are sleeping, and will not be able take actions until energy is full.
+
+
+
+You see:
+- grass 1 steps to your north
+- stone 3 steps to your west
+- path 2 steps to your west
+- tree 3 steps to your north
+- coal 1 steps to your west
+- skeleton 4 steps to your east
+
+You face coal at your front.",-0.2,True

@@ -1,0 +1,55 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "15": 3,
+        "9": 1,
+        "6": 1,
+        "17": 2,
+        "0": 3,
+        "18": 2,
+        "7": 1,
+        "13": 6,
+        "19": 1,
+        "14": 1,
+        "8": 5,
+        "16": 1
+    },
+    "input_tokens": 44671,
+    "output_tokens": 546,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 27,
+    "failed_candidates": [
+        "<plan>MY_PLAN\n\nTo complete the task, I will plan my actions step by step to reach the target node 16. \n\n1.  Since the current node is 4 and it is visible due to the k-nearest neighbor radius of 2, I will examine its neighbors to decide the next action. \n2.  The neighbors of node 4 are [1, 9, 12].\n3.  Node 4 is already visible, so I will avoid moving back and forth between the same nodes. \n4.  I will select a neighbor of node 4 which has multiple neighbors and is not the target node. This will give me more visibility and the potential for multiple paths to the target node.\n5.  Nodes 9 and 12 have multiple neighbors, so I will select either of them for the next step.\n\nI will choose to move to node 9 next.\n\naction: 9",
+        "<plan>I will review the observations and try to find a path to the target node 16. The graph seems to have a disconnected structure, and I have been stuck in a loop between nodes 7 and 18. \n\nTo break this loop, I will try to find a path that leads me away from nodes 7 and 18 and explore other parts of the graph. I will use the information from previous observations to guide my decisions and try to find a new path to the target node.\n\nSince I have been unable to find a path from the current location, I will take the following action:\n\n3"
+    ],
+    "progression": 0,
+    "process_num": "ForkProcess-82",
+    "seed": 1381406547,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

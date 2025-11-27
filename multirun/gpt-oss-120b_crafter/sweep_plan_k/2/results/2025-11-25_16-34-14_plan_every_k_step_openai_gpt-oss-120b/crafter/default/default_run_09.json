@@ -1,0 +1,99 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Move West": 21,
+        "Move North": 43,
+        "Do": 42,
+        "Place Table": 4,
+        "Move East": 9,
+        "Move South": 38,
+        "Place Plant": 4,
+        "Noop": 1
+    },
+    "input_tokens": 281292,
+    "output_tokens": 71521,
+    "done": true,
+    "episode_return": 4.099999999999999,
+    "num_steps": 162,
+    "failed_candidates": [
+        "<plan>Current status: health full, food moderate, drink full, energy 6. Inventory has 1 sapling. Nearby objects: water west, grass north, table south, cow north-east (2 steps). Achievements remaining include Place Table, Place Plant, Eat Plant, Eat Cow, Wake Up, plus later mining and combat goals.\n\nHigh\u2011level plan:\n1. Move north onto the grass tile and Do there to collect wood (fulfills Collect Wood) and have material for crafting later.\n2. Move south back to the original spot (table south) to keep a reference point.\n3. Place Table on an adjacent empty tile (e.g., west) using Place Table action to get the Place Table achievement.\n4. Place Plant using the sapling on another adjacent empty tile (e.g., east) with Place Plant to achieve Place Plant.\n5. Do on the placed plant (or on grass if that counts) to Eat Plant, achieving Eat Plant.\n6. Move north\u2011east to the cow (two moves: north then east) and Do while facing it to hit/defeat and then Eat Cow for the Eat Cow achievement.\n7. Allow energy to drop (by performing several actions) and then Sleep to get the Wake Up achievement.\n8. After these, explore to find stone, coal, iron, etc., and continue crafting and defeating monsters for remaining achievements.\n\nThe next immediate action to progress is to move north onto the grass tile.\\nMove North</final>"
+    ],
+    "score": 5.0,
+    "progression": 0.22727272727272727,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 21,
+        "collect_iron": 0,
+        "collect_sapling": 1,
+        "collect_stone": 0,
+        "collect_wood": 2,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 1,
+        "eat_cow": 0,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 0,
+        "make_wood_sword": 0,
+        "place_furnace": 0,
+        "place_plant": 0,
+        "place_stone": 0,
+        "place_table": 1,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": 19,
+        "collect_iron": -1,
+        "collect_sapling": 123,
+        "collect_stone": -1,
+        "collect_wood": 13,
+        "defeat_skeleton": -1,
+        "defeat_zombie": 309,
+        "eat_cow": -1,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": -1,
+        "make_wood_sword": -1,
+        "place_furnace": -1,
+        "place_plant": -1,
+        "place_stone": -1,
+        "place_table": 131,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-42",
+    "seed": 1164441714,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 4,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-120b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

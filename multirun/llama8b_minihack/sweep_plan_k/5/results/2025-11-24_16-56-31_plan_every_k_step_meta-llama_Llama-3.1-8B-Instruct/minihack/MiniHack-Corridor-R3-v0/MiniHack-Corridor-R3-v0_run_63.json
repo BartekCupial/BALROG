@@ -1,0 +1,59 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 20,
+        "south": 17,
+        "search": 20,
+        "southwest": 8,
+        "kick": 10,
+        "east": 14,
+        "west": 3,
+        "northwest": 4,
+        "northeast": 2,
+        "open": 2
+    },
+    "input_tokens": 328626,
+    "output_tokens": 1660,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>The goal is to reach the stairs down. After reviewing previous observations, I notice that I was stuck in a room with no clear path. I was trying to move north and found a doorway, but it was a vertical open door far west, which I didn't explore until now. I can see the stairs up adjacent east, which is a step closer to my goal.\n\nMy high-level plan is to explore the room west of the current room, navigate through the new room, and try to find a path that leads me to the stairs down.\n\nAction: east",
+        "<plan>The goal is to reach the stairs down. Based on previous observations, I noticed that there are stairs up adjacent south, which is a dead end, and stairs up adjacent west, which is also a dead end. I also observed that there is a northeast room corner near northeast, which suggests that there may be a hidden passage or room in that direction. \n\nMy high-level plan is to explore the northeast room corner and see if there is a hidden passage or room that leads me to the stairs down.\n\nAction: northeast",
+        "southsouthwest",
+        "southsouthwest",
+        "kick northeast",
+        "kick northeast",
+        "open northeast"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-96",
+    "seed": 4091786405,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

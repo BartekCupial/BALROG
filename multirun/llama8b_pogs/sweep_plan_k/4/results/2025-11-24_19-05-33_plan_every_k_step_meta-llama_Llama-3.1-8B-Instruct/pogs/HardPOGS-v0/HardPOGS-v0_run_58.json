@@ -1,0 +1,56 @@
+{
+    "task": "HardPOGS-v0",
+    "action_frequency": {
+        "5": 2,
+        "3": 6,
+        "10": 3,
+        "8": 3,
+        "12": 1,
+        "9": 1,
+        "6": 1,
+        "1": 1,
+        "19": 3,
+        "13": 1,
+        "0": 1,
+        "15": 4,
+        "2": 1
+    },
+    "input_tokens": 45513,
+    "output_tokens": 610,
+    "done": true,
+    "episode_return": 9.0,
+    "num_steps": 28,
+    "failed_candidates": [
+        "<plan>\nGiven the observations, it's clear that the graph is highly disconnected, and our path has been severely limited by the restricted neighborhood around several nodes. Our target node 19 is nowhere to be seen in the immediate vicinity.\n\nTo complete the task, we need to explore the graph systematically, navigating through the available nodes and trying to find a path to the target node 19. We can do this by:\n\n1. Backtracking to nodes with more neighbors to increase our options.\n2. Exploring nodes that are directly connected to previously visited nodes.\n3. Staying close to nodes with multiple neighbors to maintain flexibility.\n\nHigh-level plan:\n- Go back to a node with more neighbors to increase options.\n- Explore new nodes that are directly connected to visited nodes.\n- Repeat the process until we find a path to the target node 19.\n\nNext action: 3",
+        "<plan>\nBased on the observations and our previous progress, we are now very close to the target node 19. From the current node 2, we can see that the only neighbor is node 15, which is directly connected to node 19. We should focus on navigating to node 15 and then follow the connection to reach node 19.\n\nTo achieve this, we will take actions to navigate to node 15 and then to node 19, utilizing the direct connections between these nodes.\n\nWe will focus on exploiting the local neighborhood around node 2 and nodes 15, 0, and 19 to ensure we reach the target efficiently.\n\nOur plan is to:\n\n1. Take actions to navigate to node 15 from the current node 2.\n2. Once at node 15, take an action to connect to node 19.\n\nNext action: 15"
+    ],
+    "progression": 0.09,
+    "process_num": "ForkProcess-76",
+    "seed": 1352202542,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 8,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

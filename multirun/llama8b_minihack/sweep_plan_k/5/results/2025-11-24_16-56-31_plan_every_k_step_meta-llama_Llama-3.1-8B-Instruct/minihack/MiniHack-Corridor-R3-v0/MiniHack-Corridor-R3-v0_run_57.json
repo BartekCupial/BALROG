@@ -1,0 +1,55 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "east": 18,
+        "north": 18,
+        "south": 14,
+        "search": 12,
+        "open": 4,
+        "west": 8,
+        "northwest": 9,
+        "southwest": 9,
+        "kick": 5,
+        "northeast": 3
+    },
+    "input_tokens": 351068,
+    "output_tokens": 1401,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "southsoutheast",
+        "southsoutheast",
+        "<plan>The goal is to reach the stairs down, which is currently inaccessible due to walls and dark areas. Based on previous observations, the stairs are located in a room to the south of the current position. A doorway is adjacent to the south, which can be used to access the stairs. To reach the stairs, we need to move through the doorway and navigate to the stairs. We can use the search action to reveal any hidden doors or passages that may be blocking our path. Once we reach the stairs, we can then determine the best way to descend to the next level.\n\nAction: open"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-81",
+    "seed": 3336343520,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 12,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 21,
+        "south": 23,
+        "search": 21,
+        "east": 14,
+        "kick": 6,
+        "open": 4,
+        "southwest": 4,
+        "northwest": 4,
+        "west": 3
+    },
+    "input_tokens": 369446,
+    "output_tokens": 5028,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "<plan>\nGiven the current observations and the goal of reaching the stairs down, I have concluded that the most direct path is to move south, which will likely place me adjacent to the stairs down. However, since there is a wall in the immediate south direction, I will need to navigate around it. Considering the map and previous observations, I will move east to find an opening or a door that will allow me to proceed towards the stairs down.\n\nI will take the following actions:\n\n1. Move east until I find a suitable path or door to reach the stairs down.\n2. Once I have found a path, I will move south to reach the stairs down.\n\n<plan>\n\neast",
+        "<plan>\nTo complete the task of reaching the stairs down, I will follow these steps:\n\n1. Review the map and observations to identify the location of the stairs down.\n2. Since I see the stairs up adjacent to me, I will assume that the stairs down are likely located on the opposite side of the level.\n3. I will navigate around the wall in the immediate south direction by moving east until I find a suitable path or door.\n4. Once I have found a path, I will move south to reach the stairs down.\n\nMy reasoning is based on the idea that the stairs up and stairs down are often located on opposite sides of the level. By navigating around the wall and finding a path, I can increase my chances of reaching the stairs down.\n\nNext action: east"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-20",
+    "seed": 3979647099,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

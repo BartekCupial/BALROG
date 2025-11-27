@@ -1,0 +1,55 @@
+{
+    "task": "MiniHack-Corridor-R3-v0",
+    "action_frequency": {
+        "north": 24,
+        "south": 16,
+        "northwest": 6,
+        "search": 19,
+        "east": 16,
+        "kick": 6,
+        "west": 4,
+        "southwest": 6,
+        "open": 3
+    },
+    "input_tokens": 353545,
+    "output_tokens": 3085,
+    "done": true,
+    "episode_return": 0.0,
+    "num_steps": 100,
+    "failed_candidates": [
+        "Identify the stair down, while wearing leather armor and considering using the +1 club as the main weapon. \nExplore by moving north as a starting point, then continue north or search for hidden doors while trying to see what is around each corner.\n\neast",
+        "<plan>The high-level plan to complete the task of finding the stairs down is as follows:\n\nSince the stairs up is adjacent northwest, and we are currently in a different area, we need to backtrack to the stairs down. We can do this by moving east back to the initial position, then search for hidden doors and passages to find a path to the stairs down. After finding the path, we will move south to find the stairs down. The reasoning behind this plan is that the initial area has a stair up and does not have a stair down, and moving east to the stair up area and searching for a passage will allow us to find the stair down in the original area. We will then backtrack to the stair down.\n\nAction: east",
+        "kick west",
+        "open westnorthwest"
+    ],
+    "progression": 0.0,
+    "end_reason": -1,
+    "process_num": "ForkProcess-42",
+    "seed": 2678683680,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 4,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 8192
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

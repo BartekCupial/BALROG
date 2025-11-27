@@ -1,0 +1,101 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Move West": 9,
+        "Move North": 6,
+        "Do": 146,
+        "Place Table": 3,
+        "Make Wood Pickaxe": 1,
+        "Move South": 1,
+        "Noop": 3,
+        "Move East": 1
+    },
+    "input_tokens": 320465,
+    "output_tokens": 58809,
+    "done": true,
+    "episode_return": 0.10000000000000009,
+    "num_steps": 170,
+    "failed_candidates": [
+        "<plan>Current resources: 1 wood, no stone yet. Nearby resources: stone (1 north), tree (2 north), coal (3 north\u2011west), grass (1 east), path (1 west). Goal: obtain all 22 achievements.\n\nHigh\u2011level roadmap:\n1. Collect stone in front (Do) \u2192 Achievement 10 (Collect Stone).\n2. Move north onto the stone tile, then north again to stand beside the tree.\n3. Collect wood from the tree (Do) \u2192 Achievement 1 (Collect Wood). Now have enough wood for basic tools and table.\n4. Move east onto grass and place a Table (Place Table) \u2192 Achievement 2.\n5. Craft Wood Pickaxe and Wood Sword at the table (Make Wood Pickaxe, Make Wood Sword) \u2192 Achievements 6 & 7.\n6. Move north\u2011west toward the coal (3 steps) and collect coal (Do) \u2192 Achievement 18.\n7. Place a Furnace near the table (Place Furnace) \u2192 Achievement 17.\n8. Use the furnace with wood to obtain charcoal/if iron ore later; for now collect more stone (Place Stone later) \u2192 Achievement 11.\n9. Craft Stone Pickaxe and Stone Sword (Make Stone Pickaxe, Make Stone Sword) using wood and stone \u2192 Achievements 14 & 15.\n10. Explore to find iron ore, collect iron (Do) \u2192 Achievement 19; then craft Iron Pickaxe and Iron Sword (Make Iron Pickaxe, Make Iron Sword) \u2192 Achievements 20 & 21.\n11. Collect additional resources: plant (Place Plant \u2192 8, Eat Plant \u2192 12), cow (Eat Cow \u2192 3) when encountered, sampling (Collect Sampling \u2192 4) from appropriate source, drink (Collect Drink \u2192 5) from lake, sleep to Wake Up (16) when energy low.\n12. Defeat a Zombie (9) and a Skeleton (13) using swords.\n13. Finally locate and collect Diamond (22) to finish all achievements.\n\nImmediate next step: collect the stone that is directly in front of us.\n\nAction:\nDo</action>",
+        "",
+        ""
+    ],
+    "score": 1.0,
+    "progression": 0.045454545454545456,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 0,
+        "collect_iron": 0,
+        "collect_sapling": 0,
+        "collect_stone": 0,
+        "collect_wood": 1,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 0,
+        "eat_cow": 0,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 0,
+        "make_wood_sword": 0,
+        "place_furnace": 0,
+        "place_plant": 0,
+        "place_stone": 0,
+        "place_table": 0,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": -1,
+        "collect_iron": -1,
+        "collect_sapling": -1,
+        "collect_stone": -1,
+        "collect_wood": 13,
+        "defeat_skeleton": -1,
+        "defeat_zombie": -1,
+        "eat_cow": -1,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": -1,
+        "make_wood_sword": -1,
+        "place_furnace": -1,
+        "place_plant": -1,
+        "place_stone": -1,
+        "place_table": -1,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-3",
+    "seed": 1403153342,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 2,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-120b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}
