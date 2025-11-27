@@ -6,7 +6,7 @@ from .custom import CustomAgent
 from .dummy import DummyAgent
 from .few_shot import FewShotAgent
 from .naive import NaiveAgent
-from .plan import PlanEveryKStep, AlwaysPlan, NeverPlan
+from .plan import PlanEveryKStep, AlwaysPlan, NeverPlan, PlanDynamically
 import logging
 logger = logging.getLogger(__name__)
 
@@ -59,5 +59,7 @@ class AgentFactory:
             return AlwaysPlan(client_factory, prompt_builder, self.config)
         elif self.config.agent.type == "never_plan":
             return NeverPlan(client_factory, prompt_builder, self.config)
+        elif self.config.agent.type == "plan_dynamically":
+            return PlanDynamically(client_factory, prompt_builder, self.config)
         else:
             raise ValueError(f"Unknown agent type: {self.config.agent}")

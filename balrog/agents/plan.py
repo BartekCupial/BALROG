@@ -203,3 +203,53 @@ class NeverPlan(BasePlanningAgent):
         llm_response = llm_response._replace(completion=action)
 
         return llm_response
+    
+    
+MAYBE_PLAN_INSTRUCTION = """
+Review your current plan and observations.  
+• If you do not have a plan yet, create one.  
+• If your plan is outdated or needs changes, create a new plan.
+
+If you create a new plan, output it in the following format:
+
+<plan>YOUR_NEW_PLAN</plan>
+
+Replace YOUR_NEW_PLAN with your revised plan.
+
+If your current plan is still valid, proceed without outputting it again.
+
+After this evaluation (and any necessary replanning), output exactly ONE allowed action.
+
+Output nothing else except an optional <plan>…</plan> block and that single action.
+""".strip()
+
+
+
+class PlanDynamically(BasePlanningAgent):    
+    def __init__(self, client_factory, prompt_builder, config):
+        super().__init__(client_factory, prompt_builder)
+
+    def reset(self):
+        super().reset()
+        self.plans_made = 0
+
+    def act(self, obs, prev_action=None):
+        try:
+            self.prompt_builder.update_action(prev_action)
+            self.prompt_builder.update_observation(obs)
+        except Exception as e:
+            print(f"Error updating action and observation in prompt builder: {e}")
+
+        messages = self.prompt_builder.get_prompt()
+
+        llm_response = self._generate_output(messages, self.MAYBE_PLAN_INSTRUCTION)
+        plan, action, _ = self._extract_plan(llm_response.completion)
+        if plan:
+            self.prompt_builder.update_plan(plan)
+            self.plans_made += 1
+            
+        action = action.strip()
+        llm_response = llm_response._replace(completion=action)
+        llm_response = llm_response._replace(reasoning=plan)
+
+        return llm_response
