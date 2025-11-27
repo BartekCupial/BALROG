@@ -1,0 +1,101 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Do": 25,
+        "Move West": 17,
+        "Noop": 2,
+        "Place Table": 7,
+        "Move North": 10,
+        "Place Plant": 1,
+        "Move East": 7,
+        "Move South": 7,
+        "Make Wood Pickaxe": 1
+    },
+    "input_tokens": 174632,
+    "output_tokens": 56734,
+    "done": true,
+    "episode_return": 6.1,
+    "num_steps": 77,
+    "failed_candidates": [
+        "<plan>1. Do \u2013 collect Sampling (Achievement 4).  \n2. Move North\u2026 (Path to the tree, 5 steps NW).  \n   a. Move North (once).  \n   b. Move West (once).  \n   c. Move North (twice).  \n   d. Move West (twice).  \n   e. Move North (once).  \n   f. Move West (once).  \n   (Total 5N, 5W \u2013 now facing the tree).  \n3. Do \u2013 hit the tree to collect Wood (Achievement 1).  \n4. Turn 180\u00b0 (Move South 5, Move East 5) or walk back to original spot.  \n5. Place Table (Achievement 2).  \n6. Make Wood Pickaxe (Achievement 6).  \n7. Move South 5, West 5 to reach Cow (5 steps SW).  \n   a. Move South (once).  \n   b. Move West (once).  \n   c. ... repeat until 5S,5W.  \n8. Do \u2013 hit the cow to eat it (Achievement 3) and drink if available (Achievement 5).  \n9. Move North (or to any nearby rock) to find Stone.  \n   a. Scan for stone; when found, face it, Do \u2013 collect Stone (Achievement 10).  \n10. Place Stone in front (Achievement 11).  \n11. Make Stone Pickaxe (Achievement 14).  \n12. Construct a Furnace (Place Furnace \u2013 Achievement 17).  \n13. Mine Coal (Do on coal ore \u2013 Achievement 18).  \n14. Mine Iron ore (Do \u2013 Achievement 19).  \n15. Make Iron Pickaxe (Achievement 20).  \n16. Use Iron Pickaxe to mine Diamond (Do \u2013 Achievement 22).  \n17. Make Iron Sword (Achievement 21).  \n18. Move to a nearby Plant \u2013 Do to place plant? (Place Plant \u2013 Achievement 8).  \n19. Do on the plant to eat Plant (Achievement 12).  \n20. Secure water source \u2013 Do on lake to collect Drink (Achievement 5).  \n21. Defeat a Zombie (Do on zombie \u2013 Achievement 9).  \n22. Defeat a Skeleton (Do on skeleton \u2013 Achievement 13).  \n23. Ensure energy low -> Sleep to Wake Up (Achievement 16).  \n24. Final checks: have all 22 achievements done.  \n\nThis sequential plan covers all requirements.  \n\n<Action: Move West>",
+        "Done."
+    ],
+    "score": 7.0,
+    "progression": 0.3181818181818182,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 3,
+        "collect_iron": 0,
+        "collect_sapling": 1,
+        "collect_stone": 0,
+        "collect_wood": 3,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 0,
+        "eat_cow": 1,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 1,
+        "make_wood_sword": 0,
+        "place_furnace": 0,
+        "place_plant": 1,
+        "place_stone": 0,
+        "place_table": 1,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": 129,
+        "collect_iron": -1,
+        "collect_sapling": 19,
+        "collect_stone": -1,
+        "collect_wood": 51,
+        "defeat_skeleton": -1,
+        "defeat_zombie": -1,
+        "eat_cow": 33,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": 123,
+        "make_wood_sword": -1,
+        "place_furnace": -1,
+        "place_plant": 41,
+        "place_stone": -1,
+        "place_table": 65,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-34",
+    "seed": 158737420,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 4,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-20b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

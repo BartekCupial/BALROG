@@ -46,12 +46,8 @@ pip install vllm numpy==1.23
 vllm serve meta-llama/Llama-3.2-1B-Instruct --port 8080
 
 python eval.py \
-  agent.type=naive \
-  agent.max_image_history=0 \
-  agent.max_text_history=16 \
-  eval.num_workers=32 \
   client.client_name=vllm \
-  client.model_id=meta-llama/Llama-3.2-1B-Instruct \
+  client.model_id=meta-llama/Llama-3.3-70B-Instruc \
   client.base_url=http://0.0.0.0:8080/v1
 ```
 
@@ -113,3 +109,15 @@ If you use BALROG in any of your work, please cite:
   year={2024}
 }
 ```
+
+| Method | Model | Planning | % of max reward | Avg. Output Tokens |
+| :--- | :--- | :--- | :--- | :--- | 
+| Zero-shot | Llama-3.3-70B | Never | 0.343 ± 0.012 | 559.6 |
+| Zero-shot | Llama-3.3-70B | Every 4 steps | 0.379 ± 0.014 | 11510.9 |
+| Zero-shot | Llama-3.3-70B | Always (Every step) | 0.349 ± 0.013 | 38836.2 |
+| SFT | Llama-3.1-8B | Never | 0.286 | 991.5 |
+| SFT | Llama-3.1-8B | Every k steps; k~[2,12] | 0.343 | 1869.9 |
+| Base+RL | Llama-3.1-8B | Never | 0.274 | 505.1 |
+| Base+RL | Llama-3.1-8B | Plan dynamically | 0.210 | 10818.7 |
+| SFT+RL | Llama-3.1-8B | Never | 0.298 | 878.0 |
+| SFT+RL | Llama-3.1-8B | Plan dynamically | 0.387 | 1714.3 |

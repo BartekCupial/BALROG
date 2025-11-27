@@ -1,0 +1,102 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Move South": 6,
+        "Move East": 4,
+        "Do": 223,
+        "Place Table": 1,
+        "Make Wood Pickaxe": 2,
+        "Move North": 2,
+        "Noop": 39,
+        "Sleep": 1,
+        "Move West": 3
+    },
+    "input_tokens": 559227,
+    "output_tokens": 58242,
+    "done": true,
+    "episode_return": 1.1,
+    "num_steps": 281,
+    "failed_candidates": [
+        "<plan>Current inventory: 1 wood. Nearby resources: stone directly south, grass west, tree and coal NE. Achievements needed: Collect Stone, Collect Wood, Place Table, Make Wood Pickaxe, Make Wood Sword, then progress to stone/iron tools, place furnace, collect food, defeat mobs, etc. Immediate priorities: collect stone (Collect Stone achievement) and then obtain more wood from the tree (Collect Wood). After that place a table on the grass (Place Table) using wood, craft wood tools, and continue mining. Therefore the first concrete action is to use the multi\u2011use Do action to collect the stone in front of us, completing the \u201cCollect Stone\u201d achievement and giving material for later crafting.<plan>\nDo",
+        "",
+        "<plan>We are low on food and drink (0/9) and health is moderate (6/9). The immediate priority is to obtain food to avoid starvation. Grass is directly in front (west) and can be collected/eaten with the Do action, which will also give the \"Eat Plant\" achievement. After eating, we will have food, then we can safely collect stone (south) with Do for the \"Collect Stone\" achievement, place a table (using Place Table) to enable crafting, and then craft a wood pickaxe (Make Wood Pickaxe) using the wood we already have. With the pickaxe we can mine coal (south\u2011west) and later iron, craft higher\u2011tier tools, place a furnace, defeat zombies and skeletons, and collect diamonds, completing all achievements. The next single action should therefore be to eat the grass now.\\plan>\nDo"
+    ],
+    "score": 2.0,
+    "progression": 0.09090909090909091,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 0,
+        "collect_iron": 0,
+        "collect_sapling": 2,
+        "collect_stone": 0,
+        "collect_wood": 1,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 0,
+        "eat_cow": 0,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 0,
+        "make_wood_sword": 0,
+        "place_furnace": 0,
+        "place_plant": 0,
+        "place_stone": 0,
+        "place_table": 0,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": -1,
+        "collect_iron": -1,
+        "collect_sapling": 519,
+        "collect_stone": -1,
+        "collect_wood": 19,
+        "defeat_skeleton": -1,
+        "defeat_zombie": -1,
+        "eat_cow": -1,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": -1,
+        "make_wood_sword": -1,
+        "place_furnace": -1,
+        "place_plant": -1,
+        "place_stone": -1,
+        "place_table": -1,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-51",
+    "seed": 3636724046,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-120b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

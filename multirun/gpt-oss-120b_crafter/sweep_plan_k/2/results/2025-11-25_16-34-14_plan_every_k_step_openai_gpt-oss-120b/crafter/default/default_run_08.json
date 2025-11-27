@@ -1,0 +1,103 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Move East": 12,
+        "Move West": 27,
+        "Move North": 38,
+        "Do": 32,
+        "Place Table": 7,
+        "Make Wood Pickaxe": 4,
+        "Make Wood Sword": 1,
+        "Noop": 4,
+        "Move South": 24,
+        "Sleep": 1
+    },
+    "input_tokens": 267061,
+    "output_tokens": 59272,
+    "done": true,
+    "episode_return": 6.099999999999998,
+    "num_steps": 150,
+    "failed_candidates": [
+        "",
+        "<plan>We currently have wood, a wood pickaxe and a wood sword, but no stone. The next achievements require stone: Collect Stone, Place Stone, Make Stone Pickaxe, Make Stone Sword, etc. Our immediate goal is to locate a stone block in the world, mine it with the wood pickaxe (using the Do action), then return to the table (which is a few steps to the south\u2011east) to craft stone tools. We will explore westwards, where a tree is visible, as stone is often found near terrain features. Once we see a stone tile, we will Do to collect it. After obtaining stone, we will head back to the table to craft the stone pickaxe and stone sword, then place a stone to complete the Place Stone achievement. For now, the first action is to move west to continue exploration.\\plan>\nMove West",
+        "<plan>We currently have wood (5), a wood pickaxe and a wood sword, and have completed the early achievements (Collect Wood, Make Wood Pickaxe, Make Wood Sword). To progress, we need to obtain stone, then use the table (already observed southeast) to place stone, craft stone tools, and later acquire coal, iron, diamond, defeat monsters, eat food, collect drink, and place furnace. The immediate priority is to locate a stone block to achieve Collect Stone. We will explore westward (grass is in front) where the terrain may contain stone. Once stone is collected, we will head back to the table to place stone and craft stone pickaxe/sword, then continue toward coal, iron, etc. For now, the next action is to move west to search for stone.\\plan>\nMove West"
+    ],
+    "score": 7.0,
+    "progression": 0.3181818181818182,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 6,
+        "collect_iron": 0,
+        "collect_sapling": 0,
+        "collect_stone": 0,
+        "collect_wood": 11,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 1,
+        "eat_cow": 3,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 1,
+        "make_wood_sword": 1,
+        "place_furnace": 0,
+        "place_plant": 0,
+        "place_stone": 0,
+        "place_table": 3,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": 279,
+        "collect_iron": -1,
+        "collect_sapling": -1,
+        "collect_stone": -1,
+        "collect_wood": 13,
+        "defeat_skeleton": -1,
+        "defeat_zombie": 53,
+        "eat_cow": 101,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": 37,
+        "make_wood_sword": 43,
+        "place_furnace": -1,
+        "place_plant": -1,
+        "place_stone": -1,
+        "place_table": 35,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-41",
+    "seed": 1529848020,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 4,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-120b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

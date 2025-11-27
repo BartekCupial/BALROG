@@ -1,0 +1,100 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Move North": 16,
+        "Move East": 11,
+        "Do": 96,
+        "Place Table": 43,
+        "Make Wood Pickaxe": 1,
+        "Move South": 8,
+        "Move West": 16,
+        "Noop": 2,
+        "Sleep": 1
+    },
+    "input_tokens": 311750,
+    "output_tokens": 54410,
+    "done": true,
+    "episode_return": 5.1,
+    "num_steps": 194,
+    "failed_candidates": [
+        "<plan>We currently have 1 wood and a wood pickaxe, and we have not yet earned the \u201cPlace Table\u201d achievement, which is needed before we can craft any tools or items. The tile directly in front of us (grass) can be used to place the table, and placing a table likely consumes the 1 wood we have, which should be sufficient for this early stage. \n\nHigh\u2011level steps to complete all achievements:\n1. Place the table now on the grass tile in front of us \u2192 achievement \u201cPlace Table\u201d.\n2. Move west to the tree and use Do to collect more wood \u2192 \u201cCollect Wood\u201d (extra wood for later crafting).\n3. Move east back to the table, then use the table to craft the wood pickaxe (already have) and later the wood sword, stone tools, etc.\n4. Collect water by moving west twice to the lake and using Do \u2192 \u201cCollect Drink\u201d.\n5. Place stone by finding stone (not yet visible) and using Do, then place it \u2192 \u201cPlace Stone\u201d.\n6. Plant a plant on grass using Place Plant \u2192 \u201cPlace Plant\u201d and later \u201cEat Plant\u201d.\n7. Collect coal and iron by mining appropriate blocks (once we have stone/iron tools).\n8. Build a furnace with Place Furnace on a stone tile, then smelt iron \u2192 \u201cCollect Iron\u201d, \u201cMake Iron Pickaxe\u201d, \u201cMake Iron Sword\u201d.\n9. Defeat zombie and skeleton using appropriate weapons \u2192 \u201cDefeat Zombie\u201d, \u201cDefeat Skeleton\u201d.\n10. Finally collect a diamond with an iron pickaxe \u2192 \u201cCollect Diamond\u201d.\n11. Sleep when energy low to get \u201cWake Up\u201d.\n\nThe immediate action to progress is to place the table now. \n\nAction: Place Table</action>"
+    ],
+    "score": 6.0,
+    "progression": 0.2727272727272727,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 11,
+        "collect_iron": 0,
+        "collect_sapling": 6,
+        "collect_stone": 0,
+        "collect_wood": 5,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 1,
+        "eat_cow": 0,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 1,
+        "make_wood_sword": 0,
+        "place_furnace": 0,
+        "place_plant": 0,
+        "place_stone": 0,
+        "place_table": 2,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": 35,
+        "collect_iron": -1,
+        "collect_sapling": 291,
+        "collect_stone": -1,
+        "collect_wood": 11,
+        "defeat_skeleton": -1,
+        "defeat_zombie": 355,
+        "eat_cow": -1,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": 37,
+        "make_wood_sword": -1,
+        "place_furnace": -1,
+        "place_plant": -1,
+        "place_stone": -1,
+        "place_table": 23,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-50",
+    "seed": 1943941544,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-120b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

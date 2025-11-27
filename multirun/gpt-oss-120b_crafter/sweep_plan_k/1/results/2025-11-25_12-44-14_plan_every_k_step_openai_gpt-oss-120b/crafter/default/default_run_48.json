@@ -1,0 +1,103 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Move South": 24,
+        "Move West": 13,
+        "Do": 23,
+        "Move East": 75,
+        "Place Table": 5,
+        "Move North": 14,
+        "Make Wood Pickaxe": 1,
+        "Place Stone": 4,
+        "Make Wood Sword": 1,
+        "Make Stone Pickaxe": 1,
+        "Sleep": 2,
+        "Noop": 56
+    },
+    "input_tokens": 492346,
+    "output_tokens": 98260,
+    "done": true,
+    "episode_return": 11.1,
+    "num_steps": 219,
+    "failed_candidates": [
+        "<plan>Current status: low health (2), moderate food (4) and drink (1). Inventory includes stone, coal, wood_pickaxe, stone_pickaxe, wood_sword. Achievements already earned: Collect Stone, Collect Coal, Make Wood Pickaxe, Make Wood Sword. Remaining major achievements: Collect Wood, Place Table, Place Stone, Make Stone Sword, Place Plant, Eat Plant, Defeat Zombie, Collect Drink, Collect Sampling, Place Furnace, Collect Iron, Make Iron Pickaxe, Make Iron Sword, Collect Diamond, Eat Cow, Defeat Skeleton, Wake Up (already done), etc.\n\nHigh\u2011level roadmap:\n1. Preserve health: avoid combat until we have a better weapon (stone sword) and higher health. We can later eat grass/plant for food and heal.\n2. Acquire wood: move north\u2011west to the tree (north then west) and Do to collect wood. This unlocks Collect Wood.\n3. Place Table on a flat tile (e.g., the path north of current position) using Place Table. This grants Place Table.\n4. Place Stone in front of the Table (using Place Stone) to get Place Stone.\n5. Make Stone Sword at the Table (requires wood and stone in inventory) \u2192 Make Stone Sword achievement.\n6. Use Stone Sword to defeat the nearby zombie (move west twice to reach zombie, then Do to hit). This yields Defeat Zombie and also gives combat experience.\n7. Collect Iron: move south\u2011east to the iron deposit (3 steps) and Do while holding a pickaxe (stone_pickaxe) to collect iron \u2192 Collect Iron.\n8. Place Plant on the grass tile west of us (Place Plant), then Do on the plant to eat it \u2192 Place Plant and Eat Plant achievements, also restores health/food.\n9. Collect Drink & Sampling: locate a water source (likely on the path north after moving further north) and Do to drink \u2192 Collect Drink and Collect Sampling.\n10. Place Furnace near the Table (Place Furnace) \u2192 Place Furnace achievement.\n11. Craft Iron Pickaxe and Iron Sword using Make Iron Pickaxe and Make Iron Sword (requires wood, coal, iron, and the furnace). These give the corresponding achievements.\n12. Use Iron Pickaxe to mine for Diamond at the diamond location (not yet seen; assume reachable after moving east/south). Do to collect Diamond \u2192 Collect Diamond.\n13. Find a cow (likely on the grass area further west) and Do to eat it \u2192 Eat Cow.\n14. Find a skeleton (likely south of current area) and Do to defeat it \u2192 Defeat Skeleton.\n\nThroughout, monitor health/food/drink and Sleep when energy is low, using collected food/drink to restore.\n\nImmediate next step: move north to approach the tree and start wood collection.\\plan>\nMove North"
+    ],
+    "score": 12.0,
+    "progression": 0.5454545454545454,
+    "achievements": {
+        "collect_coal": 1,
+        "collect_diamond": 0,
+        "collect_drink": 0,
+        "collect_iron": 0,
+        "collect_sapling": 0,
+        "collect_stone": 6,
+        "collect_wood": 7,
+        "defeat_skeleton": 1,
+        "defeat_zombie": 1,
+        "eat_cow": 1,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 1,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 1,
+        "make_wood_sword": 1,
+        "place_furnace": 0,
+        "place_plant": 0,
+        "place_stone": 4,
+        "place_table": 2,
+        "wake_up": 1
+    },
+    "unlock_timesteps": {
+        "collect_coal": 253,
+        "collect_diamond": -1,
+        "collect_drink": -1,
+        "collect_iron": -1,
+        "collect_sapling": -1,
+        "collect_stone": 55,
+        "collect_wood": 15,
+        "defeat_skeleton": 305,
+        "defeat_zombie": 439,
+        "eat_cow": 111,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": 271,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": 37,
+        "make_wood_sword": 85,
+        "place_furnace": -1,
+        "place_plant": -1,
+        "place_stone": 59,
+        "place_table": 23,
+        "wake_up": 425
+    },
+    "process_num": "ForkProcess-29",
+    "seed": 1998977236,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 3,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-120b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}

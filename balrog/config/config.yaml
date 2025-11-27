@@ -1,5 +1,5 @@
 agent: 
-  type: naive            # Type of agent to use (e.g., 'naive', 'cot', etc.)
+  type: plan_every_k_step            # Type of agent to use (e.g., 'naive', 'cot', etc.)
   remember_cot: True     # Whether the agent should remember its reasoning across turns
   max_text_history: 16   # Maximum number of text messages to keep in the history
   max_image_history: 0   # Maximum number of images to keep in the history
@@ -30,26 +30,29 @@ eval:
   feedback_on_invalid_action : True       # Whether to provide feedback on invalid actions
 
 client:
-  client_name: openai           # LLM client to use (e.g., 'openai', 'gemini', 'claude')
-  model_id: gpt-4o              # Model identifier (e.g., 'gpt-4', 'gpt-3.5-turbo')
+  client_name: vllm           # LLM client to use (e.g., 'openai', 'gemini', 'claude')
+  model_id: meta-llama/Llama-3.1-8B-Instruct           # Model identifier (e.g., 'gpt-4', 'gpt-3.5-turbo')
   base_url: http://localhost:8080/v1   # Base URL for the API (if using a local server)
   generate_kwargs:
     temperature: 1.0            # Sampling temperature. If null the API default temperature is used instead
-    max_tokens: 4096            # Max tokens to generate in the response
+    max_tokens: 16384            # Max tokens to generate in the response
   timeout: 60                   # Timeout for API requests in seconds
   max_retries: 5                # Max number of retries for failed API calls
   delay: 2                      # Exponential backoff factor between retries in seconds
   alternate_roles: False        # Whether the client requires alternating between the agent and the environment
 
 envs:
-  names: babyai-babaisai-textworld-crafter-nle-minihack-pogs   # Environments to evaluate, separated by hyphens
+  names: minihack   # Environments to evaluate, separated by hyphens
   env_kwargs:
     seed: null                # Random seed; null means a random seed is used
   pogs_kwargs:
     num_nodes: 20
-    max_steps: 30
+    max_steps: 30  
     k_nearest: 2
-    min_backtracks: 1
+    min_backtracks: 3
+    step_penalty: 0
+    revisit_penalty: 0
+    expert_penalty: -5
   nle_kwargs:
     character: "@"            # Character representing the agent in NLE
     max_episode_steps: 100_000  # Max steps per episode in NLE
@@ -60,7 +63,7 @@ envs:
   minihack_kwargs: 
     character: "@"
     max_episode_steps: 100
-    penalty_step: -0.01         
+    penalty_step: 0.0        
     penalty_time: 0.0           
     penalty_mode: constant      
     savedir: null
@@ -95,14 +98,7 @@ tasks:
     - NetHackChallenge-v0       # Tasks for the NLE environment
 
   minihack_tasks:
-    - "MiniHack-Boxoban-Hard-v0"
-    - "MiniHack-Boxoban-Medium-v0"
-    - "MiniHack-MazeWalk-9x9-v0"
-    - "MiniHack-MazeWalk-15x15-v0"
     - "MiniHack-Corridor-R3-v0"
-    - "MiniHack-CorridorBattle-Dark-v0"
-    - "MiniHack-Quest-Easy-v0"
-    - "MiniHack-Quest-Medium-v0"
 
   crafter_tasks:
     - "default"                 # Tasks for Crafter

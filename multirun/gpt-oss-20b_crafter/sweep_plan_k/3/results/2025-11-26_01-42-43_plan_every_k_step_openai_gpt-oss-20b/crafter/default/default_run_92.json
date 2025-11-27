@@ -1,0 +1,102 @@
+{
+    "task": "default",
+    "action_frequency": {
+        "Move North": 12,
+        "Move West": 13,
+        "Do": 32,
+        "Place Table": 28,
+        "Noop": 4,
+        "Make Wood Pickaxe": 24,
+        "Move East": 14,
+        "Move South": 15
+    },
+    "input_tokens": 271891,
+    "output_tokens": 69992,
+    "done": true,
+    "episode_return": 5.1,
+    "num_steps": 142,
+    "failed_candidates": [
+        "<plan>Create a wood pickaxe to mine stone, then craft a wood sword. Mine stone blocks with the pickaxe and place one block to satisfy the Place Stone achievement. Use the stone and wood to craft a stone pickaxe and stone sword. Mine coal and iron ore with the stone pickaxe, then place a furnace. Use the furnace along with coal, iron, wood, and a table to craft an iron pickaxe and iron sword. Harvest a diamond with the iron pickaxe. Place a plant, eat it for the Eat Plant achievement, and drink from the lake for Collect Drink. Hunt and eat a cow for Eat Cow. Defeat a zombie with the wood sword and a skeleton with the iron sword. Use the wood pickaxe to harvest required samples for Collect Sampling. After each achievement is completed, confirm that all 22 achievements have been earned.",
+        "",
+        "Move South-West",
+        "<plan>1. Kill the zombie by using **Do** when facing it to earn achievement 9.  \n2. After killing, position yourself facing the water to the south and **Do** again to drink from the lake for achievement\u202f5.  \n3. Move west until a table is adjacent; face it and use **Place Table** to achieve 2.  \n4. Find a nearby tree (or any source of wood), face it, and **Do** to collect wood, giving achievement\u202f1.  \n5. With the table nearby, use **Make Wood Sword** to craft a wood sword (achievement\u202f7).  \n6. In the future, use the wood sword to defeat the skeleton (achievement\u202f13) and then craft the stone pickaxe and sword following the normal sequence.  \n7. Place a furnace once you have stone, coal, and iron to unlock achievement\u202f17.  \n8. Mine and collect coal, iron, and diamond to unlock achievements\u202f18,\u202f19,\u202f22.  \n9. Craft the iron pickaxe and iron sword for achievements\u202f20 and\u202f21.  \n10. Place a plant (achievement\u202f8) and later **Do** on it to eat the plant (achievement\u202f12).  \n11. Seek and eat a cow when present for achievement\u202f3.  \n12. When energy drops, use **Sleep** to wake up and grant achievement\u202f16.  \n13. Collect any available samples using **Do** when a sample appears for achievement\u202f4.  \nThis plan progressively addresses all 22 achievements in a logical order."
+    ],
+    "score": 6.0,
+    "progression": 0.2727272727272727,
+    "achievements": {
+        "collect_coal": 0,
+        "collect_diamond": 0,
+        "collect_drink": 2,
+        "collect_iron": 0,
+        "collect_sapling": 0,
+        "collect_stone": 0,
+        "collect_wood": 5,
+        "defeat_skeleton": 0,
+        "defeat_zombie": 1,
+        "eat_cow": 1,
+        "eat_plant": 0,
+        "make_iron_pickaxe": 0,
+        "make_iron_sword": 0,
+        "make_stone_pickaxe": 0,
+        "make_stone_sword": 0,
+        "make_wood_pickaxe": 1,
+        "make_wood_sword": 0,
+        "place_furnace": 0,
+        "place_plant": 0,
+        "place_stone": 0,
+        "place_table": 2,
+        "wake_up": 0
+    },
+    "unlock_timesteps": {
+        "collect_coal": -1,
+        "collect_diamond": -1,
+        "collect_drink": 153,
+        "collect_iron": -1,
+        "collect_sapling": -1,
+        "collect_stone": -1,
+        "collect_wood": 11,
+        "defeat_skeleton": -1,
+        "defeat_zombie": 269,
+        "eat_cow": 205,
+        "eat_plant": -1,
+        "make_iron_pickaxe": -1,
+        "make_iron_sword": -1,
+        "make_stone_pickaxe": -1,
+        "make_stone_sword": -1,
+        "make_wood_pickaxe": 223,
+        "make_wood_sword": -1,
+        "place_furnace": -1,
+        "place_plant": -1,
+        "place_stone": -1,
+        "place_table": 175,
+        "wake_up": -1
+    },
+    "process_num": "ForkProcess-56",
+    "seed": 3833974298,
+    "agent": {
+        "type": "plan_every_k_step",
+        "remember_cot": true,
+        "max_text_history": 16,
+        "max_image_history": 0,
+        "max_cot_history": 1,
+        "max_icl_history": 1000,
+        "cache_icl": false,
+        "plan_k": 6,
+        "prompt_builder": {
+            "type": "plan_history"
+        }
+    },
+    "client": {
+        "client_name": "vllm",
+        "model_id": "openai/gpt-oss-20b",
+        "base_url": "http://localhost:8080/v1",
+        "generate_kwargs": {
+            "temperature": 1.0,
+            "max_tokens": 16384
+        },
+        "timeout": 60,
+        "max_retries": 5,
+        "delay": 2,
+        "alternate_roles": false
+    }
+}
